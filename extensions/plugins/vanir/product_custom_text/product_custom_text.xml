@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="vanir" method="upgrade">
+    <name>PLG_VANIR_PRODUCT_CUSTOM_TEXT</name>
+    <creationDate>July 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.7.1</version>
+    <description>PLG_VANIR_PRODUCT_CUSTOM_TEXT_DESC</description>
+    <scriptfile>install.php</scriptfile>
+    <files>
+        <folder>language</folder>
+        <folder>layouts</folder>
+        <filename>index.html</filename>
+        <filename plugin="product_custom_text">product_custom_text.php</filename>
+    </files>
+    <media folder="media">
+        <folder>plg_vanir_product_custom_text</folder>
+    </media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="textLabel"
+                        type="text"
+                        default="Custom text"
+                        label="PLG_VANIR_PRODUCT_CUSTOM_TEXT_LABEL_LBL"
+                        description="PLG_VANIR_PRODUCT_CUSTOM_TEXT_LABEL_DESC">
+                </field>
+            </fieldset>
+            <fieldset name="basic">
+                <field
+                        name="showAsColumn"
+                        type="radio"
+                        class="btn-group"
+                        default="0"
+                        label="PLG_VANIR_PRODUCT_SHOW_AS_SEPARATE_COLUMN"
+                        description="PLG_VANIR_PRODUCT_SHOW_AS_SEPARATE_COLUMN_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="basic">
+                <field
+                        name="showLabel"
+                        type="radio"
+                        class="btn-group"
+                        default="1"
+                        label="PLG_VANIR_PRODUCT_SHOW_CUSTOM_TEXT_LABEL"
+                        description="PLG_VANIR_PRODUCT_SHOW_CUSTOM_TEXT_LABEL_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

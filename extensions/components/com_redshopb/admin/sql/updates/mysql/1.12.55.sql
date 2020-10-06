@@ -1,0 +1,6 @@
+SET FOREIGN_KEY_CHECKS=0;
+
+ALTER TABLE `#__redshopb_product_price`
+  ADD COLUMN `is_multiple` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `ending_date`;
+
+SET FOREIGN_KEY_CHECKS=1;

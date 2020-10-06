@@ -1,0 +1,478 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Product Item Accessory Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>Product item accessories are optional or required products that can be sold with an specific product item - specifically they're set to main attributes, so that they can be populated to a number of product items sharing that specific value of the main attribute.</description>
+  <config>
+    <name>redshopb-product_item_accessory</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="table" optionName="com_redshopb" modelClassName="" modelClassPath="" isAdminClass="false" functionName="save" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_item_accessory">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce Product Item Accessory]]></description>
+      <fields>
+        <field name="attribute_value_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Product attribute value ID of this Product Item Accessory ]]></description>
+        </field>
+        <field name="accessory_product_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[ID of the product sold as accessory of the main product ]]></description>
+        </field>
+        <field name="description" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Description of the accessory (overrides the main product description when sold as an accessory) ]]></description>
+        </field>
+        <field name="collection_id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional collection ID where this accessory is sold with the product]]></description>
+        </field>
+        <field name="hide_on_collection" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[When a collection is set but this flag is true, the accessory option is not shown but the accessory can be enforced with the selection field.]]></description>
+        </field>
+        <field name="price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Accessory price, regardless of the product price logic (overrides the whole price logic when set)]]></description>
+        </field>
+        <field name="selection" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Defines how the accessory is sold. «require»: the accessory purchase is required with the main product.  «proposed»: the purchase is proposed but not required.  «optional»: the purchase is not required nor proposed, but the accessory can be added manually.]]></description>
+        </field>
+        <description><![CDATA[Product Item Accessory creation fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Item Accessory webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product Item Accessory]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[New Product Item Accessory ID upon success, zero on error]]></description>
+        </resource>
+        <resource displayName="redshopb-product_item" transform="string" fieldFormat="/index.php?option=redshopb-product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={attribute_value_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product linked Web Service]]></description>
+        </resource>
+        <resource displayName="redshopb-accessory-product" transform="string" fieldFormat="/index.php?option=redshopb-product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={accessory_product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Accessory Product linked Web Service]]></description>
+        </resource>
+        <resource displayName="redshopb-collection" transform="string" fieldFormat="/index.php?option=redshopb-collection&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={collection_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Collection linked Web Service]]></description>
+        </resource>
+        <description><![CDATA[Product Item Accessory creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="table" optionName="com_redshopb" modelClassName="ProductAccessories" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_item_accessory">
+        <description><![CDATA[This operation lists all Aesir E-Commerce Product Item Accessorys]]></description>
+        <fields>
+          <field name="id" transform="int" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Product Item Accessory ID]]></description>
+          </field>
+          <field name="attribute_value_id" transform="int" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Product attribute value ID of this Product Item Accessory]]></description>
+          </field>
+          <field name="accessory_product_id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[ID of the product sold as accessory of the main product ]]></description>
+        </field>
+        <field name="description" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Description of the accessory (overrides the main product description when sold as an accessory) ]]></description>
+        </field>
+        <field name="collection_id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional collection ID where this accessory is sold with the product]]></description>
+        </field>
+        <field name="hide_on_collection" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[When a collection is set but this flag is true, the accessory option is not shown but the accessory can be enforced with the selection field.]]></description>
+        </field>
+        <field name="price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Accessory price, regardless of the product price logic (overrides the whole price logic when set)]]></description>
+        </field>
+        <field name="selection" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Defines how the accessory is sold. «require»: the accessory purchase is required with the main product.  «proposed»: the purchase is proposed but not required.  «optional»: the purchase is not required nor proposed, but the accessory can be added manually.]]></description>
+        </field>
+          <description><![CDATA[Product Item Accessory list fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[ Product Item Accessory ID]]></description>
+          </resource>
+          <resource displayName="attribute_value_id" transform="int" fieldFormat="{attribute_value_id}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Product item ID of this Product Item Accessory ]]></description>
+          </resource>
+          <resource displayName="accessory_product_id" transform="int" fieldFormat="{accessory_product_id}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[ID of the product sold as accessory of the main product]]></description>
+          </resource>
+          <resource displayName="description" transform="string" fieldFormat="{description}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Description of the accessory (overrides the main product description when sold as an accessory)]]></description>
+          </resource>
+          <resource displayName="collection_id" transform="int" fieldFormat="{collection_id}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Optional collection ID where this accessory is sold with the product ]]></description>
+          </resource>
+          <resource displayName="hide_on_collection" transform="boolean" fieldFormat="{hide_on_collection}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[When a collection is set but this flag is true, the accessory option is not shown but the accessory can be enforced with the selection field.]]></description>
+          </resource>
+          <resource displayName="price" transform="float" fieldFormat="{price}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Accessory price, regardless of the product price logic (overrides the whole price logic when set)]]></description>
+          </resource>
+          <resource displayName="selection" transform="string" fieldFormat="{selection}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Defines how the accessory is sold. «require»: the accessory purchase is required with the main product.  «proposed»: the purchase is proposed but not required.  «optional»: the purchase is not required nor proposed, but the accessory can be added manually.]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[ True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Product Item Accessory]]></description>
+          </resource>
+          <resource displayName="redshopb-product_item" transform="string" fieldFormat="/index.php?option=redshopb-product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={attribute_value_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-accessory-product" transform="string" fieldFormat="/index.php?option=redshopb-product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={accessory_product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Accessory Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-collection" transform="string" fieldFormat="/index.php?option=redshopb-collection&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={collection_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Collection linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Item Accessory list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice," dataMode="model" optionName="com_redshopb" modelClassName="ProductAccessory" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Product Item Accessory]]></description>
+        <fields>
+          <field name="id" transform="int" isRequiredField="true" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Product Item Accessory ID]]></description>
+          </field>
+          <description><![CDATA[Product Item Accessory display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[ Product Item Accessory ID]]></description>
+          </resource>
+          <resource displayName="attribute_value_id" transform="int" fieldFormat="{attribute_value_id}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product item ID of this Product Item Accessory ]]></description>
+          </resource>
+          <resource displayName="accessory_product_id" transform="int" fieldFormat="{accessory_product_id}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[ID of the product sold as accessory of the main product]]></description>
+          </resource>
+          <resource displayName="description" transform="string" fieldFormat="{description}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Description of the accessory (overrides the main product description when sold as an accessory)]]></description>
+          </resource>
+          <resource displayName="collection_id" transform="int" fieldFormat="{collection_id}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Optional collection ID where this accessory is sold with the product ]]></description>
+          </resource>
+          <resource displayName="hide_on_collection" transform="boolean" fieldFormat="{hide_on_collection}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[When a collection is set but this flag is true, the accessory option is not shown but the accessory can be enforced with the selection field.]]></description>
+          </resource>
+          <resource displayName="price" transform="float" fieldFormat="{price}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Accessory price, regardless of the product price logic (overrides the whole price logic when set)]]></description>
+          </resource>
+          <resource displayName="selection" transform="string" fieldFormat="{selection}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Defines how the accessory is sold. «require»: the accessory purchase is required with the main product.  «proposed»: the purchase is proposed but not required.  «optional»: the purchase is not required nor proposed, but the accessory can be added manually.]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[ True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Item Accessory]]></description>
+          </resource>
+          <resource displayName="redshopb-product_item" transform="string" fieldFormat="/index.php?option=redshopb-product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={attribute_value_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-accessory-product" transform="string" fieldFormat="/index.php?option=redshopb-product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={accessory_product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Accessory Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-collection" transform="string" fieldFormat="/index.php?option=redshopb-collection&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={collection_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Collection linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Item Accessory display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="table" optionName="" modelClassName="" modelClassPath="" isAdminClass="false" functionName="save" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_item_accessory">
+      <description><![CDATA[This operation updates Aesir E-Commerce Product Item Accessory]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Product Item Accessory ID]]></description>
+        </field>
+        <field name="description" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Description of the accessory (overrides the main product description when sold as an accessory) ]]></description>
+        </field>
+        <field name="collection_id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional collection ID where this accessory is sold with the product]]></description>
+        </field>
+        <field name="hide_on_collection" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[When a collection is set but this flag is true, the accessory option is not shown but the accessory can be enforced with the selection field.]]></description>
+        </field>
+        <field name="price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Accessory price, regardless of the product price logic (overrides the whole price logic when set)]]></description>
+        </field>
+        <field name="selection" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Defines how the accessory is sold. «require»: the accessory purchase is required with the main product.  «proposed»: the purchase is proposed but not required.  «optional»: the purchase is not required nor proposed, but the accessory can be added manually.]]></description>
+        </field>
+        <description><![CDATA[Product Item Accessory update fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Item Accessory webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product Item Accessory]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Item Accessory ID upon success, zero on error]]></description>
+        </resource>
+          <resource displayName="redshopb-collection" transform="string" fieldFormat="/index.php?option=redshopb-collection&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={collection_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Collection linked Web Service]]></description>
+          </resource>
+        <description><![CDATA[Product Item Accessory update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="table" optionName="" modelClassName="" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}" validateData="none" validateDataFunction="validate" tableName="redshopb_product_item_accessory">
+      <description><![CDATA[This operation deletes Aesir E-Commerce Product Item Accessory(s).]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Product Item Accessory ID to delete]]></description>
+        </field>
+        <description><![CDATA[Product Item Accessory delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Item Accessory webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Item Accessory ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Product Item Accessory delete resources]]></description>
+      </resources>
+    </delete>
+    <task>
+      <publish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="table" optionName="com_redshopb" modelClassName="ProductItemAccessory" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}" validateData="none" validateDataFunction="validate" tableName="redshopb_product_item_accessory">
+        <description><![CDATA[This task enables you to set specific Product Item Accessories as published.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Item Accessory ID to publish]]></description>
+          </field>
+          <description><![CDATA[Product Item Accessory publish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Item Accessory]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Item Accessory publish resources]]></description>
+        </resources>
+      </publish>
+      <unpublish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="ProductAccessory" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This task enables you to set specific Product Item Accessories as unpublished.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Item Accessory ID to unpublish]]></description>
+          </field>
+          <description><![CDATA[Product Item Accessory unpublish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Item Accessory]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Item Accessory unpublish resources]]></description>
+        </resources>
+      </unpublish>
+      <setPrice useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="ProductAccessory" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int},price{float}" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This task enables to set the accessory price to override the product price logic. ]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Item Accessory ID to set price for]]></description>
+          </field>
+          <field name="price" transform="float" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Accessory price, regardless of the product price logic (overrides the whole price logic when set) ]]></description>
+          </field>
+          <description><![CDATA[Product Item Accessory set price fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Item Accessory]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Item Accessory set price resources]]></description>
+        </resources>
+      </setPrice>
+      <translate useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.create,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="ProductAccessory" modelClassPath="" isAdminClass="false" functionName="translateLegacy" functionArgs="id{int},lang_code{string},description{string}" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[Adds or update a translation for a Product Item Accessory using a language code]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Item Accessory ID to translate]]></description>
+          </field>
+          <field name="lang_code" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Language code]]></description>
+          </field>
+          <field name="description" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+            <description><![CDATA[Description of the accessory (overrides the main product description when sold as an accessory) ]]></description>
+          </field>
+          <description><![CDATA[Product Item Accessory translate fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Item Accessory]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Item Accessory translate resources]]></description>
+        </resources>
+      </translate>
+      <translateRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.delete,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="ProductAccessory" modelClassPath="" isAdminClass="false" functionName="translateRemoveLegacy" functionArgs="id{int},lang_code{string}" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[Removes a translation from a Product Item Accessory]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Item Accessory ID to remove translation from]]></description>
+          </field>
+          <field name="lang_code" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Language code]]></description>
+          </field>
+          <description><![CDATA[Product Item Accessory translate remove fields]]></description>
+        </fields>
+        <resources>
+        <resource displayName="redshopb-product_item" transform="string" fieldFormat="/index.php?option=redshopb-product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={attribute_value_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product linked Web Service]]></description>
+        </resource>
+        <resource displayName="redshopb-accessory-product" transform="string" fieldFormat="/index.php?option=redshopb-product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={accessory_product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Accessory Product linked Web Service]]></description>
+        </resource>
+        <resource displayName="redshopb-collection" transform="string" fieldFormat="/index.php?option=redshopb-collection&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={collection_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Collection linked Web Service]]></description>
+        </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Item Accessory]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item Accessory ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Item Accessory translate remove resources]]></description>
+        </resources>
+      </translateRemove>
+    </task>
+  </operations>
+</apiservice>

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Country Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>Lists the available countries in Aesir E-Commerce.</description>
+  <config>
+    <name>redshopb-country</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <read>
+      <list authorizationNeeded="true" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Countries" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_country">
+        <description><![CDATA[This operation lists all Aesir E-Commerce countries.]]></description>
+        <fields>
+          <field name="code" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Country code]]></description>
+          </field>
+          <field name="name" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Country name]]></description>
+          </field>
+          <description><![CDATA[Country list fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="code" transform="string" fieldFormat="{code}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Country code]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Country name]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;code={code}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Country]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Country webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <description><![CDATA[Country list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Country" modelClassPath="" isAdminClass="false" functionName="getItemAlias" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_country">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Country.]]></description>
+        <fields>
+          <field name="code" transform="string" defaultValue="DK" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Country code]]></description>
+          </field>
+        </fields>
+        <resources>
+          <resource displayName="code" transform="string" fieldFormat="{code}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Country code]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Country name]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Country webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;code={code}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Country]]></description>
+          </resource>
+        </resources>
+      </item>
+    </read>
+  </operations>
+</apiservice>

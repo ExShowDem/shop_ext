@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_REDSHOPB_MYOFFER_OFFER_NAME"
+				description=""
+				required="true"
+				/>
+		<field
+				name="customer_type"
+				type="list"
+				label="COM_REDSHOPB_OFFERS_CUSTOMER_TYPE_LABEL"
+				description="COM_REDSHOPB_OFFERS_CUSTOMER_TYPE_LABEL"
+				class="chosen mainOfferValues"
+				required="true"
+				>
+			<option value="">COM_REDSHOPB_ORDER_SELECT_CUSTOMER_TYPE</option>
+			<option value="employee">COM_REDSHOPB_EMPLOYEE</option>
+			<option value="department">COM_REDSHOPB_DEPARTMENT</option>
+			<option value="company">COM_REDSHOPB_COMPANY</option>
+		</field>
+		<field
+				name="user_id"
+				type="rsbuser"
+				label="COM_REDSHOPB_OFFERS_CUSTOMER_NAME_LABEL"
+				description="COM_REDSHOPB_OFFERS_CUSTOMER_NAME_LABEL"
+				class="chosen mainOfferValues"
+				required="true"
+				fromChildCompanies="true"
+				permission="manage"
+				>
+			<option value="">JSELECT</option>
+		</field>
+		<field
+				name="department_id"
+				type="department"
+				label="COM_REDSHOPB_OFFERS_CUSTOMER_NAME_LABEL"
+				description="COM_REDSHOPB_OFFERS_CUSTOMER_NAME_LABEL"
+				class="chosen mainOfferValues"
+				required="true"
+				source="fromChildCompanies"
+				permission="manage"
+				>
+			<option value="">JSELECT</option>
+		</field>
+		<field
+				name="company_id"
+				type="company"
+				label="COM_REDSHOPB_OFFERS_CUSTOMER_NAME_LABEL"
+				description="COM_REDSHOPB_OFFERS_CUSTOMER_NAME_LABEL"
+				class="chosen mainOfferValues"
+				required="true"
+				permission="manage"
+				restriction="company"
+				levelslab="1"
+				>
+			<option value="">JSELECT</option>
+		</field>
+		<field name="collection_id"
+			   type="collection"
+			   class="chosen mainOfferValues"
+				label="COM_REDSHOPB_OFFER_COLLECTION_LABEL">
+			<option value="">JSELECT</option>
+		</field>
+		<field
+				name="status"
+				type="offerstatus"
+				required="true"
+				label="COM_REDSHOPB_OFFER_STATUS_LABEL"
+				description="COM_REDSHOPB_OFFER_STATUS_LABEL_DESC"
+				default="created"
+				class="chosen"
+				>
+		</field>
+		<field
+				name="comments"
+				type="textarea"
+				label="COM_REDSHOPB_OFFER_COMMENT_LABEL"
+				description="COM_REDSHOPB_OFFER_COMMENT_DESC"
+				disabled="true"
+				rows="10"
+				cols="100"
+				/>
+		<field
+				name="template_id"
+				type="template"
+				extension="com_redshopb"
+				label="COM_REDSHOPB_OFFER_TEMPLATE_LABEL"
+				description="COM_REDSHOPB_OFFER_TEMPLATE_DESC"
+				scope="offer"
+				templateGroup="email"
+				>
+			<option value="">COM_REDSHOPB_TEMPLATE_USE_DEFAULT</option>
+		</field>
+		<field
+				name="subtotal"
+				type="text"
+				disabled="true"
+				label="COM_REDSHOPB_OFFER_PRODUCTS_SUBTOTAL_PRICE_LBL"
+				description=""
+				/>
+		<field name="discount_type"
+			   type="radio"
+			   label="COM_REDSHOPB_OFFER_DISCOUNT_TYPE_LBL"
+			   class="btn-group radioPriceCondition"
+			   description=""
+			   default="percent"
+				>
+			<option value="percent">COM_REDSHOPB_OFFER_DISCOUNT_TYPE_PERCENTAGE</option>
+			<option value="total">COM_REDSHOPB_OFFER_DISCOUNT_TYPE_TOTAL</option>
+		</field>
+		<field
+				name="discount"
+				class="textPriceCondition"
+				type="text"
+				label="COM_REDSHOPB_OFFER_DISCOUNT_LBL"
+				description=""
+				/>
+		<field
+				name="total"
+				type="text"
+				disabled="true"
+				label="COM_REDSHOPB_MYOFFER_PRODUCTS_TOTAL_PRICE"
+				description=""
+				/>
+		<field
+				name="expiration_date_switcher"
+				type="radio"
+				class="btn-group expirationDateOfferSwitcher"
+				label="COM_REDSHOPB_OFFER_EXPIRATION_DATE_SWITCHER_LABEL"
+				description="COM_REDSHOPB_OFFER_EXPIRATION_DATE_SWITCHER_DESC"
+				default="0">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+				name="expiration_date"
+				type="rdatepicker"
+				default="0000-00-00 00:00:00"
+				label="COM_REDSHOPB_OFFER_EXPIRATION_DATE_LABEL"
+				description="COM_REDSHOPB_OFFER_EXPIRATION_DATE_DESC"
+				dateFormat="yy-mm-dd"
+				filter="user_utc"
+				showTime="true"
+		/>
+		<field name="state"
+				type="hidden"
+				default="1"
+				readonly="true"/>
+	</fieldset>
+</form>

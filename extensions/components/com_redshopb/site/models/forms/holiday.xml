@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="text"
+                default="0"
+                label="JGLOBAL_FIELD_ID_LABEL"
+                description="JGLOBAL_FIELD_ID_DESC"
+                class="readonly"
+                readonly="true"
+        />
+        <field
+                name="name"
+                type="redtext"
+                label="COM_REDSHOPB_NAME"
+                description="COM_REDSHOPB_HOLIDAY_NAME_DESC"
+                required="true"
+                maxlength="255"
+        />
+        <field
+                name="day"
+                type="number"
+                default="1"
+                validate="daysinmonth"
+                label="COM_REDSHOPB_HOLIDAY_DAY_LBL"
+                description="COM_REDSHOPB_HOLIDAY_DAY_DESC"
+                required="true"
+                min="1"
+                step="1"
+        />
+        <field
+                name="month"
+                type="number"
+                label="COM_REDSHOPB_HOLIDAY_MONTH_LBL"
+                description="COM_REDSHOPB_HOLIDAY_MONTH_DESC"
+                min="1"
+                max="12"
+                step="1"
+        />
+        <field
+                name="year"
+                type="number"
+                label="COM_REDSHOPB_HOLIDAY_YEAR_LBL"
+                description="COM_REDSHOPB_HOLIDAY_YEAR_DESC"
+        />
+        <field
+                name="country_id"
+                type="country"
+                label="COM_REDSHOPB_COUNTRY_LABEL"
+                description="COM_REDSHOPB_COUNTRY_DESC"
+        />
+    </fieldset>
+</form>

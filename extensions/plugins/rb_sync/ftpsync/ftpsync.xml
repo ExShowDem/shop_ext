@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="rb_sync">
+    <name>PLG_RB_SYNC_FTPSYNC</name>
+    <creationDate>January 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.3.0</version>
+    <description>PLG_RB_SYNC_FTPSYNC_XML_DESCRIPTION</description>
+    <scriptfile>install.php</scriptfile>
+    <install>
+        <sql>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/data.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/uninstall.sql</file>
+        </sql>
+    </uninstall>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+            <schemapath type="mysqli">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    <files>
+        <folder>client</folder>
+        <folder>language</folder>
+        <folder>sql</folder>
+        <filename plugin="ftpsync">ftpsync.php</filename>
+        <filename plugin="ftpsync">index.html</filename>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/libraries/redshopb/form/fields">
+                <field
+                        name="ftp_host"
+                        type="text"
+                        default=""
+                        label="PLG_RB_SYNC_FTPSYNC_FTP_HOST_LABEL"
+                        />
+                <field
+                        name="ftp_port"
+                        type="text"
+                        default="21"
+                        label="PLG_RB_SYNC_FTPSYNC_FTP_PORT_LABEL"
+                        />
+                <field
+                        name="ftp_user"
+                        type="text"
+                        default=""
+                        label="PLG_RB_SYNC_FTPSYNC_FTP_USER_LABEL"
+                        />
+                <field
+                        name="ftp_pass"
+                        type="password"
+                        default=""
+                        label="PLG_RB_SYNC_FTPSYNC_FTP_PASSWORD_LABEL"
+                        />
+                <field
+                        name="localFolder"
+                        type="text"
+                        default="ftpsync"
+                        label="PLG_RB_SYNC_FTPSYNC_LOCAL_FOLDER_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_LOCAL_FOLDER_DESC"
+                        />
+                <field
+                        name="remoteFolder"
+                        type="text"
+                        default=""
+                        label="PLG_RB_SYNC_FTPSYNC_REMOTE_FOLDER_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_REMOTE_FOLDER_DESC"
+                        />
+                <field
+                        name="remoteExcluded"
+                        type="textarea"
+                        default=""
+                        label="PLG_RB_SYNC_FTPSYNC_EXCLUDED_FOLDER_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_EXCLUDED_FOLDER_DESC"
+                        rows="10"
+                        cols="5"
+                        />
+                <field name="ftp_native"
+                       type="radio"
+                       class="btn-group"
+                       default="0"
+                       label="PLG_RB_SYNC_FTPSYNC_FTP_NATIVE_LABEL"
+                       description="PLG_RB_SYNC_FTPSYNC_FTP_NATIVE_DESC">
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                </field>
+                <field
+                        name="maxExecutionTime"
+                        type="text"
+                        default="7200"
+                        label="PLG_RB_SYNC_FTPSYNC_MAXIMUM_EXECUTION_TIME_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_MAXIMUM_EXECUTION_TIME_DESC"
+                />
+            </fieldset>
+            <fieldset name="image_optimize" label="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_LABEL">
+                <field
+                        name="max_width"
+                        type="number"
+                        default="0"
+                        label="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_MAX_WIDTH_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_MAX_WIDTH_DESC"
+                        />
+                <field
+                        name="max_height"
+                        type="number"
+                        default="0"
+                        label="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_MAX_HEIGHT_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_MAX_HEIGHT_DESC"
+                        />
+                <field
+                        name="big_image_method"
+                        type="radio"
+                        class="btn-group"
+                        label="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_BIG_IMAGE_METHOD_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_BIG_IMAGE_METHOD_DESC"
+                        default="resize">
+                        <option value="resize">PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_BIG_IMAGE_METHOD_OPTION_RESIZE</option>
+                        <option value="skip">PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_BIG_IMAGE_METHOD_OPTION_SKIP</option>
+                </field>
+                <field
+                        name="image_types"
+                        type="list"
+                        class="input-xlarge"
+                        multiple="true"
+                        default="png"
+                        label="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_IMAGE_TYPES_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_IMAGE_TYPES_DESC">
+                        <option value="bmp">PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_IMAGE_TYPES_OPTION_BITMAP_IMAGE</option>
+                        <option value="gif">PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_IMAGE_TYPES_OPTION_GIF_IMAGE</option>
+                        <option value="jpg">PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_IMAGE_TYPES_OPTION_JPG_IMAGE</option>
+                        <option value="png">PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_IMAGE_TYPES_OPTION_PNG_IMAGE</option>
+                        <option value="tif">PLG_RB_SYNC_FTPSYNC_IMAGES_OPTIMIZED_IMAGE_TYPES_OPTION_TIF_IMAGE</option>
+                </field>
+                <field
+                        name="image_optimization"
+                        type="list"
+                        default="1"
+                        label="PLG_RB_SYNC_FTPSYNC_IMAGE_OPTIMIZATION_LABEL"
+                        description="PLG_RB_SYNC_FTPSYNC_IMAGE_OPTIMIZATION_DESC">
+                    <option value="1">JENABLED</option>
+                    <option value="0">JDISABLED</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_REDSHOPB_CAMPAIGN_PRODUCTS_VIEW_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_REDSHOPB_CAMPAIGN_PRODUCTS_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+	<fields name="params" addfieldpath="/libraries/redshopb/form/fields">
+		<fieldset name="basic">
+			<field
+					name="categories_limit"
+					type="categories"
+					class="input-xxlarge"
+					label="COM_REDSHOPB_CAMPAIGN_PRODUCTS_VIEW_DEFAULT_CATEGORIES_LABEL"
+					description="COM_REDSHOPB_CAMPAIGN_PRODUCTS_VIEW_DEFAULT_CATEGORIES_DESC"
+					multiple="true"
+					/>
+			<field
+					name="include_sub_categories"
+					type="radio"
+					class="btn-group"
+					label="COM_REDSHOPB_CAMPAIGN_PRODUCTS_VIEW_DEFAULT_INCLUDE_SUB_CATEGORIES_LABEL"
+					description="COM_REDSHOPB_CAMPAIGN_PRODUCTS_VIEW_DEFAULT_INCLUDE_SUB_CATEGORIES_DESC"
+					default="0"
+					>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

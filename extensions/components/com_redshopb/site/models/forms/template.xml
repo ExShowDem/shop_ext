@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields>
+		<fieldset addfieldpath="/libraries/redshopb/form/fields">
+			<field
+					name="id"
+					type="hidden"
+					default="0"
+					label="COM_REDSHOPB_ID_LABEL"
+					description="COM_REDSHOPB_ID_DESC"
+					readonly="true"
+					/>
+			<field
+					name="name"
+					type="text"
+					label="COM_REDSHOPB_NAME"
+					description="COM_REDSHOPB_NAME"
+					required="true"
+					maxlength="255"
+					/>
+			<field name="alias"
+				   label="COM_REDSHOPB_TEMPLATE_ALIAS_LABEL"
+				   description="COM_REDSHOPB_TEMPLATE_ALIAS_DESC"
+				   hint="JFIELD_ALIAS_PLACEHOLDER"
+				   size="45"/>
+			<field
+					name="template_group"
+					type="templategroup"
+					required="true"
+					onchange="document.getElementById('formTask').value = 'template.selectCondition';this.form.submit();"
+					label="COM_REDSHOPB_TEMPLATE_GROUP_LABEL"
+					description="COM_REDSHOPB_TEMPLATE_GROUP_DESC">
+				<option value="">JOPTION_SELECT_GROUP</option>
+			</field>
+			<field
+					name="scope"
+					type="templatescope"
+					templategroup="template_group"
+					required="true"
+					label="COM_REDSHOPB_TEMPLATE_SCOPE_LABEL"
+					description="COM_REDSHOPB_TEMPLATE_SCOPE_DESC">
+				<option value="">JOPTION_SELECT_SCOPE</option>
+			</field>
+			<field
+					name="state"
+					type="radio"
+					label="COM_REDSHOPB_STATE_LABEL"
+					description="COM_REDSHOPB_STATE_DESC"
+					class="btn-group"
+					default="1"
+					>
+				<option value="1">JPUBLISHED</option>
+				<option value="0">JUNPUBLISHED</option>
+			</field>
+			<field
+					name="default"
+					type="radio"
+					label="COM_REDSHOPB_TEMPLATE_DEFAULT_LABEL"
+					description="COM_REDSHOPB_TEMPLATE_DEFAULT_DESC"
+					class="btn-group"
+					default="0"
+					>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field
+					name="content"
+					type="multipleeditor"
+					label="COM_REDSHOPB_TEMPLATE_CONTENT_LABEL"
+					description="COM_REDSHOPB_TEMPLATE_CONTENT_DESC"
+					filter="raw"
+					syntax="php"
+					height="500px"
+					rows="20"
+					cols="80"
+					editor="codemirror|none"
+					buttons="no"/>
+			<field
+					name="templateName"
+					type="FolderList"
+					directory="templates"
+					hide_default="true"
+					hide_none="true"
+					required="true"
+					label="COM_REDSHOPB_TEMPLATE_JOOMLATEMPLATE_LABEL"
+					description="COM_REDSHOPB_TEMPLATE_JOOMLATEMPLATE_DESC">
+				<option value="">COM_REDSHOPB_TEMPLATE_SELECT_TEMPLATE</option>
+			</field>
+		</fieldset>
+	</fields>
+	<fields name="params">
+		<fieldset addfieldpath="/libraries/redshopb/form/fields" name="params">
+			<field
+				name="mail_subject"
+				type="text"
+				required="true"
+				label="COM_REDSHOPB_TEMPLATE_MAIL_SUBJECT_LABEL"
+				description="COM_REDSHOPB_TEMPLATE_MAIL_SUBJECT_DESC" />
+		</fieldset>
+	</fields>
+</form>

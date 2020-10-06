@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8" client="site" method="upgrade">
+    <name>MOD_REDSHOPB_VENDOR_CONTACT_DETAILS</name>
+    <creationDate>July 2018</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.0.0</version>
+    <description>MOD_REDSHOPB_VENDOR_CONTACT_DETAILS_XML_DESCRIPTION</description>
+    <files>
+        <folder>language</folder>
+        <folder>tmpl</folder>
+        <filename>index.html</filename>
+        <filename module="mod_redshopb_vendor_contact_details">mod_redshopb_vendor_contact_details.php</filename>
+        <filename>helper.php</filename>
+        <filename>mod_redshopb_vendor_contact_details.xml</filename>
+    </files>
+    <media folder="media">
+        <folder>mod_redshopb_vendor_contact_details</folder>
+    </media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="show_current_company"
+                        type="radio"
+                        default="0"
+                        class="btn-group btn-group-yesno"
+                        label="MOD_REDSHOPB_VENDOR_CONTACT_DETAILS_SHOW_USER_COMPANY_TITLE"
+                        description="MOD_REDSHOPB_VENDOR_CONTACT_DETAILS_SHOW_USER_COMPANY_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+                        />
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea" rows="3"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+                        />
+                <field
+                        name="cache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field
+                        name="cache_time"
+                        type="text"
+                        default="900"
+                        label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                        description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+                        />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

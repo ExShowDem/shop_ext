@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="library" method="upgrade" version="3.8">
+    <name>Aesir E-Commerce - Libraries</name>
+    <libraryname>redshopb</libraryname>
+    <creationDate>September 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.7.3</version>
+    <description>Aesir E-Commerce library</description>
+    <files>
+        <folder>ajax</folder>
+        <folder>app</folder>
+        <folder>browser</folder>
+        <folder>client</folder>
+        <folder>controller</folder>
+        <folder>database</folder>
+        <folder>entities</folder>
+        <folder>entity</folder>
+        <folder>form</folder>
+        <folder>helper</folder>
+        <folder>html</folder>
+        <folder>input</folder>
+        <folder>layout</folder>
+        <folder>layouts</folder>
+        <folder>model</folder>
+        <folder>route</folder>
+        <folder>shipping</folder>
+        <folder>src</folder>
+        <folder>table</folder>
+        <folder>toolbar</folder>
+        <folder>vendor</folder>
+        <folder>view</folder>
+        <filename>index.html</filename>
+        <filename>library.php</filename>
+        <filename>redshopb.xml</filename>
+    </files>
+</extension>

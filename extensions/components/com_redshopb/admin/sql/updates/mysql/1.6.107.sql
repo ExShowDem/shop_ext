@@ -1,0 +1,6 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE `#__redshopb_stockroom`
+ADD `color` VARCHAR(7) NOT NULL DEFAULT '' AFTER `name`;
+
+SET FOREIGN_KEY_CHECKS = 1;

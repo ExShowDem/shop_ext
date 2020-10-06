@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_REDSHOPB_B2B_USER_REGISTRATION_VIEW_DEFAULT_TITLE">
+        <message>
+            <![CDATA[COM_REDSHOPB_B2B_USER_REGISTRATION_VIEW_DEFAULT_DESC]]>
+        </message>
+    </layout>
+    <fields name="params" addfieldpath="/libraries/redshopb/form/fields">
+        <fieldset name="params">
+            <field
+                    name="is_default"
+                    type="radio"
+                    label="COM_REDSHOPB_MENU_ITEM_DEFAULT_REGISTRATION"
+                    description="COM_REDSHOPB_MENU_ITEM_DEFAULT_REGISTRATION_DESC"
+                    class="btn-group"
+                    default="0"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                name="company_id"
+                type="company"
+                label="COM_REDSHOPB_COMPANY_LABEL"
+                description="COM_REDSHOPB_COMPANY_DESC"
+                department_fieldname="jform[params][department_id]"
+                department_fieldid="jform_params_department_id"
+                required="false"
+                hideDefault="true"
+                onchange="jOnCompanySet(jQuery(this))">
+                <option value="">COM_REDSHOPB_COMPANY_USE_B2C_COMPANY</option>
+            </field>
+            <field
+                    name="department_id"
+                    type="department"
+                    label="COM_REDSHOPB_DEPARTMENT_LABEL"
+                    description="COM_REDSHOPB_DEPARTMENT_DESC"
+                    >
+                <option value="">JOPTION_SELECT_DEPARTMENT</option>
+            </field>
+            <field
+                    name="role_type_id"
+                    type="roletype"
+                    label="COM_REDSHOPB_ROLE_LABEL"
+                    description="COM_REDSHOPB_ROLE_DESC"
+                    required="false"
+                    default="6"
+                    >
+                <option value="">JOPTION_SELECT_ROLE</option>
+            </field>
+            <field name="default_open"
+                   type="radio"
+                   label="COM_REDSHOPB_B2BUSER_DEFAULT_OPEN_LBL"
+                   description="COM_REDSHOPB_B2BUSER_DEFAULT_OPEN_DESC"
+                   class="btn-group"
+                   default="login">
+                <option value="login">COM_REDSHOPB_B2BUSER_LOGIN</option>
+                <option value="register">COM_REDSHOPB_B2BUSER_REGISTER</option>
+            </field>
+            <field
+                    name="redirect_not_vanir_user"
+                    type="menuitem"
+                    label="COM_REDSHOPB_B2BUSER_REDIRECT_IF_NOT_VANIR_USER"
+                    description="COM_REDSHOPB_B2BUSER_REDIRECT_IF_NOT_VANIR_USER_DESC"
+                    default="0">
+                <option value="0">COM_REDSHOPB_B2BUSER_REDIRECT_IF_NOT_VANIR_USER_OPTION_HOME_PAGE</option>
+            </field>
+            <field
+                    name="redirect_vanir_user"
+                    type="menuitem"
+                    label="COM_REDSHOPB_B2BUSER_REDIRECT_FOR_VANIR_USER"
+                    description="COM_REDSHOPB_B2BUSER_REDIRECT_FOR_VANIR_USER_DESC"
+                    default="0">
+                <option value="0">COM_REDSHOPB_B2BUSER_REDIRECT_FOR_VANIR_USER_OPTION_HOME_PAGE</option>
+            </field>
+        </fieldset>
+    </fields>
+</metadata>

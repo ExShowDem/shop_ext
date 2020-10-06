@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="sales_type_prices"
+				type="list"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">COM_REDSHOPB_PRODUCT_PRICE_SELECT_SALES_TYPE</option>
+			<option value="customer_price">COM_REDSHOPB_PRODUCT_PRICE_DEBTOR</option>
+			<option value="customer_price_group">COM_REDSHOPB_PRODUCT_PRICE_DEBTOR_GROUP</option>
+			<option value="all_customers">COM_REDSHOPB_PRODUCT_PRICE_ALL_DEBTOR</option>
+			<option value="campaign">COM_REDSHOPB_PRODUCT_PRICE_CAMPAIGN</option>
+		</field>
+        <field
+                name="time_period_prices"
+                type="list"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_REDSHOPB_PRODUCT_PRICE_SELECT_TIME_PERIOD</option>
+            <option value="past">COM_REDSHOPB_PRODUCT_PRICE_TIME_PAST</option>
+            <option value="now">COM_REDSHOPB_PRODUCT_PRICE_TIME_NOW</option>
+            <option value="future">COM_REDSHOPB_PRODUCT_PRICE_TIME_FUTURE</option>
+            <option value="no_dependence">COM_REDSHOPB_PRODUCT_PRICE_NO_TIME_DEPENDENCE</option>
+        </field>
+        <field
+                name="currency_id_prices"
+                type="currency"
+                filter="intval"
+                required="false"
+                class="chosen"
+                not_use_default="true"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

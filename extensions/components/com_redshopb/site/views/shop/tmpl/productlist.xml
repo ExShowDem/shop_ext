@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_REDSHOPB_SHOP_VIEW_PRODUCTLIST_TITLE">
+        <message>
+            <![CDATA[COM_REDSHOPB_SHOP_VIEW_PRODUCTLIST_DESC]]>
+        </message>
+    </layout>
+    <fields name="params" addfieldpath="/libraries/redshopb/form/fields">
+        <fieldset name="basic">
+            <field
+                    name="show_inline_category_filter"
+                    type="radio"
+                    label="COM_REDSHOPB_LBL_SHOW_INLINE_CATEGORY_FILTER"
+                    description="COM_REDSHOPB_DESC_SHOW_INLINE_CATEGORY_FILTER"
+                    required="true"
+                    translate ="true"
+                    class="btn-group"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fieldset>
+    </fields>
+</metadata>

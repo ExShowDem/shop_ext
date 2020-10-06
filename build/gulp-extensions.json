@@ -1,0 +1,26 @@
+{
+    "cli"           : ["redcore", "redshopb"],
+    "components"    : ["redcore", "redshopb", "rsbmedia"],
+    "libraries"     : ["redcore", "redshopb"],
+    "media"         : ["redcore", "redshopb", "rsbmedia"],
+    "modules"       : {
+        "frontend"  : ["redcore_langswitcher", "categories", "filter", "layoutparts", "megamenu", "products", "search", "sidebar", "status", "topnav", "manufacturers", "vendor_contact_details", "impersonation_breadcrumbs", "category", "switch_company"],
+        "backend"   : []
+    },
+    "plugins" : {
+        "acymailing"          : ["redshopb"],
+        "content"             : ["redshopb"],
+        "logman"              : ["vanir"],
+        "rb_sync"             : ["fengel", "filesync", "ftpsync", "pim", "webservice"],
+        "redshipping"         : ["default_shipping", "self_pickup", "gls"],
+        "redshopb_newsletter" : ["acymailing"],
+        "redpayment"          : ["paypal"],
+        "sh404sefextplugins"  : ["com_redshopb"],
+        "system"              : ["redcore", "mvcoverride", "redshopblayout", "redshopb_stockroom_groups", "redshopb_google_analytics", "sh404sef_observer", "vanir_module_filter", "vanir", "redshopb_self_shipping"],
+        "user"                : ["redshopb"],
+        "vanir"               : ["group_delivery_time", "menus_restrictions", "product_custom_text", "zipcode_lookup", "lookup_integration", "custom_field_ean"],
+        "sh404sef_observer"   : ["redshopb"],
+        "vanir_search"        : ["default", "solr"]
+    },
+    "webservices"   : ["redcore", "redshopb"]
+}

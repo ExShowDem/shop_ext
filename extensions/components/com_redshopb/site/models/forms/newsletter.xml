@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="name"
+				type="rtext"
+				label="COM_REDSHOPB_NEWSLETTER_LIST_NAME"
+				description="COM_REDSHOPB_NEWSLETTER_LIST_NAME_DESC"
+				required="true"
+				maxlength="255"
+				/>
+		<field
+				name="alias"
+				type="rtext"
+				label="COM_REDSHOPB_NEWSLETTER_LIST_ALIAS"
+				description="COM_REDSHOPB_NEWSLETTER_LIST_ALIAS_DESC"
+				maxlength="255"
+				/>
+		<field
+				name="state"
+				type="radio"
+				label="COM_REDSHOPB_STATE_LABEL"
+				description="COM_REDSHOPB_STATE_DESC"
+				required="true"
+				class="btn-group"
+				default="1"
+				>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		<field name="template_id"
+			   type="template"
+			   scope="email"
+			   templateGroup="email"
+			   description="COM_REDSHOPB_NEWSLETTER_TEMPLATE_DESC"
+			   label="COM_REDSHOPB_NEWSLETTER_TEMPLATE_LBL"/>
+		<field name="subject"
+			   type="text"
+			   label="COM_REDSHOPB_NEWSLETTER_SUBJECT_LBL"
+			   description="COM_REDSHOPB_NEWSLETTER_SUBJECT_DESC"/>
+		<field name="body"
+			   type="multipleeditor"
+			   cols="100"
+			   filter="safehtml"
+			   label="COM_REDSHOPB_NEWSLETTER_BODY_LBL"
+			   description="COM_REDSHOPB_NEWSLETTER_BODY_DESC"/>
+		<field name="plugin"
+			   type="hidden"/>
+		<field name="plugin_id"
+			   type="hidden"/>
+		<field name="newsletter_list_id"
+			   type="newsletterlists"
+			   label="COM_REDSHOPB_NEWSLETTER_NEWSLETTER_LIST_ID_LBL"
+			   description="COM_REDSHOPB_NEWSLETTER_NEWSLETTER_LIST_ID_DESC"
+			   emptystart="true"/>
+	</fieldset>
+</form>

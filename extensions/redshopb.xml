@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.8" method="upgrade">
+    <name>COM_REDSHOPB</name>
+    <creationDate>September 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.7.3</version>
+    <releaseName></releaseName>
+    <description>COM_REDSHOPB_DESC</description>
+    <scriptfile>install.php</scriptfile>
+    <redcore version="1.10.6" defaultFramework="bootstrap3" />
+    <install folder="components/com_redshopb/admin">
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install/mysql/install.sql</file>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/install.sql</file>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/data.sql</file>
+        </sql>
+    </install>
+    <uninstall folder="components/com_redshopb/admin">
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install/mysql/uninstall.sql</file>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/uninstall.sql</file>
+        </sql>
+    </uninstall>
+    <update folder="components/com_redshopb/admin">
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+            <schemapath type="mysqli">sql/updates/mysql</schemapath>
+        </schemas>
+        <pre>
+            <schemas>
+                <schemapath type="mysql">sql/updates/pre/mysql</schemapath>
+                <schemapath type="mysqli">sql/updates/pre/mysql</schemapath>
+            </schemas>
+        </pre>
+        <php>
+            <path>updates</path>
+        </php>
+    </update>
+
+    <media folder="media">
+        <folder>com_redshopb</folder>
+    </media>
+
+    <files folder="components/com_redshopb/site">
+        <folder>controllers</folder>
+        <folder>language</folder>
+        <folder>layouts</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+        <filename>LICENSE</filename>
+        <filename>access.xml</filename>
+        <filename>config.xml</filename>
+        <filename>controller.php</filename>
+        <filename>index.html</filename>
+        <filename>redshopb.php</filename>
+        <filename>router.php</filename>
+    </files>
+
+    <administration>
+        <files folder="components/com_redshopb/admin">
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>language</folder>
+            <folder>layouts</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>updates</folder>
+            <folder>views</folder>
+            <filename>access.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>redshopb.php</filename>
+        </files>
+
+        <menu view="dashboard">COM_REDSHOPB</menu>
+        <submenu>
+            <menu link="option=com_redshopb&amp;task=config.edit">COM_REDSHOPB_CONFIG_FORM_TITLE</menu>
+            <menu link="option=com_redshopb&amp;view=aclroletypes" view="acl">COM_REDSHOPB_ACL_TITLE</menu>
+            <menu link="option=com_redshopb&amp;view=sync" view="sync">COM_REDSHOPB_SYNCRONIZATION</menu>
+            <menu link="option=com_redshopb&amp;view=fees" view="fees">COM_REDSHOPB_FEES_TITLE</menu>
+            <menu link="option=com_redshopb&amp;view=webservice_permissions" view="webservice_permissions">COM_REDSHOPB_WEBSERVICE_PERMISSIONS_TITLE</menu>
+            <menu link="option=com_redshopb&amp;view=tools" view="tools">COM_REDSHOPB_TOOLS_TITLE</menu>
+        </submenu>
+    </administration>
+
+    <!-- Libraries to install -->
+    <libraries>
+        <library name="redshopb"/>
+    </libraries>
+
+    <!-- Plugins to install -->
+    <plugins>
+        <plugin name="default_shipping" group="redshipping" />
+        <plugin name="redshopblayout" group="system" />
+        <plugin name="vanir" group="system" />
+        <plugin name="redshopb" group="user" />
+        <plugin name="default" group="vanir_search" />
+        <plugin name="redshopb" group="sh404sef_observer" />
+     </plugins>
+
+    <!-- Modules to install -->
+    <modules>
+        <module name="mod_redshopb_sidebar" client="site"/>
+        <module name="mod_redshopb_topnav" client="site"/>
+        <module name="mod_redshopb_layoutparts" client="site"/>
+        <module name="mod_redshopb_status" client="site"/>
+        <module name="mod_redshopb_search" client="site"/>
+        <module name="mod_redshopb_filter" client="site"/>
+        <module name="mod_redshopb_categories" client="site"/>
+        <module name="mod_redshopb_category_list" client="site"/>
+        <module name="mod_redshopb_megamenu" client="site"/>
+        <module name="mod_redshopb_products" client="site"/>
+        <module name="mod_redshopb_manufacturers" client="site"/>
+        <module name="mod_redshopb_vendor_contact_details" client="site"/>
+        <module name="mod_redshopb_impersonation_breadcrumbs" client="site"/>
+        <module name="mod_redshopb_category" client="site"/>
+        <module name="mod_redshopb_switch_company" client="site"/>
+     </modules>
+
+    <!-- Translations to install with the component -->
+    <translations>
+        <!-- RedshopB Extensions Translation -->
+        <translation name="com_redshopb"/>
+    </translations>
+
+    <!-- Webservices to install with the component -->
+    <webservices folder="webservices">
+        <folder>com_redshopb</folder>
+    </webservices>
+
+    <!-- Cli to install with the component -->
+    <cli>
+        <folder name="com_redshopb" folder="cli/com_redshopb"/>
+    </cli>
+
+    <!-- Minimum requirements for extension -->
+    <requirements>
+        <required version="7.0.0">php</required>
+        <required version="5.5.0">mysql</required>
+        <required>gd</required>
+        <required>simpleXML</required>
+    </requirements>
+ </extension>

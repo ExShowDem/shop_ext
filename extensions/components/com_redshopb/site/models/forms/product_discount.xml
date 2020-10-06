@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="starting_date"
+                type="rdatepicker"
+                default=""
+                label="COM_REDSHOPB_STARTTIME"
+                description="COM_REDSHOPB_DISCOUNT_STARTING_DATE_DESC"
+                />
+        <field
+                name="ending_date"
+                type="rdatepicker"
+                default=""
+                label="COM_REDSHOPB_ENDTIME"
+                description="COM_REDSHOPB_DISCOUNT_ENDING_DATE_DESC"
+                />
+        <field
+                name="kind"
+                type="radio"
+                label="COM_REDSHOPB_DISCOUNT_KIND"
+                description="COM_REDSHOPB_DISCOUNT_KIND_DESC"
+                required="true"
+                default="0">
+            <option value="0">COM_REDSHOPB_DISCOUNT_KIND_OPTION_PERCENTAGE</option>
+            <option value="1">COM_REDSHOPB_DISCOUNT_KIND_OPTION_TOTAL</option>
+        </field>
+        <field
+                name="percent"
+                type="text"
+                validate="float"
+                default=""
+                label="COM_REDSHOPB_PERCENT"
+                description="COM_REDSHOPB_DISCOUNT_PERCENT_DESC"
+                showon="kind:0"
+                />
+        <field
+                name="total"
+                type="text"
+                validate="float"
+                default=""
+                label="COM_REDSHOPB_DISCOUNT_TOTAL"
+                description="COM_REDSHOPB_DISCOUNT_TOTAL_DESC"
+                showon="kind:1"
+                />
+        <field
+                name="type"
+                type="text"
+                default=""
+                label="COM_REDSHOPB_DISCOUNT_TYPE"
+                description="COM_REDSHOPB_DISCOUNT_TYPE_DESC"
+                readonly="true"
+                />
+        <field
+                name="sales_type"
+                type="text"
+                default=""
+                label="COM_REDSHOPB_SALES_TYPE"
+                description="COM_REDSHOPB_DISCOUNT_SALES_TYPE_DESC"
+                readonly="true"
+                />
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field type="hidden" name="sales_id"/>
+    </fieldset>
+</form>

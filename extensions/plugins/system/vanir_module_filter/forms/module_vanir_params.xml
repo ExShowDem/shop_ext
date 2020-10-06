@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params" addfieldpath="/libraries/redshopb/form/field">
+        <fieldset name="vanir-views" label="PLG_SYSTEM_VANIR_MODULE_FILTER_FIELDSET_SHOW">
+            <field
+                    name="vanir_show_mode"
+                    type="list"
+                    default="1"
+                    label="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_MODE"
+                    description="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_MODE_DESC"
+            >
+                <option value="1">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_MODE_OPTION_ALWAYS</option>
+                <option value="2">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_MODE_OPTION_SPECIFIC_VIEWS</option>
+            </field>
+            <field
+                    name="vanir_show_in_category_mode"
+                    type="list"
+                    default="1"
+                    class="js-vanir-show-mode-2"
+                    label="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_CATEGORY_MODE"
+                    description="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_CATEGORY_MODE_DESC"
+            >
+                <option value="1">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_CATEGORY_MODE_OPTION_ALWAYS</option>
+                <option value="2">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_CATEGORY_MODE_OPTION_ALWAYS_FOR</option>
+                <option value="3">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_CATEGORY_MODE_OPTION_NEVER</option>
+                <option value="4">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_CATEGORY_MODE_OPTION_NEVER_FOR</option>
+            </field>
+            <field
+                    name="vanir_show_categories"
+                    type="categories"
+                    class="js-vanir-show-mode-2 js-vanir-show-in-category-mode-2 js-vanir-show-in-category-mode-4"
+                    label="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_CATEGORIES"
+                    description="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_CATEGORIES_DESC"
+                    multiple="true"
+            >
+                <option value="">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_CATEGORIES_OPTION_SELECT</option>
+            </field>
+            <field
+                    name="vanir_show_in_item_mode"
+                    type="list"
+                    default="1"
+                    class="js-vanir-show-mode-2"
+                    label="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_ITEM_MODE"
+                    description="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_ITEM_MODE_DESC"
+            >
+                <option value="1">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_ITEM_MODE_OPTION_ALWAYS</option>
+                <option value="2">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_ITEM_MODE_OPTION_ALWAYS_FOR</option>
+                <option value="3">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_ITEM_MODE_OPTION_NEVER</option>
+                <option value="4">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_ITEM_MODE_OPTION_NEVER_FOR</option>
+                <option value="5">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_ITEM_MODE_OPTION_ALWAYS_FOR_CATEGORIES</option>
+                <option value="6">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_IN_ITEM_MODE_OPTION_NEVER_FOR_CATEGORIES</option>
+            </field>
+            <field
+                    name="vanir_show_items"
+                    type="redshopb.list_ajax"
+                    layout="redshopb.field.select2_ajax"
+                    class="js-vanir-show-mode-2 js-vanir-show-in-item-mode-2 js-vanir-show-in-item-mode-4"
+                    label="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_ITEMS"
+                    description="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_ITEMS_DESC"
+                    formPath="plugins/system/vanir_module_filter/forms"
+                    formName="module_vanir_params"
+                    model="site:Products"
+                    filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+                    completionFilter="filter.search"
+                    property="name"
+                    ordering="p.name"
+                    multiple="true"
+                    limit="10"
+                    hint="JSELECT"
+            />
+            <field
+                    name="vanir_for_product_of_categories"
+                    type="categories"
+                    label="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_PRODUCTS_OF_CATEGORIES"
+                    description="PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_PRODUCTS_OF_CATEGORIES_DESC"
+                    multiple="true"
+            >
+                <option value="">PLG_SYSTEM_VANIR_MODULE_FILTER_PARAM_SHOW_PRODUCTS_OF_CATEGORIES_OPTION_SELECT</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

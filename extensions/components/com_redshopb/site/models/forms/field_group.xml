@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/libraries/redshopb/form/fields">
+    <fieldset name="standard">
+        <field name="id"
+               type="text"
+               default="0"
+               readonly="true"
+               class="readonly"
+               label="JGLOBAL_FIELD_ID_LABEL"
+               description="JGLOBAL_FIELD_ID_DESC"/>
+    </fieldset>
+    <fieldset name="details">
+         <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_FIELD_GROUP_NAME_LABEL"
+                description="COM_REDSHOPB_FIELD_GROUP_NAME_DESC"
+                required="true"
+                maxlength="255"
+        />
+
+        <field
+                name="alias"
+                label="COM_REDSHOPB_FIELD_ALIAS_LABEL"
+                description="COM_REDSHOPB_FIELD_ALIAS_DESC"
+                hint="JFIELD_ALIAS_PLACEHOLDER"
+                size="45"
+        />
+
+        <field
+                name="scope"
+                type="fieldscope"
+                required="true"
+                label="COM_REDSHOPB_FIELD_SCOPE_LABEL"
+                description="COM_REDSHOPB_FIELD_SCOPE_DESC"
+                onchange="redSHOPB.fields.scopeAjaxUpdate('field_group', 'ordering', 'ajaxGetOrderingField');
+                          redSHOPB.fields.scopeAjaxUpdate('field_group', 'field_association', 'ajaxGetFieldGroups');">
+            <option value="">JOPTION_SELECT_SCOPE</option>
+        </field>
+
+        <field 
+               name="ordering"
+               type="fieldgroupordering"
+               label="COM_REDSHOPB_FIELD_ORDERING_LABEL"
+               description="COM_REDSHOPB_FIELD_ORDERING_DESC">
+            <option value="">JOPTION_SELECT_ORDERING</option>
+        </field>
+    </fieldset>
+    <fieldset name="fieldAssociation">
+        <field
+            name="field_association"
+            type="fieldassociation"
+            label="COM_REDSHOPB_FIELD_GROUP_ASSOC_LABEL"
+            description="COM_REDSHOPB_FIELD_GROUP_ASSOC_DESC">
+          <option value="">JOPTION_SELECT_FIELD</option>
+        </field>
+    </fieldset>
+</form>

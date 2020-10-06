@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_REDSHOPB_SHOP_VIEW_PRODUCTRECENT_TITLE">
+        <message>
+            <![CDATA[COM_REDSHOPB_SHOP_VIEW_PRODUCTRECENT_DESC]]>
+        </message>
+    </layout>
+
+    <!-- Add fields to the parameters object for the layout. -->
+    <fields name="params">
+        <fieldset name="basic" addfieldpath="/libraries/redshopb/form/fields">
+            <field
+                    name="recently_count"
+                    type="number"
+                    validate="integer"
+                    class="input input-small"
+                    label="COM_REDSHOPB_SHOP_VIEW_PRODUCTRECENT_SHOW_RECENTLY_COUNT"
+                    description="COM_REDSHOPB_SHOP_VIEW_PRODUCTRECENT_SHOW_RECENTLY_COUNT_DESC"
+                    default="36"
+                    />
+        </fieldset>
+    </fields>
+</metadata>

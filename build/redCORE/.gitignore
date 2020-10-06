@@ -1,0 +1,76 @@
+# OSX
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# PHPStorm
+.idea/
+
+# Sublime Text
+*.sublime*
+
+# Eclipse
+.buildpath
+.project
+.settings
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+*~.nib
+*~
+
+# Phing
+build/build.properties
+phing-latest.phar
+.dist
+
+# Github pages and Jekyll files
+/_site/
+/Gemfile
+/Gemfile.lock
+
+# phpunit
+tests/unit/phpunit.xml
+
+# composer
+composer.phar
+tests/vendor/*
+build/vendor/*
+
+# Robo
+robo.phar
+
+# LESS Transpiler
+npm-debug.log
+
+# Build config
+gulp-config.json
+node_modules
+releases
+
+# Test related files
+tests/acceptance.suite.yml
+tests/functional.suite.yml
+tests/unit.suite.yml
+tests/api.suite.yml
+tests/apisoap.suite.yml
+tests/joomla-cms3*
+tests/_output
+codecept.phar
+driver.log
+tests/_support/_generated/*
+tests/checkers/phpcs/*
+tests/RoboFile.ini
+tests/cache
+
+# Never ignore
+!.gitignore
+!index.html
+!index.php

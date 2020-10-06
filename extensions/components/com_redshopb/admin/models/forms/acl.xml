@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                id="acl_rules"
+                name="acl_rules"
+                type="companypermissions"
+                label="JFIELD_RULES_LABEL"
+                translate_label="false"
+                class="inputbox"
+                section="company"
+                update_to="acl_ruleset"
+                />
+        <field
+                id="acl_ruleset"
+                name="acl_ruleset"
+                type="hidden"
+                />
+        <field
+                name="asset_id"
+                type="hidden"
+                />
+	    <field
+			    name="rules"
+			    type="rules"
+			    label="JFIELD_RULES_LABEL"
+			    translate_label="false"
+			    filter="rules"
+			    component="com_content"
+			    section="article"
+			    validate="rules"
+			    />
+    </fieldset>
+</form>

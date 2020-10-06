@@ -1,0 +1,29 @@
+ul.chart-legend {
+    margin: 0;
+    font-size: 0.8em;
+}
+ul.chart-legend li {
+    list-style: none;
+    float: left;
+    padding: 5px;
+}
+ul.chart-legend li div {
+    display: inline-block;
+    margin: 5px;
+    width: 20px;
+    border-radius: 5px;
+}
+.chart-legend-container {
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    width: 100%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.chart-box {
+    padding: 0;
+}
+.chart-legend:after{
+    clear: both;
+}

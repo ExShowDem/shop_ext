@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="vanir" method="upgrade">
+    <name>PLG_VANIR_MENUS_RESTRICTIONS</name>
+    <creationDate>July 2018</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.0.0</version>
+    <description>PLG_VANIR_MENUS_RESTRICTIONS_DESC</description>
+    <files>
+        <folder>language</folder>
+        <folder>field</folder>
+        <filename>index.html</filename>
+        <filename plugin="menus_restrictions">menus_restrictions.php</filename>
+    </files>
+    <config>
+        <fields name="params" addfieldpath="/plugins/vanir/menus_restrictions/field">
+            <fieldset name="basic">
+                <field
+                    name="restrictedmenus"
+                    type="Vanirmenu"
+                    label="PLG_VANIR_MENUS_RESTRICTION_MENUS"
+                    description="PLG_VANIR_MENUS_RESTRICTION_MENUS_DESC"
+                    multiple="true"
+                    size="400"
+                >
+                    <option value="">JSELECT</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

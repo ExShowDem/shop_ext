@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="content" method="upgrade">
+    <name>PLG_CONTENT_REDSHOPB</name>
+    <creationDate>July 2018</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.0.0</version>
+    <description>PLG_CONTENT_REDSHOPB_DESC</description>
+    <files>
+    	<folder>language</folder>
+        <filename plugin="redshopb">redshopb.php</filename>
+        <folder>language</folder>
+    </files>
+    <scriptfile>install.php</scriptfile>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="baseLayoutPath"
+                        default="/components/com_redshopb/layouts/"
+                        type="text"
+                        label="PLG_CONTENT_REDSHOPB_BASELAYOUTPATH_LBL"
+                        description="PLG_CONTENT_REDSHOPB_BASELAYOUTPATH_DESC"
+                        />
+                <field
+                        name="renderTemplateName"
+                        default="product-list"
+                        type="text"
+                        label="PLG_CONTENT_REDSHOPB_RENDERTEMPLATENAME_LBL"
+                        description="PLG_CONTENT_REDSHOPB_RENDERTEMPLATENAME_DESC"
+                        />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

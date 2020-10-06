@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="rb_sync">
+    <name>PLG_RB_SYNC_FILESYNC</name>
+    <creationDate>July 2018</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.0.0</version>
+    <description>PLG_RB_SYNC_FILESYNC_XML_DESCRIPTION</description>
+    <scriptfile>install.php</scriptfile>
+    <install>
+        <sql>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/data.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/uninstall.sql</file>
+        </sql>
+    </uninstall>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+            <schemapath type="mysqli">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    <files>
+        <folder>helper</folder>
+        <folder>language</folder>
+        <folder>sql</folder>
+        <filename plugin="filesync">filesync.php</filename>
+        <filename plugin="filesync">index.html</filename>
+    </files>
+    <media destination="com_redshopb/filesync" folder="media">
+        <folder>definitions</folder>
+        <folder>files</folder>
+    </media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/libraries/redshopb/form/fields">
+                <field
+                        name="numberOfFilesToLoad"
+                        type="number"
+                        label="PLG_RB_SYNC_FILESYNC_NUMBER_OF_FILES_LABEL"
+                        description="PLG_RB_SYNC_FILESYNC_NUMBER_OF_FILES_DESC"
+                        default="300"
+                        filter="integer"
+                        min="1"
+                        />
+                <field
+                        name="webserviceVersion"
+                        type="text"
+                        label="PLG_RB_SYNC_FILESYNC_VERSION_LABEL"
+                        description="PLG_RB_SYNC_FILESYNC_VERSION_DESC"
+                        default="0"
+                        />
+                <field
+                        name="path"
+                        type="text"
+                        label="PLG_RB_SYNC_FILESYNC_LOCAL_FOLDER_LABEL"
+                        description="PLG_RB_SYNC_FILESYNC_LOCAL_FOLDER_DESC"
+                        default="filesync"
+                        />
+                <field
+                        name="fileFormat"
+                        type="list"
+                        default="xml"
+                        label="PLG_RB_SYNC_FILESYNC_FILEFORMAT_LABEL"
+                        description="PLG_RB_SYNC_FILESYNC_FILEFORMAT_DESC">
+                        <option value="xml">xml</option>
+                        <option value="csv">csv</option>
+                        <option value="json">json</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

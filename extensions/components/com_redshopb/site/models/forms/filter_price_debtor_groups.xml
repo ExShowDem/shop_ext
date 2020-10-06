@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="search_price_debtor_groups"
+				type="text"
+				label="COM_REDCORE_FILTER_SEARCH_DESC"
+				placeholder="JSEARCH_FILTER"
+				/>
+		<field
+				name="price_debtor_groups_default"
+				type="rlist"
+				label="COM_REDSHOPB_DEBTOR_GROUP_DEFAULT"
+				description="COM_REDSHOPB_DEBTOR_GROUP_DEFAULT_DESC"
+				filter=",0,1"
+				class="chosen"
+				onchange="this.form.submit();"
+		>
+			<option value="">COM_REDSHOPB_DEBTOR_GROUP_DEFAULT_SELECT</option>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+				name="price_debtor_groups_state"
+				type="rpublished"
+				label="JOPTION_SELECT_PUBLISHED"
+				description="JOPTION_SELECT_PUBLISHED_DESC"
+				filter="0,1"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">JOPTION_SELECT_PUBLISHED</option>
+		</field>
+        <field
+                name="group_company"
+                type="company"
+                label="COM_REDSHOPB_COMPANY_LABEL"
+                onchange="this.form.submit();"
+                nullValue='null'
+                >
+            <option value="">JOPTION_SELECT_OWNER_COMPANY</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="price_debtor_groups_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

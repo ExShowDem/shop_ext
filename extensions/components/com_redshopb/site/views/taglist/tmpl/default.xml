@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_REDSHOPB_TAGLIST_VIEW_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_REDSHOPB_TAGLIST_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+<fields name="params">
+		<fieldset name="params">
+			<field
+				name="type"
+				type="list"
+				label="COM_REDSHOPB_TAGLIST_TYPE_LABEL"
+				description="COM_REDSHOPB_TAGLIST_TYPE_DESC"
+		        required="false"
+		        default="Brand"
+				>
+			<option value="">COM_REDSHOPB_SELECT_TAGLIST_TYPE</option>
+			<option value="Brand">COM_REDSHOPB_SELECT_TAGLIST_TYPE_BRANDS</option>
+		</field>
+		 <field
+            name="sidebar_width"
+            type="list"
+            default="2"
+            label="COM_REDSHOPB_SIDEBAR_WIDTH_LABEL"
+            description="COM_REDSHOPB_SIDEBAR_WIDTH_DESC"            
+            >
+            <option value="">COM_REDSHOPB_SELECT_SIDEBAR_WIDTH</option>
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+		</field>
+        </fieldset>
+	</fields>
+</metadata>

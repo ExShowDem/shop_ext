@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Product Field Group Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>Maintain product custom field groups.</description>
+  <config>
+    <name>redshopb-product_field_group</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="model" optionName="com_redshopb" modelClassName="Field_Group" modelClassPath="" isAdminClass="false" functionName="createWS" functionArgs="" validateData="function" validateDataFunction="validateCreateWS" tableName="redshopb_field_group">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce product custom field]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product custom field group ID.]]></description>
+        </field>
+        <field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Field group name]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name and scope]]></description>
+        </field>
+        <field name="ordering" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Ordering position of this field.  If set to 0, it will be sent to the last position.]]></description>
+        </field>
+        <description><![CDATA[Product field group creation fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product custom field group webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product custom field group]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[New internal product custom field group ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Product custom field group creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Field_Groups" modelClassPath="" isAdminClass="false" functionName="getItemsWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_field_group">
+        <description><![CDATA[This operation lists all Aesir E-Commerce product custom fields]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal Field ID]]></description>
+          </field>
+          <field name="name" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Field group name]]></description>
+          </field>
+          <description><![CDATA[Field group list fields.]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal Field ID]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Field name]]></description>
+          </resource>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[URL safe name]]></description>
+          </resource>
+          <resource displayName="ordering" transform="int" fieldFormat="{ordering}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Ordering position of this field]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Field group]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Field group webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <description><![CDATA[Field list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Field_Group" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="" enforcePKs="false">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce product custom field]]></description>
+        <fields>
+          <field name="id" transform="string" isRequiredField="true" defaultValue="" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Product custom field group ID.]]></description>
+          </field>
+          <description><![CDATA[Product custom field display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal Field ID]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Field group name]]></description>
+          </resource>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[URL safe name]]></description>
+          </resource>
+          <resource displayName="ordering" transform="int" fieldFormat="{ordering}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Ordering position of this field]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product custom field group webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product custom field group]]></description>
+          </resource>
+          <resource displayName="redshopb-type" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=type&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;code={type_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Type Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Type linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-filter-type" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=type&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;code={filter_type_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Filter Type Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Filter type linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product custom field display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Field_Group" modelClassPath="" isAdminClass="false" functionName="updateWS" functionArgs="" validateData="function" validateDataFunction="validateUpdateWS" tableName="redshopb_field_group">
+      <description><![CDATA[This operation updates a product custom field group]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product custom field ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="name" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Field name]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name]]></description>
+        </field>
+        <field name="ordering" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Ordering position of this field.  If set to 0, it will be sent to the last position.]]></description>
+        </field>
+        <description><![CDATA[Product custom field group update fields.]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product custom field group webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product custom field group]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product custom field group internal ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Product custom field group update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="Field_Group" modelClassPath="" isAdminClass="false" functionName="deleteWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_field_group">
+      <description><![CDATA[This operation deletes a product custom field group.]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Product custom field ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <description><![CDATA[Product custom field group delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product custom field group webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[True upon success, false on error]]></description>
+        </resource>
+        <description><![CDATA[Product custom field group delete resources]]></description>
+      </resources>
+    </delete>
+  </operations>
+</apiservice>

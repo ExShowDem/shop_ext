@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="text"
+                default="0"
+                label="JGLOBAL_FIELD_ID_LABEL"
+                description="JGLOBAL_FIELD_ID_DESC"
+                class="readonly"
+                readonly="true"
+                />
+        <field
+                name="name"
+                type="redtext"
+                label="COM_REDSHOPB_NAME"
+                description="COM_REDSHOPB_COUNTRY_NAME_DESC"
+                maxlength="255"
+                required="true"
+                />
+        <field
+                name="alpha2"
+                type="redtext"
+                label="COM_REDSHOPB_COUNTRY_ALPHA2_LBL"
+                description="COM_REDSHOPB_COUNTRY_ALPHA2_DESC"
+                maxlength="2"
+                required="true"
+        />
+        <field
+                name="alpha3"
+                type="redtext"
+                label="COM_REDSHOPB_COUNTRY_ALPHA3_LBL"
+                description="COM_REDSHOPB_COUNTRY_ALPHA3_DESC"
+                required="true"
+                />
+        <field
+                name="numeric"
+                type="redtext"
+                filter="integer"
+                label="COM_REDSHOPB_COUNTRY_NUMERIC_LBL"
+                description="COM_REDSHOPB_COUNTRY_NUMERIC_DESC"
+                required="true"
+                />
+        <field
+                name="eu_zone"
+                type="radio"
+                label="COM_REDSHOPB_COUNTRY_EU_ZONE_LABEL"
+                description="COM_REDSHOPB_COUNTRY_EU_ZONE_DESC"
+                class="btn-group"
+                default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="company_id"
+                type="company"
+                label="COM_REDSHOPB_COMPANY_LABEL"
+                description="COM_REDSHOPB_COMPANY_DESC"
+        />
+    </fieldset>
+</form>

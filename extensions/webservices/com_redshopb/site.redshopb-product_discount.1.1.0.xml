@@ -1,0 +1,473 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+    <name>Aesir E-Commerce - Product Discount Webservice</name>
+    <author>Aesir</author>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <description>This web service maintains every discount given to a product or a product product discount group, on different optional conditions regarding the sale.</description>
+    <config>
+        <name>redshopb-product_discount</name>
+        <version>1.1.0</version>
+        <authorizationAssetName>com_redshopb</authorizationAssetName>
+    </config>
+    <operations>
+        <documentation authorizationNeeded="false" source="auto" url=""/>
+        <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="model" optionName="com_redshopb" modelClassName="All_Discount" modelClassPath="" isAdminClass="false" functionName="createWS" functionArgs="" validateData="function" validateDataFunction="validateCreateWS" tableName="redshopb_product_discount">
+            <description><![CDATA[This operation creates a new Aesir E-Commerce Discount]]></description>
+            <fields>
+                <field name="quantity_max" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Optional maximum quantity for discount volume-based]]></description>
+                </field>
+                <field name="quantity_min" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Optional minimum quantity for discount volume-based]]></description>
+                </field>
+                <field name="total" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Actual total discount]]></description>
+                </field>
+                <field name="kind" transform="int" defaultValue="0" isRequiredField="true" isPrimaryField="false">
+                    <description><![CDATA[Discount type. 0 => Percentage, 1 => Amount.]]></description>
+                </field>
+                <field name="id" transform="string" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+                    <description><![CDATA[Discount ERP ID, It will be stored as erp. for future reference]]></description>
+                </field>
+                <field name="product_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Product ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="product_discount_group_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Product discount group ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="company_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Company ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="customer_discount_group_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Customer discount group ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="currency_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Currency code to use for this discount]]></description>
+                </field>
+                <field name="percent" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Actual percentage discount]]></description>
+                </field>
+                <field name="starting_date" transform="datetime" defaultValue="0000-00-00 00:00:00" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Optional starting date of this discount]]></description>
+                </field>
+                <field name="ending_date" transform="datetime" defaultValue="0000-00-00 00:00:00" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Optional ending date of this discount]]></description>
+                </field>
+                <description><![CDATA[Discount creation fields. Please note that product_id/product_discount_id are exclusive.  Also company_id/customer_discount_group_id are exclusive too. So only one of each set can be used per discount record.]]></description>
+            </fields>
+            <resources>
+                <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Web services documentation]]></description>
+                </resource>
+                <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Webservices root]]></description>
+                </resource>
+                <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Discount webservice]]></description>
+                </resource>
+                <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Link to Discount]]></description>
+                </resource>
+                <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[New Discount internal ID upon success, zero on error]]></description>
+                </resource>
+                <description><![CDATA[Discount creation resources]]></description>
+            </resources>
+        </create>
+        <read>
+            <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="All_Discounts" modelClassPath="" isAdminClass="false" functionName="getItemsWS" paginationFunction="getPagination" totalFunction="getTotal" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_discount">
+                <description><![CDATA[This operation lists all Aesir E-Commerce Discounts]]></description>
+                <fields>
+                    <field name="id" transform="string" defaultValue="" isRequiredField="true" isFilterField="false" isSearchableField="false" isPrimaryField="true">
+                        <description><![CDATA[Internal Discount ID]]></description>
+                    </field>
+                    <field name="product_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+                        <description><![CDATA[Internal Product ID.]]></description>
+                    </field>
+                    <field name="product_discount_group_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+                        <description><![CDATA[Internal Product Discount Group ID.]]></description>
+                    </field>
+                    <field name="company_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+                        <description><![CDATA[Internal Company ID.]]></description>
+                    </field>
+                    <field name="customer_discount_group_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+                        <description><![CDATA[Internal Customer Discount Group ID.]]></description>
+                    </field>
+                    <field name="currency_code" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+                        <description><![CDATA[Currency code to use for this discount]]></description>
+                    </field>
+                    <field name="state" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+                        <description><![CDATA[Current state of the discount]]></description>
+                    </field>
+                    <description><![CDATA[Discount list fields]]></description>
+                </fields>
+                <resources>
+                    <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Web services documentation]]></description>
+                    </resource>
+                    <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Page number]]></description>
+                    </resource>
+                    <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Number of items per page]]></description>
+                    </resource>
+                    <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Start displaying from a certain item in the list]]></description>
+                    </resource>
+                    <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Total number of items]]></description>
+                    </resource>
+                    <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Total number of pages of items]]></description>
+                    </resource>
+                    <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Webservices root]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Discount webservice]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[First page]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Previous page]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Next page]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Last page]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[List all items]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Limit the number of listed items]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Items search]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Sort list by field and direction]]></description>
+                    </resource>
+                    <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Internal Discount ID]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+                        <description><![CDATA[Link to Discount]]></description>
+                    </resource>
+                    <resource displayName="quantity_max" transform="float" fieldFormat="{quantity_max}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Optional maximum quantity for discount volume-based]]></description>
+                    </resource>
+                    <resource displayName="quantity_min" transform="float" fieldFormat="{quantity_min}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Optional min quantity for discount volume-based]]></description>
+                    </resource>
+                    <resource displayName="total" transform="float" fieldFormat="{total}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Actual total discount.]]></description>
+                    </resource>
+                    <resource displayName="kind" transform="int" fieldFormat="{kind}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Discount kind]]></description>
+                    </resource>
+                    <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Other IDs of the discount.]]></description>
+                    </resource>
+                    <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Internal Product ID.]]></description>
+                    </resource>
+                    <resource displayName="product_id_others" transform="array" fieldFormat="{product_id_syncref}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Other IDs of the Product.]]></description>
+                    </resource>
+                    <resource displayName="product_discount_group_id" transform="int" fieldFormat="{product_discount_group_id}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Internal Product Discount Group ID.]]></description>
+                    </resource>
+                    <resource displayName="product_discount_group_id_others" transform="array" fieldFormat="{product_discount_group_id_syncref}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Other IDs of the Product Discount Group.]]></description>
+                    </resource>
+                    <resource displayName="company_id" transform="int" fieldFormat="{company_id}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Internal Company ID.]]></description>
+                    </resource>
+                    <resource displayName="company_id_others" transform="array" fieldFormat="{company_id_syncref}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Other IDs of the Company.]]></description>
+                    </resource>
+                    <resource displayName="customer_discount_group_id" transform="int" fieldFormat="{customer_discount_group_id}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Internal Customer Discount Group ID.]]></description>
+                    </resource>
+                    <resource displayName="customer_discount_group_id_others" transform="array" fieldFormat="{customer_discount_group_id_syncref}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Other IDs of the Customer Discount Group.]]></description>
+                    </resource>
+                    <resource displayName="currency_code" transform="string" fieldFormat="{currency_code}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Currency code to use for this discount]]></description>
+                    </resource>
+                    <resource displayName="percent" transform="float" fieldFormat="{percent}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Actual percentage discount]]></description>
+                    </resource>
+                    <resource displayName="starting_date" transform="datetime" fieldFormat="{starting_date}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Optional starting date of this discount]]></description>
+                    </resource>
+                    <resource displayName="ending_date" transform="datetime" fieldFormat="{ending_date}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Optional ending date of this discount]]></description>
+                    </resource>
+                    <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="listItem">
+                        <description><![CDATA[Current state of the discount]]></description>
+                    </resource>
+                    <resource displayName="redshopb-product" transform="string" fieldFormat="/index.php?option=redshopb-product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+                        <description><![CDATA[Product linked Web Service]]></description>
+                    </resource>
+                    <resource displayName="redshopb-product_discount_group" transform="string" fieldFormat="/index.php?option=redshopb-product_discount_group&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_discount_group_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Discount Group Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+                        <description><![CDATA[Product Discount Group linked Web Service]]></description>
+                    </resource>
+                    <resource displayName="redshopb-company" transform="string" fieldFormat="/index.php?option=redshopb-company&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={company_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Company Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+                        <description><![CDATA[Company linked Web Service]]></description>
+                    </resource>
+                    <resource displayName="redshopb-customer_discount_group" transform="string" fieldFormat="/index.php?option=redshopb-customer_discount_group&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={customer_discount_group_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Customer Discount Group Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+                        <description><![CDATA[Customer Discount Group linked Web Service]]></description>
+                    </resource>
+                    <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={currency_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+                        <description><![CDATA[Currency linked Web Service]]></description>
+                    </resource>
+                    <description><![CDATA[Discount list resources]]></description>
+                </resources>
+            </list>
+            <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="All_Discount" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="function" validateDataFunction="validate" tableName="" enforcePKs="false">
+                <description><![CDATA[This operation displays a single Aesir E-Commerce Discount]]></description>
+                <fields>
+                    <field name="id" transform="string" isRequiredField="true" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+                        <description><![CDATA[Discount ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                    </field>
+                    <description><![CDATA[Discount display fields]]></description>
+                </fields>
+                <resources>
+                    <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Internal Discount ID]]></description>
+                    </resource>
+                    <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Web services documentation]]></description>
+                    </resource>
+                    <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Webservices root]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Discount webservice]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Link to Discount]]></description>
+                    </resource>
+                    <resource displayName="quantity_max" transform="float" fieldFormat="{quantity_max}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Optional minimum quantity for discount volume-based]]></description>
+                    </resource>
+                    <resource displayName="quantity_min" transform="float" fieldFormat="{quantity_min}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Optional minimum quantity for discount volume-based]]></description>
+                    </resource>
+                    <resource displayName="total" transform="float" fieldFormat="{total}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Actual total amount discount.]]></description>
+                    </resource>
+                    <resource displayName="kind" transform="int" fieldFormat="{kind}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Discount type.]]></description>
+                    </resource>
+                    <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Other IDs of the discount.]]></description>
+                    </resource>
+                    <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Internal Product ID.]]></description>
+                    </resource>
+                    <resource displayName="product_id_others" transform="array" fieldFormat="{product_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Other IDs of the Product.]]></description>
+                    </resource>
+                    <resource displayName="product_discount_group_id" transform="int" fieldFormat="{product_discount_group_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Internal Product Discount Group ID.]]></description>
+                    </resource>
+                    <resource displayName="product_discount_group_id_others" transform="array" fieldFormat="{product_discount_group_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Other IDs of the Product Discount Group.]]></description>
+                    </resource>
+                    <resource displayName="company_id" transform="int" fieldFormat="{company_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Internal Company ID.]]></description>
+                    </resource>
+                    <resource displayName="company_id_others" transform="array" fieldFormat="{company_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Other IDs of the Company.]]></description>
+                    </resource>
+                    <resource displayName="customer_discount_group_id" transform="int" fieldFormat="{customer_discount_group_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Internal Customer Discount Group ID.]]></description>
+                    </resource>
+                    <resource displayName="customer_discount_group_id_others" transform="array" fieldFormat="{customer_discount_group_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Other IDs of the Customer Discount Group.]]></description>
+                    </resource>
+                    <resource displayName="currency_code" transform="string" fieldFormat="{currency_code}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Currency code to use for this discount]]></description>
+                    </resource>
+                    <resource displayName="percent" transform="float" fieldFormat="{percent}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Actual discount]]></description>
+                    </resource>
+                    <resource displayName="starting_date" transform="datetime" fieldFormat="{starting_date}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Optional starting date of this discount]]></description>
+                    </resource>
+                    <resource displayName="ending_date" transform="datetime" fieldFormat="{ending_date}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Optional ending date of this discount]]></description>
+                    </resource>
+                    <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Current state of the discount]]></description>
+                    </resource>
+                    <resource displayName="redshopb-product" transform="string" fieldFormat="/index.php?option=redshopb-product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Product linked Web Service]]></description>
+                    </resource>
+                    <resource displayName="redshopb-product_discount_group" transform="string" fieldFormat="/index.php?option=redshopb-product_discount_group&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_discount_group_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Discount Group Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Product Discount Group linked Web Service]]></description>
+                    </resource>
+                    <resource displayName="redshopb-company" transform="string" fieldFormat="/index.php?option=redshopb-company&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={company_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Company Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Company linked Web Service]]></description>
+                    </resource>
+                    <resource displayName="redshopb-customer_discount_group" transform="string" fieldFormat="/index.php?option=redshopb-customer_discount_group&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={customer_discount_group_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Customer Discount Group Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Customer Discount Group linked Web Service]]></description>
+                    </resource>
+                    <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={currency_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Currency linked Web Service]]></description>
+                    </resource>
+                    <description><![CDATA[Discount display resources]]></description>
+                </resources>
+            </item>
+        </read>
+        <update authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="All_Discount" modelClassPath="" isAdminClass="false" functionName="updateWS" functionArgs="" validateData="function" validateDataFunction="validateUpdateWS" tableName="redshopb_product_discount">
+            <description><![CDATA[This operation updates Aesir E-Commerce Discount]]></description>
+            <fields>
+                <field name="quantity_max" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Optional maximum quantity for discount volume-based]]></description>
+                </field>
+                <field name="quantity_min" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Optional minimum quantity for discount volume-based]]></description>
+                </field>
+                <field name="total" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Actual total discount]]></description>
+                </field>
+                <field name="kind" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Discount type.]]></description>
+                </field>
+                <field name="id" transform="string" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+                    <description><![CDATA[Discount ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="product_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Product ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="product_discount_group_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Product discount group ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="company_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Company ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="customer_discount_group_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Customer discount group ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <field name="currency_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Currency code to use for this discount]]></description>
+                </field>
+                <field name="percent" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Actual discount]]></description>
+                </field>
+                <field name="starting_date" transform="datetime" defaultValue="0000-00-00 00:00:00" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Optional starting date of this discount]]></description>
+                </field>
+                <field name="ending_date" transform="datetime" defaultValue="0000-00-00 00:00:00" isRequiredField="false" isPrimaryField="false">
+                    <description><![CDATA[Optional ending date of this discount]]></description>
+                </field>
+                <description><![CDATA[Discount update fields. Please note that product_id/product_discount_id are exclusive.  Also company_id/customer_discount_group_id are exclusive too. So only one of each set can be used per discount record.]]></description>
+            </fields>
+            <resources>
+                <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Web services documentation]]></description>
+                </resource>
+                <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Webservices root]]></description>
+                </resource>
+                <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Discount webservice]]></description>
+                </resource>
+                <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Link to Discount]]></description>
+                </resource>
+                <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Discount internal ID upon success, zero on error]]></description>
+                </resource>
+                <description><![CDATA[Discount update resources]]></description>
+            </resources>
+        </update>
+        <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="All_Discount" modelClassPath="" isAdminClass="false" functionName="deleteWS" functionArgs="id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product_discount">
+            <description><![CDATA[This operation deletes Aesir E-Commerce Discount(s).]]></description>
+            <fields>
+                <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+                    <description><![CDATA[Discount ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                </field>
+                <description><![CDATA[Discount delete fields]]></description>
+            </fields>
+            <resources>
+                <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Web services documentation]]></description>
+                </resource>
+                <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Webservices root]]></description>
+                </resource>
+                <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[Discount webservice]]></description>
+                </resource>
+                <resource displayName="result" transform="boolean" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+                    <description><![CDATA[True upon success, false on error]]></description>
+                </resource>
+                <description><![CDATA[Discount delete resources]]></description>
+            </resources>
+        </delete>
+        <task>
+            <publish useOperation="" authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="All_Discount" modelClassPath="" isAdminClass="false" functionName="publishWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product_discount">
+                <description><![CDATA[This task enables you to set specific product discounts as published. Expected data: id of the product discount]]></description>
+                <fields>
+                    <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+                        <description><![CDATA[Discount ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                    </field>
+                    <description><![CDATA[Product discount publish fields]]></description>
+                </fields>
+                <resources>
+                    <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Web services documentation]]></description>
+                    </resource>
+                    <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Webservices root]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Product discount webservice]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Link to Product discount]]></description>
+                    </resource>
+                    <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Internal product discount ID upon success, zero on error]]></description>
+                    </resource>
+                    <description><![CDATA[Product discount publish resources]]></description>
+                </resources>
+            </publish>
+            <unpublish useOperation="" authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="All_Discount" modelClassPath="" isAdminClass="false" functionName="unpublishWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product_discount">
+                <description><![CDATA[This task enables you to set specific product discounts as unpublished. Expected data: id of the discount]]></description>
+                <fields>
+                    <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+                        <description><![CDATA[Discount ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+                    </field>
+                    <description><![CDATA[Product discount unpublish fields]]></description>
+                </fields>
+                <resources>
+                    <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Web services documentation]]></description>
+                    </resource>
+                    <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Webservices root]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Product discount webservice]]></description>
+                    </resource>
+                    <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Link to Product discount]]></description>
+                    </resource>
+                    <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+                        <description><![CDATA[Internal product discount ID upon success, zero on error]]></description>
+                    </resource>
+                    <description><![CDATA[Product discount unpublish resources]]></description>
+                </resources>
+            </unpublish>
+        </task>
+    </operations>
+    <complexArrays/>
+</apiservice>

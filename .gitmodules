@@ -1,0 +1,3 @@
+[submodule "build/redCORE"]
+	path = build/redCORE
+	url = https://travisredweb:travisredweb2013github@github.com/redCOMPONENT-COM/redCORE

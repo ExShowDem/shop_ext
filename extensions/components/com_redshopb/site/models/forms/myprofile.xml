@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="core" addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				filter="integer"
+		/>
+		<field
+				name="password1"
+				type="rbpassword"
+				autocomplete="off"
+				class="validate-password"
+				description="COM_REDSHOPB_MYPROFILE_PASSWORD_DESC"
+				filter="raw"
+				label="COM_REDSHOPB_MYPROFILE_PASSWORD_LABEL"
+				size="30"
+				required="true"
+				validate="password"
+				strengthmeter="true"
+		/>
+		<field
+				name="password2"
+				type="rbpassword"
+				autocomplete="off"
+				class="validate-password"
+				description="COM_REDSHOPB_MYPROFILE_PASSWORD2_DESC"
+				field="password1"
+				filter="raw"
+				label="COM_REDSHOPB_MYPROFILE_PASSWORD2_LABEL"
+				message="COM_REDSHOPB_MYPROFILE_PASSWORD1_MESSAGE"
+				size="30"
+				required="true"
+				strengthmeter="true"
+				validate="equals"
+		/>
+	</fieldset>
+</form>

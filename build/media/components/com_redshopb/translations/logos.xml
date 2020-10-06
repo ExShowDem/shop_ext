@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<contentelement type="contentelement">
+    <name>Aesir E-Commerce Logos</name>
+    <author>Aesir</author>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <version>2.0.0</version>
+    <description>Logos Table Definition for the Aesir E-Commerce extension</description>
+    <reference>
+        <table name="redshopb_logos">
+            <field name="id" type="referenceid" translate="0" alwaysFallback="false" filter="RAW" description="">ID</field>
+            <field name="image" type="text" translate="1" alwaysFallback="false" filter="RAW" description="">Image</field>
+            <filter><![CDATA[]]></filter>
+        </table>
+    </reference>
+</contentelement>

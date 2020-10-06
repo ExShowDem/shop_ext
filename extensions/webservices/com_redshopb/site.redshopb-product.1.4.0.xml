@@ -1,0 +1,1077 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Product Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2008 - 2018 redCOMPONENT.com. All rights reserved.</copyright>
+  <description>Maintain and translate products, which are used to catalog products across categories and companies.</description>
+  <config>
+    <name>redshopb-product</name>
+    <version>1.4.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="createWS" functionArgs="" validateData="function" validateDataFunction="validateCreateWS" tableName="redshopb_product">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce product]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product ERP ID.  It will be stored as erp.&lt;id&gt; for future reference]]></description>
+        </field>
+        <field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Product name]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name]]></description>
+        </field>
+        <field name="sku" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Stock keeping unit, a unique identifier for each distinct product]]></description>
+        </field>
+        <field name="manufacturer_sku" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Manufacturer stock keeping unit]]></description>
+        </field>
+        <field name="related_sku" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Related stock keeping unit]]></description>
+        </field>
+        <field name="date_new" transform="datetime" defaultValue="0000-00-00" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Introduction date of this product, to display a NEW label in shop]]></description>
+        </field>
+        <field name="stock_upper_level" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[When the stock is above this level, it's considered as enough stock. Below it, it displays a first warning]]></description>
+        </field>
+        <field name="stock_lower_level" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[When the stock of this product is below this limit, a several warning is displayed in shop]]></description>
+        </field>
+        <field name="template_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Template selected for presenting the product in shop]]></description>
+        </field>
+        <field name="company_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Owner company of this product - if null, it belongs to the main warehouse<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="category_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Main category of the product<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="manufacturer_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product manufacturer<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="decimal_position" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Decimal positions allowed for this product stock and purchase]]></description>
+        </field>
+        <field name="filter_fieldset_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product filter for shop<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="unit_measure_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Code of the unit of measure of the product]]></description>
+        </field>
+        <field name="price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Global product price, applied without any specification of customer, time or campaign. Fallback price]]></description>
+        </field>
+        <field name="retail_price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Global product retail price, applied without any specification of customer, time or campaign. Fallback retail price]]></description>
+        </field>
+	<field name="min_sale" transform="int" defaultValue="0" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Minimum allowed buying quantity]]></description>
+        </field>
+        <field name="max_sale" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Maximum allowed buying quantity]]></description>
+        </field>
+        <field name="pkg_size" transform="float" defaultValue="1" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[This product can only be sold in multiples of this amount]]></description>
+        </field>
+		<field name="campaign" transform="boolean" defaultValue="false" isRequiredField="false" isPrimaryField="false">
+		  <description><![CDATA[Toggle whether this product is part of a campaign or not]]></description>
+		</field>
+        <field name="service" transform="boolean" defaultValue="false" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Defines if the product is a service/accessory product (true) or a regular product (false)]]></description>
+        </field>
+        <field name="featured" transform="boolean" defaultValue="false" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[When true, the product will be featured on main sections of the shop]]></description>
+        </field>
+        <description><![CDATA[Product creation fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[New internal product ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Product creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Products" modelClassPath="" isAdminClass="false" functionName="getItemsWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product">
+        <description><![CDATA[This operation lists all Aesir E-Commerce products]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal product ID]]></description>
+          </field>
+          <field name="name" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Product name]]></description>
+          </field>
+          <field name="sku" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Stock keeping unit, a unique identifier for each distinct product]]></description>
+          </field>
+          <field name="manufacturer_sku" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Manufacturer stock keeping unit]]></description>
+          </field>
+          <field name="related_sku" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Related stock keeping unit]]></description>
+          </field>
+          <field name="template_code" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Code of the template selected for presenting the product in shop]]></description>
+          </field>
+          <field name="company_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Owner company id]]></description>
+          </field>
+          <field name="category_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Main category of the product]]></description>
+          </field>
+          <field name="manufacturer_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Product manufacturer internal id]]></description>
+          </field>
+          <field name="decimal_position" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Decimal positions allowed for this product stock and purchase]]></description>
+          </field>
+          <field name="filter_fieldset_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Product filter for shop (internal ID)]]></description>
+          </field>
+          <field name="unit_measure_code" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Code of the unit of measure of the product]]></description>
+          </field>
+		  <field name="campaign" transform="boolean" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+			<description><![CDATA[Toggle whether this product is part of a campaign or not]]></description>
+		  </field>
+          <field name="service" transform="boolean" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Defines if the product is a service/accessory product (true) or a regular product (false)]]></description>
+          </field>
+          <field name="discontinued" transform="boolean" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[When true, the product is considered as discontinued and cannot be sold anymore]]></description>
+          </field>
+          <field name="featured" transform="boolean" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[When true, the product will be featured on main sections of the shop]]></description>
+          </field>
+          <field name="state" transform="boolean" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </field>
+					<field name="previous_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Filter products above an specific internal id]]></description>
+          </field>
+					<field name="include_categories" transform="boolean" defaultValue="false" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+						<description><![CDATA[When true, it populates the <strong>categories</strong> field with the ids of the categories of the product.  Otherwise, the field will remain empty.]]></description>
+          </field>
+					<field name="include_tags" transform="boolean" defaultValue="false" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+						<description><![CDATA[When true, it populates the <strong>tags</strong> field with the ids of the tags of the product.  Otherwise, the field will remain empty.]]></description>
+          </field>
+          <description><![CDATA[Product list fields.]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal product ID]]></description>
+          </resource>
+          <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the product]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product name]]></description>
+          </resource>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[URL safe name]]></description>
+          </resource>
+          <resource displayName="sku" transform="string" fieldFormat="{sku}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Stock keeping unit, a unique identifier for each distinct product]]></description>
+          </resource>
+          <resource displayName="manufacturer_sku" transform="string" fieldFormat="{manufacturer_sku}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Manufacturer stock keeping unit]]></description>
+          </resource>
+          <resource displayName="related_sku" transform="string" fieldFormat="{related_sku}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Related stock keeping unit]]></description>
+          </resource>
+          <resource displayName="date_new" transform="datetime" fieldFormat="{date_new}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Introduction date of this product, to display a NEW label in shop]]></description>
+          </resource>
+          <resource displayName="stock_upper_level" transform="float" fieldFormat="{stock_upper_level}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[When the stock is above this level, it's considered as enough stock. Below it, it displays a first warning]]></description>
+          </resource>
+          <resource displayName="stock_lower_level" transform="float" fieldFormat="{stock_lower_level}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[When the stock of this product is below this limit, a several warning is displayed in shop]]></description>
+          </resource>
+          <resource displayName="template_code" transform="string" fieldFormat="{template_code}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Code of the template selected for presenting the product in shop]]></description>
+          </resource>
+          <resource displayName="company_id" transform="int" fieldFormat="{company_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Owner company ID of this product]]></description>
+          </resource>
+          <resource displayName="company_id_others" transform="array" fieldFormat="{company_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the owner company]]></description>
+          </resource>
+          <resource displayName="category_id" transform="int" fieldFormat="{category_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Main category of the product]]></description>
+          </resource>
+          <resource displayName="category_id_others" transform="array" fieldFormat="{category_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Main category combined IDs]]></description>
+          </resource>
+          <resource displayName="manufacturer_id" transform="int" fieldFormat="{manufacturer_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product manufacturer internal id]]></description>
+          </resource>
+          <resource displayName="decimal_position" transform="int" fieldFormat="{decimal_position}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Decimal positions allowed for this product stock and purchase]]></description>
+          </resource>
+          <resource displayName="manufacturer_id_others" transform="array" fieldFormat="{manufacturer_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product manufacturer combined IDs]]></description>
+          </resource>
+          <resource displayName="filter_fieldset_id" transform="int" fieldFormat="{filter_fieldset_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product filter for shop (internal ID)]]></description>
+          </resource>
+          <resource displayName="filter_fieldset_id_others" transform="array" fieldFormat="{filter_fieldset_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product filter for shop (combined IDs)]]></description>
+          </resource>
+          <resource displayName="unit_measure_code" transform="string" fieldFormat="{unit_measure_code}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Code of the unit of measure of the product]]></description>
+          </resource>
+          <resource displayName="price" transform="float" fieldFormat="{price}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Global product price, applied without any specification of customer, time or campaign. Fallback price]]></description>
+          </resource>
+          <resource displayName="retail_price" transform="float" fieldFormat="{retail_price}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Global product retail price, applied without any specification of customer, time or campaign. Fallback retail price]]></description>
+          </resource>
+		  <resource displayName="campaign" transform="boolean" fieldFormat="{campaign}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Toggle whether this product is part of a campaign or not]]></description>
+          </resource>
+          <resource displayName="service" transform="boolean" fieldFormat="{service}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Defines if the product is a service/accessory product (true) or a regular product (false)]]></description>
+          </resource>
+          <resource displayName="discontinued" transform="boolean" fieldFormat="{discontinued}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[When true, the product is considered as discontinued and cannot be sold anymore]]></description>
+          </resource>
+          <resource displayName="featured" transform="boolean" fieldFormat="{featured}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[When true, the product will be featured on main sections of the shop]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="categories" transform="array" fieldFormat="{categories}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Associated categories for this product (internal IDs).  <br /><em>By default this field is empty, but it will populate the URL when sending <strong>filter[include_categories]=true</strong></em>]]></description>
+          </resource>
+          <resource displayName="tags" transform="array" fieldFormat="{tags}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Associated tags for this product (internal IDs).  <br /><em>By default this field is empty, but it will populate the URL when sending <strong>filter[include_tags]=true</strong></em>]]></description>
+          </resource>
+	  <resource displayName="min_sale" transform="int" fieldFormat="{min_sale}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Minimum allowed buying quantity]]></description>
+          </resource>
+          <resource displayName="max_sale" transform="int" fieldFormat="{max_sale}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Maximum allowed buying quantity]]></description>
+          </resource>
+          <resource displayName="pkg_size" transform="float" fieldFormat="{pkg_size}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[This product can only be sold in multiples of this amount]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="redshopb-template" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=template&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={template_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Template Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Template linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-company" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=company&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={company_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Company Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Company linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-category" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=category&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={category_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Category Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Category linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-manufacturer" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=manufacturer&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={manufacturer_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Manufacturer Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Manufacturer linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-filter_fieldset" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=filter_fieldset&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={filter_fieldset_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Filter Field Set Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Filter Field Set linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-unit_measure" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=unit_measure&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={unit_measure_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Unit Measure Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Unit Measure linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="" enforcePKs="false">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce product]]></description>
+        <fields>
+          <field name="id" transform="string" isRequiredField="true" defaultValue="" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID]]></description>
+          </resource>
+          <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the product]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product name]]></description>
+          </resource>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[URL safe name]]></description>
+          </resource>
+          <resource displayName="sku" transform="string" fieldFormat="{sku}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Stock keeping unit, a unique identifier for each distinct product]]></description>
+          </resource>
+          <resource displayName="manufacturer_sku" transform="string" fieldFormat="{manufacturer_sku}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Manufacturer stock keeping unit]]></description>
+          </resource>
+          <resource displayName="related_sku" transform="string" fieldFormat="{related_sku}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Related stock keeping unit]]></description>
+          </resource>
+          <resource displayName="date_new" transform="datetime" fieldFormat="{date_new}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Introduction date of this product, to display a NEW label in shop]]></description>
+          </resource>
+          <resource displayName="stock_upper_level" transform="float" fieldFormat="{stock_upper_level}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[When the stock is above this level, it's considered as enough stock. Below it, it displays a first warning]]></description>
+          </resource>
+          <resource displayName="stock_lower_level" transform="float" fieldFormat="{stock_lower_level}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[When the stock of this product is below this limit, a several warning is displayed in shop]]></description>
+          </resource>
+          <resource displayName="template_code" transform="string" fieldFormat="{template_code}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Template selected for presenting the product in shop]]></description>
+          </resource>
+          <resource displayName="company_id" transform="int" fieldFormat="{company_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Owner company ID of this product]]></description>
+          </resource>
+          <resource displayName="company_id_others" transform="array" fieldFormat="{company_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the owner company ID of this product]]></description>
+          </resource>
+          <resource displayName="category_id" transform="int" fieldFormat="{category_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Main category of the product]]></description>
+          </resource>
+          <resource displayName="category_id_others" transform="array" fieldFormat="{category_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Main category combined IDs]]></description>
+          </resource>
+          <resource displayName="manufacturer_id" transform="int" fieldFormat="{manufacturer_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product manufacturer internal id]]></description>
+          </resource>
+          <resource displayName="decimal_position" transform="int" fieldFormat="{decimal_position}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Decimal positions allowed for this product stock and purchase]]></description>
+          </resource>
+          <resource displayName="manufacturer_id_others" transform="array" fieldFormat="{manufacturer_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product manufacturer combined IDs]]></description>
+          </resource>
+          <resource displayName="filter_fieldset_id" transform="int" fieldFormat="{filter_fieldset_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product filter for shop (internal ID)]]></description>
+          </resource>
+          <resource displayName="filter_fieldset_id_others" transform="array" fieldFormat="{filter_fieldset_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product filter for shop (combined IDs)]]></description>
+          </resource>
+          <resource displayName="unit_measure_code" transform="string" fieldFormat="{unit_measure_code}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Code of the unit of measure of the product]]></description>
+          </resource>
+          <resource displayName="price" transform="float" fieldFormat="{price}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Global product price, applied without any specification of customer, time or campaign. Fallback price]]></description>
+          </resource>
+          <resource displayName="retail_price" transform="float" fieldFormat="{retail_price}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Global product retail price, applied without any specification of customer, time or campaign. Fallback retail price]]></description>
+          </resource>
+		  <resource displayName="campaign" transform="boolean" fieldFormat="{campaign}" displayGroup="" resourceSpecific="rcwsGlobal">
+			<description><![CDATA[Toggle whether this product is part of a campaign or not]]></description>
+		  </resource>
+          <resource displayName="service" transform="boolean" fieldFormat="{service}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Defines if the product is a service/accessory product (true) or a regular product (false)]]></description>
+          </resource>
+          <resource displayName="discontinued" transform="boolean" fieldFormat="{discontinued}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[When true, the product is considered as discontinued and cannot be sold anymore]]></description>
+          </resource>
+          <resource displayName="featured" transform="boolean" fieldFormat="{featured}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[When true, the product will be featured on main sections of the shop]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="categories" transform="array" fieldFormat="{categories}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Associated categories for this product (internal IDs)]]></description>
+          </resource>
+          <resource displayName="categories_other_ids" transform="array" fieldFormat="{categories_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Associated categories for this product (other IDs - comma separated when multiple)]]></description>
+          </resource>
+          <resource displayName="tags" transform="array" fieldFormat="{tag_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Associated tags for this product (internal IDs)]]></description>
+          </resource>
+          <resource displayName="tags_other_ids" transform="array" fieldFormat="{tag_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Associated tags for this product (other IDs - comma separated when multiple)]]></description>
+          </resource>
+          <resource displayName="company_limits" transform="array" fieldFormat="{customer_ids}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Collection of companies that can exclusively purchase this product (internal IDs)]]></description>
+          </resource>
+          <resource displayName="company_limits_other_ids" transform="array" fieldFormat="{customer_ids_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Collection of companies that can exclusively purchase this product (other IDs - comma separated when multiple)]]></description>
+          </resource>
+	  <resource displayName="min_sale" transform="int" fieldFormat="{min_sale}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Minimum allowed buying quantity]]></description>
+          </resource>
+          <resource displayName="max_sale" transform="int" fieldFormat="{max_sale}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Maximum allowed buying quantity]]></description>
+          </resource>
+          <resource displayName="pkg_size" transform="float" fieldFormat="{pkg_size}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[This product can only be sold in multiples of this amount]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="redshopb-template" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=template&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={template_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Template Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Template linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-company" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=company&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={company_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Company Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Company linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-category" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=category&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={category_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Category Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Category linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-manufacturer" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=manufacturer&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={manufacturer_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Manufacturer Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Manufacturer linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-filter_fieldset" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=filter_fieldset&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={filter_fieldset_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Filter Field Set Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Filter Field Set linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-unit_measure" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=unit_measure&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={unit_measure_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Unit Measure Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Unit Measure linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="updateWS" functionArgs="" validateData="function" validateDataFunction="validateUpdateWS" tableName="redshopb_product">
+      <description><![CDATA[This operation updates Aesir E-Commerce product]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="erp_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Set or update the Product ERP ID.  It will be stored as erp.&lt;id&gt; for future reference]]></description>
+        </field>
+        <field name="name" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product name]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name]]></description>
+        </field>
+        <field name="sku" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Stock keeping unit, a unique identifier for each distinct product]]></description>
+        </field>
+        <field name="manufacturer_sku" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Manufacturer stock keeping unit]]></description>
+        </field>
+        <field name="related_sku" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Related stock keeping unit]]></description>
+        </field>
+        <field name="date_new" transform="datetime" defaultValue="0000-00-00" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Introduction date of this product, to display a NEW label in shop]]></description>
+        </field>
+        <field name="stock_upper_level" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[When the stock is above this level, it's considered as enough stock. Below it, it displays a first warning]]></description>
+        </field>
+        <field name="stock_lower_level" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[When the stock of this product is below this limit, a several warning is displayed in shop]]></description>
+        </field>
+        <field name="template_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Template selected for presenting the product in shop.  Send 'null' to remove it from the product.]]></description>
+        </field>
+        <field name="category_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Main category of the product. If main category is changed on the product then the old value will be removed from the category list and if needed has to be added through CategoryAdd task operation. <br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="manufacturer_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product manufacturer<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="decimal_position" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Decimal positions allowed for this product stock and purchase]]></description>
+        </field>
+        <field name="filter_fieldset_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product filter for shop<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="unit_measure_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Code of the unit of measure of the product]]></description>
+        </field>
+        <field name="price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Global product price, applied without any specification of customer, time or campaign. Fallback price]]></description>
+        </field>
+        <field name="retail_price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Global product retail price, applied without any specification of customer, time or campaign. Fallback retail price]]></description>
+        </field>
+		<field name="campaign" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+		  <description><![CDATA[Toggle whether this product is part of a campaign or not]]></description>
+		</field>
+        <field name="service" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Defines if the product is a service/accessory product (true) or a regular product (false)]]></description>
+        </field>
+        <field name="min_sale" transform="int" defaultValue="0" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Minimum allowed buying quantity]]></description>
+        </field>
+        <field name="max_sale" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Maximum allowed buying quantity]]></description>
+        </field>
+        <field name="pkg_size" transform="float" defaultValue="1" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[This product can only be sold in multiples of this amount]]></description>
+        </field>
+        <description><![CDATA[Product update fields.  Send the ID as a reference, and every other field will only be modified if sent, otherwise it will be ignored.]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product internal ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Product update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="deleteWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product">
+      <description><![CDATA[This operation deletes Aesir E-Commerce product(s).]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <description><![CDATA[Product delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="boolean" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[True upon success, false on error]]></description>
+        </resource>
+        <description><![CDATA[Product delete resources]]></description>
+      </resources>
+    </delete>
+    <task>
+      <read useOperation="read" authorizationNeeded="true" strictFields="false" authorization="" dataMode="model" optionName="" modelClassName="" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="">
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="result" transform="boolean" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+        </resources>
+      </read>
+      <publish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="publishWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product">
+        <description><![CDATA[This task enables you to set specific products as published. Expected data: id of the product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product publish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product publish resources]]></description>
+        </resources>
+      </publish>
+      <unpublish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="unpublishWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product">
+        <description><![CDATA[This task enables you to set specific products as unpublished. Expected data: id of the product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product unpublish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product unpublish resources]]></description>
+        </resources>
+      </unpublish>
+      <setPrice useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string},price{float},erp_id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[This task enables you to set the global (fallback) price for the product.]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="price" transform="float" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Global product price, applied without any specification of customer, time or campaign. Fallback price]]></description>
+          </field>
+					<field name="erp_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+	          <description><![CDATA[Set or update the Product ERP ID of the product price.  It will be stored as erp.&lt;id&gt; for future reference]]></description>
+	        </field>
+          <description><![CDATA[Product set price fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product set price resources]]></description>
+        </resources>
+      </setPrice>
+      <setRetailPrice useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string},retail_price{float},erp_id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[This task enables you to set the global retail price for the product.]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="retail_price" transform="float" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Global product retail price, applied without any specification of customer, time or campaign.]]></description>
+          </field>
+					<field name="erp_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+	          <description><![CDATA[Set or update the Product ERP ID of the product price.  It will be stored as erp.&lt;id&gt; for future reference]]></description>
+	        </field>
+          <description><![CDATA[Product set retail price fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product set retail price resources]]></description>
+        </resources>
+      </setRetailPrice>
+      <feature useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="updateFeatured" functionArgs="id{string},1{value}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[This task enables you to set specific products as featured in shop]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product feature fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product feature resources]]></description>
+        </resources>
+      </feature>
+      <unfeature useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="updateFeatured" functionArgs="id{string},0{value}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Remove a certain or a group of products as featured in shop]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product unfeature fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product unfeature resources]]></description>
+        </resources>
+      </unfeature>
+      <discontinue useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="discontinueWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Permanently discontinue a product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product discontinue fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product discontinue resources]]></description>
+        </resources>
+      </discontinue>
+      <categoryAdd useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string},category_id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Add a product to a certain category]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="category_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Category ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product set category fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product set category resources]]></description>
+        </resources>
+      </categoryAdd>
+      <categoryRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string},category_id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Remove a product from a category]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="category_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Category ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product remove category fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product remove category resources]]></description>
+        </resources>
+      </categoryRemove>
+      <tagAdd useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string},tag_id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Add a certain tag to a product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="tag_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Tag ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product set tag fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product set tag resources]]></description>
+        </resources>
+      </tagAdd>
+      <tagRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string},tag_id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Remove a certain tag from a product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="tag_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Tag ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product remove tag fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product remove tag resources]]></description>
+        </resources>
+      </tagRemove>
+      <companyLimitationAdd useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string},company_id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Add a company limitation to a certain product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="company_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Company ID.<br />No prefix denotes an internal id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product add company limitation fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product add company limitation resources]]></description>
+        </resources>
+      </companyLimitationAdd>
+      <companyLimitationRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string},company_id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Remove a company limitation from a certain product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="company_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Company ID.<br />No prefix denotes an internal id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Product remove company limitation fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product remove company limitation resources]]></description>
+        </resources>
+      </companyLimitationRemove>
+      <translate useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.create,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="function" validateDataFunction="validateTranslateWS" tableName="">
+        <description><![CDATA[Adds or update a translation for a product using a language code]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="language" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Language code]]></description>
+          </field>
+          <field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Translated product name]]></description>
+          </field>
+          <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+            <description><![CDATA[Translated alias.]]></description>
+          </field>
+          <description><![CDATA[Product translate fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product translate resources]]></description>
+        </resources>
+      </translate>
+      <translateRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.delete,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="function" validateDataFunction="validateTranslateWS" tableName="">
+        <description><![CDATA[Removes a translation from a product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="language" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Language code]]></description>
+          </field>
+          <description><![CDATA[Product translate remove fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product]]></description>
+          </resource>
+          <resource displayName="result" transform="boolean" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product translate remove resources]]></description>
+        </resources>
+      </translateRemove>
+    </task>
+  </operations>
+</apiservice>

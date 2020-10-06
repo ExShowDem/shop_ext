@@ -1,0 +1,7 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE `#__redshopb_conversion`
+	ADD `default` TINYINT(4) NOT NULL DEFAULT 0 AFTER `alias`,
+	ADD `image` VARCHAR(255) NOT NULL DEFAULT '' AFTER `default`;
+
+SET FOREIGN_KEY_CHECKS = 1;

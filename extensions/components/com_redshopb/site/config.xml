@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields"
+              name="global"
+              label="COM_REDSHOPB_CONFIG_GLOBAL_TITLE"
+              description="COM_REDSHOPB_CONFIG_GLOBAL_TITLE_DESC">>
+        <field
+                name="thumbnail_width"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_THUMBNAIL_WIDTH_LABEL"
+                description="COM_REDSHOPB_CONFIG_THUMBNAIL_WIDTH_DESC"
+                filter="intval"
+                default="144"
+                required="true"
+                />
+        <field
+                name="thumbnail_height"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_THUMBNAIL_HEIGHT_LABEL"
+                description="COM_REDSHOPB_CONFIG_THUMBNAIL_HEIGHT_DESC"
+                filter="intval"
+                default="144"
+                required="true"
+                />
+        <field
+                name="default_currency"
+                type="currency"
+                label="COM_REDSHOPB_CONFIG_DEFAULT_CURRENCY_LABEL"
+                description="COM_REDSHOPB_CONFIG_DEFAULT_CURRENCY_DESC"
+                filter="intval"
+                required="true"
+                />
+        <field
+                name="default_country_id"
+                type="country"
+                label="COM_REDSHOPB_CONFIG_DEFAULT_COUNTRY_LABEL"
+                description="COM_REDSHOPB_CONFIG_DEFAULT_COUNTRY_DESC"
+                filter="intval"
+                required="true"
+                default="59"
+                />
+
+        <field
+                name="show_inline_category_filter"
+                type="radio"
+                label="COM_REDSHOPB_LBL_SHOW_INLINE_CATEGORY_FILTER"
+                description="COM_REDSHOPB_DESC_SHOW_INLINE_CATEGORY_FILTER"
+                translate ="true"
+                class="btn-group"
+                default="1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                name="date_new_product"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_DATE_NEW_PRODUCT_LABEL"
+                description="COM_REDSHOPB_CONFIG_DATE_NEW_PRODUCT_DESC"
+                filter="intval"
+                required="true"
+                default="14"
+                />
+        <field
+                name="encryption_key"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_ENCRYPTION_KEY_LABEL"
+                description="COM_REDSHOPB_CONFIG_ENCRYPTION_KEY_DESC"
+                default="redshopb"
+                required="true"
+                />
+    </fieldset>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields"
+              name="breadcrumbs"
+              label="COM_REDSHOPB_CONFIG_BREADCRUMBS_TITLE"
+              description="COM_REDSHOPB_CONFIG_BREADCRUMBS_TITLE_DESC">>
+        <field
+                name="show_breadcrumbs"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_BREADCRUMBS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_BREADCRUMBS_DESC"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="showHere"
+                type="radio"
+                class="btn-group"
+                default="1"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SHOWHERE_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SHOWHERE_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="showHome"
+                type="radio"
+                class="btn-group"
+                default="1"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SHOWHOME_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SHOWHOME_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="homeText"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_HOMETEXT_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_HOMETEXT_DESC"
+                />
+        <field
+                name="separator"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SEPARATOR_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SEPARATOR_DESC" />
+    </fieldset>
+    <fieldset
+            name="permissions"
+            label="JCONFIG_PERMISSIONS_LABEL"
+            description="JCONFIG_PERMISSIONS_DESC">
+        <field
+                name="rules"
+                type="rules"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                class="inputbox"
+                validate="rules"
+                filter="rules"
+                component="com_redshopb"
+                section="component"
+                />
+    </fieldset>
+</config>

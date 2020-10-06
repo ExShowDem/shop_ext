@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="search_layouts"
+				type="text"
+				label="COM_REDCORE_FILTER_SEARCH_DESC"
+				placeholder="JSEARCH_FILTER"
+				/>
+	</fields>
+	<fields name="list">
+		<fieldset>
+			<field
+					name="layouts_order"
+					type="list"
+					filter="0,1,2,3,4,5"
+					class="chosen"
+					onchange="this.form.submit();">
+				<option value="">COM_REDSHOPB_ORDER_BY</option>
+				<option value="0">COM_REDSHOPB_ORDERING_ID_ASC</option>
+				<option value="1">COM_REDSHOPB_ORDERING_ID_DESC</option>
+				<option value="2">COM_REDSHOPB_ORDERING_NAME_ASC</option>
+				<option value="3">COM_REDSHOPB_ORDERING_NAME_DESC</option>
+				<option value="4">COM_REDSHOPB_ORDERING_DATE_CREATED_ASC</option>
+				<option value="5">COM_REDSHOPB_ORDERING_DATE_CREATED_DESC</option>
+			</field>
+			<field
+					name="layout_limit"
+					type="rlimitbox"
+					class="inputbox input-mini chzn"
+					default="15"
+					label="JGLOBAL_ORDERING_LIST_LIMIT"
+					description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+					onchange="this.form.submit();"
+					/>
+		</fieldset>
+	</fields>
+</form>

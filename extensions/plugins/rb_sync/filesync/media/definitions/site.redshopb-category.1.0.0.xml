@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<filesync>
+	<name>Category File Sync</name>
+	<author>Aesir</author>
+	<copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+	<description>Maintain the global product category tree.</description>
+	<config>
+		<name>redshopb-category</name>
+		<version>1.0.0</version>
+	</config>
+	<operations>
+		<update isAdminClass="false" optionName="com_redshopb">
+			<fields>
+				<field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true"/>
+				<field name="erp.id" transform="string" optionalRemoteKey="true" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+				<field name="pim.id" transform="string" optionalRemoteKey="true" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+				<field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false"/>
+				<field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+				<field name="company_id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+				<field name="parent_id" transform="int" defaultValue="1" isRequiredField="false" isPrimaryField="false" relationService="redshopb-category.id"/>
+				<field name="image" transform="image" imageSection="categories" imageIncrement="id" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+				<field name="description" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+				<field name="template_id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+				<field name="state" transform="int" defaultValue="1" isRequiredField="false" isPrimaryField="false"/>
+			</fields>
+		</update>
+		<delete isAdminClass="false" optionName="com_redshopb">
+			<fields>
+				<field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true"/>
+			</fields>
+		</delete>
+	</operations>
+</filesync>

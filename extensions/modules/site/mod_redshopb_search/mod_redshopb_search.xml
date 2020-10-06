@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8" client="site" method="upgrade">
+    <name>MOD_REDSHOPB_SEARCH</name>
+    <creationDate>January 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.3.0</version>
+    <description>MOD_REDSHOPB_SEARCH_XML_DESCRIPTION</description>
+    <files>
+        <folder>language</folder>
+        <folder>tmpl</folder>
+        <filename>index.html</filename>
+        <filename module="mod_redshopb_search">mod_redshopb_search.php</filename>
+        <filename>mod_redshopb_search.xml</filename>
+    </files>
+    <scriptfile>script.php</scriptfile>
+    <media folder="media">
+        <folder>mod_redshopb_search</folder>
+    </media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="ajax"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_SEARCH_AJAX_LABEL"
+                        description="MOD_REDSHOPB_SEARCH_AJAX_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="label"
+                        type="label"
+                        label="MOD_REDSHOPB_SEARCH_FIELD_LABEL_TEXT_LABEL"
+                        description="MOD_REDSHOPB_SEARCH_FIELD_LABEL_TEXT_DESC"
+                        />
+                <field
+                        name="width"
+                        type="text"
+                        default="20"
+                        label="MOD_REDSHOPB_SEARCH_FIELD_BOXWIDTH_LABEL"
+                        description="MOD_REDSHOPB_SEARCH_FIELD_BOXWIDTH_DESC"
+                        />
+                <field
+                        name="text"
+                        type="text"
+                        label="MOD_REDSHOPB_SEARCH_FIELD_TEXT_LABEL"
+                        description="MOD_REDSHOPB_SEARCH_FIELD_TEXT_DESC"
+                        />
+                <field
+                        name="submit_type"
+                        type="list"
+                        default="0"
+                        label="MOD_REDSHOPB_SEARCH_FIELD_BUTTON_TYPE_LABEL"
+                        description="MOD_REDSHOPB_SEARCH_FIELD_BUTTON_TYPE_DESC">
+                        <option value="0">MOD_REDSHOPB_SEARCH_FIELD_BUTTON_TYPE_TEXT</option>
+                        <option value="1">MOD_REDSHOPB_SEARCH_FIELD_BUTTON_TYPE_IMAGE</option>
+                </field>
+                <field
+                        name="submit_position"
+                        type="list"
+                        default="0"
+                        label="MOD_REDSHOPB_SEARCH_FIELD_BUTTONPOS_LABEL"
+                        description="MOD_REDSHOPB_SEARCH_FIELD_BUTTONPOS_DESC">
+                        <option value="0">MOD_REDSHOPB_SEARCH_FIELD_VALUE_LEFT</option>
+                        <option value="1">MOD_REDSHOPB_SEARCH_FIELD_VALUE_RIGHT</option>
+                </field>
+                <field
+                        name="button_text"
+                        type="text"
+                        label="MOD_REDSHOPB_SEARCH_FIELD_BUTTONTEXT_LABEL"
+                        description="MOD_REDSHOPB_SEARCH_FIELD_BUTTONTEXT_DESC"
+                        />
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+                        />
+                <field
+                        name="submit_button_class"
+                        type="textarea" rows="3"
+                        default="btn-primary"
+                        label="MOD_REDSHOPB_SEARCH_FIELD_BUTTON_CLASS_LABEL"
+                        description="MOD_REDSHOPB_SEARCH_FIELD_BUTTON_CLASS_DESC"
+                        />
+                <field
+                        name="clear_button_class"
+                        type="textarea" rows="3"
+                        default="btn-inverse"
+                        label="MOD_REDSHOPB_CLEAR_FIELD_BUTTON_CLASS_LABEL"
+                        description="MOD_REDSHOPB_CLEAR_FIELD_BUTTON_CLASS_DESC"
+                        />
+                <field
+                        name="input_field_class"
+                        type="textarea" rows="3"
+                        default=""
+                        label="MOD_REDSHOPB_INPUT_FIELD_CLASS_LABEL"
+                        description="MOD_REDSHOPB_INPUT_FIELD_CLASS_DESC"
+                        />
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea" rows="3"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+                        />
+                <field
+                        name="cache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                        <option value="1">JGLOBAL_USE_GLOBAL</option>
+                        <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field
+                        name="cache_time"
+                        type="text"
+                        default="900"
+                        label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                        description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+                        />
+                <field
+                        name="cachemode"
+                        type="hidden"
+                        default="itemid">
+                        <option value="itemid"></option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,15 @@
+{
+    "name": "vanir_search/solr",
+    "description": "Solr search integration for Vanir",
+    "type": "project",
+    "require": {
+        "solarium/solarium": "^3.8"
+    },
+    "license": "GNU General Public License version 2 or later",
+    "authors": [
+        {
+            "name": "redWeb",
+            "email": "email@redcomponent.com"
+        }
+    ]
+}

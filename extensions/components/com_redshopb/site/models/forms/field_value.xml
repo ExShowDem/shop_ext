@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/libraries/redshopb/form/fields">
+	<fieldset name="standard">
+
+		<field name="id"
+			   type="hidden"
+			   default="0"
+			   readonly="true"
+			   class="readonly"
+			   label="JGLOBAL_FIELD_ID_LABEL"
+			   description="JGLOBAL_FIELD_ID_DESC"/>
+		<field name="name"
+			   type="text"
+			   label="COM_REDSHOPB_FIELD_VALUE_NAME_LABEL"
+			   description="COM_REDSHOPB_FIELD_VALUE_NAME_DESC"
+			   required="true"
+			   maxlength="255"
+				/>
+		<field name="value"
+			   type="text"
+			   label="COM_REDSHOPB_FIELD_VALUE_VALUE_LABEL"
+			   description="COM_REDSHOPB_FIELD_VALUE_VALUE_DESC"
+			   required="true"
+			   maxlength="255"
+				/>
+		<field name="field_id"
+			   type="field"
+			   default=""
+			   required="true"
+			   label="COM_REDSHOPB_FIELD_NAME_LABEL">
+			<option value="">JSELECT</option>
+		</field>
+		<field name="default"
+			   type="radioRedshopb"
+			   label="COM_REDSHOPB_FIELD_VALUE_DEFAULT_LABEL"
+			   description="COM_REDSHOPB_FIELD_VALUE_DEFAULT_DESC"
+			   required="true"
+			   class="btn-group"
+			   default="0"
+				>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params">
+			<field name="imageFileUpload"
+				   type="file"
+				   label="COM_REDSHOPB_FIELD_VALUE_IMAGE_LABEL"
+				   accept="image/jpeg,image/png"
+				   description="COM_REDSHOPB_FIELD_VALUE_IMAGE_DESC"/>
+			<field
+					name="image"
+					type="hidden"/>
+			<field
+					name="deleteImage"
+					type="checkbox"
+					value="1"
+					label="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_LABEL"
+					description="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_DESC"/>
+
+            <field name="imageLink"
+                   type="text"
+                   label="COM_REDSHOPB_FIELD_VALUE_IMAGE_LINK_LABEL"
+                   description="COM_REDSHOPB_FIELD_VALUE_IMAGE_LINK_DESC"/>
+		</fieldset>
+	</fields>
+	<fieldset name="hidden">
+		<field name="image_file" type="hidden"/>
+	</fieldset>
+</form>

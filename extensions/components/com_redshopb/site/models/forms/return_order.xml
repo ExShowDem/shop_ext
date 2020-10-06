@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                class="readonly"
+                readonly="true"
+                />
+        <field
+                name="order_id"
+                type="orders"
+                required="true"
+                default=""
+                showDates="true"
+                label="COM_REDSHOPB_RETURN_ORDER_ORDER_LABEL"
+                description="COM_REDSHOPB_RETURN_ORDER_ORDER_DESC"
+                orderstatus="0"
+                onchange="ajaxsetProducts(this);"
+                >
+                <option value="">JOPTION_SELECT_ORDER</option>
+        </field>
+        <field
+                name="order_item_id"
+                type="orderitems"
+                required="true"
+                default=""
+                description="COM_REDSHOPB_PRODUCT_DESC"
+                label="COM_REDSHOPB_PRODUCT"
+                />
+        <field
+                name="quantity"
+                type="number"
+                class="input-mini"
+                label="COM_REDSHOPB_QTY"
+                description="COM_REDSHOPB_QTY_DESC"
+                default="1"
+                min="1"
+                required="true"
+                />
+        <field
+                name="comment"
+                type="textarea"
+                class="input-large"
+                label="COM_REDSHOPB_RETURN_ORDER_COMMENT"
+                description="COM_REDSHOPB_RETURN_ORDER_COMMENT_DESC"
+                />
+	</fieldset>
+</form>

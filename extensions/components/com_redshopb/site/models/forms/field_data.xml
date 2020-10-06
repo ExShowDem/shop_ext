@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset addfieldpath="/libraries/redshopb/form/fields">
+    <field
+       name="id"
+       type="hidden"
+       default="0"
+       label="COM_REDSHOPB_ID_LABEL"
+       description="COM_REDSHOPB_ID_DESC"
+       readonly="true" />
+    <field
+       name="field_id"
+       type="text"
+       default="0"
+       required="true"
+       label="JGLOBAL_FIELD_ID_LABEL"
+       description="JGLOBAL_FIELD_ID_DESC" />
+    <field
+       name="item_id"
+       type="text"
+       default="0"
+       required="true"
+       label="COM_REDSHOPB_ITEM_LABEL"
+       description="COM_REDSHOPB_ITEM_DESC" />
+    <field
+       name="value"
+       type="text"
+       default="0"
+       required="true"
+       label="COM_REDSHOPB_FIELD_VALUE_VALUE_LABEL"
+       description="COM_REDSHOPB_FIELD_VALUE_VALUE_DESC" />
+  </fieldset>
+</form>

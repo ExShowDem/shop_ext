@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="stockroom_id"
+                type="number"
+                validate="integer"
+                label="COM_REDSHOPB_STOCKROOM_LABEL"
+                description="COM_REDSHOPB_STOCKROOM_DESC"
+                >
+        </field>
+        <field
+                name="product_id"
+                type="number"
+                validate="integer"
+                label="COM_REDSHOPB_PRODUCT_LABEL"
+                description="COM_REDSHOPB_PRODUCT_DESC"
+                >
+        </field>
+        <field
+                name="unlimited"
+                type="list"
+                label="COM_REDSHOPB_STOCKROOM_UNLIMITED_LABEL"
+                description="COM_REDSHOPB_STOCKROOM_UNLIMITED_DESC"
+                default="0"
+                >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field
+                name="amount"
+                class="input-small"
+                type="number"
+                validate="nullfloat"
+                label="COM_REDSHOPB_STOCKROOM_AMOUNT_LABEL"
+                description="COM_REDSHOPB_STOCKROOM_AMOUNT_DESC"
+                default="0"
+                />
+        <field
+                name="stock_upper_level"
+                class="input-small"
+                type="number"
+                validate="nullfloat"
+                label="COM_REDSHOPB_STOCKROOM_STOCK_UPPER_LEVEL_LABEL"
+                description="COM_REDSHOPB_STOCKROOM_STOCK_UPPER_LEVEL_DESC"
+                default="0"
+                />
+        <field
+                name="stock_lower_level"
+                class="input-small"
+                type="number"
+                validate="nullfloat"
+                label="COM_REDSHOPB_STOCKROOM_STOCK_LOWER_LEVEL_LABEL"
+                description="COM_REDSHOPB_STOCKROOM_STOCK_LOWER_LEVEL_DESC"
+                default="0"
+                />
+    </fieldset>
+</form>

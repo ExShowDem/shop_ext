@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Product Complementary Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>This web service maintains complementary product relationship.</description>
+  <config>
+    <name>redshopb-product_complementary_product</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="model" optionName="com_redshopb" modelClassName="Product_Complimentary_Product" modelClassPath="" isAdminClass="false" functionName="createWS" functionArgs="" validateData="function" validateDataFunction="validateCreateWS" tableName="redshopb_product_complimentary">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce Complementary Product relationship ]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="true">
+          <description><![CDATA[Complementary Product ERP ID.  It will be stored as erp. for future reference]]></description>
+        </field>
+        <field name="product_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Owner Product ID of this Complementary Product.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="complimentary_product_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[ID of the complementary product for the main product.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <description><![CDATA[Complementary Product creation fields.Please note that product_id and complimentary_product_id are exclusive, so only one can be set per complementary product record.]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Complementary webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product Complementary]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[New Complementary product internal id upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Complementary product creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Product_Complimentary_Products" modelClassPath="" isAdminClass="false" functionName="getItemsWS" paginationFunction="getPagination" totalFunction="getTotal" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_complimentary">
+        <description><![CDATA[This operation lists all Aesir E-Commerce Complementary_Products]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal Complementary product ID]]></description>
+          </field>
+          <field name="product_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Main product ID]]></description>
+          </field>
+          <field name="complimentary_product_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[ID of the product that is complementing the main product.]]></description>
+          </field>
+          <field name="state" transform="boolean" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </field>
+          <description><![CDATA[Complementary products list fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Complementary Products webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal Complementary Product ID]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Complementary Product]]></description>
+          </resource>
+          <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the complementary product]]></description>
+          </resource>
+          <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal product ID this complementary product is applied to]]></description>
+          </resource>
+          <resource displayName="product_id_others" transform="array" fieldFormat="{product_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the product]]></description>
+          </resource>
+          <resource displayName="complimentary_product_id" transform="int" fieldFormat="{complimentary_product_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal customer Complementary Product ID this complementary product is applied to]]></description>
+          </resource>
+          <resource displayName="complimentary_product_id_others" transform="array" fieldFormat="{complimentary_product_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the complementary product]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Determines if the complementary product is published ]]></description>
+          </resource>
+          <description><![CDATA[Complementary products list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Product_Complimentary_Product" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_complimentary">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Complementary Product]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="true">
+            <description><![CDATA[Complementary Product ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Complementary Product display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal complementary product ID]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Complementary Product webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Complementary Product]]></description>
+          </resource>
+          <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the complementary product]]></description>
+          </resource>
+          <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID this complementary product is applied to]]></description>
+          </resource>
+          <resource displayName="product_id_others" transform="array" fieldFormat="{product_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the product]]></description>
+          </resource>
+          <resource displayName="complimentary_product_id" transform="int" fieldFormat="{complimentary_product_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product item ID this complementary product is applied to]]></description>
+          </resource>
+          <resource displayName="complimentary_product_id_others" transform="array" fieldFormat="{complimentary_product_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the complementary product item]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Determines if the complementary product is published]]></description>
+          </resource>
+          <description><![CDATA[Complementary Product display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Complimentary_Product" modelClassPath="" isAdminClass="false" functionName="updateWS" functionArgs="" validateData="function" validateDataFunction="validateUpdateWS" tableName="redshopb_product_complimentary">
+      <description><![CDATA[This operation updates Aesir E-Commerce Complementary Products]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Complementary Products ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="product_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="complimentary_product_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Complementary Product ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <description><![CDATA[Complementary Products update fields.Please note that product_id and complimentary_product_id are exclusive, so only one can be set per complementary products record.]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Complementary product webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Complementary Product]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Complementary Products ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Complementary Products update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="Product_Complimentary_Product" modelClassPath="" isAdminClass="false" functionName="deleteWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product_complimentary">
+      <description><![CDATA[This operation deletes Aesir E-Commerce Complementary Product(s).]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Complementary Product ID.No prefix denotes an internal id.pim. denotes a PIM id.erp. denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <description><![CDATA[Complementary product delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Complementary Product webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="boolean" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[True on success. False on fail or error]]></description>
+        </resource>
+        <description><![CDATA[Complementary Product delete resources]]></description>
+      </resources>
+    </delete>
+  </operations>
+  <complexArrays/>
+</apiservice>

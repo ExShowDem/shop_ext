@@ -1,0 +1,52 @@
+filter:
+    paths:
+        - "extensions/"
+    dependency_paths:
+        - ".scrutinizer/vendor/"
+        - build/redCORE/
+        - "extensions/libraries/mpdf/"
+        - "extensions/libraries/redshopb/vendor/"
+        - "extensions/plugins/vanir_search/solr/vendor/"
+
+build:
+    nodes:
+        analysis:
+            dependencies:
+                before:
+                    - cd .scrutinizer/
+                    # Only runs composer install and updates the cache if the .lock file has changed
+                    - HASH=$(sha1sum composer.lock | awk '{print $1}')
+                    -
+                        command: restore-from-cache repository "analysis-$HASH"
+                        only_if: exists-in-cache repository "analysis-$HASH"
+                    -
+                        command: composer install
+                        not_if: exists-in-cache repository "analysis-$HASH"
+                    -
+                        command: store-in-cache repository "analysis-$(sha1sum composer.lock | awk '{print $1}')" vendor/
+                        not_if: exists-in-cache repository "analysis-$HASH"
+                    - cd ../
+                    - (cd extensions/libraries/redshopb/ && composer install && cd ~/build)
+                    - (cd extensions/plugins/vanir_search/solr && composer install && cd ~/build)
+                after:
+                    - composer require --dev squizlabs/php_codesniffer:2.*
+            tests:
+                before:
+                    -
+                        command: phpcs-run --standard=.scrutinizer/vendor/joomla/coding-standards/Joomla/ruleset.xml extensions/
+                        use_website_config: false
+                override:
+                    - js-scrutinizer-run
+                    - php-scrutinizer-run
+        phpcs:
+            commands:
+                - checkout-code ~/code
+                - cd ./code/.scrutinizer/
+                - composer install
+                - composer phpcs -- ../extensions/
+        namespace:
+            commands:
+                - checkout-code ~/code
+                - cd ./code/.scrutinizer/
+                - composer install
+                - composer jnsc -- ../extensions/

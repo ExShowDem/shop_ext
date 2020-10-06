@@ -1,0 +1,1 @@
+ALTER TABLE `#__redshopb_field_data`  ADD KEY `idx_common` (`state` ASC, `field_id` ASC, `item_id` ASC, `subitem_id` ASC);

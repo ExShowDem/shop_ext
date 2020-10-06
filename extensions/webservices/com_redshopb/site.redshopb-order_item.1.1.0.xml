@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Order Item Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>Maintains the order items</description>
+  <config>
+    <name>redshopb-order_item</name>
+    <version>1.1.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+		<read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Order_Items" modelClassPath="" isAdminClass="false" functionName="getItemsWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_order_item">
+        <description><![CDATA[This operation lists all Aesir E-Commerce order items]]></description>
+        <fields>
+          <field name="order_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Order id]]></description>
+          </field>
+          <field name="product_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Product id]]></description>
+          </field>
+          <field name="product_item_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Product item id]]></description>
+          </field>
+          <field name="collection_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Collection id]]></description>
+          </field>
+          <field name="stockroom_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Stockroom id]]></description>
+          </field>
+          <description><![CDATA[Order item list fields.]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal order item ID]]></description>
+          </resource>
+          <resource displayName="order_id" transform="int" fieldFormat="{order_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal order ID]]></description>
+          </resource>
+          <resource displayName="order_id_others" transform="array" fieldFormat="{order_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the order]]></description>
+          </resource>
+          <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal product ID]]></description>
+          </resource>
+          <resource displayName="product_id_others" transform="array" fieldFormat="{product_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the product]]></description>
+          </resource>
+          <resource displayName="product_item_id" transform="int" fieldFormat="{product_item_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal product item ID]]></description>
+          </resource>
+          <resource displayName="product_item_id_others" transform="array" fieldFormat="{product_item_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the product item]]></description>
+          </resource>
+          <resource displayName="collection_id" transform="int" fieldFormat="{collection_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal collection ID]]></description>
+          </resource>
+          <resource displayName="collection_id_others" transform="array" fieldFormat="{collection_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the collection]]></description>
+          </resource>
+          <resource displayName="currency_code" transform="string" fieldFormat="{currency_code}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Currency code of this order item]]></description>
+          </resource>
+          <resource displayName="price_without_discount" transform="float" fieldFormat="{price_without_discount}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Original price (without discount) of the order item (individual item price)]]></description>
+          </resource>
+          <resource displayName="price" transform="float" fieldFormat="{price}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Total price of the order item (individual item price, with discount included)]]></description>
+          </resource>
+          <resource displayName="quantity" transform="float" fieldFormat="{quantity}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Quantity of items]]></description>
+          </resource>
+          <resource displayName="discount_type" transform="string" fieldFormat="{discount_type}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Type of discount in the discount field.  Possible values: total, percent]]></description>
+          </resource>
+          <resource displayName="discount" transform="float" fieldFormat="{discount}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Discount included in this order item, relative to the discount type]]></description>
+          </resource>
+          <resource displayName="stockroom_id" transform="int" fieldFormat="{stockroom_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal stockroom ID]]></description>
+          </resource>
+          <resource displayName="stockroom_id_others" transform="array" fieldFormat="{stockroom_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the stockroom]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Order webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to this order]]></description>
+          </resource>
+          <resource displayName="redshopb-order" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=order&amp;webserviceVersion=1.4.0&amp;webserviceClient=site&amp;id={order_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Order Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Order linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-product" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=product&amp;webserviceVersion=1.2.0&amp;webserviceClient=site&amp;id={product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-product_item" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_item_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product item Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Product item linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-collection" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=collection&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={collection_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Collection Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Collection linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={currency_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Currency linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-stockroom" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=stockroom&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={stockroom_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Stockroom Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Stockroom linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-stockroom-product" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=stockroom_product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;filter[stockroom_id]={stockroom_id}&amp;filter[product_id]={product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Stockroom-Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Stockroom-Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-stockroom-product_item" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=stockroom_product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;filter[stockroom_id]={stockroom_id}&amp;filter[product_item_id]={product_item_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Stockroom-Product Item Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Stockroom-Product Item linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Order item list resources]]></description>
+        </resources>
+      </list>
+			<item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Order_Item" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="" enforcePKs="false">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce order item]]></description>
+        <fields>
+          <field name="id" transform="string" isRequiredField="true" defaultValue="" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Order item ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Order item display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal order item ID]]></description>
+          </resource>
+          <resource displayName="order_id" transform="int" fieldFormat="{order_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal order ID]]></description>
+          </resource>
+          <resource displayName="order_id_others" transform="array" fieldFormat="{order_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the order]]></description>
+          </resource>
+          <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID]]></description>
+          </resource>
+          <resource displayName="product_id_others" transform="array" fieldFormat="{product_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the product]]></description>
+          </resource>
+          <resource displayName="product_item_id" transform="int" fieldFormat="{product_item_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product item ID]]></description>
+          </resource>
+          <resource displayName="product_item_id_others" transform="array" fieldFormat="{product_item_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the product item]]></description>
+          </resource>
+          <resource displayName="collection_id" transform="int" fieldFormat="{collection_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal collection ID]]></description>
+          </resource>
+          <resource displayName="collection_id_others" transform="array" fieldFormat="{collection_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the collection]]></description>
+          </resource>
+          <resource displayName="currency_code" transform="string" fieldFormat="{currency_code}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Currency code of this order item]]></description>
+          </resource>
+          <resource displayName="price_without_discount" transform="float" fieldFormat="{price_without_discount}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Original price (without discount) of the order item (individual item price)]]></description>
+          </resource>
+          <resource displayName="price" transform="float" fieldFormat="{price}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total price of the order item (individual item price, with discount included)]]></description>
+          </resource>
+          <resource displayName="quantity" transform="float" fieldFormat="{quantity}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Quantity of items]]></description>
+          </resource>
+          <resource displayName="discount_type" transform="string" fieldFormat="{discount_type}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Type of discount in the discount field.  Possible values: total, percent]]></description>
+          </resource>
+          <resource displayName="discount" transform="float" fieldFormat="{discount}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Discount included in this order item, relative to the discount type]]></description>
+          </resource>
+          <resource displayName="stockroom_id" transform="int" fieldFormat="{stockroom_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal stockroom ID]]></description>
+          </resource>
+          <resource displayName="stockroom_id_others" transform="array" fieldFormat="{stockroom_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the stockroom]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Order webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Order]]></description>
+          </resource>
+          <resource displayName="redshopb-order" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=order&amp;webserviceVersion=1.4.0&amp;webserviceClient=site&amp;id={order_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Order Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Order linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-product" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=product&amp;webserviceVersion=1.2.0&amp;webserviceClient=site&amp;id={product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-product_item" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_item_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product item Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product item linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-collection" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=collection&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={collection_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Collection Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Collection linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={currency_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Currency linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-stockroom" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=stockroom&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={stockroom_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Stockroom Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Stockroom linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-stockroom-product" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=stockroom_product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;filter[stockroom_id]={stockroom_id}&amp;filter[product_id]={product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Stockroom-Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Stockroom-Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-stockroom-product_item" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=stockroom_product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;filter[stockroom_id]={stockroom_id}&amp;filter[product_item_id]={product_item_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Stockroom-Product Item Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Stockroom-Product Item linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Order display resources]]></description>
+        </resources>
+      </item>
+		</read>
+	</operations>
+</apiservice>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="name"
+                type="rtext"
+                label="COM_REDSHOPB_NEWSLETTER_LIST_NAME"
+                description="COM_REDSHOPB_NEWSLETTER_LIST_NAME_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="alias"
+                type="rtext"
+                label="COM_REDSHOPB_NEWSLETTER_LIST_ALIAS"
+                description="COM_REDSHOPB_NEWSLETTER_LIST_ALIAS_DESC"
+                maxlength="255"
+                />
+        <field
+                name="segmentation_query"
+                type="hidden"
+                label="COM_REDSHOPB_NEWSLETTER_LIST_SEGMENTATION_QUERY"
+                description="COM_REDSHOPB_NEWSLETTER_LIST_SEGMENTATION_QUERY_DESC"
+                />
+        <field
+                name="segmentation_json"
+                type="hidden"
+                label="COM_REDSHOPB_NEWSLETTER_LIST_SEGMENTATION_QUERY"
+                description="COM_REDSHOPB_NEWSLETTER_LIST_SEGMENTATION_QUERY_DESC"
+                />
+        <field
+                name="plugin"
+                type="rtext"
+                label="COM_REDSHOPB_NEWSLETTER_LIST_PLUGIN"
+                description="COM_REDSHOPB_NEWSLETTER_LIST_PLUGIN_DESC"
+                maxlength="255"
+                />
+        <field
+                name="plugin_id"
+                type="rtext"
+                label="COM_REDSHOPB_NEWSLETTER_LIST_PLUGIN_ID"
+                description="COM_REDSHOPB_NEWSLETTER_LIST_PLUGIN_ID_DESC"
+                default="0"
+                />
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="standard" addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_REDSHOPB_NAME"
+				description="COM_REDSHOPB_NAME"
+				required="true"
+				maxlength="255"
+				/>
+		<field
+				name="type"
+				type="text"
+				label="COM_REDSHOPB_TYPE"
+				description="COM_REDSHOPB_TYPE"
+				required="false"
+				maxlength="255"
+				/>
+	    <field
+			    name="parent_id"
+			    type="tagparent"
+			    label="COM_REDSHOPB_TAG_PARENT_LABEL"
+			    description="COM_REDSHOPB_TAG_PARENT_DESC"
+			    class="inputbox"
+			    />
+		<field
+				name="company_id"
+				type="company"
+				label="COM_REDSHOPB_TAG_COMPANY_LABEL"
+				description="COM_REDSHOPB_TAG_COMPANY_DESC"
+				/>
+		<field
+				name="state"
+				type="radio"
+				label="COM_REDSHOPB_STATE_LABEL"
+				description="COM_REDSHOPB_STATE_DESC"
+				required="true"
+				class="btn-group"
+				default="1"
+				>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		<field
+                name="imageFileUpload"
+                type="file"
+                preview="tooltip"
+                label="COM_REDSHOPB_MEDIA_IMAGE_UPLOADER_LABEL"
+                description="COM_REDSHOPB_MEDIA_IMAGE_UPLOADER_DESC"
+                accept="image/jpeg,image/png"/>
+        <field
+                name="image"
+                type="hidden"/>
+         <field
+			    name="deleteImage"
+			    type="checkbox"
+			    value="1"
+			    label="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_LABEL"
+			    description="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_DESC"/>        
+	</fieldset>
+    <fieldset name="hidden">
+        <field name="image_file" type="hidden"/>
+    </fieldset>
+</form>

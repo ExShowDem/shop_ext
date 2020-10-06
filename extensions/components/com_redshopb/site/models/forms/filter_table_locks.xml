@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_table_locks"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="table_name"
+                type="tablelocktables"
+                label="COM_REDSHOPB_TABLE_LOCK_TABLE_NAME_LABEL"
+                class="chosen"
+                onchange="this.form.submit();"
+        >
+            <option value="">COM_REDSHOPB_TABLE_LOCK_SELECT_TABLE</option>
+        </field>
+        <field
+                name="column_name"
+                type="tablelockcolumns"
+                label="COM_REDSHOPB_TABLE_LOCK_COLUMN_NAME_LABEL"
+                class="chosen"
+                onchange="this.form.submit();"
+        >
+            <option value="">COM_REDSHOPB_TABLE_LOCK_SELECT_COLUMN</option>
+        </field>
+        <field
+                name="locked_by"
+                type="tablelocklockedby"
+                label="COM_REDSHOPB_TABLE_LOCK_LOCKED_BY_LABEL"
+                class="chosen"
+                onchange="this.form.submit();"
+        >
+            <option value="">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_BY</option>
+        </field>
+        <field
+                name="locked_method"
+                type="rlist"
+                label="COM_REDSHOPB_TABLE_LOCK_LOCKED_METHOD_LABEL"
+                class="chosen"
+                onchange="this.form.submit();"
+        >
+            <option value="">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD</option>
+            <option value="User">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD_USER</option>
+            <option value="Webservice">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD_WEBSERVICE</option>
+            <option value="Sync">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD_SYNC</option>
+            <option value="Other">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD_OTHER</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="table_lock_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

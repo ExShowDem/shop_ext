@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_shop_products"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="product_category"
+                type="categories"
+                label="COM_REDSHOPB_CATEGORY_LABEL"
+                description="COM_REDSHOPB_CATEGORY_DESC"
+                multiple="true"
+                filterproducts="true"
+                restriction="parents"
+                >
+            <option value="">JOPTION_SELECT_CATEGORY</option>
+        </field>
+        <field
+                name="product_tag"
+                type="tags"
+                label="COM_REDSHOPB_TAG_LABEL"
+                description="COM_REDSHOPB_TAG_DESC"
+                multiple="true"
+                filterproducts="true"
+                restriction="parents"
+                >
+            <option value="">JOPTION_SELECT_TAG</option>
+        </field>
+        <field
+                name="attribute_flat_display"
+                type="shopattributeflatdisplayvalues"
+                >
+            <option value="">JOPTION_SELECT_ATTRIBUTE_NAME</option>
+        </field>
+        <field
+                name="product_collection"
+                type="collection"
+                label="COM_REDSHOPB_COLLECTION_FORM_TITLE"
+                description="COM_REDSHOPB_COLLECTION_DESC"
+                filter_shop_departments="true"
+                >
+            <option value="">JOPTION_SELECT_COLLECTION</option>
+        </field>
+    </fields>
+    <fields>
+        <fieldset name="category">
+            <field
+                    name="sort_by"
+                    type="categoryproductssort"
+                    label="COM_REDSHOPB_SHOP_SORT_BY_TITLE"
+                    description="COM_REDSHOPB_SHOP_SORT_BY_DESC"
+                    class="inputbox chzn input-medium"
+                    onchange="this.form.submit();"
+                    >
+            </field>
+            <field
+                    name="sort_dir"
+                    type="list"
+                    class="btn-group"
+                    label="COM_REDSHOPB_SHOP_SORT_DIR_TITLE"
+                    description="COM_REDSHOPB_SHOP_SORT_DIR_DESC"
+                    onchange="this.form.submit();"
+                    >
+                <option value="asc">JASC</option>
+                <option value="desc">JDESC</option>
+            </field>
+            <field
+                    name="product_category_limit"
+                    type="rlimitbox"
+                    class="inputbox input-mini chzn chosenSelect"
+                    default="12"
+                    label="COM_REDSHOPB_SHOP_VIEW_LIMIT_TITLE"
+                    description="COM_REDSHOPB_SHOP_VIEW_LIMIT_DESC"
+                    onchange="this.form.submit();"
+                    limits="all"
+                    showall="false"
+                    >
+                <option value="3">3</option>
+                <option value="6">6</option>
+                <option value="9">9</option>
+                <option value="12">12</option>
+                <option value="24">24</option>
+                <option value="36">36</option>
+            </field>
+        </fieldset>
+    </fields>
+    <fields name="list">
+        <field
+                name="product_shop_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn chosenSelect"
+                default="10"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                >
+            <option value="3">3</option>
+        </field>
+    </fields>
+    <fields>
+        <fieldset name="checkout" addfieldpath="/libraries/redshopb/form/fields">
+            <field
+                    name="usebilling"
+                    type="checkbox"
+                    value="1"
+                    default="1"
+                    label="COM_REDSHOPB_B2BUSER_USE_ADDRESS_BILLING_SHIPPING"
+                    description="COM_REDSHOPB_B2BUSER_USE_ADDRESS_BILLING_SHIPPING_DESC"
+                    onchange="jQuery('.js-form-wrapper').toggle();"
+                    checked="true"
+            />
+            <field
+                    name="comment"
+                    type="textarea"
+                    class="input-medium"
+                    label="COM_REDSHOPB_ORDER_COMMENT"
+                    description="COM_REDSHOPB_ORDER_COMMENT_DESC"
+                    />
+            <field
+                    name="requisition"
+                    type="text"
+                    class="input-medium"
+                    label="COM_REDSHOPB_ORDER_REQUISITION"
+                    description="COM_REDSHOPB_ORDER_REQUISITION_DESC"
+                    />
+			<field
+					name="invoice_email_toggle"
+					type="checkbox"
+					checked="true"
+					label="COM_REDSHOPB_COMPANY_INVOICE_EMAIL_TOGGLE"
+					onchange="jQuery('.invoice_email_group').toggle();"
+				/>
+			<field
+					name="invoice_email"
+					type="text"
+					class="medium-input"
+					label="COM_REDSHOPB_COMPANY_INVOICE_EMAIL_LABEL"
+					description="COM_REDSHOPB_COMPANY_INVOICE_EMAIL_DESC"
+				/>
+            <field
+                    name="delivery_address_id"
+                    type="address"
+                    label="COM_REDSHOPB_ORDER_DELIVERY_ADDRESS"
+                    description="COM_REDSHOPB_ORDER_DELIVERY_ADDRESS_DESC"
+                    />
+            <field
+                    name="name"
+                    type="text"
+                    default=""
+                    label="COM_REDSHOPB_ADDRESS_NAME"
+                    description="COM_REDSHOPB_ADDRESS_NAME_DESC"
+                    />
+            <field
+                    name="name2"
+                    type="text"
+                    default=""
+                    label="COM_REDSHOPB_ADDRESS_NAME2_LABEL"
+                    description="COM_REDSHOPB_ADDRESS_NAME2_DESC"
+                    />
+            <field
+                    name="address"
+                    type="text"
+                    default=""
+                    required="true"
+                    label="COM_REDSHOPB_ADDRESS_LABEL"
+                    description="COM_REDSHOPB_ADDRESS_DESC"
+                    />
+            <field
+                    name="address2"
+                    type="text"
+                    default=""
+                    label="COM_REDSHOPB_ADDRESS2_LABEL"
+                    description="COM_REDSHOPB_ADDRESS2_DESC"
+                    />
+            <field
+                    name="zip"
+                    type="text"
+                    required="true"
+                    label="COM_REDSHOPB_ZIP_LABEL"
+                    description="COM_REDSHOPB_ZIP_DESC"
+                    message="COM_REDSHOPB_ZIP_INVALID"
+                    />
+             <field
+                    name="phone"
+                    type="text"
+                    label="COM_REDSHOPB_ADDRESS_PHONE_LABEL"
+                    description="COM_REDSHOPB_ADDRESS_PHONE_DESC"
+                    />
+            <field
+                    name="city"
+                    type="text"
+                    required="true"
+                    label="COM_REDSHOPB_CITY_LABEL"
+                    description="COM_REDSHOPB_CITY_DESC"
+                    />
+            <field
+                    name="country_id"
+                    type="country"
+                    hideReadOnly="true"
+                    required="true"
+                    label="COM_REDSHOPB_COUNTRY_LABEL"
+                    description="COM_REDSHOPB_COUNTRY_DESC"
+                    >
+                <option value="">JOPTION_SELECT_COUNTRY</option>
+            </field>
+            <field
+                    name="state_id"
+                    type="redshopb.list_ajax"
+                    label="COM_REDSHOPB_COUNTRY_STATE_LABEL"
+                    description="COM_REDSHOPB_COUNTRY_STATE_DESC"
+                    formName="filter_shop"
+                    model="site:States"
+                    filter="{ 'filter.state': 1 }"
+                    completionFilter="filter.search_states"
+                    dynamicFilters="{'filter.country_id' : '#country_id'}"
+                    resetWhenDynamicFilterChanged="true"
+                    property="name"
+                    minimumInputLength="0"
+                    ordering="s.name"
+                    multiple="false"
+                    required="false"
+                    allowCreate="false"
+                    limit="100"
+                    default=""
+                    hint="JSELECT"
+            />
+            <field
+                    name="email"
+                    type="email"
+                    class="inputbox"
+                    description="COM_REDSHOPB_USER_FIELD_EMAIL_DESC"
+                    label="JGLOBAL_EMAIL"
+                    validate="email"
+            />
+            <field
+                    name="type"
+                    type="hidden"
+                    default="1" />
+        </fieldset>
+    </fields>
+    <fields>
+        <fieldset name="printProductList" addfieldpath="/libraries/redshopb/form/fields">
+            <field
+                    name="list_currency"
+                    type="currency"
+                    filter="intval"
+                    class="chosen"
+                    label="COM_REDSHOPB_SHOP_PRODUCTS_LIST_CURRENCY_LABEL"
+                    description="COM_REDSHOPB_SHOP_PRODUCTS_LIST_CURRENCY_DESC"
+                    />
+            <field name="list_language"
+                   type="contentlanguage"
+                   label="COM_REDSHOPB_SHOP_PRODUCTS_LIST_LANGUAGE_LABEL"
+                   description="COM_REDSHOPB_SHOP_PRODUCTS_LIST_LANGUAGE_DESC"
+                    >
+                <option value="">JOPTION_SELECT_LANGUAGE</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

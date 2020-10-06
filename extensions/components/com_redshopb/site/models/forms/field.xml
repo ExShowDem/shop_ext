@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/libraries/redshopb/form/fields">
+    <fieldset name="standard">
+        <field name="id"
+               type="text"
+               default="0"
+               readonly="true"
+               class="readonly"
+               label="JGLOBAL_FIELD_ID_LABEL"
+               description="JGLOBAL_FIELD_ID_DESC"/>
+    </fieldset>
+    <fieldset name="details">
+        <field
+                name="scope"
+                type="fieldscope"
+                required="true"
+                label="COM_REDSHOPB_FIELD_SCOPE_LABEL"
+                description="COM_REDSHOPB_FIELD_SCOPE_DESC"
+                onchange="redSHOPB.fields.scopeAjaxUpdate('field', 'ordering', 'ajaxGetOrderingField'); 
+                          redSHOPB.fields.scopeAjaxUpdate('field', 'field_group_id', 'ajaxGetFieldGroups');"
+        >
+            <option value="">JOPTION_SELECT_SCOPE</option>
+        </field>
+
+        <field
+                name="field_group_id"
+                type="fieldgroup"
+                required="false"
+                label="COM_REDSHOPB_FIELD_GROUP_LABEL"
+                description="COM_REDSHOPB_FIELD_GROUP_DESC"
+        >
+            <option value="">JOPTION_SELECT_FIELD_GROUP</option>
+        </field>
+
+        <field name="ordering"
+               type="fieldordering"
+               label="COM_REDSHOPB_FIELD_ORDERING_LABEL"
+               description="COM_REDSHOPB_FIELD_ORDERING_DESC">
+            <option value="">JOPTION_SELECT_ORDERING</option>
+        </field>
+
+        <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_FIELD_NAME_LABEL"
+                description="COM_REDSHOPB_FIELD_NAME_DESC"
+                required="true"
+                maxlength="255"
+                />
+
+        <field
+                name="title"
+                type="text"
+                label="COM_REDSHOPB_TITLE"
+                description="COM_REDSHOPB_FIELD_TITLE_DESC"
+                required="true"
+                maxlength="255"
+                />
+
+        <field
+                name="alias"
+                label="COM_REDSHOPB_FIELD_ALIAS_LABEL"
+                description="COM_REDSHOPB_FIELD_ALIAS_DESC"
+                hint="JFIELD_ALIAS_PLACEHOLDER"
+                size="45"/>
+
+        <field
+                name="b2c"
+                type="radio"
+                label="COM_REDSHOPB_FIELD_B2C_LABEL"
+                description="COM_REDSHOPB_FIELD_B2C_DESC"
+                default="0"
+                class="btn-group"
+                showon="scope:user,company">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                name="type_id"
+                type="typeid"
+                required="true"
+                label="COM_REDSHOPB_FIELD_TYPE_ID_LABEL"
+                onchange="submitform('field.setType');"
+                description="COM_REDSHOPB_FIELD_TYPE_ID_DESC">
+            <option value="">COM_REDSHOPB_SELECT_TYPE</option>
+        </field>
+
+        <field
+                name="unit_measure_id"
+                type="unitofmeasure"
+                label="COM_REDSHOPB_FIELD_UNIT_OF_MEASURE_LABEL"
+                description="COM_REDSHOPB_FIELD_UNIT_OF_MEASURE_DESC">
+            <option value="">COM_REDSHOPB_SELECT_TYPE</option>
+        </field>
+
+        <field
+                name="decimal_separator"
+                type="text"
+                label="COM_REDSHOPB_FIELD_DECIMAL_SEPARATOR_LABEL"
+                description="COM_REDSHOPB_FIELD_DECIMAL_SEPARATOR_DESC"
+                showon="unit_measure_id:"
+                maxlength="1"
+        />
+
+        <field
+                name="thousand_separator"
+                type="text"
+                label="COM_REDSHOPB_FIELD_THOUSAND_SEPARATOR_LABEL"
+                description="COM_REDSHOPB_FIELD_THOUSAND_SEPARATOR_DESC"
+                showon="unit_measure_id:"
+                maxlength="1"
+        />
+
+        <field
+                name="decimal_position"
+                type="number"
+                label="COM_REDSHOPB_FIELD_DECIMAL_POSITION_LABEL"
+                description="COM_REDSHOPB_FIELD_DECIMAL_POSITION_DESC"
+                showon="unit_measure_id:"
+                min="0"
+                max="4"
+        />
+
+        <field
+                name="prefix"
+                type="text"
+                label="COM_REDSHOPB_FIELD_PREFIX_LABEL"
+                description="COM_REDSHOPB_FIELD_PREFIX_DESC"
+                showon="unit_measure_id:"
+        />
+
+        <field
+                name="suffix"
+                type="text"
+                label="COM_REDSHOPB_FIELD_SUFFIX_LABEL"
+                description="COM_REDSHOPB_SUFFIX_PREFIX_DESC"
+                showon="unit_measure_id:"
+        />
+
+        <field
+                name="filter_type_id"
+                type="typeid"
+                label="COM_REDSHOPB_FIELD_FILTER_TYPE_ID_LABEL"
+                description="COM_REDSHOPB_FIELD_FILTER_TYPE_ID_DESC">
+            <option value="">COM_REDSHOPB_SELECT_TYPE</option>
+        </field>
+
+        <field
+                name="multiple_values"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_FIELD_MULTIPLE_VALUES_LABEL"
+                description="COM_REDSHOPB_FIELD_MULTIPLE_VALUES_DESC"
+                required="true"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+       </field>
+
+       <field
+                name="only_available"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_FIELD_ONLY_AVAILABLE_LABEL"
+                description="COM_REDSHOPB_FIELD_ONLY_AVAILABLE_DESC"
+                required="true"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+       </field>
+
+        <field
+            name="field_value_ordering"
+            type="list"
+            label="COM_REDSHOPB_FIELD_VALUES_CUSTOM_ORDER_LABEL"
+            description="COM_REDSHOPB_FIELD_VALUES_CUSTOM_ORDER_DESC"
+            required="true"
+            class="btn-group"
+            default="0"
+                >
+            <option value="0">COM_REDSHOPB_FIELD_VALUES_CUSTOM_ORDER_CUSTOM</option>
+            <option value="1">COM_REDSHOPB_FIELD_VALUES_CUSTOM_ORDER_ALPHABETIC</option>
+        </field>
+
+        <field
+                name="field_value_xref_id"
+                type="field"
+                label="COM_REDSHOPB_FIELD_VALUE_XREF_ID_LABEL"
+                description="COM_REDSHOPB_FIELD_VALUE_XREF_ID_DESC">
+            <option value="">JOPTION_SELECT_VALUE_XREF_ID</option>
+        </field>
+
+        <field
+                name="description"
+                type="textarea"
+                label="COM_REDSHOPB_FIELD_DESCRIPTION_LABEL"
+                description="COM_REDSHOPB_FIELD_DESCRIPTION_DESC"
+                />
+
+        <field
+                name="searchable_frontend"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_FIELD_SEARCHABLE_FRONTEND_LABEL"
+                description="COM_REDSHOPB_FIELD_SEARCHABLE_FRONTEND_DESC"
+                required="true"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="searchable_backend"
+               type="radioRedshopb"
+               label="COM_REDSHOPB_FIELD_SEARCHABLE_BACKEND_LABEL"
+               description="COM_REDSHOPB_FIELD_SEARCHABLE_BACKEND_DESC"
+               required="true"
+               class="btn-group"
+               default="0"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="required"
+               type="radioRedshopb"
+               label="COM_REDSHOPB_FIELD_REQUIRED_LABEL"
+               description="COM_REDSHOPB_FIELD_REQUIRED_DESC"
+               required="true"
+               class="btn-group"
+               default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+         <field
+                name="global"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_FIELD_GLOBAL_LABEL"
+                description="COM_REDSHOPB_FIELD_GLOBAL_DESC"
+                required="true"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                 name="state"
+                 type="radio"
+                 label="COM_REDSHOPB_STATE_LABEL"
+                 description="COM_REDSHOPB_STATE_DESC"
+                 required="true"
+                 class="btn-group"
+                 default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+
+        <field
+                name="importable"
+                type="radio"
+                label="COM_REDSHOPB_IMPORTABLE_LABEL"
+                description="COM_REDSHOPB_IMPORTABLE_DESC"
+                class="btn-group"
+                default="0"
+                showon="scope:product"
+        >
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </field>
+    </fieldset>
+</form>

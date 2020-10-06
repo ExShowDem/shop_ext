@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8" client="site" method="upgrade">
+    <name>MOD_REDSHOPB_PRODUCTS</name>
+    <creationDate>January 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.3.0</version>
+    <description>MOD_REDSHOPB_PRODUCTS_DESCRIPTION</description>
+    <files>
+    	<folder>language</folder>
+        <folder>tmpl</folder>
+        <filename>helper.php</filename>
+        <filename module="mod_redshopb_products">mod_redshopb_products.php</filename>
+        <filename>mod_redshopb_products.xml</filename>
+    </files>
+    <scriptfile>script.php</scriptfile>
+    <media folder="media">
+        <folder>mod_redshopb_products</folder>
+    </media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="countItems"
+                        type="number"
+                        default="6"
+                        min="1"
+                        label="MOD_REDSHOPB_PRODUCTS_COUNTITEMS"
+                        />
+                <field
+                        name="types"
+                        type="list"
+                        multiple="true"
+                        required="true"
+                        default="random_products"
+                        label="MOD_REDSHOPB_PRODUCTS_TYPES">
+                        <option value="random_products">MOD_REDSHOPB_PRODUCTS_RANDOM</option>
+                        <option value="current_offers">MOD_REDSHOPB_PRODUCTS_CURRENT_OFFERS</option>
+                        <option value="new_products">MOD_REDSHOPB_PRODUCTS_NEW_PRODUCTS</option>
+                        <option value="most_popular">MOD_REDSHOPB_PRODUCTS_MOST_POPULAR</option>
+                        <option value="featured">MOD_REDSHOPB_PRODUCTS_FEATURED</option>
+                </field>
+                <field
+                        name="categoryRelation"
+                        type="list"
+                        default="0"
+                        label="Category relation">
+                        <option value="0">MOD_REDSHOPB_PRODUCTS_CATEGORYRELATION_WITHOUT_CATEGORY_FILTER</option>
+                        <option value="1">MOD_REDSHOPB_PRODUCTS_CATEGORYRELATION_FILTER_FOR_CURRENT_CATEGORY</option>
+                        <option value="2">MOD_REDSHOPB_PRODUCTS_CATEGORYRELATION_FILTER_FOR_CURRENT_AND_CHILD_CATEGORIES</option>
+                </field>
+                <field
+                        name="useExtraFields"
+                        type="radio"
+                        default="0"
+                        class="radio btn-group btn-group-yesno"
+                        label="MOD_REDSHOPB_PRODUCTS_USE_EXTRA_FIELDS_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_USE_EXTRA_FIELDS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="titleFieldAlias"
+                        type="text"
+                        default=""
+                        label="MOD_REDSHOPB_PRODUCTS_TITLE_FIELD_ALIAS_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_TITLE_FIELD_ALIAS_DESC"
+                />
+                <field
+                        name="imageFieldAlias"
+                        type="text"
+                        default=""
+                        label="MOD_REDSHOPB_PRODUCTS_IMAGE_FIELD_ALIAS_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_IMAGE_FIELD_ALIAS_DESC"
+                />
+                <field
+                        name="orderFieldAlias"
+                        type="text"
+                        default=""
+                        label="MOD_REDSHOPB_PRODUCTS_ORDER_FIELD_ALIAS_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_ORDER_FIELD_ALIAS_DESC"
+                />
+                <field
+                        name="link_one_txt"
+                        type="text"
+                        default="MOD_REDSHOPB_PRODUCTS_SEE_PRODUCT_NEWS"
+                        label="MOD_REDSHOPB_PRODUCTS_LINK_ONE_TXT_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_LINK_ONE_TXT_DESC"
+                />
+                <field
+                        name="link_one"
+                        type="text"
+                        default="index.php?option=com_redshopb&amp;view=shop&amp;layout=productrecent"
+                        label="MOD_REDSHOPB_PRODUCTS_LINK_ONE_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_LINK_ONE_DESC"
+                />
+                <field
+                        name="link_two_txt"
+                        type="text"
+                        default="index.php?option=com_redshopb&amp;view=shop&amp;layout=productfeatured"
+                        label="MOD_REDSHOPB_PRODUCTS_LINK_TWO_TXT_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_LINK_TWO_TXT_DESC"
+                />
+                <field
+                        name="link_two"
+                        type="text"
+                        default=""
+                        label="MOD_REDSHOPB_PRODUCTS_LINK_TWO_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_LINK_TWO_DESC"
+                />
+                <field
+                        name="link_three_txt"
+                        type="text"
+                        default=""
+                        label="MOD_REDSHOPB_PRODUCTS_LINK_THREE_TXT_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_LINK_THREE_TXT_DESC"
+                />
+                <field
+                        name="link_three"
+                        type="text"
+                        default=""
+                        label="MOD_REDSHOPB_PRODUCTS_LINK_THREE_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_LINK_THREE_DESC"
+                />
+
+                <field
+                        name="imageHeight"
+                        type="number"
+                        min="1"
+                        default="160"
+                        label="MOD_REDSHOPB_PRODUCTS_IMAGEHEIGHT_LBL"
+                        />
+                <field
+                        name="imageWidth"
+                        type="number"
+                        min="1"
+                        default="160"
+                        label="MOD_REDSHOPB_PRODUCTS_IMAGEWIDTH_LBL"
+                        />
+                <field
+                        name="itemWidth"
+                        type="number"
+                        min="1"
+                        default="160"
+                        label="MOD_REDSHOPB_PRODUCTS_ITEMWIDTH_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_ITEMWIDTH_DESC"
+                        />
+                <field
+                        name="itemMargin"
+                        type="number"
+                        min="0"
+                        default="40"
+                        label="MOD_REDSHOPB_PRODUCTS_ITEMMARGIN_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_ITEMMARGIN_DESC"
+                        />
+                <field
+                        name="minItems"
+                        type="number"
+                        min="1"
+                        default="2"
+                        label="MOD_REDSHOPB_PRODUCTS_MINITEMS_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_MINITEMS_DESC"
+                        />
+                <field
+                        name="maxItems"
+                        type="number"
+                        min="1"
+                        default="6"
+                        label="MOD_REDSHOPB_PRODUCTS_MAXITEMS_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_MAXITEMS_DESC"
+                        />
+                <field
+                        name="directionNav"
+                        type="radio"
+                        default="0"
+                        class="radio btn-group btn-group-yesno"
+                        label="MOD_REDSHOPB_PRODUCTS_DIRECTIONNAV_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_DIRECTIONNAV_DESC">
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                </field>
+                <field
+                        name="controlNav"
+                        type="radio"
+                        default="0"
+                        class="radio btn-group btn-group-yesno"
+                        label="MOD_REDSHOPB_PRODUCTS_CONTROLNAV_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_CONTROLNAV_DESC">
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                </field>
+                <field
+                        name="animationLoop"
+                        type="radio"
+                        default="0"
+                        class="radio btn-group btn-group-yesno"
+                        label="MOD_REDSHOPB_PRODUCTS_ANIMATIONLOOP_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_ANIMATIONLOOP_DESC">
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                </field>
+                <field
+                        name="slideshow"
+                        type="radio"
+                        default="0"
+                        class="radio btn-group btn-group-yesno"
+                        label="MOD_REDSHOPB_PRODUCTS_SLIDESHOW_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_SLIDESHOW_DESC">
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                </field>
+                <field
+                        name="stockInfo"
+                        type="radio"
+                        default="1"
+                        class="radio btn-group btn-group-yesno"
+                        label="MOD_REDSHOPB_PRODUCTS_STOCKINFO_LBL"
+                        description="MOD_REDSHOPB_PRODUCTS_STOCKINFO_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+                        />
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea" rows="3"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+                        />
+                <field
+                        name="cache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field
+                        name="cache_time"
+                        type="text"
+                        default="900"
+                        label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                        description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+                        />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

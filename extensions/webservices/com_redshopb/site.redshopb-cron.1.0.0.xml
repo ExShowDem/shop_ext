@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Cron Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2008 - 2017 redCOMPONENT.com. All rights reserved.</copyright>
+  <description>Check Cron job current status</description>
+  <config>
+    <name>redshopb-cron</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_{webserviceName}</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="table" optionName="com_redshopb" modelClassName="" modelClassPath="" isAdminClass="false" functionName="" paginationFunction="getPagination" totalFunction="getTotal" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_cron">
+        <description><![CDATA[This operation lists all Vanir Sync statuses]]></description>
+        <resources>
+          <resource displayGroup="_links" displayName="documentation" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies"/>
+          <resource displayName="page" fieldFormat="{pagination.page}" transform="int"/>
+          <resource displayName="pageLimit" fieldFormat="{pagination.limit}" transform="int"/>
+          <resource displayName="limitstart" fieldFormat="{pagination.limitstart}" transform="int"/>
+          <resource displayName="totalItems" fieldFormat="{pagination.totalItems}" transform="int"/>
+          <resource displayName="totalPages" fieldFormat="{pagination.totalPages}" transform="int"/>
+          <resource displayGroup="_links" displayName="base" fieldFormat="/" linkTitle="Default page"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:self" fieldFormat="{webserviceUrlPath}"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:first" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" linkTitle="Pagination first"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:previous" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" linkTitle="Pagination previous"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:next" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" linkTitle="Pagination next"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:last" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" linkTitle="Pagination last"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:all" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" linkTitle="Show all items"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:limit" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" linkTemplated="true" linkTitle="List limit"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:filter" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" linkTemplated="true" linkTitle="Filter list"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:sort" fieldFormat="{webserviceUrlPath}&amp;list[ordering]={list_ordering}&amp;list[direction]={list_direction}" linkTemplated="true" linkTitle="List sort"/>
+          <resource displayName="mysql_version" transform="string" fieldFormat="{mysql_version}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="php_version" transform="string" fieldFormat="{php_version}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="joomla_version" transform="string" fieldFormat="{joomla_version}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="aesir_version" transform="string" fieldFormat="{aesir_version}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="redcore_version" transform="string" fieldFormat="{redcore_version}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="vanir_version" transform="string" fieldFormat="{vanir_version}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Version of the installed Vanir extension]]></description>
+          </resource>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem"/>
+          <resource resourceSpecific="listItem" displayGroup="_links" displayName="{webserviceName}:self" fieldFormat="{webserviceUrlPath}&amp;id={id}"/>
+          <resource displayName="mute_to" transform="string" fieldFormat="{mute_to}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="mute_from" transform="string" fieldFormat="{mute_from}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="title" transform="string" fieldFormat="{title}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="plugin" transform="string" fieldFormat="{plugin}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="parent_id" transform="int" fieldFormat="{parent_id}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="state" transform="int" fieldFormat="{state}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="start_time" transform="datetime" fieldFormat="{start_time}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="finish_time" transform="datetime" fieldFormat="{finish_time}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="next_start" transform="datetime" fieldFormat="{next_start}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="lft" transform="int" fieldFormat="{lft}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="rgt" transform="int" fieldFormat="{rgt}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="level" transform="int" fieldFormat="{level}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="path" transform="string" fieldFormat="{path}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="parent_alias" transform="string" fieldFormat="{parent_alias}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="execute_sync" transform="int" fieldFormat="{execute_sync}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="mask_time" transform="string" fieldFormat="{mask_time}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="offset_time" transform="string" fieldFormat="{offset_time}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="is_continuous" transform="int" fieldFormat="{is_continuous}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="items_process_step" transform="int" fieldFormat="{items_process_step}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="items_processed" transform="int" fieldFormat="{items_processed}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="items_total" transform="int" fieldFormat="{items_total}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="last_status_messages" transform="string" fieldFormat="{last_status_messages}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="params" transform="string" fieldFormat="{params}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="checked_out" transform="int" fieldFormat="{checked_out}" displayGroup="" resourceSpecific="listItem"/>
+          <resource displayName="checked_out_time" transform="datetime" fieldFormat="{checked_out_time}" displayGroup="" resourceSpecific="listItem"/>
+        </resources>
+      </list>
+    </read>
+  </operations>
+  <complexArrays/>
+</apiservice>

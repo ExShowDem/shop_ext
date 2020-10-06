@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<contentelement type="contentelement">
+    <name>Aesir E-Commerce Categories</name>
+    <author>Aesir</author>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <version>2.0.0</version>
+    <description>Categories Table Definition for the Aesir E-Commerce extension</description>
+    <reference>
+        <table name="redshopb_category">
+            <field name="id" type="referenceid" translate="0" alwaysFallback="false" filter="RAW" description="">ID</field>
+            <field name="name" type="text" translate="1" alwaysFallback="false" filter="RAW" description="">Category Name</field>
+            <field name="alias" type="text" translate="1" alwaysFallback="false" filter="RAW" description="">Category Alias</field>
+            <field name="description" type="textarea" translate="1" alwaysFallback="false" filter="RAW" description="">Category Description</field>
+            <filter><![CDATA[]]></filter>
+        </table>
+        <component>
+            <editForm admin="false" option="com_redshopb" view="category" layout="edit" identifier="id" showbutton="true" htmlposition=".btn-toolbar:first .btn-group:first" checkoriginalid="false"/>
+        </component>
+    </reference>
+</contentelement>

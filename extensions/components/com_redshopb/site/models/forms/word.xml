@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+		/>
+		<field
+				name="word"
+				type="text"
+				label="COM_REDSHOPB_WORD"
+				description="COM_REDSHOPB_WORD_DESC"
+				required="true"
+				maxlength="255"
+		/>
+		<field
+				name="main_word"
+				type="radio"
+				label="COM_REDSHOPB_WORD_GROUP_OR_SYNONYM_LBL"
+				description="COM_REDSHOPB_WORD_GROUP_OR_SYNONYM_DESC"
+				class="btn-group radioMainWord"
+				default="0"
+		>
+			<option value="1">COM_REDSHOPB_WORD_SYNONYMS</option>
+			<option value="0">COM_REDSHOPB_WORD_MEANING_GROUP</option>
+		</field>
+		<field
+				name="shared"
+				type="radio"
+				label="COM_REDSHOPB_WORD_SHARE"
+				description="COM_REDSHOPB_WORD_SHARE_DESC"
+				class="btn-group"
+				default="0"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+				name="synonyms"
+				type="redshopb.list_ajax"
+				label="COM_REDSHOPB_WORD_SYNONYMS"
+				description=""
+				formName="word"
+				model="site:Words"
+				filter="{ 'filter.scope': 'synonym' }"
+				dynamicFilters="{'filter.avoid_id' : '#wordId'}"
+				completionFilter="filter.search_words"
+				property="word"
+				ordering="word"
+				allowCreate="true"
+				limit="20"
+				minimumInputLength="0"
+				hint="JSELECT"
+				multiple="true"/>
+		<field name="meanings"
+			   label="COM_REDSHOPB_WORD_MEANINGS_LBL"
+			   description=""
+			   formName="word"
+			   model="site:Words"
+			   property="word"
+			   ordering="word"
+			   limit="20"
+			   hint="JSELECT"
+			   multiple="true"
+			   minimumInputLength="0"
+			   filter="{ 'filter.scope': 'main_word' }"
+			   completionFilter="filter.search_words"
+			   onchange="document.getElementById('formTask').value = 'word.reload';this.form.submit();"
+			   type="redshopb.list_ajax"/>
+	</fieldset>
+</form>

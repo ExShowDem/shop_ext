@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_REDSHOPB_NAME"
+				description="COM_REDSHOPB_NAME"
+				required="true"
+				maxlength="255"
+				/>
+		<field
+				name="alias"
+				type="hidden"
+				label="COM_REDSHOPB_ALIAS"
+				description="COM_REDSHOPB_ALIAS"
+				required="false"
+				maxlength="255"
+				/>
+		<field
+				name="company_id"
+				type="company"
+				label="COM_REDSHOPB_MYFAVORITELIST_COMPANY_LABEL"
+				description="COM_REDSHOPB_MYFAVORITELIST_COMPANY_DESC"
+				/>
+		<field
+				name="department_id"
+				type="department"
+				label="COM_REDSHOPB_MYFAVORITELIST_DEPARTMENT_LABEL"
+				description="COM_REDSHOPB_MYFAVORITELIST_DEPARTMENT_DESC"
+				/>
+		<field
+				name="user_id"
+				type="redshopb.list_ajax"
+				formName="myfavoritelist"
+				model="site:Users"
+				completionFilter="filter.search_users"
+				property="name"
+				ordering="u.name"
+				limit="20"
+				minimumInputLength="0"
+				layout="redshopb.field.select2_ajax"
+				label="COM_REDSHOPB_MYFAVORITELIST_USER_ID_LABEL"
+				description="COM_REDSHOPB_MYFAVORITELIST_USER_ID_DESC"
+				required="true"
+		/>
+		<field
+				name="visible_others"
+				type="radio"
+				class="btn-group"
+				label="COM_REDSHOPB_MYFAVORITELIST_VISIBLE_OTHERS_LABEL"
+				description="COM_REDSHOPB_MYFAVORITELIST_VISIBLE_OTHERS_DESC"
+				default="1">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+		</field>
+		<field
+				name="state"
+				type="radio"
+				label="COM_REDSHOPB_STATE_LABEL"
+				description="COM_REDSHOPB_STATE_DESC"
+				required="false"
+				class="btn-group"
+				default="1"
+				>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		 <field
+            name="product_id"
+            type="hidden"
+            label="COM_REDSHOPB_PRODUCT"
+            description="COM_REDSHOPB_ATTRIBUTE_PRODUCT_DESC"
+        />
+	</fieldset>
+</form>

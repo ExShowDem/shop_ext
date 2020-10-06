@@ -1,0 +1,627 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Department Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>Maintains the department tree inside the companies</description>
+  <config>
+    <name>redshopb-department</name>
+    <version>1.1.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="helper" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="createWSHelper" functionArgs="" validateData="function" validateDataFunction="validateCreateWSHelper" tableName="redshopb_department">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce Department]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Department ERP ID.  It will be stored as erp.&lt;id&gt; for future reference]]></description>
+        </field>
+        <field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Department name]]></description>
+        </field>
+        <field name="name2" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Department name, line 2]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name]]></description>
+        </field>
+        <field name="image" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL of image to import into the server for displaying for the department]]></description>
+        </field>
+        <field name="company_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Owner company ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="parent_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Department parent ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="address_name1" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address name]]></description>
+        </field>
+        <field name="address_name2" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address name 2]]></description>
+        </field>
+        <field name="address_line1" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Actual address, first line.  <br /><strong>When this field is set, the <em>address_line1</em>, <em>zip</em>, <em>city</em> and <em>country_code</em> fields need to be provided</strong>]]></description>
+        </field>
+        <field name="address_line2" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Actual address, second line]]></description>
+        </field>
+        <field name="zip" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address zip code.  <br /><strong>When this field is set, the <em>address_line1</em>, <em>zip</em>, <em>city</em> and <em>country_code</em> fields need to be provided</strong>]]></description>
+        </field>
+        <field name="city" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address city.  <br /><strong>When this field is set, the <em>address_line1</em>, <em>zip</em>, <em>city</em> and <em>country_code</em> fields need to be provided</strong>]]></description>
+        </field>
+        <field name="country_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address country.  <br /><strong>When this field is set, the <em>address_line1</em>, <em>zip</em>, <em>city</em> and <em>country_code</em> fields need to be provided</strong>]]></description>
+        </field>
+        <description><![CDATA[Department creation fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Department webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Department]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[New department internal ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Department creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Departments" modelClassPath="" isAdminClass="false" functionName="getItemsWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_department">
+        <description><![CDATA[This operation lists all Aesir E-Commerce Departments]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal department ID]]></description>
+          </field>
+          <field name="name" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Department name]]></description>
+          </field>
+          <field name="name2" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Department name, line 2]]></description>
+          </field>
+          <field name="company_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Internal owner company ID]]></description>
+          </field>
+          <field name="parent_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Parent internal department ID]]></description>
+          </field>
+          <field name="address_name1" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Address name 1]]></description>
+          </field>
+          <field name="address_name2" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Address name 2]]></description>
+          </field>
+          <field name="address_line1" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Actual address, first line]]></description>
+          </field>
+          <field name="address_line2" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Actual address, second line]]></description>
+          </field>
+          <field name="zip" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Address zip code]]></description>
+          </field>
+          <field name="city" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Address city]]></description>
+          </field>
+          <field name="country_code" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Address country]]></description>
+          </field>
+          <field name="state" transform="boolean" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </field>
+					<field name="include_images" transform="boolean" defaultValue="false" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[When true, it populates the <strong>image</strong> field with the URLs of images.  Otherwise, the field will remain empty.]]></description>
+          </field>
+          <description><![CDATA[Department list fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal department ID]]></description>
+          </resource>
+          <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the department]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Department name]]></description>
+          </resource>
+          <resource displayName="name2" transform="string" fieldFormat="{name2}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Department name, line 2]]></description>
+          </resource>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[URL safe name]]></description>
+          </resource>
+          <resource displayName="image" transform="string" fieldFormat="{imageurl}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Department image URL.  <br /><em>By default this field is empty, but it will populate the URL when sending <strong>filter[include_images]=true</strong></em>]]></description>
+          </resource>
+          <resource displayName="company_id" transform="int" fieldFormat="{company_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Owner company internal ID]]></description>
+          </resource>
+          <resource displayName="company_id_others" transform="array" fieldFormat="{company_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the owner company]]></description>
+          </resource>
+          <resource displayName="parent_id" transform="int" fieldFormat="{parent_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Parent department internal ID]]></description>
+          </resource>
+          <resource displayName="parent_id_others" transform="array" fieldFormat="{parent_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the parent department]]></description>
+          </resource>
+          <resource displayName="address_name1" transform="string" fieldFormat="{address_name1}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Address name 1]]></description>
+          </resource>
+          <resource displayName="address_name2" transform="string" fieldFormat="{address_name2}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Address name 2]]></description>
+          </resource>
+          <resource displayName="address_line1" transform="string" fieldFormat="{address_line1}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Actual address, first line]]></description>
+          </resource>
+          <resource displayName="address_line2" transform="string" fieldFormat="{address_line2}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Actual address, second line]]></description>
+          </resource>
+          <resource displayName="zip" transform="string" fieldFormat="{zip}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Address zip code]]></description>
+          </resource>
+          <resource displayName="city" transform="string" fieldFormat="{city}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Address city]]></description>
+          </resource>
+          <resource displayName="country_code" transform="string" fieldFormat="{country_code}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Address country]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="redshopb-company" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=company&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={company_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Company Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Company linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-department" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=department&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={parent_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Parent Department Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Parent Department linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-country" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=country&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={country_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Country Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Country linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Department list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_department" enforcePKs="false">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Department]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Department display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal department ID]]></description>
+          </resource>
+          <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the department]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department name]]></description>
+          </resource>
+          <resource displayName="name2" transform="string" fieldFormat="{name2}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department name, line 2]]></description>
+          </resource>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[URL safe name]]></description>
+          </resource>
+          <resource displayName="image" transform="string" fieldFormat="{imageurl}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department image URL.]]></description>
+          </resource>
+          <resource displayName="company_id" transform="int" fieldFormat="{company_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Owner company internal ID]]></description>
+          </resource>
+          <resource displayName="company_id_others" transform="array" fieldFormat="{company_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the owner company]]></description>
+          </resource>
+          <resource displayName="parent_id" transform="int" fieldFormat="{parent_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Parent department internal ID]]></description>
+          </resource>
+          <resource displayName="parent_id_others" transform="array" fieldFormat="{parent_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the parent department]]></description>
+          </resource>
+          <resource displayName="address_name1" transform="string" fieldFormat="{address_name}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Address name 1]]></description>
+          </resource>
+          <resource displayName="address_name2" transform="string" fieldFormat="{address_name2}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Address name 2]]></description>
+          </resource>
+          <resource displayName="address_line1" transform="string" fieldFormat="{address}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Actual address, first line]]></description>
+          </resource>
+          <resource displayName="address_line2" transform="string" fieldFormat="{address2}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Actual address, second line]]></description>
+          </resource>
+          <resource displayName="zip" transform="string" fieldFormat="{zip}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Address zip code]]></description>
+          </resource>
+          <resource displayName="city" transform="string" fieldFormat="{city}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Address city]]></description>
+          </resource>
+          <resource displayName="country_code" transform="string" fieldFormat="{country_code}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Address country]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="redshopb-company" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=company&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={company_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Company Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Company linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-department" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=department&amp;webserviceVersion=1.1.0&amp;webserviceClient=site&amp;id={parent_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Parent Department Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Parent Department linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-country" transform="string" fieldFormat="/index.php?option=redshopb&amp;view=country&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={country_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Country Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Country linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Department display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="helper" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="updateWSHelper" functionArgs="" validateData="function" validateDataFunction="validateUpdateWSHelper" tableName="redshopb_department">
+      <description><![CDATA[This operation updates Aesir E-Commerce Department]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="erp_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Set or update the Department ERP ID.  It will be stored as erp.&lt;id&gt; for future reference]]></description>
+        </field>
+        <field name="name" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Department name]]></description>
+        </field>
+        <field name="name2" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Department name, line 2]]></description>
+        </field>
+        <field name="parent_id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Parent ID of this Department]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name]]></description>
+        </field>
+        <field name="image" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL of image to import into the server for displaying for the department]]></description>
+        </field>
+        <field name="address_name1" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address name]]></description>
+        </field>
+        <field name="address_name2" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address name 2]]></description>
+        </field>
+        <field name="address_line1" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Actual address, first line]]></description>
+        </field>
+        <field name="address_line2" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Actual address, second line]]></description>
+        </field>
+        <field name="zip" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address zip code]]></description>
+        </field>
+        <field name="city" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address city]]></description>
+        </field>
+        <field name="country_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Address country]]></description>
+        </field>
+        <description><![CDATA[Department update fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Department webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Department]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Department internal ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Department update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="deleteWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_department">
+      <description><![CDATA[This operation deletes Aesir E-Commerce Department(s).]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <description><![CDATA[Department delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Department webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="boolean" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[True on success. False on fail or error]]></description>
+        </resource>
+        <description><![CDATA[Department delete resources]]></description>
+      </resources>
+    </delete>
+    <task>
+      <publish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="publishWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_department">
+        <description><![CDATA[This task enables you to set specific departments as published.]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Department publish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal Department ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Department publish resources]]></description>
+        </resources>
+      </publish>
+      <unpublish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="unpublishWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_department">
+        <description><![CDATA[This task enables you to set specific departments as unpublished.]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal Department ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Department unpublish resources]]></description>
+        </resources>
+      </unpublish>
+      <imageUpload useOperation="" authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="imageUpload" functionArgs="id{string},image{string}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Adds or update an image for a department.]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="image" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Image (base64 encoded) to be added to this attribute value.]]></description>
+          </field>
+          <description><![CDATA[Department image upload fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal department ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Department image upload resources]]></description>
+        </resources>
+      </imageUpload>
+      <imageRemove useOperation="" authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+        <description><![CDATA[Removes an image from a department.]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Department image remove fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal department ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Department image remove resources]]></description>
+        </resources>
+      </imageRemove>
+      <deliveryAddressAdd useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int},address_id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_department">
+        <description><![CDATA[Add a certain delivery address to a department]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="address_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Address ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Department set delivery address fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department internal ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Department set delivery address resources]]></description>
+        </resources>
+      </deliveryAddressAdd>
+      <deliveryAddressRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int},address_id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_department">
+        <description><![CDATA[Remove a certain delivery address from a Department]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="address_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Address ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Department remove delivery address fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department internal ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Department remove delivery address resources]]></description>
+        </resources>
+      </deliveryAddressRemove>
+      <deliveryAddressDefault useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Department" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int},address_id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_department">
+        <description><![CDATA[Add a certain delivery address to a Department and set it as default]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Department ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <field name="address_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Address ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Department set default delivery address fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Department]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Department internal ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Department set default delivery address resources]]></description>
+        </resources>
+      </deliveryAddressDefault>
+    </task>
+  </operations>
+</apiservice>

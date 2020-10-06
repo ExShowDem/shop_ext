@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6.0" type="plugin" group="redshipping" method="upgrade">
+    <name>PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR</name>
+    <creationDate>May 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.5.0</version>
+    <description>PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR_DESC</description>
+    <files>
+        <folder>helpers</folder>
+        <folder>language</folder>
+        <filename plugin="product_based_shipping_calculator">product_based_shipping_calculator.php</filename>
+    </files>
+    <scriptfile>install.php</scriptfile>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/libraries/redshopb/form/fields">
+                <field
+                        name="is_shipper"
+                        type="hidden"
+                        default="1"
+                        value="1"
+                        />
+                <field
+                        name="fallback_price"
+                        type="text"
+                        default="0"
+                        label="PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR_FALLBACK_PRICE_LABEL"
+                        description="PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR_FALLBACK_PRICE_DESC"
+                        />
+            </fieldset>
+            <fieldset name="extra" label="PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR_FIELDSET_EXTRA">
+                <field
+                        name="shipping_title"
+                        type="text"
+                        default="Product based shipping calculator"
+                        label="PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR_FIELD_TITLE_LABEL"
+                        description="PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR_FIELD_TITLE_DESC"
+                        />
+                <field
+                        name="shipping_logo"
+                        type="text"
+                        default=""
+                        label="PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR_FIELD_LOGO_LABEL"
+                        description="PLG_REDSHIPPING_PRODUCT_BASED_SHIPPING_CALCULATOR_FIELD_LOGO_DESC"
+                        />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

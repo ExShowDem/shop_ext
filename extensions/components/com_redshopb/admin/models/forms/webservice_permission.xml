@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="scope"
+                type="list"
+                required="true"
+                default=""
+                label="COM_REDSHOPB_WEBSERVICE_PERMISSIONS_SCOPE"
+                description="COM_REDSHOPB_WEBSERVICE_PERMISSION_SCOPE_DESC"
+                onchange="javascript:loadWebservicePermissionScope();"
+                >
+            <option value="">JSELECT</option>
+            <option value="category">COM_REDSHOPB_WEBSERVICE_PERMISSION_SCOPE_CATEGORY_TITLE</option>
+            <option value="field">COM_REDSHOPB_WEBSERVICE_PERMISSION_SCOPE_FIELD_TITLE</option>
+            <option value="product">COM_REDSHOPB_PRODUCT_LABEL</option>
+        </field>
+        <field
+                name="name"
+                type="text"
+                required="true"
+                label="COM_REDSHOPB_WEBSERVICE_PERMISSION_NAME_TITLE"
+                description="COM_REDSHOPB_WEBSERVICE_PERMISSION_NAME_DESC"
+                />
+        <field
+                name="description"
+                type="text"
+                label="COM_REDSHOPB_WEBSERVICE_PERMISSION_DESCRIPTION_TITLE"
+                description="COM_REDSHOPB_WEBSERVICE_PERMISSION_DESCRIPTION_DESC"
+                />
+        <field
+                name="manual"
+                type="radio"
+                label="COM_REDSHOPB_WEBSERVICE_PERMISSION_MANUAL_TITLE"
+                description="COM_REDSHOPB_WEBSERVICE_PERMISSION_MANUAL_DESC"
+                default="1"
+                class="btn-group"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                class="btn-group"
+                default="1"
+        >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field
+                name="webservice_permission_item_ids"
+                type="list"
+                multiple="true"
+                />
+    </fieldset>
+</form>

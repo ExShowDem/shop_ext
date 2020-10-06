@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="order_item_row_hidden">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                class="readonly"
+                readonly="true"
+        />
+        <field
+                name="order_id"
+                type="hidden"
+                default="0"
+                class="readonly"
+                readonly="true"
+        />
+        <field
+                name="product_item_id"
+                type="hidden"
+                default="empty"
+        />
+        <field
+                name="currency_id"
+                type="hidden"
+                default="empty"
+        />
+    </fieldset>
+	<fieldset name="order_items_row">
+		<field
+			name="product_id"
+			type="redshopb.list_ajax"
+			label="COM_REDSHOPB_PRODUCT"
+			description="COM_REDSHOPB_PRODUCT_DESC"
+			formName="orderitems"
+			model="site:Products"
+			filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+			completionFilter="filter.search"
+			property="name"
+			ordering="p.name"
+			multiple="false"
+			disabled="true"
+			allowCreate="false"
+			limit="10"
+			hint="JSELECT"
+		/>
+			<field
+				name="product_item_code"
+				type="rtext"
+				label="COM_REDSHOPB_PRODUCT_ITEM_CODE"
+				description="COM_REDSHOPB_PRODUCT_ITEM_CODE_DESC"
+				default="0"
+				class="input-medium readonly"
+				readonly="true"
+				/>
+
+			<field
+				name="attributes"
+				type="rtext"
+				label="COM_REDSHOPB_ORDER_PRODUCT_ATTRIBUTES"
+				default=""
+				class="input-mini readonly"
+				readonly="true"
+				/>
+			<field
+				name="quantity"
+				type="number"
+				class="input-mini"
+				label="COM_REDSHOPB_QTY"
+				description="COM_REDSHOPB_QTY_DESC"
+				default="1"
+				readonly="true"
+                min="1"
+				/>
+			<field
+				name="order"
+				type="rtext"
+				class="input-mini ajax-quantity-change"
+				label="COM_REDSHOPB_ORDER"
+				description="COM_REDSHOPB_ORDER_DESC"
+				default="0"
+                filter="integer"
+				/>
+			<field
+				name="stock"
+				type="number"
+				class="input-mini"
+				label="COM_REDSHOPB_STOCK"
+				description="COM_REDSHOPB_STOCK_DESC"
+				default="0"
+				readonly="true"
+				/>
+			<field
+				name="price"
+				type="number"
+				class="input-mini readonly"
+				description="COM_REDSHOPB_PRICE_DESC"
+				label="COM_REDSHOPB_PRICE"
+				readonly="true"
+				default="0"
+				/>
+			<field
+				name="final_price"
+				type="number"
+				class="input-small readonly item-final-price"
+				description="COM_REDSHOPB_ORDER_ITEMS_FINAL_PRICE_DESC"
+				label="COM_REDSHOPB_ORDER_ITEMS_FINAL_PRICE"
+				readonly="true"
+				default="0"
+				/>
+	</fieldset>
+</form>

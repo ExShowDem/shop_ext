@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="company_id"
+                type="company"
+                label="COM_REDSHOPB_OWNER_COMPANY_LABEL"
+                description="COM_REDSHOPB_PRODUCT_COMPANY_DESC"
+                >
+        </field>
+        <field
+                name="category_id"
+                type="categories"
+                label="COM_REDSHOPB_PRODUCT_CATEGORY_MAIN_LABEL"
+                description="COM_REDSHOPB_PRODUCT_CATEGORY_MAIN_DESC"
+                restriction="company"
+                emptystart="true"
+                >
+              <option value="">JOPTION_SELECT_CATEGORY</option>
+        </field>
+        <field
+                name="categories"
+                type="categories"
+                label="COM_REDSHOPB_CATEGORIES_LABEL"
+                description="COM_REDSHOPB_CATEGORIES_DESC"
+                multiple="true"
+                restriction="company"
+                emptystart="true"
+                />
+        <field
+                name="manufacturer_id"
+                type="manufacturers"
+                label="COM_REDSHOPB_MANUFACTURER_LABEL"
+                description="COM_REDSHOPB_MANUFACTURER_DESC"
+                />
+        <field
+                name="decimal_position"
+                type="number"
+                validate="nullinteger"
+                label="COM_REDSHOPB_PRODUCT_DECIMAL_POSITION_LABEL"
+                description="COM_REDSHOPB_PRODUCT_DECIMAL_POSITION_DESC"
+                />
+        <field
+                name="tag_id"
+                type="tags"
+                label="COM_REDSHOPB_PRODUCT_TAGS_LABEL"
+                description="COM_REDSHOPB_PRODUCT_TAGS_DESC"
+                multiple="true"
+                restriction="company"
+                emptystart="true"
+                />
+        <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_NAME"
+                description="COM_REDSHOPB_PRODUCT_NAME_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="sku"
+                type="text"
+                label="COM_REDSHOPB_SKU"
+                description="COM_REDSHOPB_SKU_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="manufacturer_sku"
+                type="text"
+                label="COM_REDSHOPB_MANUFACTURER_SKU"
+                description="COM_REDSHOPB_MANUFACTURER_SKU_DESC"
+                maxlength="255"
+                />
+        <field
+                name="related_sku"
+                type="relatedsku"
+                maxlength="255"
+                />
+        <field
+                name="stock_lower_level"
+                type="text"
+                label="COM_REDSHOPB_PRODUCT_STOCK_LOWER_LEVEL_LABEL"
+                description="COM_REDSHOPB_PRODUCT_STOCK_LOWER_LEVEL_DESC"
+                />
+        <field
+                name="stock_upper_level"
+                type="text"
+                label="COM_REDSHOPB_PRODUCT_STOCK_UPPER_LEVEL_LABEL"
+                description="COM_REDSHOPB_PRODUCT_STOCK_UPPER_LEVEL_DESC"
+                />
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field
+                name="service"
+                type="radio"
+                label="COM_REDSHOPB_PRODUCT_AS_SERVICE_LABEL"
+                description="COM_REDSHOPB_PRODUCT_AS_SERVICE_DESC"
+                class="btn-group"
+                default="0"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+		<field
+				name="campaign"
+				type="radio"
+				label="COM_REDSHOPB_PRODUCT_CAMPAIGN_LABEL"
+				description="COM_REDSHOPB_PRODUCT_CAMPAIGN_DESC"
+				class="btn-group"
+				default="0"
+				>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+        <field
+                name="date_new"
+                type="rdatepicker"
+                default="0000-00-00"
+                label="COM_REDSHOPB_PRODUCT_DATE_NEW_LABEL"
+                description="COM_REDSHOPB_PRODUCT_DATE_NEW_DESC"
+                dateFormat="yy-mm-dd"
+                />
+        <field
+                name="unit_measure_id"
+                type="unitofmeasure"
+                default=""
+                label="COM_REDSHOPB_PRODUCT_UNIT_OF_MEASURE_LABEL"
+                description="COM_REDSHOPB_PRODUCT_UNIT_OF_MEASURE_DESC"
+                >
+            <option value="">JOPTION_SELECT_UNIT_OF_MEASURE</option>
+        </field>
+        <field
+                name="customer_ids"
+                type="company"
+                multiple="true"
+                label="COM_REDSHOPB_PRODUCT_RELATE_COMPANY_LABEL"
+                description="COM_REDSHOPB_PRODUCT_RELATE_COMPANY_DESC"
+                hideDefault="true"
+                />
+        <field
+                name="template_id"
+                type="template"
+                extension="com_redshopb"
+                label="COM_REDSHOPB_CATEGORY_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CATEGORY_TEMPLATE_DESC"
+                scope="product"
+                templateGroup="shop"
+                >
+            <option value="">COM_REDSHOPB_TEMPLATE_USE_DEFAULT</option>
+        </field>
+        <field
+                name="print_template_id"
+                type="template"
+                extension="com_redshopb"
+                label="COM_REDSHOPB_PRODUCT_PRINT_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_PRODUCT_PRINT_TEMPLATE_DESC"
+                scope="product-print"
+                templateGroup="shop"
+        >
+            <option value="">COM_REDSHOPB_TEMPLATE_USE_DEFAULT</option>
+        </field>
+        <field
+                name="filter_fieldset_id"
+                type="filterfieldset"
+                label="COM_REDSHOPB_FILTER_FIELDSET_LABEL"
+                description="COM_REDSHOPB_FILTER_FIELDSET_DESC"
+                >
+            <option value="">COM_REDSHOPB_SELECT_FILTER_FIELDSET</option>
+        </field>
+         <field
+                name="price"
+                type="text"
+                label="COM_REDSHOPB_PRICE_LABEL"
+                description="COM_REDSHOPB_PRICE_DESC"
+                required="false"
+                maxlength="255"
+                />
+        <field
+                name="retail_price"
+                type="text"
+                label="COM_REDSHOPB_PRICE_RETAIL_LABEL"
+                description="COM_REDSHOPB_PRICE_RETAIL_DESC"
+                required="false"
+                maxlength="255"
+                />
+        <field
+                name="weight"
+                type="number"
+                default="0"
+                label="COM_REDSHOPB_WEIGHT_LABEL"
+                description="COM_REDSHOPB_WEIGHT_DESC"
+                required="true"
+                min="0"
+                max="500"
+                step="0.001" />
+        <field
+                name="volume"
+                type="number"
+                default="0"
+                label="COM_REDSHOPB_VOLUME_LABEL"
+                description="COM_REDSHOPB_VOLUME_DESC"
+                required="true"
+                min="0"
+                max="500"
+                step="0.001" />
+        <field
+                name="publish_date"
+                type="rdatepicker"
+                default="0000-00-00"
+                label="COM_REDSHOPB_PRODUCT_PUBLISH_DATE_LABEL"
+                description="COM_REDSHOPB_PRODUCT_PUBLISH_DATE_DESC"
+                dateFormat="yy-mm-dd" />
+        <field
+                name="unpublish_date"
+                type="rdatepicker"
+                default="0000-00-00"
+                label="COM_REDSHOPB_PRODUCT_UNPUBLISH_DATE_LABEL"
+                description="COM_REDSHOPB_PRODUCT_UNPUBLISH_DATE_DESC"
+                dateFormat="yy-mm-dd" />
+        <field
+                name="calc_type"
+                type="CalcType"
+                default="1"
+                label="COM_REDSHOPB_CALC_TYPE_LABEL"
+                description="COM_REDSHOPB_CALC_TYPE_DESC" />
+        <field
+                name="min_sale"
+                type="text"
+                label="COM_REDSHOPB_PRODUCT_MIN_SALE"
+                description="COM_REDSHOPB_PRODUCT_MIN_SALE_DESC"
+                default="0"
+                />
+        <field
+                name="max_sale"
+                type="text"
+                label="COM_REDSHOPB_PRODUCT_MAX_SALE"
+                description="COM_REDSHOPB_PRODUCT_MAX_SALE_DESC"
+                />
+        <field
+                name="pkg_size"
+                type="text"
+                label="COM_REDSHOPB_PRODUCT_PKG_SIZE"
+                description="COM_REDSHOPB_PRODUCT_PKG_SIZE_DESC"
+                validate="decimalpositions"
+                default="1"
+                />
+		<field
+						name="featured"
+						type="radio"
+						label="COM_REDSHOPB_PRODUCT_FEATURED_LABEL"
+						description="COM_REDSHOPB_PRODUCT_FEATURED_DESC"
+						class="btn-group"
+						default="0"
+						>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+		</field>
+        <field name="tax_group_id"
+               type="taxgroup"
+               label="COM_REDSHOPB_PRODUCT_TAX_GROUP_LABEL"
+               description="COM_REDSHOPB_PRODUCT_TAX_GROUP_DESC"
+                default="">
+            <option value="">JSELECT</option>
+        </field>
+    </fieldset>
+    <fieldset name="hidden">
+        <field name="extrafields" type="hidden"/>
+        <field name="ordering" type="hidden" />
+    </fieldset>
+    <fields name="params">
+        <fieldset addfieldpath="/libraries/redshopb/form/fields" name="params">
+            <field
+                    name="seo_page_titles"
+                    type="seotagging"
+                    tags="productname,manufacturer,categoryname,sitename,productsku"
+                    label="COM_REDSHOPB_PRODUCT_PARAMS_SEO_PAGE_TITLES_LABEL"
+                    description="COM_REDSHOPB_PRODUCT_PARAMS_SEO_PAGE_TITLES_DESC" />
+            <field
+                    name="seo_page_headings"
+                    type="seotagging"
+                    tags="productname,manufacturer,categoryname,sitename,productsku,productshortdesc,categorydesc,manufacturerdesc"
+                    label="COM_REDSHOPB_PRODUCT_PARAMS_SEO_PAGE_HEADINGS_LABEL"
+                    description="COM_REDSHOPB_PRODUCT_PARAMS_SEO_PAGE_HEADINGS_DESC" />
+            <field
+                    name="seo_page_description"
+                    type="seotagging"
+                    tags="productname,manufacturer,categoryname,sitename,productsku,productshortdesc,categorydesc,manufacturerdesc,productdesc"
+                    label="COM_REDSHOPB_PRODUCT_PARAMS_SEO_PAGE_DESCRIPTIONS_LABEL"
+                    description="COM_REDSHOPB_PRODUCT_PARAMS_SEO_PAGE_DESCRIPTIONS_DESC" />
+            <field
+                    name="seo_page_keywords"
+                    type="seotagging"
+                    tags="productname,manufacturer,categoryname,sitename,productsku"
+                    label="COM_REDSHOPB_PRODUCT_PARAMS_SEO_PAGE_KEYWORDS_LABEL"
+                    description="COM_REDSHOPB_PRODUCT_PARAMS_SEO_PAGE_KEYWORDS_DESC" />
+        </fieldset>
+    </fields>
+</form>

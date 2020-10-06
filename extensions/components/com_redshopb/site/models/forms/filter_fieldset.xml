@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form addfieldpath="/libraries/redshopb/form/fields">
+    <fieldset name="standard">
+        <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_NAME"
+                description="COM_REDSHOPB_NAME"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="false"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+    </fieldset>
+    <fieldset name="hidden">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="fields"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+    </fieldset>
+    <fieldset name="filter">
+        <field
+                name="search"
+                type="text"
+                class="input-medium search-query"
+                label="COM_REDSHOPB_FILTER_FIELDSET_SEARCH_LABEL"
+                description="COM_REDSHOPB_FILTER_FIELDSET_SEARCH_DESC"
+        />
+    </fieldset>
+</form>

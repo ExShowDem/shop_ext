@@ -1,0 +1,9 @@
+{
+    "name": "lib_redshopb",
+    "require": {
+        "imagine/imagine": "^0.7.1",
+        "ps/image-optimizer": "^1.1.2",
+        "mpdf/mpdf": "7.1.9",
+        "symfony/lock": "3.3.x-dev||4.3.*"
+    }
+}

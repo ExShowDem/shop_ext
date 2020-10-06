@@ -1,0 +1,6 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE `#__redshopb_product`
+    ADD COLUMN `decimal_position` TINYINT(4) UNSIGNED NULL DEFAULT NULL AFTER `manufacturer_id`;
+
+SET FOREIGN_KEY_CHECKS = 1;

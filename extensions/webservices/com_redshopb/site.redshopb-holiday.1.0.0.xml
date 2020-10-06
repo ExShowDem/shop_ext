@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Holiday Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2008 - 2017 redCOMPONENT.com. All rights reserved.</copyright>
+  <description>Lists the available holidays in Aesir E-Commerce</description>
+  <config>
+    <name>redshopb-holiday</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_{webserviceName}</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.create" dataMode="model" optionName="com_redshopb" modelClassName="Holiday" modelClassPath="" isAdminClass="false" functionName="createWS" functionArgs="" validateData="function" validateDataFunction="validateCreateWS" tableName="">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce holiday]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="true"/>
+        <field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false"/>
+        <field name="day" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false"/>
+        <field name="month" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+        <field name="year" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+        <field name="country_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false"/>
+      </fields>
+      <resources>
+        <resource displayGroup="_links" displayName="documentation" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies"/>
+        <resource displayGroup="_links" displayName="base" fieldFormat="/" linkTitle="Default page"/>
+        <resource displayGroup="_links" displayName="{webserviceName}:list" fieldFormat="{webserviceUrlPath}"/>
+        <resource displayGroup="_links" displayName="{webserviceName}:self" fieldFormat="{webserviceUrlPath}&amp;id={id}"/>
+        <resource displayName="result" fieldFormat="{result}" transform="int"/>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Holidays" modelClassPath="" isAdminClass="false" functionName="" paginationFunction="getPagination" totalFunction="getTotal" functionArgs="" validateData="none" validateDataFunction="validate" tableName="">
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="true"/>
+          <field name="country_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Holiday's Country]]></description>
+          </field>
+          <field name="year" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Holiday's year]]></description>
+          </field>
+          <field name="month" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Holiday's month]]></description>
+          </field>
+          <field name="day" transform="int" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Holiday's day]]></description>
+          </field>
+          <field name="name" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Holiday Designation]]></description>
+          </field>
+          <description><![CDATA[This operation lists all Aesir E-Commerce holidays.]]></description>
+        </fields>
+        <resources>
+          <resource displayGroup="_links" displayName="documentation" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies"/>
+          <resource displayName="page" fieldFormat="{pagination.page}" transform="int"/>
+          <resource displayName="pageLimit" fieldFormat="{pagination.limit}" transform="int"/>
+          <resource displayName="limitstart" fieldFormat="{pagination.limitstart}" transform="int"/>
+          <resource displayName="totalItems" fieldFormat="{pagination.totalItems}" transform="int"/>
+          <resource displayName="totalPages" fieldFormat="{pagination.totalPages}" transform="int"/>
+          <resource displayGroup="_links" displayName="base" fieldFormat="/" linkTitle="Default page"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:self" fieldFormat="{webserviceUrlPath}"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:first" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" linkTitle="Pagination first"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:previous" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" linkTitle="Pagination previous"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:next" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" linkTitle="Pagination next"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:last" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" linkTitle="Pagination last"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:all" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" linkTitle="Show all items"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:limit" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" linkTemplated="true" linkTitle="List limit"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:filter" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" linkTemplated="true" linkTitle="Filter list"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:sort" fieldFormat="{webserviceUrlPath}&amp;list[ordering]={list_ordering}&amp;list[direction]={list_direction}" linkTemplated="true" linkTitle="List sort"/>
+          <resource resourceSpecific="listItem" displayName="id" fieldFormat="{id}" transform="int"/>
+          <resource resourceSpecific="listItem" displayName="name" fieldFormat="{name}" transform="string"/>
+          <resource resourceSpecific="listItem" displayName="day" fieldFormat="{day}" transform="int"/>
+          <resource resourceSpecific="listItem" displayName="month" fieldFormat="{month}" transform="int"/>
+          <resource resourceSpecific="listItem" displayName="year" fieldFormat="{year}" transform="int"/>
+          <resource resourceSpecific="listItem" displayName="country_id" fieldFormat="{country_id}" transform="int"/>
+          <resource resourceSpecific="listItem" displayGroup="_links" displayName="{webserviceName}:self" fieldFormat="{webserviceUrlPath}&amp;id={id}"/>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Holiday" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Holiday.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Holiday's ID]]></description>
+          </field>
+        </fields>
+        <resources>
+          <resource displayName="id" fieldFormat="{id}" transform="int"/>
+          <resource displayName="name" fieldFormat="{name}" transform="string"/>
+          <resource displayName="day" fieldFormat="{day}" transform="int"/>
+          <resource displayName="month" fieldFormat="{month}" transform="int"/>
+          <resource displayName="year" fieldFormat="{year}" transform="int"/>
+          <resource displayName="country_id" fieldFormat="{country_id}" transform="int"/>
+          <resource displayGroup="_links" displayName="documentation" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies"/>
+          <resource displayGroup="_links" displayName="base" fieldFormat="/" linkTitle="Default page"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:list" fieldFormat="{webserviceUrlPath}"/>
+          <resource displayGroup="_links" displayName="{webserviceName}:self" fieldFormat="{webserviceUrlPath}&amp;id={id}"/>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Holiday" modelClassPath="" isAdminClass="false" functionName="updateWS" functionArgs="" validateData="function" validateDataFunction="validateUpdateWS" tableName="">
+      <description><![CDATA[This operation updates a Aesir E-Commerce holiday]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true"/>
+        <field name="name" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+        <field name="day" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+        <field name="month" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+        <field name="year" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+        <field name="country_id" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false"/>
+      </fields>
+      <resources>
+        <resource displayGroup="_links" displayName="documentation" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies"/>
+        <resource displayGroup="_links" displayName="base" fieldFormat="/" linkTitle="Default page"/>
+        <resource displayGroup="_links" displayName="{webserviceName}:list" fieldFormat="{webserviceUrlPath}"/>
+        <resource displayGroup="_links" displayName="{webserviceName}:self" fieldFormat="{webserviceUrlPath}&amp;id={id}"/>
+        <resource displayName="result" fieldFormat="{result}" transform="int"/>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="Holiday" modelClassPath="" isAdminClass="false" functionName="deleteWS" functionArgs="id{int}" validateData="function" validateDataFunction="validatePkWS" tableName="">
+      <description><![CDATA[This operation deletes a Aesir E-Commerce holiday]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true"/>
+      </fields>
+      <resources>
+        <resource displayGroup="_links" displayName="documentation" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies"/>
+        <resource displayGroup="_links" displayName="base" fieldFormat="/" linkTitle="Default page"/>
+        <resource displayGroup="_links" displayName="{webserviceName}:list" fieldFormat="{webserviceUrlPath}"/>
+        <resource displayName="result" fieldFormat="{result}" transform="boolean"/>
+      </resources>
+    </delete>
+  </operations>
+  <complexArrays/>
+</apiservice>

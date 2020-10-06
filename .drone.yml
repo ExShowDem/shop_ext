@@ -1,0 +1,633 @@
+clone:
+    default:
+        image: plugins/git
+        recursive: true
+
+pipeline:
+    00-cache:
+        group: 00-setup
+        image: redwebaps/aesir-e-commerce-cache:dev
+        pull: true
+        commands:
+            # Aesir-e-commerce Compor cache
+            - mv /opt/cache/aesir-e-commerce/vendor tests
+            - touch tests/.cache.composer.tmp
+
+            - mv /opt/cache/aesir-e-commerce/node_modules build
+            - touch tests/.cache.npm.tmp
+
+            - mv /opt/cache/aesir-e-commerce/extensions/libraries/redshopb/vendor extensions/libraries/redshopb
+            - touch tests/.cache.libraries.redshopb.composer.tmp
+
+            - mv /opt/cache/aesir-e-commerce/extensions/plugins/vanir_search/solr/vendor extensions/plugins/vanir_search/solr
+            - touch tests/.cache.plugins.vanir_search.composer.tmp
+
+        # Joomla CMS
+        # - mv /opt/cache/joomla-cms tests
+        # - touch tests/.cache.joomla-cms.tmp
+
+    00-setup:
+        group: 00-setup
+        image: redwebaps/testbox-chromedriver:2.38
+        pull: true
+        environment:
+            - tests_user=admin
+            - tests_suite=00-setup
+            - tests_db=setup
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-00-setup
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Composer setup
+            - while [ ! -f tests/.cache.composer.tmp ]; do sleep 1; done                       # Comment if not using composer cache
+            - composer config -g github-oauth.github.com 4281d0ba7e8f1caded4c8b949a1c115902e30113
+
+            # NPM setup
+            - while [ ! -f tests/.cache.npm.tmp ]; do sleep 1; done                            # Comment if not using npm cache
+            # - npm install                                                                    # Uncomment if not using npm cache
+
+            - while [ ! -f tests/.cache.plugins.vanir_search.composer.tmp ]; do sleep 1; done  # Comment if not using plugins.vanir_search cache
+            # - composer install --working-dir ./extensions/plugins/vanir_search/solr --ansi   # Uncomment if not using plugins.vanir_search cache
+
+            - while [ ! -f tests/.cache.libraries.redshopb.composer.tmp ]; do sleep 1; done    # Comment if not using libraries.redshopb cache
+            # - composer install --working-dir ./extensions/libraries/redshopb --ansi          # Uncomment if not using libraries.redshopb cache
+
+            - mv build/gulp-config.json.dist build/gulp-config.json
+            - cd build
+            - node_modules/.bin/gulp release --skip-version
+            - cd ..
+            - cp tests/acceptance.suite.dist.yml.drone tests/acceptance.suite.yml
+            - cp tests/api.suite.yml.drone tests/api.suite.yml
+
+            # Test setup
+            # - while [ ! -f tests/.cache.joomla-cms.tmp ]; do sleep 1; done                    # Comment if not using Joomla CMS cache
+            - cd tests
+            - vendor/bin/robo tests:site-preparation 1 1
+            - cd ..
+            # Ownership for uid 82
+            - chown -R www-data:www-data .
+            # Creating first clone for tests setup
+            - mkdir -p tests/$tests_suite/joomla-cms
+            - rsync -a tests/joomla-cms/ tests/$tests_suite/joomla-cms
+            # Creates the database (required because of the Codeception Db module)
+            - mysql -u root -proot -h db -e "CREATE DATABASE $tests_db"
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:setup 0 0'
+            - su www-data -c 'vendor/bin/codecept run acceptance/bootstrap2'
+
+    02-01-setup-stages:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=00-setup
+            - tests_db=setup
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-00-01-setup-stages
+        commands:
+            # Final DB dump with full Joomla/extension setup
+            - rsync -a --delete tests/$tests_suite/joomla-cms/ tests/joomla-cms
+            - sed -i "s/db = '$tests_db'/db = 'tests_db'/g" tests/joomla-cms/configuration.php
+            - sed -i "s,$tests_suite/joomla-cms/,joomla-cms/,g" tests/joomla-cms/configuration.php
+            - mysqldump -u root -proot -h db $tests_db > tests/dbdump.sql.tmp
+            # Stages setup
+            - sh tests/drone/setup-stages.sh "02group1"           "02-group1"
+            - sh tests/drone/setup-stages.sh "02group2"           "02-group2"
+            - sh tests/drone/setup-stages.sh "02group3"           "02-group3"
+            - sh tests/drone/setup-stages.sh "02group4"           "02-group4"
+            - sh tests/drone/setup-stages.sh "02group5"           "02-group5"
+            - sh tests/drone/setup-stages.sh "02group6"           "02-group6"
+            - sh tests/drone/setup-stages.sh "02group7"           "02-group7"
+            - sh tests/drone/setup-stages.sh "02group8"           "02-group8"
+            - sh tests/drone/setup-stages.sh "02group9"           "02-group9"
+            - sh tests/drone/setup-stages.sh "02group10"          "02-group10"
+            - sh tests/drone/setup-stages.sh "02group11"          "02-group11"
+
+    02-group1:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group1
+            - tests_db=02group1
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group1
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/administrator 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/All_Discounts 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/All_Prices 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Categories 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Companies 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Departments 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Address 0 0 0'
+
+    02-group2:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group2
+            - tests_db=02group2
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group2
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-api-01 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-api-02 0 0'
+
+    02-group3:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group3
+            - tests_db=02group3
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group3
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_Company_Level 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/SaveCart/SaveCart 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Offer 0 0 0'
+
+    02-group4:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group4
+            - tests_db=02group4
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group4
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/OnePageCheckout 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Discount/Percent 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Discount/Total 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Return_Order_Employee_Login 0 0 0'
+
+    02-group5:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group5
+            - tests_db=02group5
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group5
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/SaveCart/OverwriteCart 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Apply_VAT/Customer 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Apply_VAT/Vendor 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Newsletters 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Holidays 0 0 0'
+
+    02-group6:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group6
+            - tests_db=02group6
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group6
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Manufactures 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Offers 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Product_Discount_Groups 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Products/Product 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Collections 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/TaxGroups 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Stockrooms/Stockrooms 0 0 0'
+
+    02-group7:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group7
+            - tests_db=02group7
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group7
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/ShippingRates 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/States 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Tag 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Tax 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Products/ProductAttribute 0 0 0'
+
+    02-group8:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group8
+            - tests_db=02group8
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group8
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_Payment_Shipping 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Phone_Number 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/SaveCart/SaveCartWithProductVariant 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Stockrooms/StockroomsAddress 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/DebtorGroups 0 0 0'
+
+    02-group9:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group9
+            - tests_db=02group9
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group9
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CollectionCheckoutByUser/AddToCartFromProductList 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CollectionCheckoutByAdmin/AdminAddToCartFromProductList 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CheckoutWithProductVariants 0 0 0'
+
+    02-group10:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group10
+            - tests_db=02group10
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group10
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/SaveCart/AddToCart 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CheckoutWithStockroomOfProduct 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Users 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CheckoutWithProductDiscountGroups 0 0 0'
+
+    02-group11:
+        group: 01-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=02-group11
+            - tests_db=02group11
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-02-group11
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Orders 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/OnePageCheckoutWithProductVariants 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Invoice_Email 0 0 0'
+
+    03-02-setup-stages:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=00-setup
+            - tests_db=setup
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-00-01-setup-stages
+        commands:
+            # Final DB dump with full Joomla/extension setup
+            # Stages setup
+            - sh tests/drone/setup-stages.sh "03group1"           "03-group1"
+            - sh tests/drone/setup-stages.sh "03group2"           "03-group2"
+            - sh tests/drone/setup-stages.sh "03group3"           "03-group3"
+            - sh tests/drone/setup-stages.sh "03group4"           "03-group4"
+            - sh tests/drone/setup-stages.sh "03group5"           "03-group5"
+            - sh tests/drone/setup-stages.sh "03group6"           "03-group6"
+            - sh tests/drone/setup-stages.sh "03group7"           "03-group7"
+            - sh tests/drone/setup-stages.sh "03group8"           "03-group8"
+            - sh tests/drone/setup-stages.sh "03group9"           "03-group9"
+            - sh tests/drone/setup-stages.sh "03group10"          "03-group10"
+
+    03-group1:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group1
+            - tests_db=03group1
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group1
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Address 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/administrator 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/All_Discounts 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/All_Prices 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Categories 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Companies 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Departments 1 0 0'
+
+    03-group2:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group2
+            - tests_db=03group2
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group2
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Orders 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Users 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/TaxGroups 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Holidays 0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Stockrooms/Stockrooms 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Newsletters 1 0 0'
+
+    03-group3:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group3
+            - tests_db=03group3
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group3
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_Company_Level 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/SaveCart/SaveCart 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/SaveCart/SaveCartWithProductVariant 1 0 0'
+
+    03-group4:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group4
+            - tests_db=03group4
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group4
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/OnePageCheckout 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Discount/Total 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CollectionCheckoutByUser/AddToCartFromProductList 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Stockrooms/StockroomsAddress 1 0 0'
+
+    03-group5:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group5
+            - tests_db=03group5
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group5
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/SaveCart/OverwriteCart 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Apply_VAT/Customer 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Apply_VAT/Vendor 1 0 0'
+
+    03-group6:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group6
+            - tests_db=03group6
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group6
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Manufactures 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/SaveCart/AddToCart 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Product_Discount_Groups 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Products/Product 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Collections 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CheckoutWithProductVariants 1 0 0'
+
+    03-group7:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group7
+            - tests_db=03group7
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group7
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/ShippingRates 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/States 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Tag 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/frontend/Tax 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Return_Order_Employee_Login 1 0 0'
+
+    03-group8:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group8
+            - tests_db=03group8
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group8
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_Payment_Shipping 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Phone_Number 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CollectionCheckoutByAdmin/AdminAddToCartFromProductList 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Invoice_Email 1 0 0'
+
+    03-group9:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group9
+            - tests_db=03group9
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group9
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - rm api.suite.yml
+            - mv api/webservice-version-1.0.0/api.suite.yml .
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.0.0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.1.0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.2.0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.3.0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.4.0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.5.0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.6.0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.7.0 0 0'
+            - su www-data -c 'vendor/bin/robo tests:api api/webservice-version-1.8.0 0 0'
+
+    03-group10:
+        group: 02-tests
+        image: redwebaps/testbox-chromedriver:2.38
+        environment:
+            - tests_user=admin
+            - tests_suite=03-group10
+            - tests_db=03group10
+            - build_path=/drone/src/github.com/${DRONE_REPO}
+            - output_append=-03-group10
+        commands:
+            # Regular entry point
+            - /entrypoint.sh &
+            # Performs test after ensuring that the scenario has been fully set up
+            - while [ ! -f tests/.cache.setup.$tests_suite.tmp ]; do sleep 1; done
+            # Performs test
+            - cd tests
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/bootstrap3 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/Checkout_With_Discount/Percent 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CheckoutWithStockroomOfProduct 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/CheckoutWithProductDiscountGroups 1 0 0'
+            - su www-data -c 'vendor/bin/robo tests:run acceptance/integration/OnePageCheckoutWithProductVariants 1 0 0'
+
+    slack:
+        image: plugins/slack
+        webhook: https://hooks.slack.com/services/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
+        channel: aesir-ec-builds
+        when:
+            status: [ success, failure ]
+        template: >
+            {{#success build.status}}
+              {{repo.name}} PR #{{build.pull}} succeeded in {{since build.started}}. Good job {{build.author}}!  Here is the build log: {{build.link}}.  Link to the PR: https://github.com/{{repo.owner}}/{{repo.name}}/pull/{{build.pull}}
+            {{else}}
+              {{repo.name}} PR #{{build.pull}} failed in {{since build.started}}. Fix me please {{build.author}}!  Here is the build log: {{build.link}}.  Link to the PR: https://github.com/{{repo.owner}}/{{repo.name}}/pull/{{build.pull}}
+            {{/success}}
+
+    error-report:
+        image: redwebaps/testbox-chromedriver:2.38
+        commands:
+            - if [ -z "${CI_PULL_REQUEST}" ]; then export CI_PULL_REQUEST=1; fi
+            - cd tests
+            - vendor/bin/robo send:build-report-error-slack redcomponent 365447364384436 Q94UM5kjZkZIrau8MIL93m0dN6U "$CI_REPO" "$CI_PULL_REQUEST" "https://hooks.slack.com/services/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" "#aesir-ec-builds" "$CI_BUILD_URL"
+        when:
+            status: [ failure ]
+
+services:
+    db:
+        image: mysql/mysql-server:5.7
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_ROOT_HOST=%
+
+    php:
+        image: redwebaps/php-apache:7.3
+        pull: true
+        environment:
+            - WEB_DOCUMENT_ROOT=/drone/src/github.com/${DRONE_REPO}
+            - JOOMLA_INSTALLATION_DISABLE_LOCALHOST_CHECK=1

@@ -1,0 +1,8 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE `#__redshopb_offer`
+  ADD COLUMN `name` VARCHAR(255) NULL AFTER `id`,
+  ADD COLUMN `state` TINYINT(4) NULL AFTER `expiration_date`,
+  ADD COLUMN `comments` TINYTEXT NULL AFTER `state`;
+
+SET FOREIGN_KEY_CHECKS = 1;

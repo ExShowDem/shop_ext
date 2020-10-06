@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8" client="site" method="upgrade">
+    <name>MOD_REDSHOPB_LAYOUTPARTS</name>
+    <creationDate>January 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.3.0</version>
+    <description>MOD_REDSHOPB_LAYOUTPARTS_XML_DESCRIPTION</description>
+    <files>
+        <folder>language</folder>
+        <folder>tmpl</folder>
+        <filename>index.html</filename>
+        <filename module="mod_redshopb_layoutparts">mod_redshopb_layoutparts.php</filename>
+        <filename>mod_redshopb_layoutparts.xml</filename>
+    </files>
+    <media folder="media">
+        <folder>mod_redshopb_layoutparts</folder>
+    </media>
+    <scriptfile>script.php</scriptfile>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="part"
+                        type="list"
+                        default=""
+                        label="MOD_REDSHOPB_LAYOUTPARTS_XML_DESCRIPTION_PART"
+                        description="MOD_REDSHOPB_LAYOUTPARTS_XML_DESCRIPTION_PART_DESC"
+                        >
+                        <option value="">JNONE</option>
+                        <option value="topimage">MOD_REDSHOPB_LAYOUTPARTS_TOP_IMAGE</option>
+                        <option value="address">MOD_REDSHOPB_LAYOUTPARTS_ADDRESS</option>
+                        <option value="welcome">MOD_REDSHOPB_LAYOUTPARTS_WELCOME</option>
+                        <option value="headLine">MOD_REDSHOPB_LAYOUTPARTS_HEADLINE</option>
+                </field>
+                <field
+                        name="wrapper"
+                        type="list"
+                        default=""
+                        label="MOD_REDSHOPB_LAYOUTPARTS_XML_DESCRIPTION_WRAPPER"
+                        description="MOD_REDSHOPB_LAYOUTPARTS_XML_DESCRIPTION_WRAPPER_DESC"
+                        >
+                        <option value="">MOD_REDSHOPB_LAYOUTPARTS_NO_WRAPPER</option>
+                        <option value="h1">MOD_REDSHOPB_LAYOUTPARTS_HEADING_ONE</option>
+                        <option value="h2">MOD_REDSHOPB_LAYOUTPARTS_HEADING_TWO</option>
+                        <option value="h3">MOD_REDSHOPB_LAYOUTPARTS_HEADING_THREE</option>
+                        <option value="h4">MOD_REDSHOPB_LAYOUTPARTS_HEADING_FOUR</option>
+                        <option value="h5">MOD_REDSHOPB_LAYOUTPARTS_HEADING_FIVE</option>
+                        <option value="h6">MOD_REDSHOPB_LAYOUTPARTS_HEADING_SIX</option>
+                        <option value="p">MOD_REDSHOPB_LAYOUTPARTS_PARAGRAPH</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+                        />
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea" rows="3"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+                        />
+                <field
+                        name="cache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field
+                        name="cache_time"
+                        type="text"
+                        default="900"
+                        label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                        description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+                        />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

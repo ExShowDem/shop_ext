@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==================================================================  -->
+<!-- redSHOPB2B packager                                                 -->
+<!-- This PHING build file generates the redSHOPB2B extension package    -->
+<!-- To use in your environment do the following steps:                  -->
+<!--    Change the following variables in build.properties file          -->
+<!--            (copy variables from build.properties.dist )             -->
+<!--    - change the package folder path in variable package.dir         -->
+<!--    - execute this PHING build file                                  -->
+<!-- ==================================================================  -->
+<project name="com_redshopb" default="pack">
+    <includepath classpath="./phingtasks" />
+    <taskdef name="lessc" classname="rych.tasks.LessCompilerTask" />
+    <taskdef name="yuic" classname="rych.tasks.YuiCompressorTask" />
+
+    <!-- ============================================  -->
+    <!-- Do initialization stuff                        -->
+    <!-- ============================================  -->
+    <target name="init">
+        <!--  -->
+        <if>
+            <not>
+                <available file="build.properties" type="file" />
+            </not>
+            <then>
+                <fail msg="File not found: build.properties" />
+            </then>
+        </if>
+
+        <property file="build.properties" override="true"/>
+
+        <property
+            name="extension"
+            value="${comp.name}"
+            override="true"
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Create packages folder                        -->
+    <!-- ============================================  -->
+    <target name="prepare">
+        <property
+                name="clean-tempdir"
+                value="true"
+                override="false"/>
+
+        <!-- Allow removing version number in zip packages. Used by automated tests -->
+        <property
+                name="add-version-in-package"
+                value="true"
+                override="true"/>
+
+        <if>
+            <not>
+                <isset property="package.dir" />
+            </not>
+            <then>
+                <fail msg="package.dir not specified, specify package.dir in build.properties file" />
+            </then>
+        </if>
+
+        <!-- Folder where the redSHOP repository is located  -->
+        <property
+                name="extpath"
+                value="../"
+                override="true"/>
+
+        <xmlproperty file="${extpath}/build/redCORE/extensions/redcore.xml" prefix="redCOREDetails" keepRoot="false" />
+        <xmlproperty file="${extpath}/extensions/${extension}.xml" prefix="extensionDetails" keepRoot="false" />
+        <xmlproperty file="${extpath}/extensions/components/com_rsbmedia/rsbmedia.xml" prefix="rsbmediaDetails" keepRoot="false" />
+
+        <property
+                name="version"
+                value="${extensionDetails.version}"
+                override="true"/>
+
+        <property
+                name="redCOREVersion"
+                value="${redCOREDetails.version}"
+                override="true"/>
+
+        <property
+                name="rsbmediaVersion"
+                value="${rsbmediaDetails.version}"
+                override="true"/>
+
+        <!-- Temp dir to create packages -->
+        <property
+                name="tmpdir"
+                value=".tmp"
+                override="true"/>
+
+        <if>
+            <equals arg1="clean-tempdir" arg2="1" />
+            <then>
+                <!-- Check if the temp folder exists. If not, create it -->
+                <if>
+                    <available file="${tmpdir}" type="dir"/>
+                    <then>
+                        <echo msg="Removing old ${tmpdir}"/>
+                        <delete dir="${tmpdir}"/>
+                    </then>
+                </if>
+                <echo msg="Making directory to store the temporary packages at ${tmpdir}"/>
+                <mkdir dir="${tmpdir}"/>
+            </then>
+        </if>
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: build                                 -->
+    <!-- ============================================  -->
+    <!-- Copy the source files to the target folder -->
+
+    <target name="build" depends="prepare, copyredcore, composer">
+        <echo msg="Copying INSTALLER files to build directory..."/>
+
+        <copy todir="${tmpdir}/${extension}">
+            <fileset dir="${extpath}/extensions">
+                <include name="LICENSE.txt"/>
+                <include name="install.php"/>
+                <include name="redshopb.xml"/>
+            </fileset>
+        </copy>
+
+        <echo msg="Copying COMPONENT folder to build directory..."/>
+        <copy todir="${tmpdir}/${extension}/components/com_${extension}">
+            <fileset dir="${extpath}/extensions/components/com_${extension}">
+                <include name="**"/>
+                <exclude name=".*"/>
+            </fileset>
+        </copy>
+
+        <if>
+            <available file="${extpath}/build/media/components/com_${extension}/less" type="dir" />
+            <then>
+                <echo msg="redSHOP B2B: Compile LESS to CSS" />
+                <mkdir dir="${tmpdir}/${extension}/media/com_${extension}/css"/>
+                <lessc targetdir="${tmpdir}/${extension}/media/com_${extension}/css">
+                    <fileset dir="${extpath}/build/media/components/com_${extension}/less">
+                        <include name="*.less" />
+                    </fileset>
+                </lessc>
+                <!-- Compress CSS files -->
+                <yuic targetdir="${tmpdir}/${extension}/media/com_${extension}/css">
+                    <fileset dir="${tmpdir}/${extension}/media/com_${extension}/css">
+                        <include name="*.css" />
+                        <exclude name="*.min.css" />
+                    </fileset>
+                </yuic>
+                <foreach param="dirname" absparam="absname" target="yui-compress-css">
+                    <fileset dir="${tmpdir}/${extension}/media/com_${extension}/css">
+                        <type type="dir" />
+                        <depth max="99" min="0" />
+                    </fileset>
+                </foreach>
+            </then>
+        </if>
+        <if>
+            <available file="${extpath}/build/media/components/com_rsbmedia/less" type="dir" />
+            <then>
+                <echo msg="redSHOP B2B Media: Compile LESS to CSS" />
+                <mkdir dir="${tmpdir}/com_rsbmedia/media/com_rsbmedia/css"/>
+                <lessc targetdir="${tmpdir}/com_rsbmedia/media/com_rsbmedia/css">
+                    <fileset dir="${extpath}/build/media/components/com_rsbmedia/less">
+                        <include name="*.less" />
+                    </fileset>
+                </lessc>
+                <!-- Compress CSS files -->
+                <yuic targetdir="${tmpdir}/com_rsbmedia/media/com_rsbmedia/css">
+                    <fileset dir="${tmpdir}/com_rsbmedia/media/com_rsbmedia/css">
+                        <include name="*.css" />
+                        <exclude name="*.min.css" />
+                    </fileset>
+                </yuic>
+                <foreach param="dirname" absparam="absname" target="yui-compress-css">
+                    <fileset dir="${tmpdir}/com_rsbmedia/media/com_rsbmedia/css">
+                        <type type="dir" />
+                        <depth max="99" min="0" />
+                    </fileset>
+                </foreach>
+            </then>
+        </if>
+
+        <!-- Compress JS files -->
+        <!-- <property name="compress-source-dir" value="${extpath}/build/media/components/com_${extension}/js" override="true" />
+        <property name="compress-target-dir" value="${tmpdir}/${extension}/media/com_${extension}/js" override="true" />
+        <yuic targetdir="${compress-target-dir}">
+            <fileset dir="${compress-source-dir}">
+                <include name="*.js" />
+                <exclude name="*.min.js" />
+                <exclude name="footable.redshopb.init.js" />
+                <exclude name="redshopb.js" />
+            </fileset>
+        </yuic>
+        <foreach param="dirname" absparam="absname" target="yui-compress-js">
+            <fileset dir="${compress-source-dir}">
+                <type type="dir" />
+                <depth max="99" min="0" />
+            </fileset>
+        </foreach> -->
+
+        <!-- Compress JS files -->
+        <!-- <property name="compress-source-dir" value="${extpath}/build/media/components/com_rsbmedia/js" override="true" />
+        <property name="compress-target-dir" value="${tmpdir}/com_rsbmedia/media/com_rsbmedia/js" override="true" />
+        <yuic targetdir="${compress-target-dir}">
+            <fileset dir="${compress-source-dir}">
+                <include name="*.js" />
+                <exclude name="*.min.js" />
+            </fileset>
+        </yuic>
+        <foreach param="dirname" absparam="absname" target="yui-compress-js">
+            <fileset dir="${compress-source-dir}">
+                <type type="dir" />
+                <depth max="99" min="0" />
+            </fileset>
+        </foreach> -->
+
+        <echo msg="Copying MEDIA folder (redSHOP B2B) to build directory..."/>
+        <copy todir="${tmpdir}/${extension}/media/com_${extension}">
+            <fileset dir="${extpath}/build/media/components/com_${extension}">
+                <include name="**" />
+                <exclude name=".*" />
+                <exclude name="less/" />
+                <exclude name="less/**" />
+            </fileset>
+        </copy>
+
+        <echo message="Copying libraries..."/>
+        <copy todir="${tmpdir}/${extension}/libraries" overwrite="true">
+            <fileset dir="${extpath}/extensions/libraries">
+                <include name="**"/>
+                <exclude name="**/.gitkeep"/>
+                <exclude name="**/doc/**"/>
+                <exclude name="**/docs/**"/>
+                <exclude name="**/tests/**"/>
+                <exclude name="**/Tests/**"/>
+                <exclude name="**/composer.*"/>
+                <exclude name="**/phpunit*"/>
+                <exclude name="**/Vagrantfile"/>
+                <exclude name="**/.php_cs"/>
+            </fileset>
+        </copy>
+
+        <echo msg="Copying plugins..."/>
+        <copy todir="${tmpdir}/${extension}/plugins">
+            <fileset dir="${extpath}/extensions/plugins">
+                <include name="**"/>
+                <exclude name=".*"/>
+                <exclude name="rb_sync" />
+                <exclude name="rb_sync/**" />
+                <exclude name="search" />
+                <exclude name="search/**" />
+            </fileset>
+        </copy>
+
+        <echo msg="Copying Admin Modules..."/>
+        <copy todir="${tmpdir}/${extension}/modules/admin">
+            <fileset dir="${extpath}/extensions/modules/admin">
+                <include name="**"/>
+                <exclude name=".*"/>
+                <exclude name="*.md"/>
+            </fileset>
+        </copy>
+
+        <echo msg="Copying Site Modules..."/>
+        <foreach param="dirname" absparam="absname" target="module-process">
+            <fileset dir="${extpath}/extensions/modules/site">
+                <type type="dir" />
+                <depth max="0" min="0" />
+            </fileset>
+        </foreach>
+        <copy todir="${tmpdir}/${extension}/modules/site">
+            <fileset dir="${extpath}/extensions/modules/site">
+                <include name="**"/>
+                <exclude name=".*"/>
+                <exclude name="*.md"/>
+            </fileset>
+        </copy>
+
+        <echo msg="Copying rsbmedia folder to rsbmedia build directory..."/>
+        <copy todir="${tmpdir}/com_rsbmedia">
+            <fileset dir="${extpath}/extensions/components/com_rsbmedia">
+                <include name="**"/>
+                <exclude name=".*"/>
+            </fileset>
+        </copy>
+        <if>
+            <available file="${extpath}/build/media/components/com_rsbmedia" type="dir" />
+            <then>
+                <copy todir="${tmpdir}/com_rsbmedia/media/com_rsbmedia">
+                    <fileset dir="${extpath}/build/media/components/com_rsbmedia">
+                        <include name="**"/>
+                        <exclude name=".*"/>
+                        <exclude name="less" />
+                        <exclude name="less/**" />
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+
+        <!-- Copy webservices folde if available -->
+        <if>
+            <available file="${extpath}/extensions/webservices/com_${extension}" type="dir" />
+            <then>
+                <copy todir="${tmpdir}/${extension}/webservices/com_${extension}">
+                    <fileset dir="${extpath}/extensions/webservices/com_${extension}">
+                        <include name="**"/>
+                        <exclude name=".*"/>
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+    </target>
+
+    <target name="composer" depends="prepare">
+        <echo msg="Downloading composer dependencies..."/>
+        <echo msg="...'lib_redshop composer dependencies..."/>
+        <composer command="install" composer="${extpath}/build/composer.phar">
+            <arg value="--working-dir" />
+            <arg path="${extpath}/extensions/libraries/redshopb" />
+        </composer>
+    </target>
+
+    <!-- ============================================  -->
+    <!-- (redCORE)  Target: copyredcore                -->
+    <!-- ============================================  -->
+    <target name="copyredcore">
+        <phing phingfile="${extpath}/build/redCORE/build/redcore_copy_mandatory.xml"
+               target="copyframework"
+               haltonfailure="true">
+            <property name="redcoretargetdir" value="${tmpdir}/${extension}/redCORE/extensions" />
+            <property name="redcorepath" value="${extpath}/build/redCORE" />
+        </phing>
+    </target>
+
+    <!-- ============================================  -->
+    <!-- (DEFAULT)  Target: dist                       -->
+    <!-- ============================================  -->
+    <target name="compress">
+        <echo msg="Creating ZIP archive..."/>
+
+        <!-- Extension ZIP packaging -->
+        <if>
+            <equals arg1="${add-version-in-package}" arg2="1" />
+            <then>
+                <property name="redshop-package" value="${extension}-v${version}"/>
+                <property name="rsbmedia-package" value="rsbmedia-v${rsbmediaVersion}"/>
+            </then>
+            <else>
+                <property name="redshop-package" value="${extension}"/>
+                <property name="rsbmedia-package" value="rsbmedia"/>
+            </else>
+        </if>
+
+        <!-- Extension ZIP packaging -->
+        <if>
+            <available file="${extpath}/${package.dir}/${redshop-package}.zip" property="test_zip_exists" value="Yes"/>
+            <then>
+                <echo msg="Removing old ZIP"/>
+                <delete file="${extpath}/${package.dir}/${redshop-package}.zip" />
+            </then>
+        </if>
+
+        <if>
+            <available file="${tmpdir}/${redshop-package}.zip" property="test_zip_exists" value="Yes"/>
+            <then>
+                <delete file="${tmpdir}/${redshop-package}.zip" />
+            </then>
+        </if>
+
+        <zip destfile="${tmpdir}/${redshop-package}.zip">
+            <fileset dir="${tmpdir}/${extension}">
+                <include name="**"/>
+                <exclude name=".*"/>
+            </fileset>
+        </zip>
+
+        <copy file="${tmpdir}/${redshop-package}.zip" tofile="${extpath}/${package.dir}/${redshop-package}.zip" />
+
+        <!-- rsbmedia ZIP packaging -->
+        <if>
+            <available file="${extpath}/${package.dir}/${rsbmedia-package}.zip" property="test_zip_exists" value="Yes"/>
+            <then>
+                <echo msg="Removing old ZIP"/>
+                <delete file="${extpath}/${package.dir}/${rsbmedia-package}.zip" />
+            </then>
+        </if>
+
+        <if>
+            <available file="${tmpdir}/${rsbmedia-package}.zip" property="test_zip_exists" value="Yes"/>
+            <then>
+                <delete file="${tmpdir}/${rsbmedia-package}.zip" />
+            </then>
+        </if>
+
+        <zip destfile="${tmpdir}/${rsbmedia-package}.zip">
+            <fileset dir="${tmpdir}/com_rsbmedia">
+                <include name="**"/>
+                <exclude name=".*"/>
+            </fileset>
+        </zip>
+
+        <copy file="${tmpdir}/${rsbmedia-package}.zip" tofile="${extpath}/${package.dir}/${rsbmedia-package}.zip" />
+
+        <echo msg="Files copied and compressed in build directory OK!"/>
+    </target>
+
+    <target name="clean-tmp">
+        <delete dir="${tmpdir}"/>
+    </target>
+
+    <target name="prepare-compress-clean" depends="prepare, compress-clean">
+        <!-- needed for external cleaning and compressing -->
+    </target>
+
+    <target name="compress-clean" depends="compress, clean-tmp">
+        <!-- needed for external cleaning and compressing -->
+    </target>
+
+    <target name="dist" depends="build, compress-clean">
+        <echo msg="Build successful!"/>
+    </target>
+
+    <target name="pack" depends="init">
+        <phingcall target="dist" />
+    </target>
+
+    <target name="autopack">
+        <property
+                name="package.dir"
+                value=".dist"
+                override="false"/>
+
+        <property
+                name="extension"
+                value="redshopb"
+                override="false"/>
+
+        <property
+                name="package.delete"
+                value="true"
+                override="false"/>
+
+        <property
+                name="package.routine"
+                value="dist"
+                override="false"/>
+
+        <if>
+            <and>
+                <available file="${package.dir}" type="dir"/>
+                <equals arg1="${package.delete}" arg2="1" />
+            </and>
+            <then>
+                <echo msg="Removing old autopack folder"/>
+                <delete dir="${package.dir}"/>
+            </then>
+        </if>
+
+        <phingcall target="${package.routine}" />
+    </target>
+
+    <target name="yui-compress-css" description="Compress CSS files using YUI Compressor">
+        <property name="compress-source-dir" value="${compress-source-dir}/${dirname}" override="true" />
+        <property name="compress-target-dir" value="${compress-target-dir}/${dirname}" override="true" />
+        <trycatch>
+            <try>
+                <yuic targetdir="${compress-target-dir}">
+                    <fileset dir="${compress-source-dir}">
+                        <include name="*.css" />
+                        <exclude name="*.min.css" />
+                    </fileset>
+                </yuic>
+            </try>
+            <catch>
+            </catch>
+        </trycatch>
+    </target>
+    <target name="yui-compress-js" description="Compress JS files using YUI Compressor">
+        <property name="compress-source-dir" value="${compress-source-dir}/${dirname}" override="true" />
+        <property name="compress-target-dir" value="${compress-target-dir}/${dirname}" override="true" />
+        <trycatch>
+            <try>
+                <yuic targetdir="${compress-target-dir}">
+                    <fileset dir="${compress-source-dir}">
+                        <include name="*.js" />
+                        <exclude name="*.min.js" />
+                        <exclude name="query-builder.standalone.min.js" />
+                        <exclude name="query-builder.standalone.js" />
+                    </fileset>
+                </yuic>
+            </try>
+            <catch>
+            </catch>
+        </trycatch>
+    </target>
+    <target name="module-process" description="Modules - Compiler LESS to CSS, minified and copy others media file">
+        <echo msg="Working Module: ${dirname}" />
+        <!-- Working on LESS if available -->
+        <if>
+            <available file="${extpath}/build/media/modules/site/${dirname}/less" type="dir" />
+            <then>
+                <trycatch>
+                    <try>
+                        <!-- Compiler LESS to CSS -->
+                        <lessc targetdir="${tmpdir}/${extension}/modules/site/${dirname}/media/${dirname}/css">
+                            <fileset dir="${extpath}/build/media/modules/site/${dirname}/less">
+                                <include name="*.less" />
+                            </fileset>
+                        </lessc>
+                        <!-- Create minified CSS for these file -->
+                        <yuic targetdir="${tmpdir}/${extension}/modules/site/${dirname}/media/${dirname}/css">
+                            <fileset dir="${tmpdir}/${extension}/modules/site/${dirname}/media/${dirname}/css">
+                                <include name="*.css" />
+                                <exclude name="*.min.css" />
+                            </fileset>
+                        </yuic>
+                    </try>
+                    <catch>
+                    </catch>
+                </trycatch>
+            </then>
+        </if>
+        <!-- Copy other media files -->
+        <if>
+            <available file="${extpath}/build/media/modules/site/${dirname}" type="dir" />
+            <then>
+                <copy todir="${tmpdir}/${extension}/modules/site/${dirname}/media/${dirname}">
+                    <fileset dir="${extpath}/build/media/modules/site/${dirname}">
+                        <include name="**" />
+                        <exclude name=".*" />
+                        <exclude name="less" />
+                        <exclude name="less/**" />
+                    </fileset>
+                </copy>
+            </then>
+        </if>
+    </target>
+</project>

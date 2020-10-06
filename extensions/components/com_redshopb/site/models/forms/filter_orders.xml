@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_orders"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="customer_company"
+                type="company"
+                label="COM_REDSHOPB_ORDER_FILTER_COMPANY_TITLE"
+                description="COM_REDSHOPB_ORDER_FILTER_COMPANY_TITLE_DESC"
+                class="chosen"
+                hideDefault="true"
+                onchange="this.form.submit();"
+                >
+                <option value="">COM_REDSHOPB_ORDER_FILTER_COMPANY_TITLE</option>
+        </field>
+        <field
+                name="customer_department"
+                type="department"
+                label="COM_REDSHOPB_ORDER_FILTER_DEPARTMENT_TITLE"
+                description="COM_REDSHOPB_ORDER_FILTER_DEPARTMENT_TITLE_DESC"
+                class="chosen"
+                hideDefault="true"
+                onchange="this.form.submit();"
+                >
+                <option value="">COM_REDSHOPB_ORDER_FILTER_DEPARTMENT_TITLE</option>
+        </field>
+        <field
+                name="order_status"
+                type="orderstatus"
+                label="COM_REDSHOPB_ORDER_FILTER_STATUS_TITLE"
+                description="COM_REDSHOPB_ORDER_FILTER_STATUS_TITLE_DESC"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="NONE">COM_REDSHOPB_ORDER_FILTER_STATUS_TITLE</option>
+        </field>
+        <field
+                name="customer_type"
+                type="list"
+                label="COM_REDSHOPB_ORDER_FILTER_CUSTOMER_TYPE_LABEL"
+                description="COM_REDSHOPB_ORDER_FILTER_PLACED_LABEL_DESC"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_REDSHOPB_ORDER_SELECT_CUSTOMER_TYPE</option>
+            <option value="employee">COM_REDSHOPB_EMPLOYEE</option>
+            <option value="department">COM_REDSHOPB_DEPARTMENT</option>
+            <option value="company">COM_REDSHOPB_COMPANY</option>
+        </field>
+        <field
+                name="date_from"
+                type="rdatepicker"
+                dateFormat="yy-mm-dd"
+                filter="user_utc"
+                showTime="true"
+                class="js-to-inline-calendar"
+                readonly="false"
+                label="COM_REDSHOPB_MYOFFERS_DATE_FROM"
+                placeholder="COM_REDSHOPB_MYOFFERS_DATE_FROM"
+                description=""
+                />
+        <field
+                name="date_to"
+                type="rdatepicker"
+                dateFormat="yy-mm-dd"
+                filter="user_utc"
+                showTime="true"
+                class="js-to-inline-calendar"
+                readonly="false"
+                label="COM_REDSHOPB_MYOFFERS_DATE_TO"
+                placeholder="COM_REDSHOPB_MYOFFERS_DATE_TO"
+                description=""
+                />
+    </fields>
+    <fields name="list">
+        <field
+                name="order_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+	<fieldset name="modal">
+		<field  name="delivery_address_id"
+		        type="address"
+		        class="chosen"
+		        label="COM_REDSHOPB_ORDER_DELIVERY_ADDRESS"
+		        description="COM_REDSHOPB_ORDER_DELIVERY_ADDRESS_DESC"
+		        onchange="JUpdateDelivery(jQuery(this))"
+				/>
+		<field
+				name="comment"
+				type="textarea"
+				class="input-large"
+				label="COM_REDSHOPB_ORDER_COMMENT"
+				description="COM_REDSHOPB_ORDER_COMMENT_DESC"
+				/>
+		<field
+				name="requisition"
+				type="text"
+				class="input-medium"
+				label="COM_REDSHOPB_ORDER_REQUISITION"
+				description="COM_REDSHOPB_ORDER_REQUISITION_DESC"
+				/>
+	</fieldset>
+</form>

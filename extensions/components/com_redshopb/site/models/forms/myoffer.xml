@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="comments"
+				type="textarea"
+				label=""
+				description=""
+				required="false"
+				rows="10"
+				cols="100"
+				/>
+	</fieldset>
+</form>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+			name="product_id"
+			type="redshopb.list_ajax"
+			label="COM_REDSHOPB_PRODUCT"
+			description="COM_REDSHOPB_PRODUCT_DESCRIPTION"
+			formName="product_wash_care_spec_xref"
+			model="site:Products"
+			filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+			completionFilter="filter.search"
+			property="name"
+			ordering="p.name"
+			multiple="false"
+			required="true"
+			allowCreate="false"
+			limit="10"
+			hint="JSELECT"
+		/>
+		<field
+				name="wash_care_spec_id"
+				type="washcarespec"
+				label="COM_REDSHOPB_WASH_CARE_SPEC_LABEL"
+				description="COM_REDSHOPB_WASH_CARE_SPEC_DESC"
+				required="true"/>
+	</fieldset>
+</form>

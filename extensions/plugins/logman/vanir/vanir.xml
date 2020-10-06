@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="logman" method="upgrade">
+    <identifier>plg:logman.vanir</identifier>
+    <name>PLG_LOGMAN_VANIR_XML_NAME</name>
+    <creationDate>January 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.3.0</version>
+    <description>PLG_LOGMAN_VANIR_XML_DESCRIPTION</description>
+    <files>
+        <folder>language</folder>
+        <filename>index.html</filename>
+        <filename plugin="vanir">vanir.php</filename>
+    </files>
+    <scriptfile>install.php</scriptfile>
+    <config>
+        <fields name="params" />
+    </config>
+    <actions>
+        <action>add</action>
+        <action>edit</action>
+        <action>delete</action>
+        <action>publish</action>
+        <action>unpublish</action>
+        <action>archive</action>
+        <action>trash</action>
+    </actions>
+</extension>

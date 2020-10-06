@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/components/com_rsbmedia/form/fields">
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"/>
+		<field
+				name="type_code"
+				type="text"
+				label="COM_REDSHOPB_WASH_CARE_SPEC_TYPE_CODE_LABEL"
+				description="COM_REDSHOPB_WASH_CARE_SPEC_TYPE_CODE_DESC"
+				required="true"/>
+		<field
+				name="code"
+				type="text"
+				required="true"
+				label="COM_REDSHOPB_WASH_CARE_SPEC_CODE_LABEL"
+				description="COM_REDSHOPB_WASH_CARE_SPEC_CODE_DESC"/>
+		<field
+				name="imageFileUpload"
+				type="file"
+				preview="tooltip"
+				label="COM_REDSHOPB_WASH_CARE_SPEC_IMAGE_LABEL"
+				description="COM_REDSHOPB_WASH_CARE_SPEC_IMAGE_DESC"
+				accept="image/jpeg,image/png"/>
+		<field
+				name="image"
+				type="hidden"/>
+		<field
+				name="deleteImage"
+				type="checkbox"
+				value="1"
+				label="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_LABEL"
+				description="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_DESC"/>
+		<field
+				name="description"
+				type="textarea"
+				label="COM_REDSHOPB_WASH_CARE_SPEC_DESCRIPTION_LABEL"
+				description="COM_REDSHOPB_WASH_CARE_SPEC_DESCRIPTION_DESC"
+				cols="50"
+				rows="10"
+				class="inputbox"
+				/>
+		<field
+				name="state"
+				type="radio"
+				label="COM_REDSHOPB_STATE_LABEL"
+				description="COM_REDSHOPB_STATE_DESC"
+				required="true"
+				class="btn-group"
+				default="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+	</fieldset>
+</form>

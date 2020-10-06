@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="name"
+                type="collectiontext"
+                label="COM_REDSHOPB_COLLECTION_NAME_LABEL"
+                description="COM_REDSHOPB_COLLECTION_NAME_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="company_id"
+                type="company"
+                label="COM_REDSHOPB_COMPANY_LABEL"
+                description="COM_REDSHOPB_COMPANY_DESC"
+                required="true"
+                onchange="ajaxsetDepartments(this);"
+                >
+            <option value="">JOPTION_SELECT_COMPANY</option>
+        </field>
+        <field
+                name="currency_id"
+                type="currency"
+                collection_use="true"
+                filter="intval"
+                class="chosen"
+                required="true"
+                label="COM_REDSHOPB_COLLECTION_CURRENCY_LABEL"
+                description="COM_REDSHOPB_COLLECTION_CURRENCY_DESC"
+                />
+        <field
+                name="department_ids"
+                type="department"
+                label="COM_REDSHOPB_CUSTOMER_DEPARTMENTS_LABEL"
+                description="COM_REDSHOPB_CUSTOMER_DEPARTMENTS_DESC"
+                multiple="true"
+                required="false"
+                onlyFromSelectedCompany="true"
+                />
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+    </fieldset>
+</form>

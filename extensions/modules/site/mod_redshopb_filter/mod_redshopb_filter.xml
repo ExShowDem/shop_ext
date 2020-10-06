@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8" client="site" method="upgrade">
+    <name>MOD_REDSHOPB_FILTER</name>
+    <creationDate>March 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.4.0</version>
+    <description>MOD_REDSHOPB_FILTER_DESCRIPTION</description>
+    <files>
+        <folder>language</folder>
+        <folder>tmpl</folder>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename module="mod_redshopb_filter">mod_redshopb_filter.php</filename>
+        <filename>mod_redshopb_filter.xml</filename>
+    </files>
+    <scriptfile>script.php</scriptfile>
+    <media folder="media">
+        <folder>mod_redshopb_filter</folder>
+    </media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/libraries/redshopb/form/fields">
+                <field
+                        name="number_options"
+                        type="number"
+                        validate="integer"
+                        class="input-small"
+                        label="MOD_REDSHOPB_FILTER_NUMBER_OPTIONS_LABEL"
+                        description="MOD_REDSHOPB_FILTER_NUMBER_OPTIONS_DESC"
+                        default="5"
+                />
+                <field
+                        name="hide_noproducts"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_HIDE_NOPRODUCTS_LABEL"
+                        description="MOD_REDSHOPB_FILTER_HIDE_NOPRODUCTS_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="show_reset"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_SHOW_RESET_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SHOW_RESET_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="reset_text"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_RESET_TEXT_LABEL"
+                        description="MOD_REDSHOPB_FILTER_RESET_TEXT_DESC"
+                        default=""
+                        showon="show_reset:1"
+                />
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_CATEGORY_LABEL"
+                        class="heading badge badge-info"
+                />
+                <field
+                        name="category_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_CATEGORY_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_CATEGORY_ENABLE_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="category_title"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_CATEGORY_TITLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_CATEGORY_TITLE_DESC"
+                        showon="category_enable:1"
+                />
+                <field
+                        name="default_category"
+                        type="Categories"
+                        label="MOD_REDSHOPB_FILTER_DEFAULT_CATEGORY_LABEL"
+                        description="MOD_REDSHOPB_FILTER_DEFAULT_CATEGORY_DESC"
+                        showon="category_enable:1">
+                    <option value="0">COM_REDSHOPB_SELECT_DEFAULT_CATEGORY</option>
+                </field>
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_LABEL"
+                        class="badge badge-info"
+                />
+                <field
+                        name="search_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_ENABLE_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="search_title"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_TITLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_TITLE_DESC"
+                        showon="search_enable:1"
+                />
+                <field
+                        name="search_hint"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_HINT_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_HINT_DESC"
+                        showon="search_enable:1"
+                />
+                <field
+                        name="search_width"
+                        type="text"
+                        default="auto"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_WIDTH_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_WIDTH_DESC"
+                        showon="search_enable:1"
+
+                />
+                <field
+                        name="search_pin"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_DESC"
+                        default="0"
+                        showon="search_enable:1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_TAG_LABEL"
+                        class="heading badge badge-info"
+                />
+                <field
+                        name="tag_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_TAG_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_TAG_ENABLE_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="tag_title"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_TAG_TITLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_TAG_TITLE_DESC"
+                        showon="tag_enable:1"
+                />
+                <field
+                        name="tag_type_exclude"
+                        type="tagtype"
+                        label="MOD_REDSHOPB_FILTER_TAG_TYPE_EXCLUDE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_TAG_TYPE_EXCLUDE_DESC"
+                        multiple="true"
+                        showon="tag_enable:1"
+                />
+                <field
+                        name="tag_pin"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_DESC"
+                        default="0"
+                        showon="tag_enable:1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_MANUFACTURER_LABEL"
+                        class="heading badge badge-info"
+                />
+                <field
+                        name="manufacturer_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_MANUFACTURER_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_MANUFACTURER_ENABLE_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="manufacturer_title"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_MANUFACTURER_TITLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_MANUFACTURER_TITLE_DESC"
+                        showon="manufacturer_enable:1"
+                />
+                <field
+                        name="manufacturer_pin"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_DESC"
+                        default="0"
+                        showon="manufacturer_enable:1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_PRICE_LABEL"
+                        class="heading badge badge-info"
+                />
+                <field
+                        name="price_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_PRICE_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_PRICE_ENABLE_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="price_title"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_PRICE_TITLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_PRICE_TITLE_DESC"
+                        showon="price_enable:1"
+                />
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_PRICE_RANGE_HINT"
+                        class="text-info"
+                        showon="price_enable:1"
+                />
+                <field
+                        name="price_min"
+                        type="number"
+                        validate="integer"
+                        label="MOD_REDSHOPB_FILTER_PRICE_MIN_LABEL"
+                        description="MOD_REDSHOPB_FILTER_PRICE_MIN_DESC"
+                        default="0"
+                        showon="price_enable:1"
+                />
+                <field
+                        name="price_max"
+                        type="number"
+                        validate="integer"
+                        label="MOD_REDSHOPB_FILTER_PRICE_MAX_LABEL"
+                        description="MOD_REDSHOPB_FILTER_PRICE_MAX_DESC"
+                        default="0"
+                        showon="price_enable:1"
+                />
+                <field
+                        name="price_pin"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_DESC"
+                        default="0"
+                        showon="price_enable:1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_STOCK_LABEL"
+                        class="heading badge badge-info"
+                />
+                <field
+                        name="stock_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_STOCK_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_STOCK_ENABLE_DESC"
+                        default="0">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="stock_title"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_STOCK_TITLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_STOCK_TITLE_DESC"
+                        showon="stock_enable:1"
+                />
+                <field
+                        name="stock_pin"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_STOCK_PIN_FILTER_LABEL"
+                        description="MOD_REDSHOPB_FILTER_STOCK_PIN_FILTER_DESC"
+                        default="0"
+                        showon="stock_enable:1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_FIELDSET_LABEL"
+                        class="heading badge badge-info"
+                />
+                <field
+                        name="fieldset_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_FIELDSET_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_FIELDSET_ENABLE_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="fieldset_load_sub_category"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_FIELDSET_LOAD_SUB_CATEGORY_LABEL"
+                        description="MOD_REDSHOPB_FILTER_FIELDSET_LOAD_SUB_CATEGORY_DESC"
+                        default="0"
+                        showon="fieldset_enable:1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="filter_fieldset_pin"
+                        type="filterfieldset"
+                        label="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_FIELDSET_LABEL"
+                        description="MOD_REDSHOPB_FILTER_SEARCH_PIN_FILTER_FIELDSET_DESC"
+                        multiple="true"
+                        showon="fieldset_enable:1"
+                        />
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_ATTRIBUTES_LABEL"
+                        class="heading badge badge-info"
+                />
+                <field
+                        name="attributes_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_ATTRIBUTES_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_ATTRIBUTES_ENABLE_DESC"
+                        default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field type="spacer" hr="true"/>
+                <field
+                        type="spacer"
+                        label="MOD_REDSHOPB_FILTER_CAMPAIGN_PRICE_LABEL"
+                        class="heading badge badge-info"
+                />
+                <field
+                        name="campaign_price_enable"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_CAMPAIGN_PRICE_ENABLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_CAMPAIGN_PRICE_ENABLE_DESC"
+                        default="0">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="campaign_price_title"
+                        type="label"
+                        label="MOD_REDSHOPB_FILTER_CAMPAIGN_PRICE_TITLE_LABEL"
+                        description="MOD_REDSHOPB_FILTER_CAMPAIGN_PRICE_TITLE_DESC"
+                        showon="campaign_price_enable:1"
+                />
+                <field
+                        name="campaign_price_pin"
+                        type="radio"
+                        class="btn-group"
+                        label="MOD_REDSHOPB_FILTER_CAMPAIGN_PRICE_PIN_FILTER_LABEL"
+                        description="MOD_REDSHOPB_FILTER_CAMPAIGN_PRICE_PIN_FILTER_DESC"
+                        default="0"
+                        showon="campaign_price_enable:1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+                />
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea" rows="3"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+                />
+                <field
+                        name="cache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field
+                        name="cache_time"
+                        type="text"
+                        default="900"
+                        label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                        description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+                />
+                <field
+                        name="cachemode"
+                        type="hidden"
+                        default="itemid">
+                    <option value="itemid"></option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

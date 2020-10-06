@@ -1,0 +1,1849 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="global"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_GLOBAL_TITLE"
+              description="COM_REDSHOPB_CONFIG_GLOBAL_TITLE_DESC">
+        <field
+                name="default_country_id"
+                type="country"
+                label="COM_REDSHOPB_CONFIG_DEFAULT_COUNTRY_LABEL"
+                description="COM_REDSHOPB_CONFIG_DEFAULT_COUNTRY_DESC"
+                filter="intval"
+                required="true"
+                configurationAssignment="false"
+                default="59"
+        />
+        <field
+                name="default_frontend_framework"
+                type="list"
+                label="COM_REDSHOPB_CONFIG_DEFAULT_FRONTEND_FRAMEWORK"
+                description="COM_REDSHOPB_CONFIG_DEFAULT_FRONTEND_FRAMEWORK_DESC"
+                required="true"
+                default="bootstrap3">
+            <option value="bootstrap3">COM_REDSHOPB_FRAMEWORK_BOOTSTRAP3</option>
+            <option value="bootstrap2">COM_REDSHOPB_FRAMEWORK_BOOTSTRAP2</option>
+        </field>
+        <field
+                name="country_assignment"
+                type="CountryAssignment"
+                countryField="shop_countries"
+                default="0"
+                label="COM_REDSHOPB_CONFIG_COUNTRY_ASSIGNMENT_LBL"
+                description="COM_REDSHOPB_CONFIG_COUNTRY_ASSIGNMENT_DESC"
+        />
+        <field
+                name="shop_countries"
+                type="country"
+                configurationAssignment="false"
+                label="COM_REDSHOPB_CONFIG_SHOP_COUNTRIES_LBL"
+                description="COM_REDSHOPB_CONFIG_SHOP_COUNTRIES_DESC"
+                class="form-control input-large"
+                multiple="true"/>
+        <field
+                name="allow_company_register"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ALLOW_COMPANY_REGISTER_LABEL"
+                description="COM_REDSHOPB_CONFIG_ALLOW_COMPANY_REGISTER_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="autoactivate_b2b_company"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_AUTO_ACTIVATE_B2B_COMPANY_LABEL"
+                description="COM_REDSHOPB_CONFIG_AUTO_ACTIVATE_B2B_COMPANY_DESC"
+                class="btn-group"
+                default="0"
+                showon="allow_company_register:1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="use_wallets"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_USE_WALLETS_LABEL"
+                description="COM_REDSHOPB_CONFIG_USE_WALLETS_DESC"
+                class="btn-group"
+                default="1"
+                showon="autoactivate_b2b_company:1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="register_address_required"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_REGISTER_ADDRESS_REQUIRED_LABEL"
+                description="COM_REDSHOPB_CONFIG_REGISTER_ADDRESS_REQUIRED_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="register_billing_phone_required"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_REGISTER_BILLING_PHONE_REQUIRED_LABEL"
+                description="COM_REDSHOPB_CONFIG_REGISTER_BILLING_PHONE_REQUIRED_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="register_shipping_phone_required"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_REGISTER_SHIPPING_PHONE_REQUIRED_LABEL"
+                description="COM_REDSHOPB_CONFIG_REGISTER_SHIPPING_PHONE_REQUIRED_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="register_flow"
+                type="list"
+                label="COM_REDSHOPB_CONFIG_USER_REGISTER_FLOW_LABEL"
+                description="COM_REDSHOPB_CONFIG_USER_REGISTER_FLOW_DESC"
+                class="btn-group"
+                default="normal"
+        >
+            <option value="normal">COM_REDSHOPB_CONFIG_USER_REGISTER_FLOW_OPTION_ACTIVED_AFTER_REGISTER</option>
+            <option value="email">COM_REDSHOPB_CONFIG_USER_REGISTER_FLOW_OPTION_ACTIVED_BY_EMAIL</option>
+            <option value="admin_approval">COM_REDSHOPB_CONFIG_USER_REGISTER_FLOW_OPTION_BY_ADMIN_APPROVAL</option>
+        </field>
+        <field
+                name="register_flow_to_emails"
+                type="text"
+                multiple="true"
+                showon="register_flow:admin_approval"
+                label="COM_REDSHOPB_CONFIG_USER_REGISTER_FLOW_TO_EMAILS_LABEL"
+                description="COM_REDSHOPB_CONFIG_USER_REGISTER_FLOW_TO_EMAILS_DESC"
+                class="btn-group">
+        </field>
+        <field
+                name="register_flow_approval_email_template"
+                type="template"
+                label="COM_REDSHOPB_CONFIG_ADMIN_APPROVAL_EMAIL_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CONFIG_ADMIN_APPROVAL_EMAIL_TEMPLATE_DESC"
+                scope="admin-approval"
+                templateGroup="email"
+                showon="register_flow:admin_approval">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="register_flow_user_approved_email_template"
+                type="template"
+                label="COM_REDSHOPB_CONFIG_USER_APPROVED_EMAIL_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CONFIG_USER_APPROVED_EMAIL_TEMPLATE_DESC"
+                scope="user-approved"
+                templateGroup="email"
+                showon="register_flow:admin_approval">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="register_flow_user_notify_after_register_email_template"
+                type="template"
+                label="COM_REDSHOPB_CONFIG_USER_NOTIFY_AFTER_REGISTER_EMAIL_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CONFIG_USER_NOTIFY_AFTER_REGISTER_EMAIL_TEMPLATE_DESC"
+                scope="user-approve-after-register"
+                templateGroup="email"
+                showon="register_flow:admin_approval">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="activation_email_template"
+                type="template"
+                label="COM_REDSHOPB_CONFIG_ACTIVATION_EMAIL_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CONFIG_ACTIVATION_EMAIL_TEMPLATE_DESC"
+                scope="email"
+                templateGroup="email">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="encryption_key"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_ENCRYPTION_KEY_LABEL"
+                description="COM_REDSHOPB_CONFIG_ENCRYPTION_KEY_DESC"
+                default="redshopb"
+                required="true"
+        />
+        <field
+                name="related_sku_name"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_RELATED_SKU_NAME_LABEL"
+                description="COM_REDSHOPB_CONFIG_RELATED_SKU_NAME_DESC"
+        />
+        <field
+                name="set_webservices"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SET_WEBSERVICES_LABEL"
+                description="COM_REDSHOPB_CONFIG_SET_WEBSERVICES_DESC"
+                default="0"
+                class="btn-group"
+        >
+            <option value="1">JENABLED</option>
+            <option value="0">JDISABLED</option>
+        </field>
+        <field
+                name="use_webservice_permission_restriction"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_USE_WEBSERVICE_PERMISSION_RESTRICTION_LABEL"
+                description="COM_REDSHOPB_CONFIG_USE_WEBSERVICE_PERMISSION_RESTRICTION_DESC"
+                class="btn-group"
+                default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="product_desc_process"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_PRODUCT_DESCRIPTION_PROCESS_LABEL"
+                description="COM_REDSHOPB_CONFIG_PRODUCT_DESCRIPTION_PROCESS_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="warning_logout_when_products_in_cart"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_WARNING_LOGOUT_WHEN_PRODUCTS_IN_CART_LABEL"
+                description="COM_REDSHOPB_CONFIG_WARNING_LOGOUT_WHEN_PRODUCTS_IN_CART_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="warning_logout_when_products_in_cart_text"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_WARNING_LOGOUT_WHEN_PRODUCTS_IN_CART_TEXT_LABEL"
+                description="COM_REDSHOPB_CONFIG_WARNING_LOGOUT_WHEN_PRODUCTS_IN_CART_TEXT_DESC"
+                default=""
+                showon="warning_logout_when_products_in_cart:1"/>
+        <field
+                name="rich_snippet"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_RICH_SNIPPET_LABEL"
+                description="COM_REDSHOPB_CONFIG_RICH_SNIPPET_DESC"
+                translate="true"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="default_pdf_orientation"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_DEFAULT_PDF_ORIENTATION_LABEL"
+                description="COM_REDSHOPB_CONFIG_DEFAULT_PDF_ORIENTATION_DESC"
+                default="A4"/>
+        <field
+                name="enable_locking_system"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ENABLE_LOCKING_SYSTEM_LABEL"
+                description="COM_REDSHOPB_CONFIG_ENABLE_LOCKING_SYSTEM_DESC"
+                translate="true"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="locking_system_priority"
+                type="select2"
+                label="COM_REDSHOPB_CONFIG_LOCKING_SYSTEM_PRIORITY_LABEL"
+                description="COM_REDSHOPB_CONFIG_LOCKING_SYSTEM_PRIORITY_DESC"
+                default="Webservice"
+                multiple="true"
+                useShuffle="true"
+                defaultValuesSeparator=","
+                width="100%"
+        >
+            <option value="User">COM_REDSHOPB_CONFIG_LOCKING_SYSTEM_LOCKED_METHOD_USER</option>
+            <option value="Webservice">COM_REDSHOPB_CONFIG_LOCKING_SYSTEM_LOCKED_METHOD_WEBSERVICE</option>
+            <option value="User_Webservice">COM_REDSHOPB_CONFIG_LOCKING_SYSTEM_LOCKED_METHOD_USER_WEBSERVICE</option>
+            <option value="Sync">COM_REDSHOPB_CONFIG_LOCKING_SYSTEM_LOCKED_METHOD_SYNC</option>
+            <option value="Other">COM_REDSHOPB_CONFIG_LOCKING_SYSTEM_LOCKED_METHOD_OTHER</option>
+        </field>
+        <field
+                name="redis_host"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_REDIS_HOST_LABEL"
+                description="COM_REDSHOPB_CONFIG_REDIS_HOST_DESC"
+                default="localhost"
+        >
+        </field>
+        <field
+                name="redis_port"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_REDIS_PORT_LABEL"
+                description="COM_REDSHOPB_CONFIG_REDIS_PORT_DESC"
+                default="6379"
+        >
+        </field>
+    </fieldset>
+    <fieldset name="shop"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_SHOP_TITLE"
+              description="COM_REDSHOPB_CONFIG_SHOP_TITLE_DESC">
+        <field
+                name="show_subcategories_products"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_SUBCATEGORY_PRODUCTS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_SUBCATEGORY_PRODUCTS_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="ajax_categories"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_AJAX_CATEGORIES_LABEL"
+                description="COM_REDSHOPB_CONFIG_AJAX_CATEGORIES_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="date_new_product"
+                type="number"
+                filter="intval"
+                label="COM_REDSHOPB_CONFIG_DATE_NEW_PRODUCT_LABEL"
+                description="COM_REDSHOPB_CONFIG_DATE_NEW_PRODUCT_DESC"
+                min="0"
+                required="true"
+                default="14"
+        />
+        <field
+                name="show_products_print"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_PRODUCTS_PRINT_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_PRODUCTS_PRINT_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="collection_company_types"
+                type="list"
+                label="COM_REDSHOPB_CONFIG_COLLECTIONS_COMPANY_TYPES_LABEL"
+                description="COM_REDSHOPB_CONFIG_COLLECTIONS_COMPANY_TYPES_DESC"
+                class="btn-group"
+                default="end_customer">
+            <option value="end_customer">COM_REDSHOPB_COMPANY_TYPE_ENDCUSTOMERS</option>
+            <option value="all">JALL</option>
+            <option value="0">JNONE</option>
+        </field>
+        <field
+                name="show_shop_as"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_SHOP_AS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_SHOP_AS_DESC"
+                class="btn-group"
+                default="categories">
+            <option value="categories">COM_REDSHOPB_SHOW_AS_CATEGORIES</option>
+            <option value="collections">COM_REDSHOPB_SHOW_AS_COLLECTIONS</option>
+        </field>
+        <field
+                name="seo_collection_include_category"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SEO_COLLECTION_INCLUDE_CATEGORIES_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_COLLECTION_INCLUDE_CATEGORIES_DESC"
+                class="btn-group"
+                showon="show_shop_as:collections"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="show_products_as"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_PRODUCTS_AS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_PRODUCTS_AS_DESC"
+                class="btn-group"
+                default="list">
+            <option value="list">COM_REDSHOPB_SHOW_PRODUCTS_AS_LIST</option>
+            <option value="grid">COM_REDSHOPB_SHOW_PRODUCTS_AS_GRID</option>
+        </field>
+        <field
+                name="show_product_accessories_as"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_PRODUCT_ACCESSORIES_AS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_PRODUCTS_ACCESSORIES_AS_DESC"
+                class="btn-group"
+                default="checkbox">
+            <option value="checkbox">COM_REDSHOPB_CONFIG_SHOW_PRODUCTS_ACCESSORIES_AS_CHECKBOX</option>
+            <option value="select">COM_REDSHOPB_CONFIG_SHOW_PRODUCTS_ACCESSORIES_AS_SELECT</option>
+        </field>
+        <field
+                name="show_inline_category_filter"
+                type="radio"
+                label="COM_REDSHOPB_LBL_SHOW_INLINE_CATEGORY_FILTER"
+                description="COM_REDSHOPB_DESC_SHOW_INLINE_CATEGORY_FILTER"
+                translate="true"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="show_shop_collection_filter"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_SHOP_COLLECTION_FILTER_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_SHOP_COLLECTION_FILTER_DESC"
+                class="btn-group"
+                default="1"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="category_allowed_order_by"
+                type="select2"
+                label="COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_LABEL"
+                description="COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_DESC"
+                default="name,sku,price,most_popular,most_purchased,custom"
+                multiple="true"
+                useShuffle="true"
+                required="true"
+                defaultValuesSeparator=","
+                width="100%"
+        >
+            <option value="sku">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_SKU</option>
+            <option value="name">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_NAME</option>
+            <option value="price">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_PRICE</option>
+            <option value="most_popular">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_MOST_POPULAR</option>
+            <option value="most_purchased">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_MOST_PURCHASED</option>
+            <option value="recent">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_RECENT</option>
+            <option value="custom">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_CUSTOM</option>
+        </field>
+        <field
+                name="productlist_allowed_order_by"
+                type="select2"
+                label="COM_REDSHOPB_CONFIG_PRODUCTLIST_ALLOWED_ORDER_BY_LABEL"
+                description="COM_REDSHOPB_CONFIG_PRODUCTLIST_ALLOWED_ORDER_BY_DESC"
+                default="relevance,name,sku,price,most_popular,most_purchased,custom"
+                multiple="true"
+                useShuffle="true"
+                required="true"
+                defaultValuesSeparator=","
+                width="100%"
+        >
+            <option value="sku">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_SKU</option>
+            <option value="name">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_NAME</option>
+            <option value="price">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_PRICE</option>
+            <option value="relevance">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_RELEVANCE</option>
+            <option value="most_popular">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_MOST_POPULAR</option>
+            <option value="most_purchased">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_MOST_PURCHASED</option>
+            <option value="custom">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_CUSTOM</option>
+        </field>
+		<field
+			name="ajaxsearch_allowed_order_by"
+			type="select2"
+			label="COM_REDSHOPB_CONFIG_AJAXSEARCH_ALLOWED_ORDER_BY_LABEL"
+			description="COM_REDSHOPB_CONFIG_AJAXSEARCH_ALLOWED_ORDER_BY_DESC"
+			default="name,sku,price,most_popular,most_purchased,custom"
+			multiple="true"
+			useShuffle="true"
+			required="true"
+			defaultValuesSeparator=","
+			width="100%"
+		>
+			<option value="sku">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_SKU</option>
+			<option value="name">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_NAME</option>
+			<option value="price">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_PRICE</option>
+            <option value="most_popular">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_MOST_POPULAR</option>
+            <option value="most_purchased">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_MOST_PURCHASED</option>
+			<option value="relevance">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_RELEVANCE</option>
+			<option value="custom">COM_REDSHOPB_CONFIG_ALLOWED_ORDER_BY_CUSTOM</option>
+		</field>
+        <field
+                name="relate_mode"
+                type="select2"
+                label="COM_REDSHOPB_CONFIG_RELATED_LABEL"
+                description="COM_REDSHOPB_CONFIG_RELATED_DESC"
+                default="0"
+                width="100%"
+        >
+            <option value="0">COM_REDSHOPB_CONFIG_RELATED_DEFAULT</option>
+            <option value="1">COM_REDSHOPB_CONFIG_RELATED_ONLY_CATEGORY</option>
+            <option value="2">COM_REDSHOPB_CONFIG_RELATED_ONLY_TAG</option>
+            <option value="3">COM_REDSHOPB_CONFIG_RELATED_ONLY_COLLECTION</option>
+        </field>
+        <field
+                name="most_purchased_include_from_all"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_MOST_PURCHASED_INCLUDE_FROM_ALL_LABEL"
+                description="COM_REDSHOPB_CONFIG_MOST_PURCHASED_INCLUDE_FROM_ALL_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+    <fieldset name="cart"
+              ddfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_CART_TITLE"
+              description="COM_REDSHOPB_CONFIG_CART_TITLE_DESC">
+        <field
+                name="add_to_cart_notification_type"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ADD_TO_CART_NOTIFICATION_TYPE_LABEL"
+                description="COM_REDSHOPB_CONFIG_ADD_TO_CART_NOTIFICATION_TYPE_DESC"
+                class="btn-group"
+                default="modal">
+            <option value="modal">COM_REDSHOPB_CONFIG_ADD_TO_CART_NOTIFICATION_TYPE_MODAL</option>
+            <option value="alert">COM_REDSHOPB_CONFIG_ADD_TO_CART_NOTIFICATION_TYPE_ALERT</option>
+        </field>
+        <field
+                name="count_cart_items"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_COUNT_CART_ITEMS_LABEL"
+                description="COM_REDSHOPB_CONFIG_COUNT_CART_ITEMS_DESC"
+                class="btn-group"
+                default="quantity">
+            <option value="quantity">COM_REDSHOPB_CONFIG_COUNT_CART_ITEMS_BY_QUANTITY</option>
+            <option value="product">COM_REDSHOPB_CONFIG_COUNT_CART_ITEMS_BY_PRODUCT</option>
+        </field>
+        <field
+                name="cart_show_product_image"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_CART_SHOW_PRODUCT_IMAGE"
+                description="COM_REDSHOPB_CONFIG_CART_SHOW_PRODUCT_IMAGE_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="show_taxes_in_cart_module"
+                type="radio"
+                label="MOD_REDSHOPB_CONFIG_SHOW_TAXES_IN_CART_LABEL"
+                description="MOD_REDSHOPB_CONFIG_SHOW_TAXES_IN_CART_DESC"
+                default="1"
+                class="btn-group">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="checkout_registration"
+                type="list"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_REGISTRATION"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_REGISTRATION_DESC"
+                class="btn-group"
+                default="registration_required">
+            <option value="registration_required">COM_REDSHOPB_CONFIG_CHECKOUT_REGISTRATION_REQUIRED</option>
+            <option value="registration_optional">COM_REDSHOPB_CONFIG_CHECKOUT_REGISTRATION_OPTIONAL</option>
+            <option value="registration_none">COM_REDSHOPB_CONFIG_CHECKOUT_REGISTRATION_NONE</option>
+        </field>
+        <field
+                name="checkout_guest_phone_required"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_GUEST_PHONE_REQUIRED"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_GUEST_PHONE_REQUIRED_DESC"
+                class="btn-group"
+                default="1"
+                showon="checkout_registration!:registration_required"
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field
+                name="checkout_guest_user_name"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_GUEST_USER_NAME_LABEL"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_GUEST_USER_NAME_DESC"
+                default="Guest"
+        />
+        <field
+                name="checkout_mode"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_MODE"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_MODE_DESC"
+                default="default"
+                class="btn-group">
+            <option value="default">COM_REDSHOPB_CONFIG_CHECKOUT_MODE_DEFAULT</option>
+            <option value="onepage">COM_REDSHOPB_CONFIG_CHECKOUT_MODE_ONE_PAGE</option>
+        </field>
+        <field
+                name="checkout_show_product_image"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_SHOW_PRODUCT_IMAGE"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_SHOW_PRODUCT_IMAGE_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="terms_and_conditions"
+                type="redshopb.list_ajax"
+                model="admin:Terms"
+                formName="config"
+                formPath="administrator/components/com_redshopb/models/forms/"
+                property="name"
+                ordering="name"
+                limit="10"
+                hint="COM_REDSHOPB_CONFIG_TERMS_AND_CONDITIONS_HOLDER"
+                completionFilter="filter.search_terms"
+                layout="redshopb.field.select2_ajax"
+                width="50%"
+                label="COM_REDSHOPB_CONFIG_TERMS_AND_CONDITIONS_LABEL"
+                description="COM_REDSHOPB_CONFIG_TERMS_AND_CONDITIONS_DESC"
+        />
+        <field
+                name="checkout_fields"
+                type="select2"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_FIELDS_LABEL"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_FIELDS_ORDER_BY_DESC"
+                default="product_id,product_item_code,attributes,quantity,stock,stockroom_id,price_without_discount,discount,final_price"
+                multiple="true"
+                useShuffle="true"
+                required="true"
+                defaultValuesSeparator=","
+                width="100%">
+            <option value="product_id">COM_REDSHOPB_CONFIG_CHECKOUT_PRODUCT_NAME</option>
+            <option value="product_item_code">COM_REDSHOPB_CONFIG_CHECKOUT_PRODUCT_ITEM_CODE</option>
+            <option value="attributes">COM_REDSHOPB_CONFIG_CHECKOUT_ATTRIBUTES</option>
+            <option value="quantity">COM_REDSHOPB_CONFIG_CHECKOUT_QUANTITY</option>
+            <option value="stock">COM_REDSHOPB_CONFIG_CHECKOUT_STOCK</option>
+            <option value="stockroom_id">COM_REDSHOPB_CONFIG_CHECKOUT_STOCKROOM_ID</option>
+            <option value="price_without_discount">COM_REDSHOPB_CONFIG_CHECKOUT_PRICE_WITHOUT_DISCOUNT</option>
+            <option value="discount">COM_REDSHOPB_CONFIG_CHECKOUT_DISCOUNT</option>
+            <option value="final_price">COM_REDSHOPB_CONFIG_CHECKOUT_FINAL_PRICE</option>
+        </field>
+        <field
+                name="checkout_hidden_fields"
+                type="select2"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_HIDDEN_FIELDS_LABEL"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_HIDDEN_FIELDS_DESC"
+                default="'product_item_code,price_without_discount,final_price,attributes,discount,stock"
+                multiple="true"
+                useShuffle="true"
+                required="true"
+                defaultValuesSeparator=","
+                width="100%">
+            <option value="product_id">COM_REDSHOPB_CONFIG_CHECKOUT_PRODUCT_NAME</option>
+            <option value="product_item_code">COM_REDSHOPB_CONFIG_CHECKOUT_PRODUCT_ITEM_CODE</option>
+            <option value="attributes">COM_REDSHOPB_CONFIG_CHECKOUT_ATTRIBUTES</option>
+            <option value="quantity">COM_REDSHOPB_CONFIG_CHECKOUT_QUANTITY</option>
+            <option value="stock">COM_REDSHOPB_CONFIG_CHECKOUT_STOCK</option>
+            <option value="stockroom_id">COM_REDSHOPB_CONFIG_CHECKOUT_STOCKROOM_ID</option>
+            <option value="price_without_discount">COM_REDSHOPB_CONFIG_CHECKOUT_PRICE_WITHOUT_DISCOUNT</option>
+            <option value="discount">COM_REDSHOPB_CONFIG_CHECKOUT_DISCOUNT</option>
+            <option value="final_price">COM_REDSHOPB_CONFIG_CHECKOUT_FINAL_PRICE</option>
+        </field>
+        <field
+                name="stock_presented"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_STOCK_PRESENTED_LABEL"
+                description="COM_REDSHOPB_CONFIG_STOCK_PRESENTED_DESC"
+                default="semaphore">
+            <option value="semaphore">COM_REDSHOPB_CONFIG_STOCK_PRESENTED_SEMAPHORE</option>
+            <option value="specific_color">COM_REDSHOPB_CONFIG_STOCK_PRESENTED_SPECIFIC_COLOR</option>
+        </field>
+        <field
+                name="use_shipping_date"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_USE_SHIPPING_DATE_LABEL"
+                description="COM_REDSHOPB_CONFIG_USE_SHIPPING_DATE_DESC"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="allow_splitting_order"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_ALLOW_SPLITTING_ORDER_LABEL"
+                description="COM_REDSHOPB_CONFIG_ALLOW_SPLITTING_ORDER_DESC"
+                default="0"
+                showon="use_shipping_date:1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="shipping_skip_from_today"
+                type="number"
+                class="btn-group"
+                min="0"
+                label="COM_REDSHOPB_CONFIG_SHIPPING_DAYS_SKIP_FROM_TO_DAY_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHIPPING_DAYS_SKIP_FROM_TO_DAY_DESC"
+                default="0"
+                showon="use_shipping_date:1"
+        />
+        <field
+                name="shipping_include_saturday"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_SHIPPING_INCLUDE_SATURDAY_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHIPPING_INCLUDE_SATURDAY_DESC"
+                default="1"
+                showon="use_shipping_date:1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="shipping_include_sunday"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_SHIPPING_INCLUDE_SUNDAY_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHIPPING_INCLUDE_SUNDAY_DESC"
+                default="1"
+                showon="use_shipping_date:1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="shipping_include_day_off"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_SHIPPING_INCLUDE_DAY_OFF_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHIPPING_INCLUDE_DAY_OFF_DESC"
+                default="1"
+                showon="use_shipping_date:1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="stockroom_delivery_time"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_STOCKROOM_DELIVERY_TIME_LABEL"
+                description="COM_REDSHOPB_CONFIG_STOCKROOM_DELIVERY_TIME_DESC"
+                default="hour">
+            <option value="hour">COM_REDSHOPB_CONFIG_STOCKROOM_DELIVERY_TIME_OPTION_HOURS</option>
+            <option value="day">COM_REDSHOPB_CONFIG_STOCKROOM_DELIVERY_TIME_OPTION_DAYS</option>
+        </field>
+        <field
+                name="clean_cart_when_add_from_favourite_list"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_CLEAN_CART_WHEN_ADD_FROM_FAVOURITE_LIST_LABEL"
+                description="COM_REDSHOPB_CONFIG_CLEAN_CART_WHEN_ADD_FROM_FAVOURITE_LIST_DESC"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="add_to_cart_redirect_cart"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_ADD_TO_CART_REDIRECT_TO_CART_PAGE_LABEL"
+                description="COM_REDSHOPB_CONFIG_ADD_TO_CART_REDIRECT_TO_CART_PAGE_DESC"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="my_favorite_list_checkout"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_MY_FAVORITE_LIST_CHECKOUT_LABEL"
+                description="COM_REDSHOPB_CONFIG_MY_FAVORITE_LIST_CHECKOUT_DESC"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="quick_order_checkout_redirect"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_QUICK_ORDER_CHECKOUT_REDIRECT_LABEL"
+                description="COM_REDSHOPB_CONFIG_QUICK_ORDER_CHECKOUT_REDIRECT_DESC"
+                default="cart">
+            <option value="cart">COM_REDSHOPB_CONFIG_CART</option>
+            <option value="delivery">COM_REDSHOPB_CONFIG_DELIVERY</option>
+        </field>
+		<field
+				name="save_cart_for_logged_in"
+				type="radio"
+				class="btn-group"
+				label="COM_REDSHOPB_CONFIG_SAVE_CART_FOR_LOGGED_IN_LABEL"
+				description="COM_REDSHOPB_CONFIG_SAVE_CART_FOR_LOGGED_IN_DESC"
+				default="0"
+                showon="checkout_registration:registration_required">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+			name="show_invoice_email_field"
+			type="radio"
+			class="btn-group"
+			label="COM_REDSHOPB_CONFIG_SHOW_INVOICE_EMAIL_FIELD_LBL"
+			description="COM_REDSHOPB_CONFIG_SHOW_INVOICE_EMAIL_FIELD_DESC"
+			default="0"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+        <field
+                name="save_to_cart_by"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_SAVE_TO_CART_BY_LBL"
+                description="COM_REDSHOPB_CONFIG_SAVE_TO_CART_BY_DESC"
+                default="overwrite"
+        >
+            <option value="overwrite">COM_REDSHOPB_OVERWRITE_CART</option>
+            <option value="add_to">COM_REDSHOPB_ADD_TO_CART</option>
+        </field>
+    </fieldset>
+    <fieldset name="images"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_IMAGES_TITLE"
+              description="COM_REDSHOPB_CONFIG_IMAGES_TITLE_DESC">
+        <field
+                name="stored_max_width"
+                type="number"
+                min="0"
+                label="COM_REDSHOPB_CONFIG_STORED_MAX_WIDTH"
+                description="COM_REDSHOPB_CONFIG_STORED_MAX_WIDTH_DESC"
+                filter="intval"
+                default="1200"
+        />
+        <field
+                name="stored_max_height"
+                type="number"
+                min="0"
+                label="COM_REDSHOPB_CONFIG_STORED_MAX_HEIGHT"
+                description="COM_REDSHOPB_CONFIG_STORED_MAX_HEIGHT_DESC"
+                filter="intval"
+                default=""
+        />
+        <field
+                name="auto_optimize_stored"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_OPTIMIZE_WHEN_STORED"
+                description="COM_REDSHOPB_CONFIG_OPTIMIZE_WHEN_STORED_DESC"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="force_thumbnail_size"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_FORCE_THUMBNAIL_SIZE"
+                description="COM_REDSHOPB_CONFIG_FORCE_THUMBNAIL_SIZE_DESC"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="image_optimization"
+                type="list"
+                default="no"
+                label="COM_REDSHOPB_CONFIG_IMAGES_OPTIMIZATION_LABEL"
+                description="COM_REDSHOPB_CONFIG_IMAGES_OPTIMIZATION_DESC">
+            <option value="no">COM_REDSHOPB_CONFIG_IMAGES_OPTIMIZATION_NO</option>
+            <option value="lazy">COM_REDSHOPB_CONFIG_IMAGES_OPTIMIZATION_LAZY</option>
+            <option value="force">COM_REDSHOPB_CONFIG_IMAGES_OPTIMIZATION_FORCE</option>
+        </field>
+        <field
+                name="thumbnail_default_no_image"
+                type="rmedia"
+                label="COM_REDSHOPB_CONFIG_THUMBNAIL_NO_IMAGE_LABEL"
+                description="COM_REDSHOPB_CONFIG_THUMBNAIL_NO_IMAGE_DESC"
+                required="false"
+        />
+        <field
+                name="thumbnail_width"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_THUMBNAIL_WIDTH_LABEL"
+                description="COM_REDSHOPB_CONFIG_THUMBNAIL_WIDTH_DESC"
+                filter="intval"
+                default="144"
+                required="true"
+        />
+        <field
+                name="thumbnail_height"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_THUMBNAIL_HEIGHT_LABEL"
+                description="COM_REDSHOPB_CONFIG_THUMBNAIL_HEIGHT_DESC"
+                filter="intval"
+                default="144"
+                required="true"
+        />
+        <field
+                name="grid_image_width"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_GRID_IMAGE_WIDTH_LABEL"
+                description="COM_REDSHOPB_CONFIG_GRID_IMAGE_WIDTH_DESC"
+                filter="intval"
+                default="172"
+                required="true"
+        />
+        <field
+                name="grid_image_height"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_GRID_IMAGE_HEIGHT_LABEL"
+                description="COM_REDSHOPB_CONFIG_GRID_IMAGE_HEIGHT_DESC"
+                filter="intval"
+                default="172"
+                required="true"
+        />
+        <field
+                name="product_image_width"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_PRODUCT_IMAGE_WIDTH_LABEL"
+                description="COM_REDSHOPB_CONFIG_PRODUCT_IMAGE_WIDTH_DESC"
+                filter="intval"
+                default="256"
+                required="true"
+        />
+        <field
+                name="product_image_height"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_PRODUCT_IMAGE_HEIGHT_LABEL"
+                description="COM_REDSHOPB_CONFIG_PRODUCT_IMAGE_HEIGHT_DESC"
+                filter="intval"
+                default="256"
+                required="true"
+        />
+        <field
+                name="category_image_width"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CATEGORY_IMAGE_WIDTH_LABEL"
+                description="COM_REDSHOPB_CONFIG_CATEGORY_IMAGE_WIDTH_DESC"
+                filter="intval"
+                default="72"
+                required="true"
+        />
+        <field
+                name="category_image_height"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CATEGORY_IMAGE_HEIGHT_LABEL"
+                description="COM_REDSHOPB_CONFIG_CATEGORY_IMAGE_HEIGHT_DESC"
+                filter="intval"
+                default="72"
+                required="true"
+        />
+        <field
+                name="manufacturer_image_width"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_MANUFACTURER_IMAGE_WIDTH_LABEL"
+                description="COM_REDSHOPB_CONFIG_MANUFACTURER_IMAGE_WIDTH_DESC"
+                filter="intval"
+                default="256"
+                required="true"
+        />
+        <field
+                name="manufacturer_image_height"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_MANUFACTURER_IMAGE_HEIGHT_LABEL"
+                description="COM_REDSHOPB_CONFIG_MANUFACTURER_IMAGE_HEIGHT_DESC"
+                filter="intval"
+                default="256"
+                required="true"
+        />
+        <field
+                name="checkout_image_width"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_IMAGE_WIDTH_LABEL"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_IMAGE_WIDTH_DESC"
+                filter="intval"
+                default="256"
+                required="true"
+        />
+        <field
+                name="checkout_image_height"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CHECKOUT_IMAGE_HEIGHT_LABEL"
+                description="COM_REDSHOPB_CONFIG_CHECKOUT_IMAGE_HEIGHT_DESC"
+                filter="intval"
+                default="256"
+                required="true"
+        />
+        <field
+                name="cart_image_width"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CART_IMAGE_WIDTH_LABEL"
+                description="COM_REDSHOPB_CONFIG_CART_IMAGE_WIDTH_DESC"
+                filter="intval"
+                default="100"
+                required="true"
+        />
+        <field
+                name="cart_image_height"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CART_IMAGE_HEIGHT_LABEL"
+                description="COM_REDSHOPB_CONFIG_CART_IMAGE_HEIGHT_DESC"
+                filter="intval"
+                default="100"
+                required="true"
+        />
+    </fieldset>
+    <fieldset name="breadcrumbs"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_BREADCRUMBS_TITLE"
+              description="COM_REDSHOPB_CONFIG_BREADCRUMBS_TITLE_DESC">
+        <field
+                name="show_breadcrumbs"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_BREADCRUMBS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_BREADCRUMBS_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="impersonation_breadcrumbs"
+                type="rlist"
+                label="COM_REDSHOPB_CONFIG_IMPERSONATION_BREADCRUMBS_LABEL"
+                description="COM_REDSHOPB_CONFIG_IMPERSONATION_BREADCRUMBS_DESC"
+                default="show_in_main">
+            <option value="show_in_main">COM_REDSHOPB_CONFIG_IMPERSONATION_BREADCRUMBS_SHOW_IN_MAIN</option>
+            <option value="show_separate">COM_REDSHOPB_CONFIG_IMPERSONATION_BREADCRUMBS_SHOW_SEPARATE</option>
+            <option value="hide">COM_REDSHOPB_CONFIG_IMPERSONATION_BREADCRUMBS_HIDE</option>
+        </field>
+        <field
+                name="breadcrumbsShowCategories"
+                type="radio"
+                class="btn-group"
+                default="1"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_SHOW_CATEGORIES_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_SHOW_CATEGORIES_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="showHere"
+                type="radio"
+                class="btn-group"
+                default="1"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SHOWHERE_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SHOWHERE_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="showHome"
+                type="radio"
+                class="btn-group"
+                default="1"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SHOWHOME_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SHOWHOME_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="homeText"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_HOMETEXT_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_HOMETEXT_DESC"
+        />
+        <field
+                name="separator"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SEPARATOR_LABEL"
+                description="COM_REDSHOPB_CONFIG_BREADCRUMBS_FIELD_SEPARATOR_DESC"
+        />
+    </fieldset>
+    <fieldset name="product_search"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_TITLE"
+              description="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_TITLE_DESC">
+        <field
+                name="product_search_method"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_METHOD"
+                description="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_METHOD_DESC"
+                default="exact_and_partial">
+            <option value="exact">COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_ADDITIONAL_FIELDS_EXACT</option>
+            <option value="exact_and_partial">COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_ADDITIONAL_FIELDS_EXACT_AND_PARTIAL
+            </option>
+        </field>
+        <field
+                name="product_search_synonyms"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_SYNONYMS"
+                description="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_SYNONYMS_DESC"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="stem"
+                type="radio"
+                class="btn-group"
+                default="0"
+                label="COM_REDSHOPB_CONFIG_STEMMER_ENABLE_LABEL"
+                description="COM_REDSHOPB_CONFIG_STEMMER_ENABLE_DESCRIPTION">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="stemmer"
+                type="list"
+                default="snowball"
+                label="COM_REDSHOPB_CONFIG_STEMMER_LABEL"
+                description="COM_REDSHOPB_CONFIG_STEMMER_DESCRIPTION"
+        >
+            <option value="alternative">COM_REDSHOPB_CONFIG_STEMMER_ALTENATIVE</option>
+            <option value="snowball">COM_REDSHOPB_CONFIG_STEMMER_SNOWBALL</option>
+        </field>
+        <field
+                name="product_search_criterias_table"
+                type="productsearchcriteriastable"
+                label="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_CRITERIAS"
+                description="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_CRITERIAS_DESC"
+                default=""
+        />
+        <field
+                name="product_search_sync_ref"
+                type="productsearchsyncref"
+                label="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_SYNC_REF"
+                description="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_SYNC_REF_DESC">
+            <option value="NONE">JNONE</option>
+        </field>
+        <field
+                name="product_search_stop_if_found"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_STOP_IF_FOUND"
+                description="COM_REDSHOPB_CONFIG_PRODUCT_SEARCH_STOP_IF_FOUND_DESC"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+    <fieldset name="pagination"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_PAGINATION_TITLE"
+              description="COM_REDSHOPB_CONFIG_PAGINATION_DESC">
+        <field
+                name="no_pagination"
+                type="radio"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_NO_PAGINATION_LABEL"
+                description="COM_REDSHOPB_CONFIG_NO_PAGINATION_DESC"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="list_limit"
+                type="list"
+                default="-1"
+                label="COM_REDSHOPB_CONFIG_LIST_LIMIT_LABEL"
+                description="COM_REDSHOPB_CONFIG_LIST_LIMIT_DESC"
+                filter="integer">
+            <option value="-1">COM_REDSHOPB_CONFIG_LIST_LIMIT_JOOMLA_DEFAULT</option>
+            <option value="5">J5</option>
+            <option value="10">J10</option>
+            <option value="15">J15</option>
+            <option value="20">J20</option>
+            <option value="25">J25</option>
+            <option value="30">J30</option>
+            <option value="50">J50</option>
+            <option value="100">J100</option>
+            <option value="0">JALL</option>
+        </field>
+        <field
+                name="shop_categories_per_page"
+                type="number"
+                validate="integer"
+                label="COM_REDSHOPB_CONFIG_SHOP_CATEGORIES_PER_PAGE_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOP_CATEGORIES_PER_PAGE_DESC"
+                default="12"
+        />
+        <field
+                name="shop_products_per_page"
+                type="number"
+                validate="integer"
+                label="COM_REDSHOPB_CONFIG_SHOP_PRODUCTS_PER_PAGE_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOP_PRODUCTS_PER_PAGE_DESC"
+                default="12"
+        />
+        <field
+                name="shop_companies_per_page"
+                type="number"
+                validate="integer"
+                label="COM_REDSHOPB_CONFIG_SHOP_COMPANIES_PER_PAGE_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOP_COMPANIES_PER_PAGE_DESC"
+                default="12"
+        />
+        <field
+                name="company_menu_limit"
+                type="number"
+                validate="integer"
+                label="COM_REDSHOPB_CONFIG_SHOP_COMPANY_MENU_LIMIT_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOP_COMPANY_MENU_LIMIT_DESC"
+                default="50"
+        />
+        <field
+                name="shop_departments_per_page"
+                type="number"
+                validate="integer"
+                label="COM_REDSHOPB_CONFIG_SHOP_DEPARTMENTS_PER_PAGE_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOP_DEPARTMENTS_PER_PAGE_DESC"
+                default="12"
+        />
+        <field
+                name="shop_employees_per_page"
+                type="number"
+                validate="integer"
+                label="COM_REDSHOPB_CONFIG_SHOP_EMPLOYEES_PER_PAGE_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOP_EMPLOYEES_PER_PAGE_DESC"
+                default="12"
+        />
+        <field
+                name="recent_purchased_list_limit"
+                type="list"
+                default="-1"
+                label="COM_REDSHOPB_CONFIG_RECENT_PURCHASED_LIST_LIMIT_LABEL"
+                description="COM_REDSHOPB_CONFIG_RECENT_PURCHASED_LIST_LIMIT_DESC"
+                filter="integer">
+            <option value="-1">COM_REDSHOPB_CONFIG_LIST_LIMIT_JOOMLA_DEFAULT</option>
+            <option value="5">J5</option>
+            <option value="10">J10</option>
+            <option value="15">J15</option>
+            <option value="20">J20</option>
+            <option value="25">J25</option>
+            <option value="30">J30</option>
+            <option value="50">J50</option>
+            <option value="100">J100</option>
+            <option value="0">JALL</option>
+        </field>
+        <field
+                name="most_purchased_list_limit"
+                type="list"
+                default="-1"
+                label="COM_REDSHOPB_CONFIG_MOST_PURCHASED_LIST_LIMIT_LABEL"
+                description="COM_REDSHOPB_CONFIG_MOST_PURCHASED_LIST_LIMIT_DESC"
+                filter="integer">
+            <option value="-1">COM_REDSHOPB_CONFIG_LIST_LIMIT_JOOMLA_DEFAULT</option>
+            <option value="5">J5</option>
+            <option value="10">J10</option>
+            <option value="15">J15</option>
+            <option value="20">J20</option>
+            <option value="25">J25</option>
+            <option value="30">J30</option>
+            <option value="50">J50</option>
+            <option value="100">J100</option>
+            <option value="0">JALL</option>
+        </field>
+        <field
+                name="category_title"
+                type="note"
+                label="COM_REDSHOPB_CONFIG_PAGINATION_CATEGORY_TITLE"
+                description="COM_REDSHOPB_CONFIG_PAGINATION_CATEGORY_DESC"
+        />
+        <field
+                name="categories_number_of_columns_per_page"
+                type="list"
+                label="COM_REDSHOPB_CONFIG_PAGINATION_CATEGORIES_COLUMN_PER_PAGE_LABEL"
+                description="COM_REDSHOPB_CONFIG_PAGINATION_CATEGORIES_COLUMN_PER_PAGE_DESC"
+                default="2">
+            <option value="1">COM_REDSHOPCONFIG_PAGINATION_CATEGORIES_SHOW_COLS_ONE</option>
+            <option value="2">COM_REDSHOPCONFIG_PAGINATION_CATEGORIES_SHOW_COLS_TWO</option>
+            <option value="3">COM_REDSHOPCONFIG_PAGINATION_CATEGORIES_SHOW_COLS_THREE</option>
+            <option value="4">COM_REDSHOPCONFIG_PAGINATION_CATEGORIES_SHOW_COLS_FOUR</option>
+        </field>
+        <field
+                name="category_number_of_categories_per_column"
+                type="number"
+                label="COM_REDSHOPB_CONFIG_PAGINATION_CATEGORIES_PER_COLUMN_LABEL"
+                description="COM_REDSHOPB_CONFIG_PAGINATION_CATEGORIES_PER_COLUMN_DESC"
+                default="20"
+                min="1"
+                max="100"/>
+    </fieldset>
+    <fieldset name="payment"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_PRICE_VAT_TAX_TITLE"
+              description="COM_REDSHOPB_CONFIG_PRICE_VAT_TAX_TITLE_DESC">
+        <field
+                name="default_currency"
+                type="currency"
+                label="COM_REDSHOPB_CONFIG_DEFAULT_CURRENCY_LABEL"
+                description="COM_REDSHOPB_CONFIG_DEFAULT_CURRENCY_DESC"
+                required="true"
+                default="38">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="show_price"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_PRICE_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_PRICE_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="show_outlet"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SHOW_OUTLET_LABEL"
+                description="COM_REDSHOPB_CONFIG_SHOW_OUTLET_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="use_lowest_price_first"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_USE_LOWEST_PRICE_LABEL"
+                description="COM_REDSHOPB_CONFIG_USE_LOWEST_PRICE_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="enable_offer"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ENABLE_OFFER_LABEL"
+                description="COM_REDSHOPB_CONFIG_ENABLE_OFFER_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JON</option>
+            <option value="0">JOFF</option>
+        </field>
+        <field
+                name="tax_based_on"
+                type="list"
+                default="vendor"
+                label="COM_REDSHOPB_CONFIG_TAX_BASED_ON_LABEL"
+                description="COM_REDSHOPB_CONFIG_TAX_BASED_ON_DESC">
+            <option value="vendor">COM_REDSHOPB_TAX_BASED_ON_VENDOR</option>
+            <option value="customer">COM_REDSHOPB_TAX_BASED_ON_CUSTOMER</option>
+            <option value="eu-mode">COM_REDSHOPB_TAX_BASED_ON_EU_MODE</option>
+        </field>
+        <field
+                name="calculate_vat_on"
+                type="radio"
+                default="payment"
+                label="COM_REDSHOPB_CONFIG_CALCULATE_VAT_ON_LABEL"
+                description="COM_REDSHOPB_CONFIG_CALCULATE_VAT_ON_DESC"
+                class="btn-group">
+            <option value="shipping">COM_REDSHOPB_CALCULATE_VAT_ON_SHIPPING</option>
+            <option value="payment">COM_REDSHOPB_CALCULATE_VAT_ON_PAYMENT</option>
+        </field>
+        <field
+                name="customer_tax_exempt_global"
+                type="radio"
+                default="0"
+                class="btn-group"
+                label="COM_REDSHOPB_CONFIG_CUSTOMER_TAX_EXEMPT_LABEL"
+                description="COM_REDSHOPB_CONFIG_CUSTOMER_TAX_EXEMPT_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+    <fieldset name="order"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_ORDER_TITLE"
+              description="COM_REDSHOPB_CONFIG_ORDER_DESC">
+        <field
+                name="vendor_of_companies"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_VENDOR_OF_COMPANIES_LABEL"
+                description="COM_REDSHOPB_CONFIG_VENDOR_OF_COMPANIES_DESC"
+                class="btn-group"
+                default="parent">
+            <option value="parent">COM_REDSHOPB_CONFIG_VENDOR_OF_COMPANIES_PARENT</option>
+            <option value="main">COM_REDSHOPB_CONFIG_VENDOR_OF_COMPANIES_MAIN</option>
+        </field>
+        <field
+                name="impersonation_company"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_IMPERSONATION_COMPANY"
+                description="COM_REDSHOPB_CONFIG_IMPERSONATION_COMPANY_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="impersonation_department"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_IMPERSONATION_DEPARTMENT"
+                description="COM_REDSHOPB_CONFIG_IMPERSONATION_DEPARTMENT_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="impersonation_user"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_IMPERSONATION_USER"
+                description="COM_REDSHOPB_CONFIG_IMPERSONATION_USER_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="image_header"
+                type="rmedia"
+                label="COM_REDSHOPB_CONFIG_IMAGE_HEADER_LABEL"
+                description="COM_REDSHOPB_CONFIG_IMAGE_HEADER_DESC"
+                required="false"
+        />
+        <field
+                name="image_footer"
+                type="rmedia"
+                label="COM_REDSHOPB_CONFIG_IMAGE_FOOTER_LABEL"
+                description="COM_REDSHOPB_CONFIG_IMAGE_FOOTER_DESC"
+                required="false"
+        />
+        <field
+                name="order_collect"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_COLLECT_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_COLLECT_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="order_expedition"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_EXPEDITION_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_EXPEDITION_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="order_return"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_RETURN_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_RETURN_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="place_order"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_PLACE_ORDER_LABEL"
+                description="COM_REDSHOPB_CONFIG_PLACE_ORDER_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="hide_quickorder_products"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_HIDE_QUICKORDER_PRODUCTS_LABEL"
+                description="COM_REDSHOPB_CONFIG_HIDE_QUICKORDER_PRODUCTS_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+    <fieldset name="notifications"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_NOTIFICATIONS_TITLE"
+              description="COM_REDSHOPB_CONFIG_NOTIFICATIONS_TITLE_DESC">
+        <field
+                name="user_notification_user_add"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_USER_NOTIFICATION_USER_ADD_LABEL"
+                description="COM_REDSHOPB_CONFIG_USER_NOTIFICATION_USER_ADD_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="user_notification_user_add_to_users"
+                type="text"
+                multiple="true"
+                label="COM_REDSHOPB_CONFIG_USER_NOTIFICATION_USER_ADD_TO_USERS_LABEL"
+                description="COM_REDSHOPB_CONFIG_USER_NOTIFICATION_USER_ADD_TO_USERS_DESC"
+                class="btn-group">
+        </field>
+        <field
+                name="user_notification_user_add_template"
+                type="template"
+                templateGroup="email"
+                scope="user-added"
+                label="COM_REDSHOPB_CONFIG_USER_NOTIFICATION_USER_ADD_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CONFIG_USER_NOTIFICATION_USER_ADD_TEMPLATE_DESC"
+                class="btn-group">
+        </field>
+        <field
+                name="mailfrom"
+                type="email"
+                label="COM_REDSHOPB_CONFIG_MAIL_FROM_LABEL"
+                description="COM_REDSHOPB_CONFIG_MAIL_FROM_DESC"
+                required="false"
+        />
+        <field
+                name="sync_notification_recipients"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_SYNC_NOTIFICATION_RECIPIENTS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SYNC_NOTIFICATION_RECIPIENTS_DESC"
+                default="">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="order_notification_admin"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_ADMIN_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_ADMIN_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="order_notification_hod"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_HOD_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_HOD_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="order_notification_sales"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_SALES_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_SALES_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="order_notification_author"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_AUTHOR_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_AUTHOR_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="order_notification_purchaser"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_PURCHASER_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_PURCHASER_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="order_notification_disregard_payment_status"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_DISREGARD_PAYMENT_STATUS_LABEL"
+                description="COM_REDSHOPB_CONFIG_ORDER_NOTIFICATION_DISREGARD_PAYMENT_STATUS_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+    <fieldset name="seo"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_SEO_TITLE"
+              description="COM_REDSHOPB_CONFIG_SEO_DESC">
+        <field
+                name="category-spacer"
+                type="spacer"
+                label="COM_REDSHOPB_CONFIG_SEO_CATEGORY_SPACER"/>
+        <field
+                name="category_page_titles"
+                type="seotagging"
+                tags="categoryname,categorytree,sitename"
+                label="COM_REDSHOPB_CONFIG_SEO_CATEGORY_PAGE_TITLES_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_CATEGORY_PAGE_TITLES_DESC"
+                default="{categoryname} | {sitename}"
+        />
+        <field
+                name="category_page_headings"
+                type="seotagging"
+                tags="categoryname,categorytree,sitename,categorydesc,manufacturerdesc"
+                label="COM_REDSHOPB_CONFIG_SEO_CATEGORY_PAGE_HEADINGS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_CATEGORY_PAGE_HEADINGS_DESC"
+                default="{categoryname}"
+        />
+        <field
+                name="category_page_description"
+                type="seotagging"
+                tags="categoryname,sitename,categorydesc,manufacturerdesc"
+                label="COM_REDSHOPB_CONFIG_SEO_CATEGORY_PAGE_DESCRIPTIONS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_CATEGORY_PAGE_DESCRIPTIONS_DESC"
+                default="{categorydesc}"
+        />
+        <field
+                name="category_page_keywords"
+                type="seotagging"
+                tags="categoryname,sitename,categorydesc"
+                label="COM_REDSHOPB_CONFIG_SEO_CATEGORY_PAGE_KEYWORDS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_CATEGORY_PAGE_KEYWORDS_DESC"
+        />
+        <field
+                name="product-spacer"
+                type="spacer"
+                label="COM_REDSHOPB_CONFIG_SEO_PRODUCT_SPACER"
+        />
+        <field
+                name="product_page_titles"
+                type="seotagging"
+                tags="productname,manufacturer,categoryname,sitename,productsku"
+                label="COM_REDSHOPB_CONFIG_SEO_PRODUCT_PAGE_TITLES_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_PRODUCT_PAGE_TITLES_DESC"
+                default="{productname} | {categoryname} | {manufacturer} | {productsku}"
+        />
+        <field
+                name="product_page_headings"
+                type="seotagging"
+                tags="productname,manufacturer,categoryname,sitename,productsku,productshortdesc,categorydesc,manufacturerdesc"
+                label="COM_REDSHOPB_CONFIG_SEO_PRODUCT_PAGE_HEADINGS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_PRODUCT_PAGE_HEADINGS_DESC"
+                default="{productname}"
+        />
+        <field
+                name="product_page_description"
+                type="seotagging"
+                tags="productname,manufacturer,categoryname,sitename,productsku,productshortdesc,categorydesc,manufacturerdesc,productdesc"
+                label="COM_REDSHOPB_CONFIG_SEO_PRODUCT_PAGE_DESCRIPTIONS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_PRODUCT_PAGE_DESCRIPTIONS_DESC"
+                default="{productshortdesc}"/>
+        <field
+                name="product_page_keywords"
+                type="seotagging"
+                tags="productname,manufacturer,categoryname,sitename,productsku"
+                label="COM_REDSHOPB_CONFIG_SEO_PRODUCT_PAGE_KEYWORDS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_PRODUCT_PAGE_KEYWORDS_DESC"/>
+        <field
+                name="manufacturer-spacer"
+                type="spacer"
+                label="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_SPACER"
+        />
+        <field
+                name="manufacturer_page_titles"
+                type="seotagging"
+                tags="manufacturer,sitename"
+                label="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_PAGE_TITLES_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_PAGE_TITLES_DESC"
+                default="{manufacturer} | {sitename}"
+        />
+        <field
+                name="manufacturer_page_headings"
+                type="seotagging"
+                tags="manufacturer,sitename,manufacturerdesc"
+                label="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_PAGE_HEADINGS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_PAGE_HEADINGS_DESC"
+                default="{manufacturer}"
+        />
+        <field
+                name="manufacturer_page_description"
+                type="seotagging"
+                tags="manufacturer,sitename,manufacturerdesc"
+                label="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_PAGE_DESCRIPTIONS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_PAGE_DESCRIPTIONS_DESC"
+                default="{manufacturerdesc}"
+        />
+        <field
+                name="manufacturer_page_keywords"
+                type="seotagging"
+                tags="manufacturer,sitename,manufacturerdesc"
+                label="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_PAGE_KEYWORDS_LABEL"
+                description="COM_REDSHOPB_CONFIG_SEO_MANUFACTURER_PAGE_KEYWORDS_DESC"
+        />
+    </fieldset>
+    <fieldset name="import_export"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_IMPORT_EXPORT_TITLE"
+              description="COM_REDSHOPB_CONFIG_IMPORT_EXPORT_DESC">
+        <field
+                name="csv_separator"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CSV_SEPARATOR_LABEL"
+                description="COM_REDSHOPB_CONFIG_CSV_SEPARATOR_DESC"
+                default=","
+        />
+        <field
+                name="currency_separator"
+                type="text"
+                label="COM_REDSHOPB_CONFIG_CURRENCY_SEPARATOR_LABEL"
+                description="COM_REDSHOPB_CONFIG_CURRENCY_SEPARATOR_DESC"
+                default=","
+        />
+    </fieldset>
+    <fieldset name="pdf"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_PDF_TITLE">
+        <field
+                name="pdf_options"
+                type="editor"
+                editor="codemirror|none"
+                syntax="json"
+                buttons="false"
+                filter="raw"
+                height="500px"
+                rows="20"
+                cols="80"
+                default="{&#13;&#09;// Path to new fonts, see structure example in https://mpdf.github.io/fonts-languages/fonts-in-mpdf-7-x.html&#13;&#09;&quot;fontDir&quot;:&quot;media/com_redshopb/fonts/&quot;,&#13;&#09;// Disabled sample font configuration&#13;&#09;/*&quot;fontdata&quot;:{&#13;&#09;&#09;&quot;frutiger&quot;:{&#13;&#09;&#09;&#09;&quot;R&quot;:&quot;Frutiger-Normal.ttf&quot;,&#13;&#09;&#09;&#09;&quot;I&quot;:&quot;FrutigerObl-Normal.ttf&quot;&#13;&#09;&#09;}&#13;&#09;},&#13;&#09;&quot;default_font&quot;:&quot;frutiger&quot;*/&#13;}"
+                label="COM_REDSHOPB_CONFIG_PDF_OPTIONS_LABEL"
+        />
+    </fieldset>
+    <fieldset name="role_settings"
+              addfieldpath="/libraries/redshopb/form/fields"
+              label="COM_REDSHOPB_CONFIG_ROLE_SETTINGS_TITLE"
+              description="COM_REDSHOPB_CONFIG_ROLE_SETTINGS_DESC">
+        <field
+                name="collection_enforcement"
+                type="note"
+                label="COM_REDSHOPB_CONFIG_ROLE_SETTINGS_SUBTITLE_COLLECTION_ENFORCEMENT_IGNORE"
+        />
+        <field
+                name="collection_enforcement_admin"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_ADMIN_TITLE"
+                description="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_ADMIN_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="collection_enforcement_hod"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_HOD_TITLE"
+                description="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_HOD_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="collection_enforcement_sales"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_SALES_TITLE"
+                description="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_SALES_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="collection_enforcement_purchaser"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_PURCHASER_TITLE"
+                description="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_PURCHASER_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="collection_enforcement_employee_wl"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_EMPLOYEE_WL_TITLE"
+                description="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_EMPLOYEE_WL_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="collection_enforcement_employee"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_EMPLOYEE_TITLE"
+                description="COM_REDSHOPB_CONFIG_COLLECTION_ENFORCEMENT_IGNORE_EMPLOYEE_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="role_see_all_collections"
+                type="note"
+                label="COM_REDSHOPB_CONFIG_ROLE_SETTINGS_SUBTITLE_ROLE_SEE_ALL_COLLECTIONS"
+        />
+        <field
+                name="admin_see_all_collections"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_ADMIN_SEE_ALL_COLLECTIONS_TITLE"
+                description="COM_REDSHOPB_CONFIG_ADMIN_SEE_ALL_COLLECTIONS_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="hod_see_all_collections"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_HOD_SEE_ALL_COLLECTIONS_TITLE"
+                description="COM_REDSHOPB_CONFIG_HOD_SEE_ALL_COLLECTIONS_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="sales_see_all_collections"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_SALES_SEE_ALL_COLLECTIONS_TITLE"
+                description="COM_REDSHOPB_CONFIG_SALES_SEE_ALL_COLLECTIONS_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="purchaser_see_all_collections"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_PURCHASER_SEE_ALL_COLLECTIONS_TITLE"
+                description="COM_REDSHOPB_CONFIG_PURCHASER_SEE_ALL_COLLECTIONS_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="employee_wl_see_all_collections"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_EMPLOYEE_WL_SEE_ALL_COLLECTIONS_TITLE"
+                description="COM_REDSHOPB_CONFIG_EMPLOYEE_WL_SEE_ALL_COLLECTIONS_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="employee_see_all_collections"
+                type="radio"
+                label="COM_REDSHOPB_CONFIG_EMPLOYEE_SEE_ALL_COLLECTIONS_TITLE"
+                description="COM_REDSHOPB_CONFIG_EMPLOYEE_SEE_ALL_COLLECTIONS_DESC"
+                class="btn-group"
+                default="0">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+</form>

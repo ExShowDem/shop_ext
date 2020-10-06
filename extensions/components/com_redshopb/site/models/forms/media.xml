@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="product_id"
+                type="hidden"
+                label="COM_REDSHOPB_PRODUCT_ID_LABEL"
+                description="COM_REDSHOPB_PRODUCT_ID_DESC"
+                required="true"
+                >
+        </field>
+        <field
+                name="productImage"
+                type="FileUploader"
+                label="COM_REDSHOPB_MEDIA_IMAGE_UPLOADER_LABEL"
+                description="COM_REDSHOPB_MEDIA_IMAGE_UPLOADER_DESC"
+                labelclass="control-label"
+                loadFileProcessingLib="true"
+                />
+        <field
+                name="ordering"
+                type="text"
+                validate="nullinteger"
+                label="COM_REDSHOPB_ORDER"
+                description="COM_REDSHOPB_ORDER"
+                required="false"
+                value="0"
+        />
+        <field
+                name="alt"
+                type="text"
+                label="COM_REDSHOPB_MEDIA_IMAGE_TITLE_LABEL"
+                description="COM_REDSHOPB_PRODUCT_NAME_DESC"
+                hint="COM_REDSHOPB_MEDIA_ALT_PLACEHOLDER"
+                maxlength="255"
+                />
+        <field
+                name="view"
+                type="list"
+                label="COM_REDSHOPB_MEDIA_IMAGE_VIEW_ANGLE_LABEL"
+                description="COM_REDSHOPB_MEDIA_IMAGE_VIEW_ANGLE_DESC"
+                default="0"
+                >
+            <option value="0">COM_REDSHOPB_MEDIA_IMAGE_VIEW_ANGLE_OTHER</option>
+            <option value="1">COM_REDSHOPB_MEDIA_IMAGE_VIEW_ANGLE_FRONT</option>
+            <option value="2">COM_REDSHOPB_MEDIA_IMAGE_VIEW_ANGLE_BACK</option>
+        </field>
+        <field
+                name="attribute_value_id"
+                type="attributeflatdisplayvalues"
+                label="COM_REDSHOPB_MEDIA_IMAGE_FLAT_ATTRIBUTE_LABEL"
+                description="COM_REDSHOPB_MEDIA_IMAGE_FLAT_ATTRIBUTE_DESC"
+                dependsOnField="product_id"
+                >
+            <option value="">JOPTION_SELECT_ATTRIBUTE_NAME</option>
+        </field>
+        <field
+                name="state"
+                id="media_state"
+                type="list"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field name="name" type="hidden"/>
+    </fieldset>
+    <fieldset name="sync">
+        <field
+                name="sync_related_id"
+                type="text"
+                label="COM_REDSHOPB_SYNC_RELATED_ID_LABEL"
+                description="COM_REDSHOPB_SYNC_RELATED_ID_DESC"
+                maxlength="255"
+        />
+    </fieldset>
+</form>

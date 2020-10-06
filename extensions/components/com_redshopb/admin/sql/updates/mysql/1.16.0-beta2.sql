@@ -1,0 +1,6 @@
+SET FOREIGN_KEY_CHECKS=0;
+
+ALTER TABLE `#__redshopb_cart`
+  ADD COLUMN `user_cart` TINYINT(4) NOT NULL DEFAULT 0 AFTER `visible_others`;
+
+SET FOREIGN_KEY_CHECKS=1;

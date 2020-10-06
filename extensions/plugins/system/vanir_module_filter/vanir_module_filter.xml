@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" client="site" type="plugin" group="system" method="upgrade">
+	<name>PLG_SYSTEM_VANIR_MODULE_FILTER</name>
+	<creationDate>July 2019</creationDate>
+	<author>Aesir</author>
+	<authorEmail>contact@aesircontextmarketing.com</authorEmail>
+	<authorUrl>www.aesircontextmarketing.com</authorUrl>
+	<copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later, see LICENSE.</license>
+	<version>2.7.0</version>
+	<description>PLG_SYSTEM_VANIR_MODULE_FILTER_DESC</description>
+	<files>
+		<folder>forms</folder>
+		<folder>language</folder>
+		<folder>js</folder>
+		<filename plugin="vanir_module_filter">vanir_module_filter.php</filename>
+		<filename>vanir_module_filter.xml</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			</fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,102 @@
+# OSX
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# PHPStorm
+.idea/
+
+# Sublime Text
+*.sublime*
+*.phpintel
+
+# Atom
+.atom-build.*
+
+# Visual Studio Code
+.vscode
+
+# Eclipse
+.buildpath
+.project
+.settings
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+*~.nib
+*~
+
+#EditorConfig
+# *.editorconfig
+
+# Phing
+# build.properties
+# phing-latest.phar
+# .dist
+
+# Github pages and Jekyll files
+# /_site/
+# /Gemfile
+# /Gemfile.lock
+
+# phpunit
+# tests/unit/phpunit.xml
+# tests/unit/
+
+# composer
+build/vendor/*
+.scrutinizer/vendor/*
+extensions/libraries/redshopb/vendor/*
+!extensions/libraries/redshopb/vendor/index.html
+
+# LESS Transpiler
+build/npm-debug.log
+
+# Test related files
+# tests/system/
+# tests/system/servers/configdef.php
+# tests/system/webdriver/tests/logs/
+# tests/acceptance.suite.yml
+# tests/api.suite.yml
+# tests/apisoap.suite.yml
+# tests/codecept.phar
+# tests/testingsite/
+# tests/vendor/*
+# tests/selenium.log
+# tests/_output
+# tests/joomla-cms
+# tests/joomla-cms/*
+# tests/base
+# tests/selenium-server-standalone.jar
+# tests/_support/_generated/*
+# tests/_data/dumped-install.sql
+# tests/dumped-install.sql
+# tests/cache
+# tests/RoboFile.ini
+
+# Never ignore
+!.gitignore
+!index.html
+!index.php
+
+# Build config
+# build/gulp-config.json
+# build/node_modules
+# releases
+
+# Documentation
+build/documentor/docs/*
+build/documentor/vendor
+
+# Solr
+/extensions/plugins/vanir_search/solr/vendor/
+
+#sh404sef_observer
+/extensions/plugins/system/sh404sef_observer/vendor/

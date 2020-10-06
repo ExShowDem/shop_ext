@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Wallet Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>This web service is used to maintain the user wallets</description>
+  <config>
+    <name>redshopb-wallet</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="model" optionName="com_redshopb" modelClassName="Wallet" modelClassPath="" isAdminClass="false" functionName="save" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_wallet">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce Wallet]]></description>
+      <fields>
+        <field name="currency_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Currency of this Wallet]]></description>
+        </field>
+        <field name="user_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Owner User ID of this Wallet]]></description>
+        </field>
+        <field name="amount" transform="float" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Amount of money of this wallet]]></description>
+        </field>
+        <field name="start_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Start valid date for this wallet]]></description>
+        </field>
+        <field name="end_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[End valid date for this wallet]]></description>
+        </field>
+        <description><![CDATA[Wallet creation fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Wallet webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Wallet]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[User ID / Currency upon success, zero on error]]></description>
+        </resource>
+        <resource displayName="redshopb-user" transform="string" fieldFormat="/index.php?option=redshopb-user&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={user_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - User Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[User linked Web Service]]></description>
+        </resource>
+        <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={currency_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Currency linked Web Service]]></description>
+        </resource>
+        <description><![CDATA[Wallet creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Wallets" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This operation lists all Aesir E-Commerce Wallets]]></description>
+        <fields>
+          <field name="currency_id" transform="int" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Currency ID]]></description>
+          </field>
+          <field name="user_id" transform="string" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[User ID]]></description>
+          </field>
+           <field name="amount" transform="float" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Amount of money of this wallet]]></description>
+        </field>
+        <field name="start_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Start valid date for this wallet]]></description>
+        </field>
+        <field name="end_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[End valid date for this wallet]]></description>
+        </field>
+          <description><![CDATA[Wallet list fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="currency_id" transform="int" fieldFormat="{currency_id}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Currency of this Wallet]]></description>
+          </resource>
+          <resource displayName="user_id" transform="int" fieldFormat="{user_id}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Owner User ID of this Wallet]]></description>
+          </resource>
+          <resource displayName="amount" transform="float" fieldFormat="{amount}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Amount of money of this wallet]]></description>
+          </resource>
+          <resource displayName="start_date" transform="datetime" fieldFormat="{start_date}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Start valid date for this wallet]]></description>
+          </resource>
+          <resource displayName="end_date" transform="datetime" fieldFormat="{end_date}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[End valid date for this wallet]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Wallet webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Wallet]]></description>
+          </resource>
+          <resource displayName="redshopb-user" transform="string" fieldFormat="/index.php?option=redshopb-user&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={user_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - User Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[User linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={currency_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Currency linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Wallet list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Wallet" modelClassPath="" isAdminClass="false" functionName="getWalletItem" functionArgs="" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Wallet]]></description>
+        <fields>
+          <field name="currency_id" transform="int" isRequiredField="true" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Currency ID]]></description>
+          </field>
+          <field name="user_id" transform="int" isRequiredField="true" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[User ID]]></description>
+          </field>
+          <description><![CDATA[Wallet display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="currency_id" transform="int" fieldFormat="{currency_id}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Currency ID of this Wallet]]></description>
+          </resource>
+          <resource displayName="user_id" transform="int" fieldFormat="{user_id}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Owner User ID of this Wallet]]></description>
+          </resource>
+          <resource displayName="amount" transform="float" fieldFormat="{amount}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Amount of money of this wallet]]></description>
+          </resource>
+          <resource displayName="start_date" transform="datetime" fieldFormat="{start_date}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start valid date for this wallet]]></description>
+          </resource>
+          <resource displayName="end_date" transform="datetime" fieldFormat="{end_date}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[End valid date for this wallet]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Wallet webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Wallet]]></description>
+          </resource>
+          <resource displayName="redshopb-user" transform="string" fieldFormat="/index.php?option=redshopb-user&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={user_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - User Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[User linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={currency_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Currency linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Wallet display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Wallet" modelClassPath="" isAdminClass="false" functionName="save" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_wallet">
+      <description><![CDATA[This operation updates Aesir E-Commerce Wallet]]></description>
+      <fields>
+        <field name="currency_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Currency of this Wallet]]></description>
+        </field>
+        <field name="user_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Owner User ID of this Wallet]]></description>
+        </field>
+        <field name="amount" transform="float" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Amount of money of this wallet]]></description>
+        </field>
+        <field name="start_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Start valid date for this wallet]]></description>
+        </field>
+        <field name="end_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[End valid date for this wallet]]></description>
+        </field>
+        <description><![CDATA[Wallet update fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Wallet webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Wallet]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[User ID / Currency upon success, zero on error]]></description>
+        </resource>
+        <resource displayName="redshopb-user" transform="string" fieldFormat="/index.php?option=redshopb-user&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={user_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - User Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[User linked Web Service]]></description>
+        </resource>
+        <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={currency_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Currency linked Web Service]]></description>
+        </resource>
+        <description><![CDATA[Wallet update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="" modelClassPath="" isAdminClass="false" functionName="deleteWallet" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_wallet">
+      <description><![CDATA[This operation deletes Aesir E-Commerce Wallet(s).]]></description>
+      <fields>
+        <field name="currency_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Currency ID]]></description>
+        </field>
+        <field name="user_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[User ID]]></description>
+        </field>
+        <description><![CDATA[Wallet delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Wallet webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[User ID / Currency upon success, zero on error]]></description>
+        </resource>
+        <resource displayName="redshopb-user" transform="string" fieldFormat="/index.php?option=redshopb-user&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={user_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - User Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[User linked Web Service]]></description>
+        </resource>
+        <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={currency_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Currency linked Web Service]]></description>
+        </resource>
+        <description><![CDATA[Wallet delete resources]]></description>
+      </resources>
+    </delete>
+  </operations>
+</apiservice>

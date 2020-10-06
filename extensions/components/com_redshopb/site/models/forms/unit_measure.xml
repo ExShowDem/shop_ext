@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_REDSHOPB_NAME"
+				description="COM_REDSHOPB_NAME"
+				required="true"
+				/>
+		<field
+				name="alias"
+				type="text"
+				label="COM_REDSHOPB_UNIT_MEASURE_ALIAS_LBL"
+				description="COM_REDSHOPB_UNIT_MEASURE_ALIAS_DESC"
+				/>
+	    <field
+				name="description"
+				type="textarea"
+				label="COM_REDSHOPB_DESCRIPTION"
+			 	description="COM_REDSHOPB_UNIT_MEASURE_DESCRIPTION_DESC"
+				rows="10"
+				cols="100"
+				/>
+		<field
+				name="decimal_position"
+				type="number"
+				min="0"
+				max="4"
+				label="COM_REDSHOPB_UNIT_MEASURE_DECIMAL_POSITION_LBL"
+				description="COM_REDSHOPB_UNIT_MEASURE_DECIMAL_POSITION_DESC"
+				default="0"
+				/>
+		<field
+				name="decimal_separator"
+				type="text"
+				label="COM_REDSHOPB_UNIT_MEASURE_DECIMAL_SEPARATOR_LBL"
+				description="COM_REDSHOPB_UNIT_MEASURE_DECIMAL_SEPARATOR_DESC"
+				default=""
+				/>
+		<field
+				name="thousand_separator"
+				type="text"
+				label="COM_REDSHOPB_UNIT_MEASURE_THOUSAND_SEPARATOR_LBL"
+				description="COM_REDSHOPB_UNIT_MEASURE_THOUSAND_SEPARATOR_DESC"
+				default=""
+		/>
+	</fieldset>
+</form>

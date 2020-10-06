@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="search_words"
+				type="text"
+				label="COM_REDCORE_FILTER_SEARCH_DESC"
+				placeholder="JSEARCH_FILTER"
+		/>
+		<field
+				name="word_shared"
+				type="list"
+				onchange="this.form.submit();"
+		>
+			<option value="">COM_REDSHOPB_WORD_SELECT_SHARED</option>
+			<option value="1">COM_REDSHOPB_WORD_SHARED</option>
+			<option value="0">COM_REDSHOPB_WORD_NOT_SHARED</option>
+		</field>
+		<field
+				name="scope"
+				type="list"
+				onchange="this.form.submit();"
+		>
+			<option value="">COM_REDSHOPB_WORD_SELECT_SCOPE</option>
+			<option value="synonym">COM_REDSHOPB_WORD_SYNONYM</option>
+			<option value="main_word">COM_REDSHOPB_WORD_MAIN_WORD</option>
+		</field>
+	</fields>
+	<fields name="list">
+		<field
+				name="word_limit"
+				type="rlimitbox"
+				class="inputbox input-mini chzn"
+				default="25"
+				label="JGLOBAL_ORDERING_LIST_LIMIT"
+				description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+				onchange="this.form.submit();"
+		/>
+	</fields>
+</form>

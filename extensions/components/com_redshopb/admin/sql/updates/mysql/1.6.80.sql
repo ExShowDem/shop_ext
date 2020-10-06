@@ -1,0 +1,1 @@
+ALTER TABLE `#__redshopb_offer_item_xref` CHANGE `quantity` `quantity` DOUBLE NOT NULL;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+  <title>Vanir Documentation</title>
+  <parser>
+    <target>docs/cache/</target>
+  </parser>
+  <transformer>
+    <target>docs/site/</target>
+  </transformer>
+  <transformations>
+    <template name="responsive-twig" />
+  </transformations>
+  <files>
+    <directory>../../extensions/libraries</directory>
+    <ignore>../../extensions/libraries/mpdf</ignore>
+  </files>
+</phpdoc>

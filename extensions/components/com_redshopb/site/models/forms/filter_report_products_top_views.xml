@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redcore/form/fields">
+        <field
+                name="report_group"
+                type="hidden"
+                label="COM_REDSHOPB_REPORT_PERIOD_GROUP_LABEL"
+                description="COM_REDSHOPB_REPORT_PERIOD_GROUP_DESC"
+                default="1"
+                />
+        <field
+                name="product_category"
+                type="categories"
+                label="COM_REDSHOPB_CATEGORY_LABEL"
+                description="COM_REDSHOPB_CATEGORY_DESC"
+                multiple="true"
+                restriction="parents"
+                >
+        </field>
+    </fields>
+    <fields name="chart" addfieldpath="/libraries/redcore/form/fields">
+        <field
+                name="report_chart_type"
+                type="rchart"
+                label="LIB_REDCORE_CHART_NAME_LABEL"
+                description="LIB_REDCORE_CHART_NAME_DESC"
+                default="Pie">
+        </field>
+        <field
+                name="report_view_type"
+                type="hidden"
+                label="COM_REDSHOPB_REPORT_VIEW_TYPE_LABEL"
+                description="COM_REDSHOPB_REPORT_VIEW_TYPE_DESC"
+                default="number_of_items">
+            <option value="number_of_items">COM_REDSHOPB_REPORT_VIEW_TYPE_VIEWS</option>
+        </field>
+    </fields>
+</form>

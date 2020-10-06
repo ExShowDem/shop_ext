@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="webservice_permission_user_id"
+                type="user"
+                required="true"
+                label="COM_REDSHOPB_WEBSERVICE_PERMISSION_USER_TITLE"
+                description="COM_REDSHOPB_WEBSERVICE_PERMISSION_USER_DESC"
+                />
+        <field
+                name="webservice_permissions"
+                type="webservicepermissionuser"
+                label="COM_REDSHOPB_WEBSERVICE_PERMISSION_PERMISSIONS_TITLE"
+                description="COM_REDSHOPB_WEBSERVICE_PERMISSION_PERMISSIONS_DESC"
+                multiple="true"
+                />
+    </fieldset>
+</form>

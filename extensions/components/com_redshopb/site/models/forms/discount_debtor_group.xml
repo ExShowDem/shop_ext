@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_REDSHOPB_DEBTOR_GROUP_NAME"
+				description=""
+				required="true"
+				/>
+		<field
+				name="code"
+				type="text"
+				label="COM_REDSHOPB_DEBTOR_GROUP_CODE"
+				description=""
+				required="true"
+				/>
+		<field
+				name="state"
+				type="radio"
+				label="COM_REDSHOPB_STATE_LABEL"
+				description="COM_REDSHOPB_STATE_DESC"
+				required="true"
+				class="btn-group"
+				default="1"
+				>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		<field
+			name="customer_ids"
+			type="company"
+			label="COM_REDSHOPB_COMPANY_LIST_TITLE"
+			multiple="true"
+			required="true"
+			class="input-xxlarge"
+			restriction="company"
+			emptystart="true"
+			/>
+        <field
+            name="company_id"
+            type="company"
+            label="COM_REDSHOPB_OWNER_COMPANY_LABEL"
+            description="COM_REDSHOPB_OWNER_COMPANY_DESC"
+			onchange="getCompanies()"
+                />
+	</fieldset>
+</form>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_myoffers"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="status"
+                type="offerstatus"
+                label="COM_REDSHOPB_MYOFFERS_FILTER_STATUS_LABEL"
+                class="chosen"
+                onchange="this.form.submit();"
+                hidestatus="created"
+                >
+            <option value="">COM_REDSHOPB_OFFERS_SELECT_SHOW_ALL</option>
+        </field>
+        <field
+                name="customer_type"
+                type="list"
+                label="COM_REDSHOPB_OFFERS_FILTER_CUSTOMER_TYPE_LABEL"
+                description="COM_REDSHOPB_OFFERS_FILTER_CUSTOMER_TYPE_LABEL_DESC"
+                class="chosen"
+                onchange="this.form.submit();"
+        >
+            <option value="">COM_REDSHOPB_OFFERS_SELECT_CUSTOMER_TYPE</option>
+            <option value="employee">COM_REDSHOPB_EMPLOYEE</option>
+            <option value="department">COM_REDSHOPB_DEPARTMENT</option>
+            <option value="company">COM_REDSHOPB_COMPANY</option>
+        </field>
+        <field
+                name="date_from"
+                type="rdatepicker"
+                dateFormat="yy-mm-dd"
+                filter="user_utc"
+                showTime="true"
+                class="js-to-inline-calendar"
+                readonly="false"
+                placeholder="COM_REDSHOPB_MYOFFERS_DATE_FROM"
+
+                /> 
+        <field
+                name="date_to"
+                type="rdatepicker"
+                dateFormat="yy-mm-dd"
+                filter="user_utc"
+                showTime="true"
+                class="js-to-inline-calendar"
+                readonly="false"
+                placeholder="COM_REDSHOPB_MYOFFERS_DATE_TO"
+
+                />
+    </fields>
+</form>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="search_addresses"
+				type="text"
+				label="COM_REDCORE_FILTER_SEARCH_DESC"
+				placeholder="JSEARCH_FILTER"
+				onchange="this.form.submit();"
+				/>
+		<field
+				name="customer_type"
+				type="list"
+				label="COM_REDSHOPB_ORDER_FILTER_CUSTOMER_TYPE_LABEL"
+				description="COM_REDSHOPB_ORDER_FILTER_PLACED_LABEL_DESC"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">COM_REDSHOPB_ORDER_SELECT_CUSTOMER_TYPE</option>
+			<option value="employee">COM_REDSHOPB_EMPLOYEE</option>
+			<option value="department">COM_REDSHOPB_DEPARTMENT</option>
+			<option value="company">COM_REDSHOPB_COMPANY</option>
+		</field>
+		<field
+				name="type"
+				type="addresstype"
+				default="0"
+				label="COM_REDSHOPB_DEFAULT"
+				description="COM_REDSHOPB_DEFAULT_DESC"
+				onchange="this.form.submit();"
+				class="chosen">
+			<option value="">JOPTION_SELECT_ADDRESS_TYPE</option>
+		</field>
+        <field
+                name="company_id"
+                type="company"
+                label="COM_REDSHOPB_COMPANY_LABEL"
+                description="COM_REDSHOPB_COMPANY_DESC"
+                required="true"
+				class="input-xlarge"
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_COMPANY</option>
+        </field>
+        <field
+                name="department_id"
+                type="department"
+                label="COM_REDSHOPB_DEPARTMENT_LABEL"
+                description="COM_REDSHOPB_DEPARTMENT_DESC"
+                required="true"
+				class="input-xlarge"
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_DEPARTMENT</option>
+        </field>
+	</fields>
+	<fields name="list">
+		<field
+				name="address_limit"
+				type="rlimitbox"
+				class="inputbox input-mini chzn"
+				default="25"
+				label="JGLOBAL_ORDERING_LIST_LIMIT"
+				description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+				onchange="this.form.submit();"
+				/>
+	</fields>
+</form>

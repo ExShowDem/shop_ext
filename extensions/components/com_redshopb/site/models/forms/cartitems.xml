@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="order_item_row_hidden">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                class="readonly"
+                readonly="true"
+        />
+        <field
+                name="order_id"
+                type="hidden"
+                default="0"
+                class="readonly"
+                readonly="true"
+        />
+        <field
+                name="product_item_id"
+                type="hidden"
+                default="empty"
+                width="element"
+        />
+        <field
+                name="currency_id"
+                type="hidden"
+                default="empty"
+                width="element"
+        />
+    </fieldset>
+    <fieldset name="order_items_row">
+        <field
+                name="product_id"
+                type="redshopb.list_ajax"
+                label="COM_REDSHOPB_PRODUCT"
+                description="COM_REDSHOPB_PRODUCT_DESC"
+                formName="cartitems"
+                model="site:Products"
+                filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+                completionFilter="filter.search"
+                property="name"
+                ordering="p.name"
+                disabled="true"
+                multiple="false"
+                allowCreate="false"
+                limit="10"
+                hint="JSELECT"
+        />
+        <field
+                name="product_item_code"
+                type="TextDisplay"
+                label="COM_REDSHOPB_PRODUCT_ITEM_CODE"
+                description="COM_REDSHOPB_PRODUCT_ITEM_CODE_DESC"
+                default="0"
+                class="input-small readonly"
+                readonly="true"
+        />
+
+        <field
+                name="attributes"
+                type="rtext"
+                label="COM_REDSHOPB_ORDER_PRODUCT_ATTRIBUTES"
+                default=""
+                class="input-mini readonly"
+                readonly="true"
+        />
+        <field
+                name="quantity"
+                type="number"
+                class="input-xmini ajax-quantity-change"
+                label="COM_REDSHOPB_QTY"
+                description="COM_REDSHOPB_QTY_DESC"
+                default="1"
+                filter="integer"
+                min="1"
+        />
+        <field
+                name="stock"
+                type="rtext"
+                class="input-xmini"
+                label="COM_REDSHOPB_STOCK"
+                description="COM_REDSHOPB_STOCK_DESC"
+                default="0"
+                readonly="true"
+        />
+        <field
+                name="stockroom_id"
+                type="rtext"
+                class="input-xmini"
+                label="COM_REDSHOPB_STOCKROOM_DELIVERY"
+                description="COM_REDSHOPB_STOCKROOM_DELIVERY_DESC"
+                default="0"
+                readonly="true"
+        />
+        <field
+                name="price_without_discount"
+                type="rtext"
+                class="input-mini readonly"
+                description="COM_REDSHOPB_PRICE_CART_DESC"
+                label="COM_REDSHOPB_PRICE_CART"
+                readonly="true"
+                default="0"
+        />
+        <field
+                name="discount"
+                type="rtext"
+                class="input-mini readonly"
+                description=""
+                label="COM_REDSHOPB_DISCOUNT_TITLE"
+                readonly="true"
+                default="0"
+        />
+        <field
+                name="final_price"
+                type="rtext"
+                class="input-small readonly item-final-price"
+                description="COM_REDSHOPB_ORDER_ITEMS_FINAL_PRICE_DESC"
+                label="COM_REDSHOPB_ORDER_ITEMS_FINAL_PRICE"
+                readonly="true"
+                default="0"
+        />
+    </fieldset>
+</form>

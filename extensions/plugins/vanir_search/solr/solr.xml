@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="vanir_search" method="upgrade">
+    <name>PLG_VANIR_SEARCH_SOLR</name>
+    <creationDate>January 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.3.0</version>
+    <description>PLG_VANIR_SEARCH_SOLR_DESC</description>
+    <scriptfile>install.php</scriptfile>
+    <files>
+        <folder>language</folder>
+        <folder>src</folder>
+        <folder>vendor</folder>
+        <folder>layouts</folder>
+        <filename>composer.json</filename>
+        <filename plugin="solr">solr.php</filename>
+        <filename>config.dist.xml</filename>
+        <filename>index.html</filename>
+    </files>
+    <media folder="media">
+        <folder>plg_vanir_search_solr</folder>
+    </media>
+    <config>
+        <fields name="params" addfieldpath="/plugins/vanir_search/solr/src/field">
+            <fieldset name="basic">
+                <field name="host"
+                       type="text"
+                       label="PLG_VANIR_SEARCH_SOLR_HOST"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_HOST"/>
+                <field name="port"
+                       type="text"
+                       default="8983"
+                       label="PLG_VANIR_SEARCH_SOLR_PORT"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_PORT"/>
+                <field name="path"
+                       type="text"
+                       default="/solr"
+                       label="PLG_VANIR_SEARCH_SOLR_PATH"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_PATH"/>
+                <field name="products_core"
+                       type="text"
+                       label="PLG_VANIR_SEARCH_SOLR_PRODUCTS_CORE"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_PRODUCTS_CORE"/>
+                <field name="categories_core"
+                       type="text"
+                       label="PLG_VANIR_SEARCH_SOLR_CATEGORIES_CORE"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_CATEGORIES_CORE"/>
+                <field name="global_search_enabled"
+                       type="radio"
+                       default="0"
+                       label="PLG_VANIR_SEARCH_SOLR_GLOBAL_SEARCH_ENABLED"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_GLOBAL_SEARCH_ENABLED"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="set_rows_override"
+                       type="text"
+                       default="5000"
+                       label="PLG_VANIR_SEARCH_SOLR_SET_ROWS_OVERRIDE"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_SET_ROWS_OVERRIDE"/>
+                <field name="spacer" type="spacer" hr="true"/>
+                <field name="memory_override"
+                       type="text"
+                       default="64M"
+                       label="PLG_VANIR_SEARCH_SOLR_MEMORY_OVERRIDE"
+                       description="PLG_VANIR_SEARCH_DESC_SOLR_MEMORY_OVERRIDE"/>
+                <field name="sync_row_limit"
+                       type="text"
+                       default="1000"
+                       label="PLG_VANIR_SEARCH_SOLR_SYNC_ROW_LIMIT"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_SYNC_ROW_LIMIT"/>
+                <field name="field_limit"
+                       type="text"
+                       default="32766"
+                       label="PLG_VANIR_SEARCH_SOLR_FIELD_LIMIT"
+                       description="PLG_VANIR_SEARCH_SOLR_DESC_FIELD_LIMIT"/>
+                <field name="manual_sync"
+                       type="VanirSearchSolrSyncButton"
+                       hiddenLabel="true"
+                       label="PLG_VANIR_SEARCH_SOLR_SYNC"
+                       description="PLG_VANIR_SEARCH_DESC_SOLR_SYNC"/>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="RedShopB" default="site" basedir=".">
+	<includepath classpath="./phingtasks" />
+    <taskdef name="lessc" classname="rych.tasks.LessCompilerTask" />
+    <taskdef name="yuic" classname="rych.tasks.YuiCompressorTask" />
+
+    <target name="site" depends="init, redcore, component" description="Do a full build"/>
+
+	<!-- Do initialization stuff -->
+	<target name="init">
+		<property file="build.properties" override="true"/>
+		<property name="src" value="./.."/>
+
+		<if>
+			<not>
+				<isset property="comp.name" />
+			</not>
+			<then>
+				<fail message="Component not specified, specify comp.name in build.properties file"/>
+			</then>
+		</if>
+		<if>
+			<not>
+				<isset property="www.dir" />
+			</not>
+			<then>
+				<fail message="www folder not specified, specify www.dir in build.properties file"/>
+			</then>
+		</if>
+	</target>
+
+    <target name="redcore">
+        <phing inheritAll="false" phingfile="${src}/build/build.xml" target="site" dir="${src}/build/redCORE/build">
+            <property name="comp.name" value="redcore" />
+            <property name="www.dir" value="${www.dir}" />
+        </phing>
+    </target>
+
+	<target name="component" description="Copies files to a existing joomla site">
+		<echo message="---------------- || COMPONENT || ----------------"/>
+
+		<!-- Manifest & install script -->
+		<echo message="Copying manifest..."/>
+		<copy file="${src}/extensions/${comp.name}.xml"
+			  tofile="${www.dir}/administrator/components/com_${comp.name}/${comp.name}.xml" overwrite="true">
+			<!-- Replace extension folders in the manifest for proper discovery -->
+			<filterchain>
+				<replaceregexp>
+					<regexp pattern="folder=&quot;admin&quot;" replace="folder=&quot;administrator/components/com_${comp.name}&quot;"/>
+				</replaceregexp>
+				<replaceregexp>
+					<regexp pattern="folder=&quot;site&quot;" replace="folder=&quot;components/com_${comp.name}&quot;"/>
+				</replaceregexp>
+			</filterchain>
+		</copy>
+		<copy file="${src}/extensions/install.php"
+			  tofile="${www.dir}/administrator/components/com_${comp.name}/install.php" overwrite="true"/>
+
+		<!-- Frontend component -->
+		<copy todir="${www.dir}/components/com_${comp.name}" overwrite="true">
+			<fileset dir="${src}/extensions/components/com_${comp.name}/site">
+				<include name="**"/>
+				<!-- Exclude the manifest to avoid overwriting the previously copied -->
+				<exclude name="${comp.name}.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- Backend component -->
+		<copy todir="${www.dir}/administrator/components/com_${comp.name}" overwrite="true">
+			<fileset dir="${src}/extensions/components/com_${comp.name}/admin">
+				<include name="**"/>
+			</fileset>
+		</copy>
+
+		<!-- Libraries -->
+		<copy todir="${www.dir}/libraries" overwrite="true">
+			<fileset dir="${src}/extensions/libraries">
+				<include name="**"/>
+			</fileset>
+		</copy>
+
+		<!-- redSHOP B2B - Library Manifest -->
+		<copy file="${src}/extensions/libraries/redshopb/redshopb.xml"
+			  tofile="${www.dir}/administrator/manifests/libraries/redshopb.xml" overwrite="true"/>
+
+		<!-- Media -->
+		<if>
+            <available file="${src}/build/media/components/com_${comp.name}/less" type="dir" />
+            <then>
+                <echo msg="redSHOP B2B: Compile LESS to CSS" />
+                <mkdir dir="${www.dir}/media/com_${comp.name}/css/.tmp"/>
+                <lessc targetdir="${www.dir}/media/com_${comp.name}/css/.tmp">
+                    <fileset dir="${src}/build/media/components/com_${comp.name}/less">
+                        <include name="*.less" />
+                    </fileset>
+                </lessc>
+                <!-- Compress CSS files -->
+                <yuic targetdir="${www.dir}/media/com_${comp.name}/css/.tmp">
+                    <fileset dir="${www.dir}/media/com_${comp.name}/css/.tmp">
+                        <include name="*.css" />
+                    </fileset>
+                </yuic>
+                <foreach param="dirname" absparam="absname" target="yui-compress-css">
+                    <fileset dir="${www.dir}/media/com_${comp.name}/css/.tmp">
+                        <type type="dir" />
+                        <depth max="99" min="0" />
+                    </fileset>
+                </foreach>
+                <copy todir="${www.dir}/media/com_${comp.name}/css" overwrite="true">
+					<fileset dir="${www.dir}/media/com_${comp.name}/css/.tmp">
+						<include name="**" />
+					</fileset>
+				</copy>
+				<delete dir="${www.dir}/media/com_${comp.name}/css/.tmp"/>
+            </then>
+        </if>
+		<copy todir="${www.dir}/media/com_${comp.name}" overwrite="true">
+			<fileset dir="${src}/build/media/components/com_${comp.name}">
+				<include name="**" />
+				<include name=".*" />
+				<exclude name="less" />
+				<exclude name="less/**" />
+			</fileset>
+		</copy>
+
+		<!-- Web services -->
+		<if>
+			<available file="${src}/extensions/webservices/com_${comp.name}" type="dir" />
+			<then>
+				<copy todir="${www.dir}/media/redcore/webservices" overwrite="true">
+					<fileset dir="${src}/extensions/webservices/com_${comp.name}">
+						<include name="**"/>
+					</fileset>
+				</copy>
+			</then>
+		</if>
+
+		<!-- Modules - Admin -->
+		<copy todir="${www.dir}/administrator/modules" overwrite="true">
+			<fileset dir="${src}/extensions/modules/admin">
+				<include name="**"/>
+			</fileset>
+		</copy>
+
+		<!-- Modules - Site -->
+		<copy todir="${www.dir}/modules" overwrite="true">
+			<fileset dir="${src}/extensions/modules/site">
+				<include name="**"/>
+			</fileset>
+		</copy>
+
+		<!-- Plugins -->
+		<copy todir="${www.dir}/plugins" overwrite="true">
+			<fileset dir="${src}/extensions/plugins">
+				<include name="**"/>
+				<exclude name="*/less"/>
+				<exclude name="*/less/**"/>
+			</fileset>
+		</copy>
+
+        <!-- CLI scripts -->
+        <if>
+        	<not>
+        		<available file="${www.dir}/cli/com_redshopb" type="dir" />
+        	</not>
+        	<then>
+        		<mkdir dir="${www.dir}/cli/com_redshopb" />
+        	</then>
+        </if>
+		<copy todir="${www.dir}/cli/com_redshopb" overwrite="true">
+			<fileset dir="${src}/extensions/cli">
+				<include name="*.*"/>
+			</fileset>
+		</copy>
+		<chmod file="${www.dir}/cli/com_redshopb" mode="0755">
+			<fileset dir="${www.dir}/cli/com_redshopb">
+				<include name="*.php"/>
+			</fileset>
+		</chmod>
+
+        <!-- phpunit.xml -->
+        <if>
+        	<available file="${src}/tests/phpunit.xml" type="file" />
+        	<then>
+		        <copy file="${src}/tests/phpunit.xml" tofile="${www.dir}/phpunit.xml" overwrite="true"/>
+        	</then>
+        </if>
+
+        <!-- Admin template -->
+        <if>
+        	<available file="${src}/extensions/templates" type="dir" />
+        	<then>
+				<copy todir="${www.dir}/administrator/templates" overwrite="true">
+		            <fileset dir="${src}/extensions/templates">
+		                <include name="**"/>
+		            </fileset>
+				</copy>
+			</then>
+		</if>
+
+        <copy file="${src}/extensions/components/com_rsbmedia/rsbmedia.xml"
+              tofile="${www.dir}/administrator/components/com_rsbmedia/rsbmedia.xml" overwrite="true">
+            <!-- Replace extension folders in the manifest for proper discovery -->
+            <filterchain>
+                <replaceregexp>
+                    <regexp pattern="folder=&quot;admin&quot;" replace="folder=&quot;administrator/components/com_rsbmedia&quot;"/>
+                </replaceregexp>
+	            <replaceregexp>
+		            <regexp pattern="folder=&quot;media&quot;" replace="folder=&quot;media/com_rsbmedia&quot;"/>
+	            </replaceregexp>
+                <replaceregexp>
+                    <regexp pattern="folder=&quot;site&quot;" replace="folder=&quot;components/com_rsbmedia&quot;"/>
+                </replaceregexp>
+            </filterchain>
+        </copy>
+        <copy file="${src}/extensions/components/com_rsbmedia/install.php"
+              tofile="${www.dir}/administrator/components/com_rsbmedia/install.php" overwrite="true"/>
+
+        <!-- Frontend component -->
+        <copy todir="${www.dir}/components/com_rsbmedia" overwrite="true">
+            <fileset dir="${src}/extensions/components/com_rsbmedia/site">
+                <include name="**"/>
+                <!-- Exclude the manifest to avoid overwriting the previously copied -->
+                <exclude name="rsbmedia.xml"/>
+            </fileset>
+        </copy>
+
+        <!-- Backend component -->
+        <copy todir="${www.dir}/administrator/components/com_rsbmedia" overwrite="true">
+            <fileset dir="${src}/extensions/components/com_rsbmedia/admin">
+                <include name="**"/>
+            </fileset>
+        </copy>
+
+		<!-- Media files -->
+		<if>
+            <available file="${src}/build/media/components/com_rsbmedia/less" type="dir" />
+            <then>
+                <echo msg="redSHOP B2B Media: Compile LESS to CSS" />
+                <mkdir dir="${www.dir}/media/com_rsbmedia/css/.tmp"/>
+                <lessc targetdir="${www.dir}/media/com_rsbmedia/css/.tmp">
+                    <fileset dir="${src}/build/media/components/com_rsbmedia/less">
+                        <include name="*.less" />
+                    </fileset>
+                </lessc>
+                <!-- Compress CSS files -->
+                <yuic targetdir="${www.dir}/media/com_rsbmedia/css/.tmp">
+                    <fileset dir="${www.dir}/media/com_rsbmedia/css/.tmp">
+                        <include name="*.css" />
+                    </fileset>
+                </yuic>
+                <foreach param="dirname" absparam="absname" target="yui-compress-css">
+                    <fileset dir="${www.dir}/media/com_rsbmedia/css/.tmp">
+                        <type type="dir" />
+                        <depth max="99" min="0" />
+                    </fileset>
+                </foreach>
+                <copy todir="${www.dir}/media/com_rsbmedia/css" overwrite="true">
+					<fileset dir="${www.dir}/media/com_rsbmedia/css/.tmp">
+						<include name="**" />
+					</fileset>
+				</copy>
+				<delete dir="${www.dir}/media/com_rsbmedia/css/.tmp"/>
+            </then>
+        </if>
+		<copy todir="${www.dir}/media/com_rsbmedia" overwrite="true">
+			<fileset dir="${src}/build/media/components/com_rsbmedia">
+				<include name="**" />
+				<include name=".*" />
+				<exclude name="less" />
+				<exclude name="less/**" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="yui-compress-css" description="Compress CSS files using YUI Compressor">
+        <property name="compress-source-dir" value="${compress-source-dir}/${dirname}" override="true" />
+        <property name="compress-target-dir" value="${compress-target-dir}/${dirname}" override="true" />
+        <trycatch>
+            <try>
+                <yuic targetdir="${compress-target-dir}">
+                    <fileset dir="${compress-source-dir}">
+                        <include name="*.css" />
+                        <exclude name="*.min.css" />
+                    </fileset>
+                </yuic>
+            </try>
+            <catch>
+            </catch>
+        </trycatch>
+    </target>
+</project>

@@ -1,0 +1,25 @@
+class_name: ApiTester
+modules:
+      enabled:
+      - ApiHelper
+      - Asserts
+      - REST:
+              depends: PhpBrowser
+              url: 'http://php/tests/03-group9/joomla-cms/'
+              browser: 'chrome'
+              auth: ['admin', 'admin']
+              port: 9515
+      - SOAP:
+              depends: PhpBrowser
+              endpoint: api_url
+              schema: wsdl
+env:
+      bootstrap2:
+            modules:
+                  config:
+                        JoomlaBrowser:
+      bootstrap3:
+            modules:
+                  config:
+                        JoomlaBrowser:
+                              locator class: 'Page\Acceptance\Bootstrap3TemplateLocators'

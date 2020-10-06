@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_newsletter_lists"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                onchange="this.form.submit();"
+                />
+        <field
+                name="newsletter_list_state"
+                type="rpublished"
+                label="JOPTION_SELECT_PUBLISHED"
+                description="JOPTION_SELECT_PUBLISHED_DESC"
+                filter="0,1"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+        <field
+                name="newsletter_list_company"
+                type="company"
+                label="COM_REDSHOPB_OWNER_COMPANY_LABEL"
+                onchange="this.form.submit();"
+                nullValue='null'
+                >
+            <option value="">JOPTION_SELECT_OWNER_COMPANY</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="newsletter_lists_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

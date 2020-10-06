@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_fields"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="product_state"
+                type="rpublished"
+                label="JOPTION_SELECT_PUBLISHED"
+                description="JOPTION_SELECT_PUBLISHED_DESC"
+                filter="0,1"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+        <field
+                name="field_group_id"
+                type="fieldgroup"
+                required="false"
+                label="COM_REDSHOPB_FIELD_GROUP_LABEL"
+                description="COM_REDSHOPB_FIELD_GROUP_DESC"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_FIELD_GROUP</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="fields_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

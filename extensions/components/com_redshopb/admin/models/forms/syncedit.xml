@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="parent_id"
+                type="syncparent"
+                label="COM_REDSHOPB_SYNC_PARENT_LBL"
+                description="COM_REDSHOPB_SYNC_PARENT_DESC"
+                class="inputbox"
+                required="true"
+                />
+        <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_TITLE_LABEL"
+                description="COM_REDSHOPB_TITLE_DESC"
+                required="true"
+                maxlength="255"
+                />
+		<field name="plugin"
+			   type="syncplugin"
+			   onchange="Joomla.submitbutton('syncedit.changeplugin');"
+			   label="COM_REDSHOPB_SYNC_PLUGIN_LABEL"
+			   description="COM_REDSHOPB_SYNC_PLUGIN_DESC" >
+			<option value="">JSELECT</option>
+		</field>
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+		<field
+				name="execute_sync"
+				type="radio"
+				label="COM_REDSHOPB_SYNC_STATUS_EXECUTED_LABEL"
+				description="COM_REDSHOPB_SYNC_STATUS_EXECUTED_DESC"
+				class="btn-group"
+				default="0"
+				>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+				name="mask_time"
+				type="text"
+				label="COM_REDSHOPB_SYNC_MASK_TIME_LABEL"
+				description="COM_REDSHOPB_SYNC_MASK_TIME_DESC"
+				required="true"
+				maxlength="255"
+				/>
+		<field
+				name="offset_time"
+				type="text"
+				label="COM_REDSHOPB_OFFSET_TIME_LABEL"
+				description="COM_REDSHOPB_OFFSET_TIME_DESC"
+				required="true"
+				maxlength="255"
+				/>
+		<field
+				name="mute_from"
+				type="timepicker"
+				label="COM_REDSHOPB_MUTE_FROM_LABEL"
+				description="COM_REDSHOPB_MUTE_FROM_DESC"
+				seconds="true"
+				default="00:00:00"
+		/>
+		<field
+				name="mute_to"
+				type="timepicker"
+				label="COM_REDSHOPB_MUTE_TO_LABEL"
+				description="COM_REDSHOPB_MUTE_TO_DESC"
+				seconds="true"
+				default="00:00:00"
+		/>
+		<field
+				name="is_continuous"
+				type="radio"
+				label="COM_REDSHOPB_SYNC_IS_CONTINUOUS_LABEL"
+				description="COM_REDSHOPB_SYNC_IS_CONTINUOUS_DESC"
+				class="btn-group"
+				default="1"
+				>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+				name="items_process_step"
+				type="text"
+				label="COM_REDSHOPB_SYNC_ITEMS_PROCESS_STEP_LABEL"
+				description="COM_REDSHOPB_SYNC_ITEMS_PROCESS_STEP_DESC"
+				default="0"
+		/>
+		<field
+				name="items_processed"
+				type="text"
+				label="COM_REDSHOPB_SYNC_ITEMS_PROCESSED_LABEL"
+				description="COM_REDSHOPB_SYNC_ITEMS_PROCESSED_DESC"
+				default="0"
+				/>
+		<field
+				name="last_status_messages"
+				type="text"
+				label="COM_REDSHOPB_SYNC_LAST_STATUS_MESSAGE_LABEL"
+				description="COM_REDSHOPB_SYNC_LAST_STATUS_MESSAGE_DESC"
+				default=""
+		/>
+		<field
+				name="items_total"
+				type="text"
+				label="COM_REDSHOPB_SYNC_ITEMS_TOTAL_LABEL"
+				description="COM_REDSHOPB_SYNC_ITEMS_TOTAL_DESC"
+				default="0"
+				readonly="true"
+		/>
+    </fieldset>
+	<fields name="params">
+		<fieldset name="basic">
+			<field
+					name="CurrentDateTime"
+					type="rdatepicker"
+					dateFormat="yy-mm-dd"
+					filter="user_utc"
+					showTime="true"
+					label="COM_REDSHOPB_SYNC_LAST_SYNC_DATE_TIME_LABEL"
+					description="COM_REDSHOPB_SYNC_LAST_SYNC_DATE_TIME_DESC" />
+			<field
+					name="login"
+					type="text"
+					label="COM_REDSHOPB_SYNC_WEBSERVICE_LOGIN_LABEL"
+					description="COM_REDSHOPB_SYNC_WEBSERVICE_LOGIN_DESC"
+					/>
+			<field
+					name="password"
+					type="text"
+					label="COM_REDSHOPB_SYNC_WEBSERVICE_PASSWORD_LABEL"
+					description="COM_REDSHOPB_SYNC_WEBSERVICE_PASSWORD_DESC"
+					/>
+			<field
+					name="lang"
+					type="text"
+					label="COM_REDSHOPB_SYNC_WEBSERVICE_LANG_LABEL"
+					description="COM_REDSHOPB_SYNC_WEBSERVICE_LANG_DESC"
+					/>
+			<field
+					name="can_use_full_sync"
+					type="radio"
+					label="COM_REDSHOPB_SYNC_WEBSERVICE_CAN_USE_FULL_SYNC_LABEL"
+					description="COM_REDSHOPB_SYNC_WEBSERVICE_CAN_USE_FULL_SYNC_DESC"
+					default="0"
+					class="btn-group"
+					>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field
+					name="lastExecuteVersion"
+					type="text"
+					label="COM_REDSHOPB_SYNC_WEBSERVICE_VERSION_LABEL"
+					description="COM_REDSHOPB_SYNC_WEBSERVICE_VERSION_DESC"
+					default="0"/>
+		</fieldset>
+	</fields>
+</form>

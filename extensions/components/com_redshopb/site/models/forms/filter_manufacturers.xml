@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/libraries/redshopb/form/fields">
+    <fields name="filter">
+        <field
+                name="search_manufacturers"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                hint="COM_REDSHOP_MANUFACTURER_SEARCH"
+                />
+        <field
+                name="manufacturer_state"
+                type="rpublished"
+                label="JOPTION_SELECT_PUBLISHED"
+                description="JOPTION_SELECT_PUBLISHED_DESC"
+                filter="0,1"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+        <field
+                name="featured"
+                type="list"
+                label="COM_REDSHOPB_FEATURED_LABEL"
+                description="COM_REDSHOPB_FEATURED_DESC"
+                required="false"
+                default=""
+                onchange="this.form.submit();">
+            <option value="">COM_REDSHOPB_MANUFACTURER_FILTER_FEATURED_SELECT</option>
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="manufacturer_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+    <fields name="manufacturers_list">
+        <field
+                name="category"
+                type="manufacturercategory"
+                label="COM_REDSHOPB_CATEGORY_LABEL"
+                description="COM_REDSHOPB_CATEGORY_DESC"
+                default=""
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_CATEGORY</option>
+        </field>
+    </fields>
+</form>

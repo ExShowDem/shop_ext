@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menus>
+    <menu name="mypages" text="COM_REDSHOPB_MYPAGE_HEADING" class="my-page">
+        <link view="mypage" icon="icon-home" text="COM_REDSHOPB_MYPAGE" class="my-page"/>
+        <link view="myprofile" icon="icon-user" text="COM_REDSHOPB_MYPAGE_PROFILE" class="my-profile"/>
+        <link view="contact_list" icon="icon-group" text="COM_REDSHOPB_CONTACT_LIST_TITLE" class="contact-list"/>
+        <link view="mywallet" icon="icon-usd" text="COM_REDSHOPB_MYWALLET_TITLE" class="my-wallet"/>
+    </menu>
+    <menu name="orders" text="COM_REDSHOPB_ORDER_LIST_TITLE" class="orders" access="customer_menu">
+        <link view="quick_order" icon="icon-shopping-cart" text="COM_REDSHOPB_QUICK_ORDER" class="quick-order"/>
+        <link view="orders" icon="icon-book" text="COM_REDSHOPB_ORDER_LIST_TITLE" class="orders"/>
+        <link view="carts" icon="icon-shopping-cart" text="COM_REDSHOPB_SAVED_CARTS_LIST_TITLE" class="carts"/>
+        <link view="myoffers" icon="icon-certificate" text="COM_REDSHOPB_MYOFFERS_VIEW_DEFAULT_TITLE" class="my-offers"/>
+        <link view="import_cart" icon="icon-shopping-cart" text="COM_REDSHOPB_IMPORT_CART_TITLE"/>
+        <link view="return_order" icon="icon-truck" text="COM_REDSHOPB_RETURN_ORDERS_VIEW_DEFAULT_TITLE" class="return-orders"/>
+    </menu>
+    <menu name="products" text="COM_REDSHOPB_MYOFFER_PRODUCTS_LIST_PRODUCT" class="shop" access="product">
+        <link view="shop" layout="collections" icon="icon-folder-close" text="COM_REDSHOPB_MY_COLLECTIONS_TITLE" class="collections" />
+        <link view="myfavoritelists" icon="icon-star" text="COM_REDSHOPB_MYFAVORITELISTS_VIEW_DEFAULT_TITLE" class="favorite-lists"/>
+        <link view="mypage" icon="icon-book" text="COM_REDSHOPB_MYPAGE_MOST_PURCHASED" class="most-purchased-products">
+            <query>
+                <property name="tab" value="myPageMostPurchased"/>
+            </query>
+        </link>
+        <link view="mypage" icon="icon-book" text="COM_REDSHOPB_MYPAGE_RECENT_PRODUCTS" class="recent-products">
+            <query>
+                <property name="tab" value="myPageRecentProducts"/>
+            </query>
+        </link>
+    </menu>
+    <menu name="others" text="COM_REDSHOPB_OTHERS" class="others">
+        <link view="dashboard" icon="icon-dashboard" text="COM_REDSHOPB_DASHBOARD" class="dashboard"/>
+        <link view="shop" icon="icon-shopping-cart" text="COM_REDSHOPB_SHOP" class="shop"/>
+        <link view="offers" icon="icon-asterisk" text="COM_REDSHOPB_OFFER_LIST_TITLE" class="offers"/>
+        <link view="carts" icon="icon-shopping-cart" text="COM_REDSHOPB_SAVED_CARTS_LIST_TITLE" class="carts"/>
+        <link view="users" icon="icon-user" text="COM_REDSHOPB_USER_LIST_TITLE" class="users"/>
+        <link view="addresses" icon="icon-truck" text="COM_REDSHOPB_ADDRESS_LIST_TITLE" class="addresses"/>
+        <link view="companies" icon="icon-globe" text="COM_REDSHOPB_COMPANY_LIST_TITLE" class="companies"/>
+        <link view="departments" icon="icon-building" text="COM_REDSHOPB_DEPARTMENT_LIST_TITLE" class="departments"/>
+        <link view="manufacturers" icon="icon-suitcase" text="COM_REDSHOPB_MANUFACTURER_LIST_TITLE" class="manufacturers"/>
+        <link view="collections" icon="icon-briefcase" text="COM_REDSHOPB_COLLECTION_LIST_TITLE" class="collections"/>
+        <link view="products" icon="icon-barcode" text="COM_REDSHOPB_PRODUCT_LIST_TITLE" class="products"/>
+        <link view="stockrooms" icon="icon-archive" text="COM_REDSHOPB_STOCKROOMS_TITLE" class="stockrooms"/>
+        <link view="all_discounts" icon="icon-asterisk" text="COM_REDSHOPB_DISCOUNT_LIST_TITLE" class="all-discounts">
+            <submenu>
+                <link view="all_discounts" icon="icon-tags" text="COM_REDSHOPB_ALL_DISCOUNTS" class="all-discounts"/>
+                <link view="discount_debtor_groups" icon="icon-list-alt" text="COM_REDSHOPB_DEBTOR_DISCOUNT_GROUPS" class="discount-debtor-groups"/>
+                <link view="product_discount_groups" icon="icon-list-alt" text="COM_REDSHOPB_PRODUCT_DISCOUNT_GROUPS" class="product-discount-groups"/>
+            </submenu>
+        </link>
+        <link view="all_prices" icon="icon-tag" text="COM_REDSHOPB_PRICES" class="all-prices">
+            <submenu>
+                <link view="all_prices" icon="icon-tags" text="COM_REDSHOPB_PRODUCT_PRICE_ALL" class="all-prices"/>
+                <link view="price_debtor_groups" icon="icon-list-alt" text="COM_REDSHOPB_DEBTOR_PRICE_GROUPS" class="price-debtor-groups"/>
+            </submenu>
+        </link>
+        <link view="categories" icon="icon-sitemap" text="COM_REDSHOPB_CATEGORY_LIST_TITLE" class="categories"/>
+        <link view="orders" icon="icon-book" text="COM_REDSHOPB_ORDER_SIDEBAR_LIST_TITLE" class="orders"/>
+        <link view="return_orders" icon="icon-book" text="COM_REDSHOPB_RETURN_ORDERS_LIST_TITLE" class="return-orders"/>
+        <link view="layouts" icon="icon-desktop" text="COM_REDSHOPB_LAYOUT_LIST_TITLE" class="layouts"/>
+        <link view="tags" icon="icon-tags" text="COM_REDSHOPB_TAG_LIST_TITLE" class="tags"/>
+        <link view="wash_care_specs" icon="icon-info-sign" text="COM_REDSHOPB_WASH_CARE_SPEC_LIST_TITLE" class="wash-care-specs"/>
+        <link view="fields" icon="icon-search" text="COM_REDSHOPB_FIELDS_LIST_TITLE" class="fields"/>
+        <link view="field_groups" icon="icon-link" text="COM_REDSHOPB_FIELD_GROUPS_LIST_TITLE" class="field-groups"/>
+        <link view="filter_fieldsets" icon="icon-filter" text="COM_REDSHOPB_FILTER_FIELDSET_LIST_TITLE" class="filter-fieldsets"/>
+        <link view="newsletter_lists" icon="icon-envelope" text="COM_REDSHOPB_NEWSLETTER_LIST_TITLE" class="newsletter-lists">
+            <submenu>
+                <link view="newsletter_lists" icon="icon-envelope" text="COM_REDSHOPB_NEWSLETTER_LIST_TITLE" class="newsletter-lists"/>
+                <link view="newsletters" icon="icon-tag" text="COM_REDSHOPB_NEWSLETTERS_TITLE" class="newsletters"/>
+            </submenu>
+        </link>
+        <link view="shipping_rates" icon="icon-truck" text="COM_REDSHOPB_SHIPPING_RATES_TITLE" class="shipping-rates"/>
+        <link view="reports" icon="icon-table" text="COM_REDSHOPB_REPORTS_TITLE" class="reports"/>
+        <link view="table_locks" icon="icon-lock" text="COM_REDSHOPB_TABLE_LOCKS_TITLE" class="table_locks"/>
+        <link view="templates" icon="icon-desktop" text="COM_REDSHOPB_TEMPLATE_LIST_TITLE" class="templates"/>
+        <link view="unit_measures" icon="icon-puzzle-piece" text="COM_REDSHOPB_UNIT_MEASURE_LIST_TITLE" class="unit-measure"/>
+        <link view="words" icon="icon-comments-alt" text="COM_REDSHOPB_WORD_LIST_TITLE" class="words"/>
+        <link view="countries" icon="icon-globe" text="COM_REDSHOPB_COUNTRY_LIST_TITLE" class="countries">
+            <submenu>
+                <link view="countries" icon="icon-globe" text="COM_REDSHOPB_COUNTRY_LIST_TITLE" class="countries"/>
+                <link view="states" icon="icon-globe" text="COM_REDSHOPB_STATE_LIST_TITLE" class="states"/>
+            </submenu>
+        </link>
+        <link view="taxes" icon="icon-retweet" text="COM_REDSHOPB_TAX_LIST_TITLE" class="taxes">
+            <submenu>
+                <link view="tax_groups" icon="icon-retweet" text="COM_REDSHOPB_TAX_GROUP_LIST_TITLE" class="tax-groups"/>
+                <link view="taxes" icon="icon-retweet" text="COM_REDSHOPB_TAX_LIST_TITLE" class="taxes"/>
+             </submenu>
+        </link>
+        <link view="holidays" icon="icon-calendar" class="holidays" text="COM_REDSHOPB_HOLIDAY_LIST_TITLE"/>
+        <link view="free_shippings" icon="icon-truck" class="free_shippings" text="COM_REDSHOPB_FREE_SHIPPING_TITLE"/>
+    </menu>
+</menus>

@@ -1,0 +1,65 @@
+.mod_redshopb_filter_price {
+	.slider-handle {
+		background-image: linear-gradient(to bottom, #da4f49 0px, #ff0000 100%);
+		background-color: #da4f49;
+		height: 15px;
+		width: 15px;
+		margin-left: -5px !important;
+		margin-top: -3px !important;
+	}
+	.slider .tooltip.in{
+		display: block !important;
+	}
+}
+ul.mod_redshopb_filter_tag_list {
+	margin-left: 0px;
+	li.mod_redshopb_filter_tag_group {
+		list-style: none;
+		>label {
+			display: block;
+			width: 100%;
+			font-weight: bold;
+		}
+		span.count-number {
+			float: right;
+		}
+	}
+}
+ul.mod_redshopb_filter_tag_items {
+	margin-left: 0px;
+	li.mod_redshopb_filter_tag_item {
+		list-style: none;
+		>label {
+			display: block;
+			width: 100%;
+		}
+		span.count-number {
+			float: right;
+		}
+	}
+}
+.mod_redshopb_filter_category {
+  ul.chzn-choices {
+	padding-right: 20px;
+	&:after {
+	  content: "\f078";
+	  color: #000;
+	  border: none;
+	  font-family: 'FontAwesome';
+	  font-weight: bold;
+	  line-height: 10px;
+	  padding-right: 4px;
+	  font-size: 12px;
+	  position: absolute;
+	  right: 1px;
+	  top:14px;
+	  cursor: pointer;
+	}
+  }
+   .chzn-with-drop ul.chzn-choices:after {
+	content: "\f077";
+	top:11px;
+	opacity: 0.4;
+	cursor: inherit;
+  }
+}

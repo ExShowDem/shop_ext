@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_companies"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+		<field
+				name="customer_at"
+				type="company"
+				class="chosen"
+				hideDefault="true"
+				onchange="this.form.submit();"
+				>
+			<option value="">COM_REDSHOPB_COMPANY_SELECT_CUSTOMER_AT</option>
+		</field>
+		<field
+				name="starting_level"
+				type="companylevel"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">COM_REDSHOPB_COMPANY_SELECT_COMPANY_STARTING_LEVEL</option>
+		</field>
+		<field
+				name="ending_level"
+				type="companylevel"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">COM_REDSHOPB_COMPANY_SELECT_COMPANY_ENDING_LEVEL</option>
+		</field>
+        <field
+                name="company_state"
+                type="rpublished"
+                label="JOPTION_SELECT_PUBLISHED"
+                description="JOPTION_SELECT_PUBLISHED_DESC"
+                filter="0,1"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="company_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

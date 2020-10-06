@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redcore/form/fields">
+        <field
+                name="report_group"
+                type="hidden"
+                label="COM_REDSHOPB_REPORT_PERIOD_GROUP_LABEL"
+                description="COM_REDSHOPB_REPORT_PERIOD_GROUP_DESC"
+                default="0"
+                />
+        <field
+                name="date_from"
+                type="rdatepicker"
+                dateFormat="yy-mm-dd"
+                class="js-to-inline-calendar"
+                readonly="false"
+                label="COM_REDSHOPB_REPORT_DATE_FROM"
+                description=""
+                />
+        <field
+                name="date_to"
+                type="rdatepicker"
+                dateFormat="yy-mm-dd"
+                class="js-to-inline-calendar"
+                readonly="false"
+                label="COM_REDSHOPB_REPORT_DATE_TO"
+                description=""
+                />
+        <field
+                name="show_extended"
+                type="list"
+                label="COM_REDSHOPB_REPORT_SHOW_EXTENDED_LABEL"
+                description="COM_REDSHOPB_REPORT_SHOW_EXTENDED_DESC"
+                default="0"
+                >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+    </fields>
+    <fields name="chart" addfieldpath="/libraries/redcore/form/fields">
+        <field
+                name="report_chart_type"
+                type="rchart"
+                label="LIB_REDCORE_CHART_NAME_LABEL"
+                description="LIB_REDCORE_CHART_NAME_DESC"
+                default="Pie">
+        </field>
+        <field
+                name="report_view_type"
+                type="rlist"
+                label="COM_REDSHOPB_REPORT_VIEW_TYPE_LABEL"
+                description="COM_REDSHOPB_REPORT_VIEW_TYPE_DESC"
+                default="number_of_users">
+            <option value="number_of_users">COM_REDSHOPB_REPORT_VIEW_TYPE_AMOUNT_USERS</option>
+            <option value="number_of_sent_mails">COM_REDSHOPB_REPORT_VIEW_TYPE_USERS_SENT</option>
+            <option value="number_of_open_mails">COM_REDSHOPB_REPORT_VIEW_TYPE_USERS_OPEN</option>
+        </field>
+    </fields>
+</form>

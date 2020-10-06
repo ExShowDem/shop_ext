@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="text"
+                default="0"
+                label="JGLOBAL_FIELD_ID_LABEL"
+                description="JGLOBAL_FIELD_ID_DESC"
+                class="readonly"
+                readonly="true"
+        />
+        <field
+                name="product_discount_group_id"
+                type="productdiscountgroup"
+                label="COM_REDSHOPB_PRODUCT_DISCOUNT_GROUP_LABEL"
+                description=""
+                required="true"
+                >
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="category_id"
+                type="categories"
+                label="COM_REDSHOPB_CATEGORY_LABEL"
+                description="COM_REDSHOPB_CATEGORY_DESC"
+                >
+              <option value="">JOPTION_SELECT_CATEGORY</option>
+        </field>
+        <field
+                name="threshold_expenditure"
+                type="number"
+                default="0"
+                label="COM_REDSHOPB_THRESHOLD_EXPENDITURE_LABEL"
+                description="COM_REDSHOPB_THRESHOLD_EXPENDITURE_DESC"
+                required="true"
+                min="0"
+                step="0.01" />
+    </fieldset>
+</form>

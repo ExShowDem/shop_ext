@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="product_attribute_id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_PRODUCT_ATTRIBUTE_CONVERSION_ATTRIBUTE_ID_LABEL"
+                description="COM_REDSHOPB_PRODUCT_ATTRIBUTE_CONVERSION_ATTRIBUTE_ID_DESC"
+                />
+        <field
+                name="name"
+                type="text"
+                class="input input-xlarge"
+                label="COM_REDSHOPB_PRODUCT_ATTRIBUTE_CONVERSION_NAME_LABEL"
+                description="COM_REDSHOPB_PRODUCT_ATTRIBUTE_CONVERSION_NAME_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="alias"
+                type="hidden"
+                label="COM_REDSHOPB_CONVERSION_ALIAS_LABEL"
+                description="COM_REDSHOPB_CONVERSION_ALIAS_DESC"
+                maxlength="255"
+                />
+        <field
+                name="default"
+                type="radio"
+                label="COM_REDSHOPB_PRODUCT_ATTRIBUTE_CONVERSION_DEFAULT_LABEL"
+                description="COM_REDSHOPB_PRODUCT_ATTRIBUTE_CONVERSION_DEFAULT_DESC"
+                class="btn-group"
+                default="0"
+                >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field
+                name="imageFileUpload"
+                type="file"
+                preview="tooltip"
+                label="COM_REDSHOPB_MEDIA_IMAGE_UPLOADER_LABEL"
+                description="COM_REDSHOPB_MEDIA_IMAGE_UPLOADER_DESC"
+                accept="image/jpeg,image/png"
+                />
+        <field
+                name="image"
+                type="hidden"
+                />
+    </fieldset>
+</form>

@@ -1,0 +1,9 @@
+{
+	"wwwDir"        : "/tests/www/tests/joomla-cms",
+	 "browserConfig" : {
+            "proxy" : "vanir.local"
+        },
+	"release_dir"   : "../tests/releases/",
+	"watchInterval" : "500",
+	"php_dir" : "php"
+}

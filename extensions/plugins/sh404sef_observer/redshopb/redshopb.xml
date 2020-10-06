@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="sh404sef_observer" method="upgrade">
+	<name>PLG_SH404SEF_OBSERVER_REDSHOPB</name>
+	<creationDate>July 2018</creationDate>
+	<author>Aesir</author>
+	<authorEmail>contact@aesircontextmarketing.com</authorEmail>
+	<authorUrl>www.aesircontextmarketing.com</authorUrl>
+	<copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later, see LICENSE.</license>
+	<version>2.0.0</version>
+	<description>PLG_SH404SEF_OBSERVER_REDSHOPB_DESC</description>
+	<files>
+		<folder>language</folder>
+		<filename>index.html</filename>
+		<filename plugin="redshopb">redshopb.php</filename>
+	</files>
+</extension>

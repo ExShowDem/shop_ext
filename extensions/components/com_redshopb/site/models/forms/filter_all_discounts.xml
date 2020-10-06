@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="search_all_discounts"
+				type="text"
+				label="COM_REDCORE_FILTER_SEARCH_DESC"
+				placeholder="JSEARCH_FILTER"
+				/>
+		<field
+				name="discount_type"
+				type="list"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">COM_REDSHOPB_DISCOUNT_SELECT_TYPE</option>
+			<option value="product">COM_REDSHOPB_DISCOUNT_PRODUCT</option>
+			<option value="product_item">COM_REDSHOPB_DISCOUNT_PRODUCT_ITEM</option>
+			<option value="product_discount_group">COM_REDSHOPB_DISCOUNT_PRODUCT_DISCOUNT_GROUP</option>
+		</field>
+		<field
+				name="discount_sales_type"
+				type="list"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">COM_REDSHOPB_DISCOUNT_SELECT_SALES_TYPE</option>
+			<option value="debtor">COM_REDSHOPB_DISCOUNT_DEBTOR</option>
+			<option value="debtor_discount_group">COM_REDSHOPB_DISCOUNT_DEBTOR_DISCOUNT_GROUP</option>
+			<option value="all_debtor">COM_REDSHOPB_DISCOUNT_ALL_DEBTOR</option>
+		</field>
+		<field
+				name="discount_state"
+				type="rpublished"
+				label="JOPTION_SELECT_PUBLISHED"
+				description="JOPTION_SELECT_PUBLISHED_DESC"
+				filter="0,1"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">JOPTION_SELECT_PUBLISHED</option>
+		</field>
+		<field
+				name="discount_time_period"
+				type="list"
+				class="chosen"
+				onchange="this.form.submit();"
+				>
+			<option value="">COM_REDSHOPB_DISCOUNT_SELECT_TIME_PERIOD</option>
+			<option value="past">COM_REDSHOPB_DISCOUNT_TIME_PAST</option>
+			<option value="now">COM_REDSHOPB_DISCOUNT_TIME_NOW</option>
+			<option value="future">COM_REDSHOPB_DISCOUNT_TIME_FUTURE</option>
+			<option value="no_dependence">COM_REDSHOPB_DISCOUNT_NO_TIME_DEPENDENCE</option>
+		</field>
+    </fields>
+    <fields name="list">
+        <field
+                name="all_discounts_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

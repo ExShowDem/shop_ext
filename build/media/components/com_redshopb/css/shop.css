@@ -1,0 +1,280 @@
+.customer-container
+{
+	padding: 0px;
+	min-height: 20px;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	border: 1px solid #e3e3e3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+	display: block;
+	font-size: 12px;
+	line-height: 20px;
+	color: #333;
+}
+.customer-header
+{
+	background-color: #CC3333;
+	color: white;
+	padding: 5px 10px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.customer-header h3
+{
+	display: inline;
+}
+.customer-item
+{
+	text-align: center;
+	height: 100%;
+	position: relative !important;
+	padding: 15px !important;
+}
+.customer-item-active
+{
+	background-color: #999999;
+}
+.customer-item [class^="icon-"], .customer-item [class*=" icon-"]
+{
+	min-width: 15px !important;
+	min-height: 15px !important;
+	text-align: center !important;
+}
+.row-fluid:first-child .row
+{
+	margin-left: 0px;
+}
+.customer-list
+{
+	padding: 10px;
+}
+.customer-actions
+{
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+	width: 100%;
+	left: 0px;
+}
+.customer-info
+{
+	text-align: left;
+	padding-bottom: 30px !important;
+}
+.customer-info .accordion, .customer-info .accordion-group, .customer-info a
+{
+	margin: 0px !important;
+	padding: 0px !important;
+}
+.customer-info h5
+{
+	display: inline !important;
+}
+.customer-info .accordion-group
+{
+	border: none !important;
+}
+.redcore .productList .thumbnail {
+	max-width: 144px;
+	margin: 0 auto;
+}
+.redcore .productList [class*="row"] {
+	margin-bottom: 20px;
+}
+.popoverTip{
+	display: block;
+	float: left;
+}
+.nowrap{
+	white-space: nowrap;
+}
+.oneWashImage{
+	padding: 0 10px 10px 0;
+	float: left;
+}
+.oneWashImage a{
+	display: block;
+}
+
+.shop-stools-container-list
+{
+	margin-top: 2px;
+}
+
+.opacity-40
+{
+    opacity: 0.4;
+}
+
+
+@media (max-width: 979px) and (min-width: 768px) {
+	.shop-stools-container-list
+	{
+		float: right !important;
+	}
+
+	.shop-stools-container-bar
+	{
+		margin: 0px !important;
+		float: left !important;
+	}
+}
+
+@media (max-width: 524px) and (min-width: 1px) {
+	.shop-stools-container-bar
+	{
+		margin: 0px !important;
+	}
+
+	.shop-stools-container-onsale
+	{
+		margin-right: 5px;
+	}
+}
+
+@media (max-width: 515px) and (min-width: 1px) {
+	.shop-stools-container-onsale
+	{
+		margin-top: 10px;
+		float: left !important;
+	}
+}
+
+@media (max-width: 410px) and (min-width: 1px) {
+	.shop-stools-container-list
+	{
+		margin-top: 12px !important;
+		float: left !important;
+	}
+}
+
+.retailPrices{
+	background: #f3e4a3 !important;
+}
+
+.shop-category-icon
+{
+	margin-left: 5px;
+	display: inline-block;
+}
+
+.shop-category-icon a
+{
+	display: block;
+	width: 32px;
+	height: 32px;
+}
+
+.shop-category-icon-list
+{
+	background: url("../images/list.png") 0px 32px;
+}
+
+.shop-category-icon-grid
+{
+	background: url("../images/grid.png") 0px 32px;
+}
+
+.shop-category-icon-list a:visited
+{
+	background: url("../images/list.png") 0px 32px;
+}
+
+.shop-category-icon-grid a:visited
+{
+	background: url("../images/grid.png") 0px 32px;
+}
+
+.shop-category-icon-list a:hover, .shop-category-icon-list a:active, .category-list-active
+{
+	background: url("../images/list.png") -36px 32px;
+}
+
+.shop-category-icon-grid a:hover, .shop-category-icon-grid a:active, .category-grid-active
+{
+	background: url("../images/grid.png") -36px 32px;
+}
+
+.img-center
+{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sort-by-dir
+{
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.redshopb-category-sort-by .control-label
+{
+	float: left;
+	padding-top: 5px;
+	margin-right: 5px;
+	display: inline;
+}
+
+.redshopb-category-sort-by .controls
+{
+	float: left;
+	display: inline;
+}
+
+.product-washcarespecs-title {
+	font-weight: bold;
+}
+
+.washcarespecs-spec.image {
+	float: left;
+}
+.washcarespecs-spec.text {
+	float: none;
+	clear: both;
+}
+
+.productList .flexslider .slides img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: auto;
+}
+
+.zoomimg {
+	width: 100%;
+}
+
+.category-container {
+    margin-bottom:15px;
+}
+.btn.add-to-favoritelist {
+	background-color: transparent;
+	border: 1px solid;
+	color: #000;
+}
+
+.btn.add-to-favoritelist.added {
+	color: #eddd26;
+}
+
+.btn-wash-care-info-single {
+	margin-top: 5px;
+}
+
+.oldPriceB2B{
+	text-decoration: line-through
+}
+
+.flex-direction-nav a{
+	line-height: 40px;
+}

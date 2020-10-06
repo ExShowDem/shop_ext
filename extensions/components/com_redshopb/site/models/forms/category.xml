@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="standard" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+        />
+        <field
+                name="parent_id"
+                type="categoryparent"
+                label="COM_REDSHOPB_CATEGORY_PARENT_LABEL"
+                description="COM_REDSHOPB_CATEGORY_PARENT_DESC"
+                class="inputbox"
+                restriction="parent"
+        />
+        <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_TITLE_LABEL"
+                description="COM_REDSHOPB_TITLE_DESC"
+                required="true"
+                maxlength="255"
+        />
+        <field name="description"
+               type="multipleeditor"
+               buttons="hide"
+               description="COM_REDSHOPB_CATEGORY_DESCRIPTION_DESC"
+               filter="\Joomla\CMS\Component\ComponentHelper::filterText"
+               label="COM_REDSHOPB_CATEGORY_DESCRIPTION_TITLE"
+        />
+        <field
+                name="company_id"
+                type="company"
+                label="COM_REDSHOPB_CATEGORY_COMPANY_LABEL"
+                description="COM_REDSHOPB_CATEGORY_COMPANY_DESC"
+        />
+        <field
+                name="filter_fieldset_id"
+                type="filterfieldset"
+                label="COM_REDSHOPB_FILTER_FIELDSET_LABEL"
+                description="COM_REDSHOPB_FILTER_FIELDSET_DESC">
+            <option value="">COM_REDSHOPB_SELECT_FILTER_FIELDSET</option>
+        </field>
+        <field
+                name="template_id"
+                type="template"
+                extension="com_redshopb"
+                label="COM_REDSHOPB_CATEGORY_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CATEGORY_TEMPLATE_DESC"
+                scope="category"
+                templateGroup="shop">
+            <option value="">COM_REDSHOPB_TEMPLATE_USE_DEFAULT</option>
+        </field>
+        <field
+                name="product_list_template_id"
+                type="template"
+                extension="com_redshopb"
+                label="COM_REDSHOPB_CATEGORY_LIST_PRODUCT_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CATEGORY_LIST_PRODUCT_TEMPLATE_DESC"
+                scope="list-product"
+                templateGroup="shop">
+            <option value="">COM_REDSHOPB_TEMPLATE_USE_DEFAULT</option>
+        </field>
+        <field
+                name="product_grid_template_id"
+                type="template"
+                extension="com_redshopb"
+                label="COM_REDSHOPB_CATEGORY_GRID_PRODUCT_TEMPLATE_LABEL"
+                description="COM_REDSHOPB_CATEGORY_GRID_PRODUCT_TEMPLATE_DESC"
+                scope="grid-product"
+                templateGroup="shop">
+            <option value="">COM_REDSHOPB_TEMPLATE_USE_DEFAULT</option>
+        </field>
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field
+                name="hide"
+                type="radio"
+                label="COM_REDSHOPB_CATEGORY_HIDE_LABEL"
+                description="COM_REDSHOPB_CATEGORY_HIDE_DESC"
+                class="btn-group"
+                default="0">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field
+                name="imageFileUpload"
+                type="file"
+                preview="tooltip"
+                label="COM_REDSHOPB_CATEGORY_IMAGE_LABEL"
+                description="COM_REDSHOPB_CATEGORY_IMAGE_DESC"
+                accept="image/jpeg,image/png"/>
+        <field
+                name="image"
+                type="hidden"
+        />
+        <field
+                name="deleteImage"
+                type="checkbox"
+                value="1"
+                label="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_LABEL"
+                description="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_DESC"
+        />
+    </fieldset>
+    <fieldset name="sync">
+        <field
+                name="sync_related_id"
+                type="text"
+                label="COM_REDSHOPB_SYNC_RELATED_ID_LABEL"
+                description="COM_REDSHOPB_SYNC_RELATED_ID_DESC"
+                maxlength="255"
+        />
+    </fieldset>
+    <fieldset name="fieldAssociation">
+        <field
+                name="field_association"
+                type="fieldassociation"
+                label="COM_REDSHOPB_FIELD_CATEGORY_ASSOC_LABEL"
+                description="COM_REDSHOPB_FIELD_CATEGORY_ASSOC_DESC">
+            <option value="">JOPTION_SELECT_FIELD</option>
+        </field>
+    </fieldset>
+    <fieldset name="hidden">
+        <field
+                name="image_file"
+                type="hidden"
+        />
+        <field name="extrafields" type="hidden"/>
+    </fieldset>
+    <fields name="params">
+        <fieldset addfieldpath="/libraries/redshopb/form/fields" name="params">
+            <field
+                    name="seo_page_titles"
+                    type="seotagging"
+                    tags="categoryname,categorytree,sitename"
+                    label="COM_REDSHOPB_CATEGORY_PARAMS_SEO_PAGE_TITLES_LABEL"
+                    description="COM_REDSHOPB_CATEGORY_PARAMS_SEO_PAGE_TITLES_DESC" />
+            <field
+                    name="seo_page_headings"
+                    type="seotagging"
+                    tags="categoryname,categorytree,sitename,categorydesc,manufacturerdesc"
+                    label="COM_REDSHOPB_CATEGORY_PARAMS_SEO_PAGE_HEADINGS_LABEL"
+                    description="COM_REDSHOPB_CATEGORY_PARAMS_SEO_PAGE_HEADINGS_DESC" />
+            <field
+                    name="seo_page_description"
+                    type="seotagging"
+                    tags="categoryname,sitename,categorydesc,manufacturerdesc"
+                    label="COM_REDSHOPB_CATEGORY_PARAMS_SEO_PAGE_DESCRIPTIONS_LABEL"
+                    description="COM_REDSHOPB_CATEGORY_PARAMS_SEO_PAGE_DESCRIPTIONS_DESC" />
+            <field
+                    name="seo_page_keywords"
+                    type="seotagging"
+                    tags="categoryname,sitename,categorydesc"
+                    label="COM_REDSHOPB_CATEGORY_PARAMS_SEO_PAGE_KEYWORDS_LABEL"
+                    description="COM_REDSHOPB_CATEGORY_PARAMS_SEO_PAGE_KEYWORDS_DESC" />
+        </fieldset>
+    </fields>
+</form>

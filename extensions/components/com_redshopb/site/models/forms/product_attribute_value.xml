@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="product_attribute_id"
+                type="attribute"
+                label="COM_REDSHOPB_PRODUCT_ATTRIBUTE_FORM_TITLE"
+                description="COM_REDSHOPB_PRODUCT_ATTRIBUTE_VALUE_ATTRIBUTE_DESC"
+                required="true"
+                />
+        <field
+                name="sku"
+                type="text"
+                label="COM_REDSHOPB_PRODUCT_ATTRIBUTE_VALUE_SKU_LABEL"
+                description="COM_REDSHOPB_PRODUCT_ATTRIBUTE_VALUE_SKU_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="value"
+                type="text"
+                label="COM_REDSHOPB_PRODUCT_ATTRIBUTE_VALUE_VALUE_LABEL"
+                description="COM_REDSHOPB_PRODUCT_ATTRIBUTE_VALUE_VALUE_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="ordering"
+                type="hidden"
+                validate="nullinteger"
+                label="COM_REDSHOPB_ORDER"
+                description="COM_REDSHOPB_ATTRIBUTE_VALUE_ORDER_DESC"
+                required="false"
+                value="0"
+                />
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field
+                name="selected"
+                type="radio"
+                label="COM_REDSHOPB_PRODUCT_ATTRIBUTE_VALUE_SELECTED_LABEL"
+                description="COM_REDSHOPB_PRODUCT_ATTRIBUTE_VALUE_SELECTED_DESC"
+                required="true"
+                class="btn-group"
+                default="0"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+         <field
+                name="imageFileUpload"
+                type="file"
+                preview="tooltip"
+                label="COM_REDSHOPB_MEDIA_IMAGE_UPLOADER_LABEL"
+                description="COM_REDSHOPB_MEDIA_IMAGE_UPLOADER_DESC"
+                accept="image/jpeg,image/png"/>
+        <field
+                name="image"
+                type="hidden"/>
+
+        <field
+                name="deleteImage"
+                type="checkbox"
+                value="1"
+                label="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_LABEL"
+                description="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_DESC"/>
+    </fieldset>
+    <fieldset name="hidden">
+        <field name="image_file" type="hidden"/>
+    </fieldset>
+</form>

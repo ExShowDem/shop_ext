@@ -1,0 +1,2 @@
+INSERT INTO `#__redshopb_template` (`name`, `template_group`, `scope`, `alias`, `content`, `state`, `default`, `editable`, `params`, `checked_out`, `checked_out_time`, `created_by`, `created_date`, `modified_by`, `modified_date`) VALUES
+  ('Payment status changed', 'email', 'payment-status-changed', 'payment-status-changed', '', 1, 1, 0, '{"0":{"mail_subject":"COM_REDSHOPB_ORDER_MAIL_PAYMENT_STATUS_WAS_CHANGED_SUBJECT"}}', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00', NULL, '0000-00-00 00:00:00');

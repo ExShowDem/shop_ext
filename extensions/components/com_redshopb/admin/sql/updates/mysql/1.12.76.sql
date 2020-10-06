@@ -1,0 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0;
+
+ALTER TABLE `#__redshopb_company` ADD `hide_company` BOOLEAN NOT NULL DEFAULT '0' AFTER `use_wallets`;
+
+SET FOREIGN_KEY_CHECKS=1;

@@ -1,0 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0;
+
+ALTER TABLE `#__redshopb_product` ADD `campaign` TINYINT(4) NOT NULL DEFAULT 0 AFTER `pkg_size`;
+
+SET FOREIGN_KEY_CHECKS=1;

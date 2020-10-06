@@ -1,0 +1,50 @@
+.layout-container
+ {
+	 width: 80%;
+	 max-width: 940px;
+	 margin-left: auto;
+	 margin-right: auto;
+	 display: block;
+	 border: 1px solid #eee;
+	 -moz-border-radius: 15px;
+	 border-radius: 15px;
+ }
+.layout-container :before, .layout-container :after
+{
+	display: table;
+	content: "";
+	line-height: 0;
+	clear: both;
+}
+.layout-top
+{
+	margin-bottom: 15px;
+}
+.layout-mid
+{
+	margin-bottom: 15px;
+}
+.leftcol
+{
+
+}
+.rightcol
+{
+
+}
+.modules
+{
+
+}
+.layout-bottom
+{
+
+}
+.layout-address
+{
+
+}
+#mod-login-button
+{
+	margin-top: 10px;
+}

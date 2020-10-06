@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/libraries/redshopb/form/fields">
+    <fieldset name="standard">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="asset_id"
+                type="hidden"
+                filter="unset"
+                />
+        <field
+                name="parent_id"
+                type="companyparent"
+                label="COM_REDSHOPB_COMPANY_PARENT_LBL"
+                description="COM_REDSHOPB_COMPANY_PARENT_DESC"
+                class="inputbox"
+                onchange="redSHOPB.companies.refreshPriceAndDiscountGroups(event);"
+                />
+        <field
+                name="type"
+                type="companytype"
+                default="customer"
+                label="COM_REDSHOPB_COMPANY_TYPE_LBL"
+                description="COM_REDSHOPB_COMPANY_TYPE_DESC"
+                class="inputbox"
+                disabled="true"
+                >
+            <option value="customer" class="type_1">COM_REDSHOPB_COMPANY_TYPE_CUSTOMER</option>
+            <option value="end_customer" class="level_2">COM_REDSHOPB_COMPANY_TYPE_ENDCUSTOMER</option>
+            <option value="main" class="level_0">COM_REDSHOPB_COMPANY_TYPE_MAIN</option>
+        </field>
+        <field
+                name="customer_number"
+                type="text"
+                label="COM_REDSHOPB_COMPANY_CUSTOMER_NUMBER_LABEL"
+                description="COM_REDSHOPB_COMPANY_CUSTOMER_NUMBER_DESC"
+                required="true"
+                />
+        <field
+                name="requisition"
+                type="text"
+                label="COM_REDSHOPB_ORDER_REQUISITION"
+                description="COM_REDSHOPB_REQUISITION_AUTO_DESC"
+                />
+        <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_COMPANY_NAME_LABEL"
+                description="COM_REDSHOPB_COMPANY_NAME_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="name2"
+                type="text"
+                label="COM_REDSHOPB_COMPANY_NAME2_LABEL"
+                description="COM_REDSHOPB_COMPANY_NAME2_DESC"
+                maxlength="255"
+                />
+        <field
+                name="contact_info"
+                type="multipleeditor"
+                label="COM_REDSHOP_COMPANY_CONTACT_INFO_LABEL"
+                description="COM_REDSHOP_COMPANY_CONTACT_INFO_DESC"
+                cols="100"
+                class="inputbox"
+                filter="safehtml"
+                buttons="true"
+                hide="readmore,pagebreak,image"
+                />
+        <field
+                name="country_id"
+                type="country"
+                label="COM_REDSHOPB_COUNTRY_LABEL"
+                description="COM_REDSHOPB_COUNTRY_DESC"
+                >
+            <option value="">JOPTION_SELECT_COUNTRY</option>
+        </field>
+        <field
+                name="city"
+                type="text"
+                label="COM_REDSHOPB_CITY_LABEL"
+                description="COM_REDSHOPB_CITY_DESC"
+                maxlength="255"
+                />
+        <field
+                name="zip"
+                type="text"
+                label="COM_REDSHOPB_ZIP_LABEL"
+                description="COM_REDSHOPB_ZIP_DESC"
+                message="COM_REDSHOPB_ZIP_INVALID"
+                />
+        <field
+                name="address_phone"
+                type="text"
+                label="COM_REDSHOPB_ADDRESS_PHONE_LABEL"
+                description="COM_REDSHOPB_ADDRESS_PHONE_DESC"
+                />
+        <field
+                name="address"
+                type="text"
+                label="COM_REDSHOPB_ADDRESS_LABEL"
+                description="COM_REDSHOPB_ADDRESS_DESC"
+                />
+        <field
+                name="address2"
+                type="text"
+                label="COM_REDSHOPB_ADDRESS2_LABEL"
+                description="COM_REDSHOPB_ADDRESS2_DESC"
+                />
+        <field
+                name="state"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field
+                name="show_stock_as"
+                type="list"
+                label="COM_REDSHOPB_COMPANY_SHOW_STOCK_AS_LABEL"
+                description="COM_REDSHOPB_COMPANY_SHOW_STOCK_AS_DESC"
+                default="not_set"
+                required="false"
+                >
+            <option value="not_set">COM_REDSHOPB_COMPANY_SHOW_STOCK_NOT_SET</option>
+            <option value="hide">COM_REDSHOPB_COMPANY_HIDE_STOCK</option>
+            <option value="color_codes">COM_REDSHOPB_COMPANY_SHOW_STOCK_AS_COLOR</option>
+            <option value="actual_stock">COM_REDSHOPB_COMPANY_DISPLAY_STOCK</option>
+        </field>
+        <field
+                id="acl_rules"
+                name="acl_rules"
+                type="companypermissions"
+                label="JFIELD_RULES_LABEL"
+                translate_label="false"
+                class="inputbox"
+                section=""
+                update_to="acl_ruleset"
+                allowAdministratorRoleChange="true"
+                simple="true"
+                />
+        <field
+                id="acl_ruleset"
+                name="acl_ruleset"
+                type="hidden"
+                />
+        <field
+                name="order_approval"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_COMPANY_ORDER_APPROVAL_LABEL"
+                description="COM_REDSHOPB_COMPANY_ORDER_APPROVAL_DESC"
+                required="true"
+                class="btn-group"
+                default="0"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="use_wallets"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_COMPANY_USE_WALLETS_LABEL"
+                description="COM_REDSHOPB_COMPANY_USE_WALLETS_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="hide_company"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_COMPANY_HIDE_COMPANY_LABEL"
+                description="COM_REDSHOPB_COMPANY_HIDE_COMPANY_DESC"
+                required="true"
+                class="btn-group"
+                default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="currency_id"
+                type="currency"
+                filter="intval"
+                class="chosen"
+                required="false"
+                label="COM_REDSHOPB_COMPANY_CURRENCY_LABEL"
+                description="COM_REDSHOPB_COMPANY_CURRENCY_DESC"
+                />
+        <field name="site_language"
+                type="contentlanguage"
+                label="COM_REDSHOPB_COMPANY_SITE_LANGUAGE_LABEL"
+                description="COM_REDSHOPB_COMPANY_SITE_LANGUAGE_DESC"
+                >
+            <option value="">COM_REDSHOPB_SET_MANUAL</option>
+        </field>
+        <field
+                name="site_language_text"
+                type="text"
+                />
+        <field
+                name="calculate_fee"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_COMPANY_CALCULATE_FEE_LABEL"
+                description="COM_REDSHOPB_COMPANY_CALCULATE_FEE_DESC"
+                class="btn-group"
+                default="0"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="freight_amount_limit"
+                type="text"
+                filter="float"
+                label="COM_REDSHOPB_COMPANY_FREIGHT_AMOUNT_LIMIT_LABEL"
+                description="COM_REDSHOPB_COMPANY_FREIGHT_AMOUNT_LIMIT_DESC"
+                />
+        <field
+                name="freight_amount"
+                type="text"
+                filter="float"
+                label="COM_REDSHOPB_COMPANY_FREIGHT_AMOUNT_LABEL"
+                description="COM_REDSHOPB_COMPANY_FREIGHT_AMOUNT_DESC"
+                />
+		<field
+			name="freight_product_id"
+			type="redshopb.list_ajax"
+			label="COM_REDSHOPB_COMPANY_FREIGHT_PRODUCT_LABEL"
+			description="COM_REDSHOPB_COMPANY_FREIGHT_PRODUCT_DESC"
+			formName="company"
+			model="site:Products"
+			filter="{ 'filter.state': 1, 'discontinued': 0 }"
+			completionFilter="filter.search"
+			property="name"
+			ordering="name"
+			allowCreate="false"
+			limit="10"
+            hint="JSELECT"
+		/>
+		<field
+			name="wallet_product_id"
+			type="redshopb.list_ajax"
+			label="COM_REDSHOPB_COMPANY_WALLET_PRODUCT_LABEL"
+			description="COM_REDSHOPB_COMPANY_WALLET_PRODUCT_LABEL"
+			formName="company"
+			model="site:Products"
+			filter="{ 'filter.state': 1, 'discontinued' : 0 }"
+			completionFilter="filter.search"
+			property="name"
+			ordering="p.name"
+			allowCreate="false"
+			limit="10"
+            hint="JSELECT"
+		/>
+        <field
+                name="url"
+                type="rtext"
+                validate="mainurl"
+                label="COM_REDSHOPB_COMPANY_URL_LABEL"
+                description="COM_REDSHOPB_COMPANY_URL_DESC"
+                />
+        <field
+                name="phone"
+                type="text"
+                label="COM_REDSHOPB_COMPANY_PHONE_LABEL"
+                description="COM_REDSHOPB_COMPANY_PHONE_DESC"
+                />
+		<field
+				name="invoice_email"
+				type="text"
+				label="COM_REDSHOPB_COMPANY_INVOICE_EMAIL_LABEL"
+				description="COM_REDSHOPB_COMPANY_INVOICE_EMAIL_DESC"
+			/>
+        <field
+                name="employee_mandatory"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_COMPANY_EMPLOYEE_MANDATORY_LABEL"
+                description="COM_REDSHOPB_COMPANY_EMPLOYEE_MANDATORY_DESC"
+                default="0"
+                class="btn-group"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="price_group_ids"
+                type="customerpricegroup"
+                label="COM_REDSHOPB_COMPANY_PRICE_GROUPS_LABEL"
+                description="COM_REDSHOPB_COMPANY_PRICE_GROUPS_DESC"
+                default=""
+                multiple="true"
+                state="1"
+                class="input-xxlarge"
+                >
+        </field>
+        <field
+                name="customer_discount_ids"
+                type="customerdiscountgroup"
+                label="COM_REDSHOPB_COMPANY_DISCOUNT_GROUP_LABEL"
+                description="COM_REDSHOPB_COMPANY_DISCOUNT_GROUP_LABEL"
+                default=""
+                multiple="true"
+                state="1"
+                class="input-xxlarge"
+                >
+        </field>
+        <field
+                name="price_group_ids_exists"
+                type="hidden"
+                default="1"
+                label="COM_REDSHOPB_COMPANY_PRICE_GROUP_LABEL"
+                description="COM_REDSHOPB_COMPANY_PRICE_GROUP_LABEL"
+                readonly="true"
+                />
+        <field
+                name="customer_discount_ids_exists"
+                type="hidden"
+                default="1"
+                label="COM_REDSHOPB_COMPANY_DISCOUNT_GROUP_LABEL"
+                description="COM_REDSHOPB_COMPANY_DISCOUNT_GROUP_LABEL"
+                readonly="true"
+                />
+        <field
+                name="send_mail_on_order"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_SEND_MAIL_ON_ORDER_LABEL"
+                description="COM_REDSHOPB_SEND_MAIL_ON_ORDER_DESC"
+                default="1"
+                class="btn-group"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="b2c"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_B2C_LABEL"
+                description="COM_REDSHOPB_B2C_DESC"
+                default="0"
+                class="btn-group"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="use_collections"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_USE_COLLECTIONS_LABEL"
+                description="COM_REDSHOPB_USE_COLLECTIONS_DESC"
+                default="0"
+                class="btn-group"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="imageFileUpload"
+                type="file"
+                preview="tooltip"
+                label="COM_REDSHOPB_COMPANY_IMAGE_LABEL"
+                description="COM_REDSHOPB_COMPANY_IMAGE_DESC"
+                accept="image/jpeg,image/png"/>
+        <field
+                name="image"
+                type="hidden"/>
+        <field
+                name="deleteImage"
+                type="checkbox"
+                value="1"
+                label="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_LABEL"
+                description="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_DESC"/>
+        <field
+                name="show_retail_price"
+                type="radioRedshopb"
+                label="COM_REDSHOPB_COMPANY_SHOW_RETAIL_PRICE_LABEL"
+                description="COM_REDSHOPB_COMPANY_SHOW_RETAIL_PRICE_DESC"
+                default="-1"
+                class="btn-group"
+                >
+            <option value="-1">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field
+                name="show_price"
+                type="list"
+                class="chzn-color"
+                default="-1"
+                label="COM_REDSHOPB_COMPANY_SHOW_PRICES_LABEL"
+                description="COM_REDSHOPB_COMPANY_SHOW_PRICES_DESC"
+                >
+            <option value="-1">JGLOBAL_USE_GLOBAL</option>
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field
+                name="stockroom_verification"
+                type="radio"
+                default="1"
+                class="btn-group"
+                label="COM_REDSHOPB_COMPANY_STOCKROOM_VERIFICATION_LABEL"
+                description="COM_REDSHOPB_COMPANY_STOCKROOM_VERIFICATION_DESC"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="vat_number"
+                type="text"
+                label="COM_REDSHOPB_COMPANY_VAT_NUMBER_LABEL"
+                description="COM_REDSHOPB_COMPANY_VAT_NUMBER_DESC"
+        />
+        <field name="tax_group_id"
+               type="taxgroup"
+               label="COM_REDSHOPB_COMPANY_TAX_GROUP_LABEL"
+               description="COM_REDSHOPB_COMPANY_TAX_GROUP_DESC"
+               default="">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="tax_based_on"
+                type="list"
+                default=""
+                label="COM_REDSHOPB_COMPANY_TAX_BASED_ON_LABEL"
+                description="COM_REDSHOPB_COMPANY_TAX_BASED_ON_DESC"
+        >
+            <option value="">COM_REDSHOPB_USE_GLOBAL</option>
+            <option value="vendor">COM_REDSHOPB_TAX_BASED_ON_VENDOR</option>
+            <option value="customer">COM_REDSHOPB_TAX_BASED_ON_CUSTOMER</option>
+            <option value="eu-mode">COM_REDSHOPB_TAX_BASED_ON_EU_MODE</option>
+        </field>
+        <field
+                name="calculate_vat_on"
+                type="list"
+                default=""
+                label="COM_REDSHOPB_COMPANY_CALCULATE_VAT_ON_LABEL"
+                description="COM_REDSHOPB_COMPANY_CALCULATE_VAT_ON_DESC">
+            <option value="">COM_REDSHOPB_USE_GLOBAL</option>
+            <option value="shipping">COM_REDSHOPB_CALCULATE_VAT_ON_SHIPPING</option>
+            <option value="payment">COM_REDSHOPB_CALCULATE_VAT_ON_PAYMENT</option>
+        </field>
+        <field
+                name="customer_tax_exempt"
+                type="list"
+                default="0"
+                label="COM_REDSHOPB_COMPANY_CUSTOMER_TAX_EXEMPT_LABEL"
+                description="COM_REDSHOPB_COMPANY_CUSTOMER_TAX_EXEMPT_DESC">
+            <option value="0">COM_REDSHOPB_USE_GLOBAL</option>
+            <option value="1">JYES</option>
+            <option value="-1">JNO</option>
+        </field>
+        <field
+                name="tax_exempt"
+                type="taxexempt"
+                default="0"
+                class="btn-group"
+                label="COM_REDSHOPB_COMPANY_TAX_EXEMPT_LABEL"
+                description="COM_REDSHOPB_COMPANY_TAX_EXEMPT_DESC"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field
+                name="state_id"
+                type="redshopb.list_ajax"
+                label="COM_REDSHOPB_COUNTRY_STATE_LABEL"
+                description="COM_REDSHOPB_COUNTRY_STATE_DESC"
+                formName="company"
+                model="site:States"
+                filter="{ 'filter.state': 1 }"
+                completionFilter="filter.search_states"
+                dynamicFilters="{'filter.country_id' : '#jform_country_id'}"
+                resetWhenDynamicFilterChanged="true"
+                property="name"
+                minimumInputLength="0"
+                ordering="s.name"
+                multiple="false"
+                required="false"
+                allowCreate="false"
+                limit="100"
+                default=""
+                hint="JSELECT"
+        />
+    </fieldset>
+    <fieldset name="hidden">
+        <field name="image_file" type="hidden"/>
+        <field name="extrafields" type="hidden"/>
+    </fieldset>
+</form>

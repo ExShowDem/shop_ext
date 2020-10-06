@@ -1,0 +1,53 @@
+.collection-table label.fromCheckBoxInTd{
+	margin: 0;
+	padding: 8px;
+	height: 100%;
+	display: block;
+	text-align: center;
+}
+.collection-table label.fromCheckBoxInTd input[type="checkbox"]{
+	margin: 0;
+}
+.redcore table.collection-table td.collection-items{
+	border-left: solid 1px #ffffff;
+	border-right: solid 1px #ffffff;
+	padding: 0;
+}
+.collection-table label.collection-item-notavailable {
+    background-color: #F2DEDE;
+}
+.collection-table label.collection-item-available {
+    background-color: #DFF0D8;
+}
+.redcore .table th.text-center,
+.redcore .table td.text-center {
+    text-align: center;
+}
+.horizontal-controls {
+    float:left;
+    padding-left:20px;
+}
+.collection-main-information .control {
+    float: left;
+    padding-top: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+.redcore select[multiple]{
+    width: auto;
+    height: 150px;
+}
+
+.redcore form .radio.btn-group input[type="radio"] {
+    display: none;
+}
+
+.redcore form fieldset.radio.btn-group {
+    padding-left: 0;
+}
+
+.redcore form .radio.btn-group > label:first-of-type {
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    margin-left: 0;
+}

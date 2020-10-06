@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+		<field
+				name="product_id"
+				type="hidden"
+				label="COM_REDSHOPB_PRODUCT_LABEL"
+				description="COM_REDSHOPB_PRODUCT_DESC"
+				required="true"
+				>
+		</field>
+		<field
+				name="sku"
+				type="text"
+				label="COM_REDSHOPB_SKU"
+				description="COM_REDSHOPB_SKU_DESC"
+				maxlength="255"
+		/>
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+		<field
+			type="text"
+			name="stock_lower_level"
+			label="COM_REDSHOPB_PRODUCT_ITEM_LOWER_LEVEL_LABEL"
+			description="COM_REDSHOPB_PRODUCT_ITEM_LOWER_LEVEL_DESC"
+			filter="int"
+			/>
+		<field
+			type="text"
+			name="stock_upper_level"
+			label="COM_REDSHOPB_PRODUCT_ITEM_UPPER_LEVEL_LABEL"
+			description="COM_REDSHOPB_PRODUCT_ITEM_UPPER_LEVEL_DESC"
+			filter="int"
+			/>
+    </fieldset>
+</form>

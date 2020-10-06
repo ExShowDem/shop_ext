@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="parent_id"
+                type="manufacturerparent"
+                label="COM_REDSHOPB_MANUFACTURER_PARENT_LABEL"
+                description="COM_REDSHOPB_MANUFACTURER_PARENT_DESC"
+                class="inputbox"
+                />
+        <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_TITLE_LABEL"
+                description="COM_REDSHOPB_TITLE_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field
+                name="featured"
+                type="radio"
+                label="COM_REDSHOPB_FEATURED_LABEL"
+                description="COM_REDSHOPB_FEATURED_DESC"
+                required="true"
+                class="btn-group"
+                default="0"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNo</option>
+        </field>
+        <field
+                name="imageFileUpload"
+                type="file"
+                preview="tooltip"
+                label="COM_REDSHOPB_MANUFACTURER_IMAGE_LABEL"
+                description="COM_REDSHOPB_MANUFACTURER_IMAGE_DESC"
+                accept="image/jpeg,image/png"
+                />
+        <field
+                name="image"
+                type="hidden"
+                />
+        <field
+                name="deleteImage"
+                type="checkbox"
+                value="1"
+                label="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_LABEL"
+                description="COM_REDSHOPB_WASH_CARE_SPEC_DELETE_IMAGE_DESC"
+                />
+        <field
+                name="description"
+                type="multipleeditor"
+                label="COM_REDSHOP_MANUFACTURER_DESCRIPTION_LABEL"
+                description="COM_REDSHOP_MANUFACTURER_DESCRIPTION_DESC"
+                cols="100"
+                class="inputbox"
+                filter="safehtml"
+                buttons="true"
+                hide="readmore,pagebreak,image"
+                />
+        <field
+                name="category"
+                type="text"
+                label="COM_REDSHOPB_CATEGORY_LABEL"
+                description="COM_REDSHOPB_CATEGORY_DESC"
+                required="false"
+                maxlength="255"
+        />
+    </fieldset>
+    <fieldset name="hidden">
+        <field name="image_file" type="hidden"/>
+    </fieldset>
+    <fields name="params">
+        <fieldset addfieldpath="/libraries/redshopb/form/fields" name="params">
+            <field
+                    name="seo_page_titles"
+                    type="seotagging"
+                    tags="manufacturer,sitename"
+                    label="COM_REDSHOPB_MANUFACTURER_PARAMS_SEO_PAGE_TITLES_LABEL"
+                    description="COM_REDSHOPB_MANUFACTURER_PARAMS_SEO_PAGE_TITLES_DESC" />
+            <field
+                    name="seo_page_headings"
+                    type="seotagging"
+                    tags="manufacturer,sitename,manufacturerdesc"
+                    label="COM_REDSHOPB_MANUFACTURER_PARAMS_SEO_PAGE_HEADINGS_LABEL"
+                    description="COM_REDSHOPB_MANUFACTURER_PARAMS_SEO_PAGE_HEADINGS_DESC" />
+            <field
+                    name="seo_page_description"
+                    type="seotagging"
+                    tags="manufacturer,sitename,manufacturerdesc"
+                    label="COM_REDSHOPB_MANUFACTURER_PARAMS_SEO_PAGE_DESCRIPTIONS_LABEL"
+                    description="COM_REDSHOPB_MANUFACTURER_PARAMS_SEO_PAGE_DESCRIPTIONS_DESC" />
+            <field
+                    name="seo_page_keywords"
+                    type="seotagging"
+                    tags="manufacturer,sitename,manufacturerdesc"
+                    label="COM_REDSHOPB_MANUFACTURER_PARAMS_SEO_PAGE_KEYWORDS_LABEL"
+                    description="COM_REDSHOPB_MANUFACTURER_PARAMS_SEO_PAGE_KEYWORDS_DESC" />
+        </fieldset>
+    </fields>
+</form>

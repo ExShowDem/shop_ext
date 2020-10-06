@@ -1,0 +1,20 @@
+#!/usr/bin/expect -f
+
+set docHost [lindex $argv 0];
+set docUser [lindex $argv 1];
+set docPass [lindex $argv 2];
+set docPort [lindex $argv 3];
+set docPath [lindex $argv 4];
+set localPath [lindex $argv 5];
+set exitCode 0
+# spawn ssh
+spawn rsync -azh $localPath -e "ssh -p $docPort" $docUser@$docHost:$docPath
+expect {
+	"assword:" { send "$docPass"; send "\n"}
+}
+expect {
+	"No such" { set exitCode 98 }
+	"ermission denied" { set exitCode 99 }
+}
+
+exit $exitCode

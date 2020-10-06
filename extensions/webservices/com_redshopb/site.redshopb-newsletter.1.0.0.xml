@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Newsletter Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>Maintains and allows the creation of newsletters</description>
+  <config>
+    <name>redshopb-newsletter</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="table" optionName="com_redshopb" modelClassName="" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_newsletter">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce Newsletter]]></description>
+      <fields>
+        <field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Newsletter name]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name]]></description>
+        </field>
+        <field name="subject" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Newsletter subject]]></description>
+        </field>
+        <field name="body" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Body of the newsletter to send]]></description>
+        </field>
+        <field name="template_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Template to apply to this newsletter]]></description>
+        </field>
+        <description><![CDATA[Newsletter creation fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Newsletter webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Newsletter]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[New Newsletter ID upon success, zero on error]]></description>
+        </resource>
+        <resource displayName="redshopb-template" transform="string" fieldFormat="/index.php?option=redshopb-template&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={template_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Template Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Template linked Web Service]]></description>
+        </resource>
+        <description><![CDATA[Newsletter creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="table" optionName="com_redshopb" modelClassName="Newsletters" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_newsletter">
+        <description><![CDATA[This operation lists all Aesir E-Commerce Newsletters]]></description>
+        <fields>
+          <field name="id" transform="int" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Newsletter ID]]></description>
+          </field>
+          <field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Newsletter name]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name]]></description>
+        </field>
+        <field name="subject" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Newsletter subject]]></description>
+        </field>
+        <field name="body" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Body of the newsletter to send]]></description>
+        </field>
+        <field name="template_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Template to apply to this newsletter]]></description>
+        </field>
+          <description><![CDATA[Newsletter list fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Newsletter ID]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Newsletter name]]></description>
+          </resource>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[URL safe name]]></description>
+          </resource>
+          <resource displayName="subject" transform="string" fieldFormat="{subject}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Newsletter subject]]></description>
+          </resource>
+          <resource displayName="body" transform="string" fieldFormat="{body}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Body of the newsletter to send]]></description>
+          </resource>
+          <resource displayName="template_id" transform="int" fieldFormat="{template_id}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[Template to apply to this newsletter]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="fields" resourceSpecific="listItem">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Newsletter]]></description>
+          </resource>
+          <resource displayName="redshopb-template" transform="string" fieldFormat="/index.php?option=redshopb-template&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={template_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Template Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Template linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Newsletter list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="table" optionName="com_redshopb" modelClassName="Newsletter" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_newsletter">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Newsletter]]></description>
+        <fields>
+          <field name="id" transform="int" isRequiredField="true" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Newsletter ID]]></description>
+          </field>
+          <description><![CDATA[Newsletter display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter ID]]></description>
+          </resource>
+          <resource displayName="name" transform="string" fieldFormat="{name}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter name]]></description>
+          </resource>
+          <resource displayName="alias" transform="string" fieldFormat="{alias}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[URL safe name]]></description>
+          </resource>
+          <resource displayName="subject" transform="string" fieldFormat="{subject}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter subject]]></description>
+          </resource>
+          <resource displayName="body" transform="string" fieldFormat="{body}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Body of the newsletter to send]]></description>
+          </resource>
+          <resource displayName="template_id" transform="int" fieldFormat="{template_id}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Template to apply to this newsletter]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="fields" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Newsletter]]></description>
+          </resource>
+          <resource displayName="redshopb-template" transform="string" fieldFormat="/index.php?option=redshopb-template&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={template_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Template Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Template linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Newsletter display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="table" optionName="com_redshopb" modelClassName="" modelClassPath="" isAdminClass="false" functionName="save" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_newsletter">
+      <description><![CDATA[This operation updates Aesir E-Commerce Newsletter]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Newsletter ID]]></description>
+        </field>
+        <field name="name" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Newsletter name]]></description>
+        </field>
+        <field name="alias" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL safe name.  If omitted it will be auto-generated from the name]]></description>
+        </field>
+        <field name="subject" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Newsletter subject]]></description>
+        </field>
+        <field name="body" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Body of the newsletter to send]]></description>
+        </field>
+        <field name="template_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Template to apply to this newsletter]]></description>
+        </field>
+        <description><![CDATA[Newsletter update fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Newsletter webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Newsletter]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Newsletter ID upon success, zero on error]]></description>
+        </resource>
+        <resource displayName="redshopb-template" transform="string" fieldFormat="/index.php?option=redshopb-template&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={template_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Template Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Template linked Web Service]]></description>
+        </resource>
+        <description><![CDATA[Newsletter update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="table" optionName="" modelClassName="" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}" validateData="none" validateDataFunction="validate" tableName="redshopb_newsletter">
+      <description><![CDATA[This operation deletes Aesir E-Commerce Newsletter(s).]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Newsletter ID to delete]]></description>
+        </field>
+        <description><![CDATA[Newsletter delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Newsletter webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Newsletter ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Newsletter delete resources]]></description>
+      </resources>
+    </delete>
+    <task>
+      <publish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Newsletter" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This task enables you to set specific Newsletters as published.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Newsletter ID to publish]]></description>
+          </field>
+          <description><![CDATA[Newsletter publish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Newsletter]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Newsletter publish resources]]></description>
+        </resources>
+      </publish>
+      <unpublish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Newsletter" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This task enables you to set specific Newsletters as unpublished.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Newsletter ID to unpublish]]></description>
+          </field>
+          <description><![CDATA[Newsletter unpublish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Newsletter]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Newsletter ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Newsletter unpublish resources]]></description>
+        </resources>
+      </unpublish>
+    </task>
+  </operations>
+</apiservice>

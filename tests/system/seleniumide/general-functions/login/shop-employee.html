@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://feb2b.staging.redhost.dk/" />
+<title>shop-employee</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">shop-employee</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Shop')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=filter_search_shop_products</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//table[@id='variants-table-70-0']/tbody/tr/td[3]/input[1]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//form[@id='wardrobeForm_4']/div[2]/div[2]/div[2]/div[1]/div/div[4]/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=redshopb-cart-link</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@class='btn btn-success btn-small shopping-cart-checkout']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@onclick=&quot;Joomla.submitbutton('shop.cartcheckout')&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=requisition</td>
+	<td>00000001</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=comment</td>
+	<td>test comment</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@onclick=&quot;Joomla.submitbutton('shop.confirm')&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@onclick=&quot;Joomla.submitbutton('shop.completeorder')&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@onclick=&quot;Joomla.submitbutton('shop.finish')&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@onclick=&quot;Joomla.submitbutton('shop.finish')&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[contains(text(),'Orders')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>xpath=(//span[text()='Pending'])[1]</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_REDSHOPB_PRODUCT_GROUP_NAME"
+				description=""
+				required="true"
+				/>
+		<field
+				name="code"
+				type="text"
+				label="COM_REDSHOPB_PRODUCT_GROUP_CODE"
+				description=""
+				required="true"
+				/>
+		<field
+				name="state"
+				type="radio"
+				label="COM_REDSHOPB_STATE_LABEL"
+				description="COM_REDSHOPB_STATE_DESC"
+				required="true"
+				class="btn-group"
+				default="1"
+				>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		<field
+			name="product_ids"
+			type="redshopb.list_ajax"
+			label="COM_REDSHOPB_PRICE_PRODUCT_LABEL"
+			description="COM_REDSHOPB_PRICE_PRODUCT_DESC"
+			formName="product_discount_group"
+			model="site:Products"
+			filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+			dynamicFilters="{'filter.company_id' : '#jform_company_id'}"
+			completionFilter="filter.search"
+			property="name"
+			ordering="p.name"
+			multiple="true"
+			allowCreate="false"
+			limit="10"
+			hint="JSELECT"
+		/>
+		<field
+				name="product_item_ids"
+				type="redshopb.list_ajax"
+				label="COM_REDSHOPB_PRICE_PRODUCT_ITEM_LABEL"
+				description="COM_REDSHOPB_PRICE_PRODUCT_ITEM_DESC"
+				formName="product_discount_group"
+				model="site:Product_Items"
+				filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+				dynamicFilters="{'filter.company_id' : '#jform_company_id'}"
+				completionFilter="filter.search"
+				property="sku"
+				ordering="pi.sku"
+				multiple="true"
+				allowCreate="false"
+				limit="10"
+				hint="JSELECT"
+		/>
+        <field
+            name="company_id"
+            type="company"
+            label="COM_REDSHOPB_OWNER_COMPANY_LABEL"
+            description="COM_REDSHOPB_OWNER_COMPANY_DESC"
+		/>
+	</fieldset>
+</form>

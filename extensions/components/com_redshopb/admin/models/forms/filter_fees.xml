@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_fees"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="product_id"
+                type="product"
+                label="COM_REDSHOPB_PRODUCT"
+                description="COM_REDSHOPB_ATTRIBUTE_PRODUCT_DESC"
+                state="1"
+                discontinued="0"
+                onchange="this.form.submit();"
+                >
+            <option value="empty">JOPTION_SELECT_PRODUCT</option>
+        </field>
+		<field
+				name="currency_id"
+                type="currency"
+                label="COM_REDSHOPB_PRODUCT_CURRENCY_LABEL"
+                description="COM_REDSHOPB_PRODUCT_CURRENCY_DESC"
+                filter="intval"
+                required="false"
+                not_use_default="true"
+                onchange="this.form.submit();"
+				>
+		</field>
+    </fields>
+    <fields name="list">
+        <field
+                name="fee_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

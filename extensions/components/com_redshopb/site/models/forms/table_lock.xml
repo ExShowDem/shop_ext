@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="standard" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+        />
+        <field
+                name="table_name"
+                type="text"
+                label="COM_REDSHOPB_TABLE_LOCK_TABLE_NAME_LABEL"
+                description="COM_REDSHOPB_TABLE_LOCK_TABLE_NAME_DESC"
+                required="true"
+        />
+        <field
+                name="table_id"
+                type="text"
+                label="COM_REDSHOPB_TABLE_LOCK_TABLE_ID_LABEL"
+                description="COM_REDSHOPB_TABLE_LOCK_TABLE_ID_DESC"
+                required="true"
+        />
+        <field
+                name="column_name"
+                type="text"
+                label="COM_REDSHOPB_TABLE_LOCK_COLUMN_NAME_LABEL"
+                description="COM_REDSHOPB_TABLE_LOCK_COLUMN_NAME_DESC"
+                required="true"
+        />
+        <field
+                name="locked_date"
+                type="text"
+                label="COM_REDSHOPB_TABLE_LOCK_LOCKED_DATE_LABEL"
+                description="COM_REDSHOPB_TABLE_LOCK_LOCKED_DATE_DESC"
+                readonly="true"
+        />
+        <field
+                name="locked_by"
+                type="ruser"
+                label="COM_REDSHOPB_TABLE_LOCK_LOCKED_BY_LABEL"
+                description="COM_REDSHOPB_TABLE_LOCK_LOCKED_BY_DESC"
+                readonly="true"
+        />
+        <field
+                name="locked_method"
+                type="radio"
+                label="COM_REDSHOPB_TABLE_LOCK_LOCKED_METHOD_LABEL"
+                description="COM_REDSHOPB_TABLE_LOCK_LOCKED_METHOD_DESC"
+                class="btn-group"
+                default="User"
+                required="true">
+            <option value="User">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD_USER</option>
+            <option value="Webservice">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD_WEBSERVICE</option>
+            <option value="Sync">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD_SYNC</option>
+            <option value="Other">COM_REDSHOPB_TABLE_LOCK_SELECT_LOCKED_METHOD_OTHER</option>
+        </field>
+    </fieldset>
+</form>

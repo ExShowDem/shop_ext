@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="type"
+                type="list"
+                label="COM_REDSHOPB_DISCOUNT_TYPE"
+                description="COM_REDSHOPB_DISCOUNT_TYPE_DESC"
+                required="true"
+                >
+            <option value="">JSELECT</option>
+            <option value="product">COM_REDSHOPB_DISCOUNT_PRODUCT</option>
+            <option value="product_item">COM_REDSHOPB_DISCOUNT_PRODUCT_ITEM</option>
+            <option value="product_discount_group">COM_REDSHOPB_DISCOUNT_PRODUCT_DISCOUNT_GROUP</option>
+        </field>
+        <field
+                name="type_product_id"
+                type="redshopb.list_ajax"
+                label="COM_REDSHOPB_DISCOUNT_PRODUCT"
+                formName="all_discount"
+                model="site:Products"
+                filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+                completionFilter="filter.search"
+                property="name"
+                ordering="p.name"
+                multiple="false"
+                allowCreate="false"
+                limit="10"
+                hint="JSELECT"
+                />
+        <field
+                name="type_product_item_id"
+                type="redshopb.list_ajax"
+                label="COM_REDSHOPB_DISCOUNT_PRODUCT_ITEM"
+                formName="all_discount"
+                model="site:Product_Items"
+                filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+                completionFilter="filter.search"
+                property="sku"
+                ordering="p.sku"
+                multiple="false"
+                allowCreate="false"
+                limit="10"
+                hint="JSELECT"
+        />
+        <field
+                name="type_product_discount_group_id"
+                type="productdiscountgroup"
+                label="COM_REDSHOPB_DISCOUNT_PRODUCT_DISCOUNT_GROUP"
+                description=""
+                required="true"
+                >
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="sales_type"
+                type="list"
+                label="COM_REDSHOPB_SALES_TYPE"
+                description="COM_REDSHOPB_DISCOUNT_SALES_TYPE_DESC"
+                required="true"
+                >
+            <option value="">JSELECT</option>
+            <option value="debtor">COM_REDSHOPB_DISCOUNT_DEBTOR</option>
+            <option value="debtor_discount_group">COM_REDSHOPB_DISCOUNT_DEBTOR_DISCOUNT_GROUP</option>
+            <option value="all_debtor">COM_REDSHOPB_DISCOUNT_ALL_DEBTOR</option>
+        </field>
+        <field
+                name="sales_debtor_id"
+                type="company"
+                label="COM_REDSHOPB_DISCOUNT_DEBTOR"
+                description=""
+                required="true"
+                hideDefault="true"
+                >
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="sales_debtor_discount_group_id"
+                type="customerdiscountgroup"
+                label="COM_REDSHOPB_DISCOUNT_DEBTOR_DISCOUNT_GROUP"
+                description=""
+                required="true"
+                >
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+        <field
+                name="starting_date"
+                type="rdatepicker"
+                default=""
+                label="COM_REDSHOPB_STARTTIME"
+                description="COM_REDSHOPB_DISCOUNT_STARTING_DATE_DESC"
+                dateFormat="yy-mm-dd"
+                filter="user_utc"
+                showTime="true"
+                />
+        <field
+                name="ending_date"
+                type="rdatepicker"
+                default=""
+                label="COM_REDSHOPB_ENDTIME"
+                description="COM_REDSHOPB_DISCOUNT_ENDING_DATE_DESC"
+                dateFormat="yy-mm-dd"
+                filter="user_utc"
+                showTime="true"
+                />
+        <field
+                name="kind"
+                type="radio"
+                label="COM_REDSHOPB_DISCOUNT_KIND"
+                description="COM_REDSHOPB_DISCOUNT_KIND_DESC"
+                required="true"
+                default="0">
+            <option value="0">COM_REDSHOPB_DISCOUNT_KIND_OPTION_PERCENTAGE</option>
+            <option value="1">COM_REDSHOPB_DISCOUNT_KIND_OPTION_TOTAL</option>
+        </field>
+        <field
+                name="percent"
+                type="text"
+                validate="float"
+                default=""
+                label="COM_REDSHOPB_PERCENT"
+                description="COM_REDSHOPB_DISCOUNT_PERCENT_DESC"
+                showon="kind:0"
+                />
+        <field
+                name="total"
+                type="text"
+                validate="float"
+                default=""
+                label="COM_REDSHOPB_DISCOUNT_TOTAL"
+                description="COM_REDSHOPB_DISCOUNT_TOTAL_DESC"
+                showon="kind:1"
+                />
+        <field
+                name="currency_id"
+                type="currency"
+                filter="intval"
+                class="chosen"
+                required="false"
+                label="COM_REDSHOPB_PRICE_CURRENCY_LABEL"
+                description="COM_REDSHOPB_PRICE_CURRENCY_DESC"
+                not_use_default="true"
+                />
+        <field
+                name="quantity_min"
+                type="rtext"
+                validate="nullfloat"
+                default=""
+                label="COM_REDSHOPB_DISCOUNT_QUANTITY_MIN"
+                description="COM_REDSHOPB_DISCOUNT_QUANTITY_MIN_DESC"
+                />
+        <field
+                name="quantity_max"
+                type="rtext"
+                validate="nullfloat"
+                default=""
+                label="COM_REDSHOPB_DISCOUNT_QUANTITY_MAX"
+                description="COM_REDSHOPB_DISCOUNT_QUANTITY_MAX_DESC"
+                />
+        <field name="sales_id" type="hidden"/>
+        <field name="type_id" type="hidden"/>
+    </fieldset>
+</form>

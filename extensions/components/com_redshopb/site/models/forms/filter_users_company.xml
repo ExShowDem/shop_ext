@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_users"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="user_block"
+                type="list"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_REDSHOPB_SELECT_STATUS</option>
+            <option value="0">JENABLED</option>
+            <option value="1">JBLOCKED</option>
+        </field>
+        <field
+                name="user_role_type"
+                type="roletype"
+                label="COM_REDSHOPB_ROLE_LABEL"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_REDSHOPB_SELECT_ROLE</option>
+        </field>
+        <field
+                name="department"
+                type="department"
+                label="COM_REDSHOPB_DEPARTMENT_LABEL"
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_DEPARTMENT</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="user_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+	<fields name="credit_money">
+		<field
+				name="start_date"
+				type="rdatepicker"
+				label="COM_REDSHOPB_STARTTIME"
+				description="COM_REDSHOPB_STARTTIME"
+				onchange=""
+				/>
+		<field
+				name="end_date"
+				type="rdatepicker"
+				label="COM_REDSHOPB_ENDTIME"
+				description="COM_REDSHOPB_ENDTIME"
+				onchange=""
+				/>
+	</fields>
+</form>

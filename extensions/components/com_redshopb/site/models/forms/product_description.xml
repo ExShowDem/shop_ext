@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="product_id"
+                type="hidden"
+                label="COM_REDSHOPB_PRODUCT_LABEL"
+                description="COM_REDSHOPB_PRODUCT_DESC"
+                required="true"
+                >
+        </field>
+        <field
+                name="main_attribute_value_id"
+                type="attributevalue"
+                label="COM_REDSHOPB_MAIN_PRODUCT_ATTRIBUTE_VALUE_LABEL"
+                description="COM_REDSHOPB_MAIN_PRODUCT_ATTRIBUTE_VALUE_DESC"
+                />
+        <field
+                name="description_intro"
+                type="text"
+                label="COM_REDSHOPB_DESCRIPTION_INTRO_LABEL"
+                description="COM_REDSHOPB_DESCRIPTION_INTRO_DESC"
+                />
+        <field
+                name="description"
+                type="multipleeditor"
+                label="COM_REDSHOPB_DESCRIPTION_INTRO_LABEL"
+                description="COM_REDSHOPB_DESCRIPTION_INTRO_DESC"
+                required="true"
+                buttons="true"
+                hide="article,image,pagebreak"
+                />
+    </fieldset>
+    <fieldset name="sync">
+        <field
+                name="sync_related_id"
+                type="text"
+                label="COM_REDSHOPB_SYNC_RELATED_ID_LABEL"
+                description="COM_REDSHOPB_SYNC_RELATED_ID_DESC"
+                maxlength="255"
+        />
+    </fieldset>
+</form>

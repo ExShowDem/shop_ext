@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_offers"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />  
+         <field
+                name="status"
+                type="offerstatus"
+                label="COM_REDSHOPB_MYOFFERS_FILTER_STATUS_LABEL"
+                description="COM_REDSHOPB_MYOFFERS_FILTER_STATUS_LABEL_DESC"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_REDSHOPB_OFFERS_SELECT_SHOW_ALL</option>
+        </field>
+        <field
+                name="customer_type"
+                type="list"
+                label="COM_REDSHOPB_OFFERS_FILTER_CUSTOMER_TYPE_LABEL"
+                description="COM_REDSHOPB_OFFERS_FILTER_CUSTOMER_TYPE_LABEL_DESC"
+                class="chosen"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_REDSHOPB_OFFERS_SELECT_CUSTOMER_TYPE</option>
+            <option value="employee">COM_REDSHOPB_EMPLOYEE</option>
+            <option value="department">COM_REDSHOPB_DEPARTMENT</option>
+            <option value="company">COM_REDSHOPB_COMPANY</option>
+        </field>              
+    </fields>
+</form>

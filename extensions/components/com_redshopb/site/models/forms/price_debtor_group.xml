@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+				name="id"
+				type="hidden"
+				default="0"
+				label="COM_REDSHOPB_ID_LABEL"
+				description="COM_REDSHOPB_ID_DESC"
+				readonly="true"
+				/>
+		<field
+				name="name"
+				type="text"
+				label="COM_REDSHOPB_DEBTOR_GROUP_NAME"
+				description=""
+				required="true"
+				/>
+		<field
+				name="code"
+				type="text"
+				label="COM_REDSHOPB_DEBTOR_GROUP_CODE"
+				description=""
+				required="true"
+				/>
+		<field
+				name="show_stock_as"
+				type="list"
+				label="COM_REDSHOPB_COMPANY_SHOW_STOCK_AS_LABEL"
+				description="COM_REDSHOPB_COMPANY_SHOW_STOCK_AS_DESC"
+				default="not_set"
+				required="false"
+		>
+			<option value="not_set">COM_REDSHOPB_COMPANY_SHOW_STOCK_NOT_SET</option>
+			<option value="hide">COM_REDSHOPB_COMPANY_HIDE_STOCK</option>
+			<option value="color_codes">COM_REDSHOPB_COMPANY_SHOW_STOCK_AS_COLOR</option>
+			<option value="actual_stock">COM_REDSHOPB_COMPANY_DISPLAY_STOCK</option>
+		</field>
+		<field
+				name="default"
+				type="radio"
+				label="COM_REDSHOPB_DEBTOR_GROUP_DEFAULT"
+				description="COM_REDSHOPB_DEBTOR_GROUP_DEFAULT_DESC"
+				required="true"
+				class="btn-group"
+				default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+				name="state"
+				type="radio"
+				label="COM_REDSHOPB_STATE_LABEL"
+				description="COM_REDSHOPB_STATE_DESC"
+				required="true"
+				class="btn-group"
+				default="1"
+				>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+		<field
+			name="customer_ids"
+			type="company"
+			label="COM_REDSHOPB_COMPANY_LIST_TITLE"
+			multiple="true"
+			required="false"
+			class="input-xxlarge"
+			restriction="company"
+			emptystart="true"
+			hideDefault="true"
+			/>
+        <field
+            name="company_id"
+            type="company"
+            label="COM_REDSHOPB_OWNER_COMPANY_LABEL"
+            description="COM_REDSHOPB_OWNER_COMPANY_DESC"
+			onchange="getCompanies()"
+			/>
+        <field
+                name="payment_name"
+                type="paymentplugins"
+                label="COM_REDCORE_PAYMENT_CONFIGURATION_PAYMENT_NAME_LABEL"
+                description="COM_REDCORE_PAYMENT_CONFIGURATION_PAYMENT_NAME_DESC"
+                required="false"
+                onchange="getPaymentPlugin()"
+                >
+            <option value="">COM_REDSHOPB_DEBTOR_GROUP_PAYMENT_NONE</option>
+        </field>
+	</fieldset>
+</form>

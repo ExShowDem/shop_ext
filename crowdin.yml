@@ -1,0 +1,317 @@
+preserve_hierarchy: true
+commit_message: "New localization strings available"
+files:
+  - source: >-
+      /extensions/components/com_redshopb/admin/language/en-GB/en-GB.com_redshopb.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.com_redshopb.ini
+  - source: >-
+      /extensions/components/com_redshopb/site/language/en-GB/en-GB.com_redshopb.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.com_redshopb.ini
+  - source: >-
+      /extensions/components/com_redshopb/admin/language/en-GB/en-GB.com_redshopb.sys.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.com_redshopb.sys.ini
+  - source: >-
+      /extensions/components/com_rsbmedia/site/language/en-GB/en-GB.com_rsbmedia.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.com_rsbmedia.ini
+  - source: >-
+      /extensions/components/com_rsbmedia/admin/language/en-GB/en-GB.com_rsbmedia.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.com_rsbmedia.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_categories/language/en-GB/en-GB.mod_redshopb_categories.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_categories.ini
+  - source: >-
+      /extensions/components/com_rsbmedia/admin/language/en-GB/en-GB.com_rsbmedia.sys.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.com_rsbmedia.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_categories/language/en-GB/en-GB.mod_redshopb_categories.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_categories.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_category/language/en-GB/en-GB.mod_redshopb_category.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_category.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_category/language/en-GB/en-GB.mod_redshopb_category.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_category.sys.ini
+  - source: >-
+      /extensions/plugins/acymailing/redshopb/language/en-GB/en-GB.plg_acymailing_redshopb.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_acymailing_redshopb.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_category_list/language/en-GB/en-GB.mod_redshopb_category_list.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_category_list.ini
+  - source: >-
+      /extensions/plugins/acymailing/redshopb/language/en-GB/en-GB.plg_acymailing_redshopb.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_acymailing_redshopb.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_category_list/language/en-GB/en-GB.mod_redshopb_category_list.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_category_list.sys.ini
+  - source: >-
+      /extensions/plugins/content/redshopb/language/en-GB/en-GB.plg_content_redshopb.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_content_redshopb.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_filter/language/en-GB/en-GB.mod_redshopb_filter.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_filter.ini
+  - source: >-
+      /extensions/plugins/content/redshopb/language/en-GB/en-GB.plg_content_redshopb.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_content_redshopb.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_filter/language/en-GB/en-GB.mod_redshopb_filter.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_filter.sys.ini
+  - source: /extensions/plugins/logman/vanir/language/en-GB/en-GB.plg_logman_vanir.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_logman_vanir.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_impersonation_breadcrumbs/language/en-GB/en-GB.mod_redshopb_impersonation_breadcrumbs.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_impersonation_breadcrumbs.ini
+  - source: >-
+      /extensions/plugins/logman/vanir/language/en-GB/en-GB.plg_logman_vanir.sys.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_logman_vanir.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_impersonation_breadcrumbs/language/en-GB/en-GB.mod_redshopb_impersonation_breadcrumbs.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_impersonation_breadcrumbs.sys.ini
+  - source: >-
+      /extensions/plugins/redshipping/default_shipping/language/en-GB/en-GB.plg_redshipping_default_shipping.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_redshipping_default_shipping.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_layoutparts/language/en-GB/en-GB.mod_redshopb_layoutparts.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_layoutparts.ini
+  - source: >-
+      /extensions/plugins/redshipping/default_shipping/language/en-GB/en-GB.plg_redshipping_default_shipping.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_redshipping_default_shipping.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_layoutparts/language/en-GB/en-GB.mod_redshopb_layoutparts.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_layoutparts.sys.ini
+  - source: >-
+      /extensions/plugins/redshipping/self_pickup/language/en-GB/en-GB.plg_redshipping_self_pickup.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_redshipping_self_pickup.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_manufacturers/language/en-GB/en-GB.mod_redshopb_manufacturers.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_manufacturers.ini
+  - source: >-
+      /extensions/plugins/redshipping/self_pickup/language/en-GB/en-GB.plg_redshipping_self_pickup.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_redshipping_self_pickup.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_manufacturers/language/en-GB/en-GB.mod_redshopb_manufacturers.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_manufacturers.sys.ini
+  - source: >-
+      /extensions/plugins/redshopb_newsletter/acymailing/language/en-GB/en-GB.plg_redshopb_newsletter_acymailing.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_redshopb_newsletter_acymailing.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_megamenu/language/en-GB/en-GB.mod_redshopb_megamenu.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_megamenu.ini
+  - source: >-
+      /extensions/plugins/redshopb_newsletter/acymailing/language/en-GB/en-GB.plg_redshopb_newsletter_acymailing.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_redshopb_newsletter_acymailing.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_megamenu/language/en-GB/en-GB.mod_redshopb_megamenu.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_megamenu.sys.ini
+  - source: >-
+      /extensions/plugins/rb_sync/fengel/language/en-GB/en-GB.plg_rb_sync_fengel.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_fengel.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_products/language/en-GB/en-GB.mod_redshopb_products.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_products.ini
+  - source: >-
+      /extensions/plugins/rb_sync/fengel/language/en-GB/en-GB.plg_rb_sync_fengel.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_fengel.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_products/language/en-GB/en-GB.mod_redshopb_products.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_products.sys.ini
+  - source: >-
+      /extensions/plugins/rb_sync/ftpsync/language/en-GB/en-GB.plg_rb_sync_ftpsync.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_ftpsync.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_search/language/en-GB/en-GB.mod_redshopb_search.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_search.ini
+  - source: >-
+      /extensions/plugins/rb_sync/ftpsync/language/en-GB/en-GB.plg_rb_sync_ftpsync.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_ftpsync.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_search/language/en-GB/en-GB.mod_redshopb_search.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_search.sys.ini
+  - source: >-
+      /extensions/plugins/rb_sync/filesync/language/en-GB/en-GB.plg_rb_sync_filesync.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_filesync.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_status/language/en-GB/en-GB.mod_redshopb_status.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_status.ini
+  - source: >-
+      /extensions/plugins/rb_sync/filesync/language/en-GB/en-GB.plg_rb_sync_filesync.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_filesync.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_status/language/en-GB/en-GB.mod_redshopb_status.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_status.sys.ini
+  - source: /extensions/plugins/rb_sync/pim/language/en-GB/en-GB.plg_rb_sync_pim.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_pim.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_sidebar/language/en-GB/en-GB.mod_redshopb_sidebar.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_sidebar.ini
+  - source: >-
+      /extensions/plugins/rb_sync/pim/language/en-GB/en-GB.plg_rb_sync_pim.sys.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_pim.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_sidebar/language/en-GB/en-GB.mod_redshopb_sidebar.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_sidebar.sys.ini
+  - source: >-
+      /extensions/plugins/sh404sefextplugins/com_redshopb/language/en-GB/en-GB.plg_sh404sefextplugins_com_redshopb.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_sh404sefextplugins_com_redshopb.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_switch_company/language/en-GB/en-GB.mod_redshopb_switch_company.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_switch_company.ini
+  - source: >-
+      /extensions/plugins/sh404sefextplugins/com_redshopb/language/en-GB/en-GB.plg_sh404sefextplugins_com_redshopb.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_sh404sefextplugins_com_redshopb.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_switch_company/language/en-GB/en-GB.mod_redshopb_switch_company.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_switch_company.sys.ini
+  - source: >-
+      /extensions/plugins/rb_sync/webservice/language/en-GB/en-GB.plg_rb_sync_webservice.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_webservice.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_topnav/language/en-GB/en-GB.mod_redshopb_topnav.ini
+    translation: /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_topnav.ini
+  - source: >-
+      /extensions/plugins/rb_sync/webservice/language/en-GB/en-GB.plg_rb_sync_webservice.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_rb_sync_webservice.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_topnav/language/en-GB/en-GB.mod_redshopb_topnav.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_topnav.sys.ini
+  - source: >-
+      /extensions/plugins/sh404sef_observer/redshopb/language/en-GB/en-GB.plg_sh404sef_observer_redshopb.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_sh404sef_observer_redshopb.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_vendor_contact_details/language/en-GB/en-GB.mod_redshopb_vendor_contact_details.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_vendor_contact_details.ini
+  - source: >-
+      /extensions/plugins/sh404sef_observer/redshopb/language/en-GB/en-GB.plg_sh404sef_observer_redshopb.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_sh404sef_observer_redshopb.sys.ini
+  - source: >-
+      /extensions/modules/site/mod_redshopb_vendor_contact_details/language/en-GB/en-GB.mod_redshopb_vendor_contact_details.sys.ini
+    translation: >-
+      /resources/lang/%locale%/site/%locale%/%locale%.mod_redshopb_vendor_contact_details.sys.ini
+  - source: >-
+      /extensions/plugins/user/redshopb/language/en-GB/en-GB.plg_user_redshopb.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_user_redshopb.ini
+  - source: >-
+      /extensions/plugins/user/redshopb/language/en-GB/en-GB.plg_user_redshopb.sys.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_user_redshopb.sys.ini
+  - source: >-
+      /extensions/plugins/system/redshopblayout/language/en-GB/en-GB.plg_system_redshopblayout.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_redshopblayout.ini
+  - source: >-
+      /extensions/plugins/system/redshopblayout/language/en-GB/en-GB.plg_system_redshopblayout.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_redshopblayout.sys.ini
+  - source: >-
+      /extensions/plugins/system/redshopb_google_analytics/language/en-GB/en-GB.plg_system_redshopb_google_analytics.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_redshopb_google_analytics.ini
+  - source: >-
+      /extensions/plugins/system/redshopb_google_analytics/language/en-GB/en-GB.plg_system_redshopb_google_analytics.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_redshopb_google_analytics.sys.ini
+  - source: >-
+      /extensions/plugins/system/redshopb_stockroom_groups/language/en-GB/en-GB.plg_system_redshopb_stockroom_groups.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_redshopb_stockroom_groups.ini
+  - source: >-
+      /extensions/plugins/system/redshopb_stockroom_groups/language/en-GB/en-GB.plg_system_redshopb_stockroom_groups.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_redshopb_stockroom_groups.sys.ini
+  - source: >-
+      /extensions/plugins/system/redshopb_jotcache/language/en-GB/en-GB.plg_system_redshopb_jotcache.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_redshopb_jotcache.ini
+  - source: >-
+      /extensions/plugins/system/redshopb_jotcache/language/en-GB/en-GB.plg_system_redshopb_jotcache.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_redshopb_jotcache.sys.ini
+  - source: /extensions/plugins/system/vanir/language/en-GB/en-GB.plg_system_vanir.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_vanir.ini
+  - source: >-
+      /extensions/plugins/system/vanir/language/en-GB/en-GB.plg_system_vanir.sys.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_vanir.sys.ini
+  - source: >-
+      /extensions/plugins/system/sh404sef_observer/language/en-GB/en-GB.plg_system_sh404sef_observer.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_sh404sef_observer.ini
+  - source: >-
+      /extensions/plugins/system/sh404sef_observer/language/en-GB/en-GB.plg_system_sh404sef_observer.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_sh404sef_observer.sys.ini
+  - source: >-
+      /extensions/plugins/system/vanir_module_filter/language/en-GB/en-GB.plg_system_vanir_module_filter.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_vanir_module_filter.ini
+  - source: >-
+      /extensions/plugins/system/vanir_module_filter/language/en-GB/en-GB.plg_system_vanir_module_filter.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_system_vanir_module_filter.sys.ini
+  - source: >-
+      /extensions/plugins/vanir/group_delivery_time/language/en-GB/en-GB.plg_vanir_group_delivery_time.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_vanir_group_delivery_time.ini
+  - source: >-
+      /extensions/plugins/vanir/group_delivery_time/language/en-GB/en-GB.plg_vanir_group_delivery_time.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_vanir_group_delivery_time.sys.ini
+  - source: >-
+      /extensions/plugins/vanir/menus_restrictions/language/en-GB/en-GB.plg_vanir_menus_restrictions.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_vanir_menus_restrictions.ini
+  - source: >-
+      /extensions/plugins/vanir/menus_restrictions/language/en-GB/en-GB.plg_vanir_menus_restrictions.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_vanir_menus_restrictions.sys.ini
+  - source: >-
+      /extensions/plugins/vanir_search/default/language/en-GB/en-GB.plg_vanir_search_default.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_vanir_search_default.ini
+  - source: >-
+      /extensions/plugins/vanir_search/default/language/en-GB/en-GB.plg_vanir_search_default.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_vanir_search_default.sys.ini
+  - source: >-
+      /extensions/plugins/vanir_search/solr/language/en-GB/en-GB.plg_vanir_search_solr.ini
+    translation: /resources/lang/%locale%/admin/%locale%/%locale%.plg_vanir_search_solr.ini
+  - source: >-
+      /extensions/plugins/vanir_search/solr/language/en-GB/en-GB.plg_vanir_search_solr.sys.ini
+    translation: >-
+      /resources/lang/%locale%/admin/%locale%/%locale%.plg_vanir_search_solr.sys.ini

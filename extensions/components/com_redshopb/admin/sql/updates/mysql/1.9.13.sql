@@ -1,0 +1,1 @@
+ALTER TABLE `#__redshopb_order` ADD `ip_address` VARCHAR(15) NOT NULL DEFAULT '' AFTER `sales_header_type`;

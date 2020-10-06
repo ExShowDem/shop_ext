@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_REDSHOPB_SHOP_VIEW_CATEGORY_TITLE">
+		<message>
+			<![CDATA[COM_REDSHOPB_SHOP_VIEW_CATEGORY_DESC]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+		<fieldset name="request"
+			addfieldpath="/libraries/redshopb/form/fields">
+
+			<field
+				name="id"
+				type="categories"
+				required="false"
+				edit="true"
+				clear="false"
+				label="COM_REDSHOPB_CATEGORY_LABEL"
+				description="COM_REDSHOPB_CATEGORY_DESC"
+			>
+				<option value="">JNONE</option>
+			</field>
+		</fieldset>
+	</fields>
+
+	<!-- Add fields to the parameters object for the layout. -->
+	<fields name="params" addfieldpath="/libraries/redshopb/form/fields">
+	</fields>
+</metadata>

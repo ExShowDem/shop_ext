@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+        />
+        <field
+                name="type"
+                type="list"
+                label="COM_REDSHOPB_PRICE_TYPE_LABEL"
+                description="COM_REDSHOPB_PRICE_TYPE_DESC"
+                required="true">
+            <option value="">JSELECT</option>
+            <option value="product">COM_REDSHOPB_PRICE_PRODUCT</option>
+            <option value="product_item">COM_REDSHOPB_PRICE_PRODUCT_ITEM</option>
+        </field>
+        <field
+                name="type_id"
+                type="text"
+        />
+        <field
+                name="type_product_id"
+                type="redshopb.list_ajax"
+                label="COM_REDSHOPB_PRICE_PRODUCT_LABEL"
+                description="COM_REDSHOPB_PRICE_PRODUCT_DESC"
+                formName="all_price"
+                model="site:Products"
+                filter="{ 'filter.state': 1, 'filter.discontinued': 0 }"
+                completionFilter="filter.search"
+                property="name"
+                ordering="p.name"
+                multiple="false"
+                required="true"
+                allowCreate="false"
+                limit="10"
+                hint="JSELECT"
+        />
+        <field
+                name="type_product_item_id"
+                type="r.childlist"
+                class="ch_type js-child-field"
+                parent_selector="#jform_type_product_id"
+                parent_varname="id"
+                child_selector=".js-child-field"
+                layout="price.rchildlist"
+                url="{site}/index.php?option=com_redshopb&amp;task=all_price.ajaxGetProductItems"
+                label="COM_REDSHOPB_PRICE_PRODUCT_ITEM_LABEL"
+                description="COM_REDSHOPB_PRICE_PRODUCT_ITEM_DESC"
+                required="true">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="sales_type"
+                type="list"
+                label="COM_REDSHOPB_SALES_TYPE"
+                description="COM_REDSHOPB_DISCOUNT_SALES_TYPE_DESC"
+                required="true">
+            <option value="">JSELECT</option>
+            <option value="customer_price">COM_REDSHOPB_PRODUCT_PRICE_DEBTOR</option>
+            <option value="customer_price_group">COM_REDSHOPB_PRODUCT_PRICE_DEBTOR_GROUP</option>
+            <option value="campaign">COM_REDSHOPB_PRODUCT_PRICE_CAMPAIGN</option>
+            <option value="all_customers">COM_REDSHOPB_PRODUCT_PRICE_ALL_DEBTOR</option>
+        </field>
+        <field
+                name="sales_code"
+                type="text"
+        />
+        <field
+                name="sales_customer_id"
+                type="company"
+                hideDefault="true"
+                label="COM_REDSHOPB_PRICE_CUSTOMER_LABEL"
+                description="COM_REDSHOPB_PRICE_CUSTOMER_DESC"
+                required="true">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="sales_customer_price_group_id"
+                type="customerpricegroup"
+                label="COM_REDSHOPB_PRICE_CUSTOMER_PRICE_GROUP_LABEL"
+                description="COM_REDSHOPB_PRICE_CUSTOMER_PRICE_GROUP_DESC"
+                required="true">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="sales_campaign_id"
+                type="text"
+                label="COM_REDSHOPB_PRICE_CAMPAIGN_LABEL"
+                description="COM_REDSHOPB_PRICE_CAMPAIGN_DESC"
+                required="true"
+        />
+        <field
+                name="starting_date"
+                type="rdatepicker"
+                default=""
+                label="COM_REDSHOPB_STARTTIME"
+                description="COM_REDSHOPB_DISCOUNT_STARTING_DATE_DESC"
+                dateFormat="yy-mm-dd"
+                filter="user_utc"
+                showTime="true"
+        />
+        <field
+                name="ending_date"
+                type="rdatepicker"
+                default=""
+                label="COM_REDSHOPB_ENDTIME"
+                description="COM_REDSHOPB_DISCOUNT_ENDING_DATE_DESC"
+                dateFormat="yy-mm-dd"
+                filter="user_utc"
+                showTime="true"
+        />
+        <field
+                name="is_multiple"
+                type="checkbox"
+                label="COM_REDSHOPB_PRICE_IS_MULTIPLE_LABEL"
+                description="COM_REDSHOPB_PRICE_IS_MULTIPLE_DESC"
+                onchange="javascript:multipleOfChange(this);"
+                default="0"
+                />
+        <field
+                name="quantity_min"
+                type="rtext"
+                validate="nullfloat"
+                default=""
+                label="COM_REDSHOPB_PRICE_QUANTITY_MIN"
+                description="COM_REDSHOPB_PRICE_QUANTITY_MIN_DESC"
+        />
+        <field
+                name="quantity_max"
+                type="rtext"
+                validate="nullfloat"
+                default=""
+                label="COM_REDSHOPB_PRICE_QUANTITY_MAX"
+                description="COM_REDSHOPB_PRICE_QUANTITY_MAX_DESC"
+        />
+        <field
+                name="price"
+                type="text"
+                default=""
+                label="COM_REDSHOPB_PRICE_LABEL"
+                description="COM_REDSHOPB_PRICE_DESC"
+                required="true"
+        />
+        <field
+                name="retail_price"
+                type="text"
+                default=""
+                label="COM_REDSHOPB_PRICE_RETAIL_LABEL"
+                description="COM_REDSHOPB_PRICE_RETAIL_DESC"
+        />
+        <field
+                name="currency_id"
+                type="currency"
+                filter="intval"
+                class="chosen"
+                required="true"
+                label="COM_REDSHOPB_PRICE_CURRENCY_LABEL"
+                description="COM_REDSHOPB_PRICE_CURRENCY_DESC"
+        />
+        <field
+                name="country_id"
+                type="country"
+                class="chosen"
+                label="COM_REDSHOPB_PRICE_COUNTRY_LABEL"
+                description="COM_REDSHOPB_PRICE_COUNTRY_DESC">
+            <option value="">JSELECT</option>
+        </field>
+        <field
+                name="allow_discount"
+                type="radio"
+                label="COM_REDSHOPB_PRICE_ALLOW_DISCOUNT_LABEL"
+                description="COM_REDSHOPB_PRICE_ALLOW_DISCOUNT_DESC"
+                class="btn-group"
+                default="1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+</form>

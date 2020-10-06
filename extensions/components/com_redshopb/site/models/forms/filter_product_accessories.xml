@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_product_accessories"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="product_state"
+                type="rpublished"
+                label="JOPTION_SELECT_PUBLISHED"
+                description="JOPTION_SELECT_PUBLISHED_DESC"
+                filter="0,1"
+                class="chosen"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+        <field
+                name="product_discontinued"
+                type="list"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_DISCONTINUED</option>
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field
+                name="product_company"
+                type="company"
+                label="COM_REDSHOPB_OWNER_COMPANY_LABEL"
+                onchange="this.form.submit();"
+                nullValue='null'
+        >
+            <option value="">JOPTION_SELECT_OWNER_COMPANY</option>
+        </field>
+        <field
+                name="product_tag"
+                type="tags"
+                label="COM_REDSHOPB_TAG_LABEL"
+                description="COM_REDSHOPB_TAG_DESC"
+                onchange="this.form.submit();"
+                restriction="parents"
+        >
+            <option value="">JOPTION_SELECT_TAG</option>
+        </field>
+        <field
+                name="product_category"
+                type="categories"
+                label="COM_REDSHOPB_CATEGORY_LABEL"
+                description="COM_REDSHOPB_CATEGORY_DESC"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_CATEGORY</option>
+            <option value="null">COM_REDSHOPB_NO_CATEGORY</option>
+        </field>
+        <field
+                name="product_manufacturer"
+                type="manufacturers"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_MANUFACTURER</option>
+        </field>
+        <field
+                name="product_collection"
+                type="collection"
+                label="COM_REDSHOPB_COLLECTION_FORM_TITLE"
+                description="COM_REDSHOPB_COLLECTION_DESC"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_COLLECTION</option>
+        </field>
+        <field
+                name="product_description"
+                type="list"
+                label="COM_REDSHOPB_PRODUCT_DESCRIPTION_FORM_TITLE"
+                description="COM_REDSHOPB_PRODUCT_DESCRIPTION_DESC"
+                onchange="this.form.submit();"
+        >
+            <option value="">JOPTION_SELECT_DESCRIPTION</option>
+            <option value="1">COM_REDSHOPB_PRODUCT_NO_DESCRIPTION</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="product_accessories_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

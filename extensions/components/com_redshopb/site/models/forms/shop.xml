@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+		        name="mycategory"
+		        type="category"
+		        extension="com_content"
+		        label="Select a category"
+		        description=""
+		        />
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="company_id"
+                type="company"
+                label="COM_REDSHOPB_COMPANY_LABEL"
+                description="COM_REDSHOPB_COMPANY_DESC"
+                required="true"
+                >
+            <option value="">JOPTION_SELECT_COMPANY</option>
+        </field>
+        <field
+                name="category_id"
+                type="categories"
+                label="COM_REDSHOPB_CATEGORIES_LABEL"
+                description="COM_REDSHOPB_CATEGORIES_DESC"
+                multiple="true"
+                filterproducts="true"
+                restriction="parents"
+                />
+        <field
+                name="product_id"
+                type="text"
+                label="COM_REDSHOPB_PRODUCT_ID_LABEL"
+                description="COM_REDSHOPB_PRODUCT_ID_DESC"
+                />
+        <field
+                name="name"
+                type="text"
+                label="COM_REDSHOPB_NAME"
+                description="COM_REDSHOPB_PRODUCT_NAME_DESC"
+                required="true"
+                maxlength="255"
+                />
+        <field
+                name="sku"
+                type="text"
+                label="COM_REDSHOPB_SKU"
+                description="COM_REDSHOPB_SKU_DESC"
+                required="true"
+                maxlength="255"
+                />
+       
+        <field
+                name="price"
+                type="float"
+                label="COM_REDSHOPB_PRODUCT_PRICE_LABEL"
+                description="COM_REDSHOPB_PRODUCT_PRICE_DESC"
+                required="true"
+                />
+		<field
+				name="currency_id"
+				type="currency"
+				label="COM_REDSHOPB_PRODUCT_CURRENCY_LABEL"
+				description="COM_REDSHOPB_PRODUCT_CURRENCY_DESC"
+				filter="intval" />
+       
+        <field
+                name="image"
+                type="rmedia"
+                label="COM_REDSHOPB_IMAGE_LABEL"
+                description="COM_REDSHOPB_IMAGE_DESC"
+                labelclass="control-label"
+                />
+        <field
+                name="state"
+                type="radio"
+                label="COM_REDSHOPB_STATE_LABEL"
+                description="COM_REDSHOPB_STATE_DESC"
+                required="true"
+                class="btn-group"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+    </fieldset>
+</form>

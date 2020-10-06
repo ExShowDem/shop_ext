@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="id"
+                type="hidden"
+                default="0"
+                label="COM_REDSHOPB_ID_LABEL"
+                description="COM_REDSHOPB_ID_DESC"
+                readonly="true"
+                />
+        <field
+                name="product_id"
+                type="product"
+                label="COM_REDSHOPB_PRODUCT"
+                description="COM_REDSHOPB_FEE_PRODUCT_DESC"
+                required="true"
+                state="1"
+                discontinued="0"
+                />
+        <field
+                name="currency_id"
+                type="currency"
+                filter="intval"
+                class="chosen"
+                required="true"
+                label="COM_REDSHOPB_PRODUCT_CURRENCY_LABEL"
+                description="COM_REDSHOPB_PRODUCT_CURRENCY_DESC"
+                />
+        <field
+                name="fee_limit"
+                type="text"
+                default="0"
+                label="COM_REDSHOPB_FEE_LIMIT_LABEL"
+                description="COM_REDSHOPB_FEE_LIMIT_DESC"
+                required="true"
+                />
+        <field
+                name="fee_amount"
+                type="text"
+                default=""
+                label="COM_REDSHOPB_FEE_AMOUNT_LABEL"
+                description="COM_REDSHOPB_FEE_AMOUNT_DESC"
+                required="false"
+                />
+    </fieldset>
+</form>

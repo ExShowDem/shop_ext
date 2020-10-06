@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Return Orders Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>Lists the created Return Orders in Aesir E-Commerce.</description>
+  <config>
+    <name>redshopb-return_orders</name>
+    <version>1.0.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="">
+        <fields>
+          <field name="product_name" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Product name]]></description>
+          </field>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Return Order ID]]></description>
+          </resource>
+          <resource displayName="order_id" transform="int" fieldFormat="{order_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Order ID]]></description>
+          </resource>
+          <resource displayName="order_item_id" transform="int" fieldFormat="{order_item_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Order Item ID]]></description>
+          </resource>
+          <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product ID]]></description>
+          </resource>
+          <resource displayName="product_name" transform="string" fieldFormat="{product_name}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product name]]></description>
+          </resource>
+          <resource displayName="product_sku" transform="string" fieldFormat="{product_sku}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product SKU]]></description>
+          </resource>
+          <resource displayName="product_item_id" transform="int" fieldFormat="{product_item_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product Item ID]]></description>
+          </resource>
+          <resource displayName="quantity" transform="int" fieldFormat="{quantity}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Number of items]]></description>
+          </resource>
+          <resource displayName="comment" transform="string" fieldFormat="{comment}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Comment about return order]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[ordering]={list_ordering}&amp;list[direction]={list_direction}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem"/>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Return_Order" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Return Order]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Return Order ID]]></description>
+          </field>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Return Order ID]]></description>
+          </resource>
+          <resource displayName="order_id" transform="int" fieldFormat="{order_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Order ID]]></description>
+          </resource>
+          <resource displayName="order_item_id" transform="int" fieldFormat="{order_item_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Order Item ID]]></description>
+          </resource>
+          <resource displayName="quantity" transform="int" fieldFormat="{quantity}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Quantity of returned items]]></description>
+          </resource>
+          <resource displayName="comment" transform="string" fieldFormat="{comment}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Comment about Return Order]]></description>
+          </resource>
+          <resource displayName="created_date" transform="datetime" fieldFormat="{created_date}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Date of created Return Order]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal"/>
+        </resources>
+      </item>
+    </read>
+  </operations>
+</apiservice>

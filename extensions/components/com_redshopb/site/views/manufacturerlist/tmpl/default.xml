@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_REDSHOPB_MANUFACTURERLIST_VIEW_DEFAULT_TITLE">
+        <message>
+            <![CDATA[COM_REDSHOPB_MANUFACTURERLIST_VIEW_DEFAULT_DESC]]>
+        </message>
+    </layout>
+    <fields name="params">
+        <fieldset name="params">
+            <field
+                    name="show_alphabet_filter"
+                    type="radio"
+                    class="btn-group"
+                    label="COM_REDSHOPB_MANUFACTURERLIST_SHOW_ALPHABET_FILTER_LABEL"
+                    description="COM_REDSHOPB_MANUFACTURERLIST_SHOW_ALPHABET_FILTER_DESC"
+                    default="1">
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="show_category_filter"
+                    type="radio"
+                    class="btn-group"
+                    label="COM_REDSHOPB_MANUFACTURERLIST_SHOW_CATEGORY_FILTER_LABEL"
+                    description="COM_REDSHOPB_MANUFACTURERLIST_SHOW_CATEGORY_FILTER_DESC"
+                    default="1">
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field name="search_manufacturer"
+                   type="radio"
+                   class="btn-group"
+                   label="COM_REDSHOPB_MANUFACTURERLIST_SHOW_SEARCH_LABEL"
+                   description="COM_REDSHOPB_MANUFACTURERLIST_SHOW_SEARCH_DESC"
+                   default="0">
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field name="manufacturer_list_sidebar"
+                   type="radio"
+                   class="btn-group"
+                   label="COM_REDSHOPB_MANUFACTURERLIST_MANUFACTURER_LIST_SIDEBAR_LABEL"
+                   description="COM_REDSHOPB_MANUFACTURERLIST_MANUFACTURER_LIST_SIDEBAR_DESC"
+                   default="1">
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="columns"
+                    type="text"
+                    label="COM_REDSHOPB_MANUFACTURERLIST_COLUMNS_LABEL"
+                    description="COM_REDSHOPB_MANUFACTURERLIST_COLUMNS_DESC"
+                    default="4"/>
+        </fieldset>
+    </fields>
+</metadata>

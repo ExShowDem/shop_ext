@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset addfieldpath="/libraries/redshopb/form/fields">
+		<field
+			name="redshopb_favlist"
+			type="redshopb.list_ajax"
+			formName="add_favourite_product"
+			model="site:Myfavoriteproducts"
+			completionFilter="filter.search_shop_products"
+			filter="{ 'filter.include_available_collections': 1, 'filter.favorite_list_id_exclude':1, 'disable_user_states':1 }"
+			property="name,sku"
+			ordering="p.name"
+			limit="10"
+			width="100%"
+			dynamicFilters="{'filter.favorite_list_id' : '#favorite_list_id'}"
+			hint="COM_REDSHOPB_MYPAGE_QUICK_ORDER_PLACE_HOLDER"
+			layout="redshopb.field.select2_ajax"
+			class="textFieldStyle"
+		/>
+	</fieldset>
+</form>

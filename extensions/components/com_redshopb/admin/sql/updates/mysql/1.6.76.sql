@@ -1,0 +1,1 @@
+ALTER TABLE `#__redshopb_company`	ADD `show_price` TINYINT(4) NOT NULL DEFAULT '-1' AFTER `use_collections`;

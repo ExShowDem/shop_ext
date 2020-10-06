@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter" addfieldpath="/libraries/redshopb/form/fields">
+        <field
+                name="search_webservice_permission_users"
+                type="text"
+                label="COM_REDCORE_FILTER_SEARCH_DESC"
+                placeholder="JSEARCH_FILTER"
+                />
+        <field
+                name="webservice_permission"
+                type="webservicepermission"
+                label="COM_REDSHOPB_WEBSERVICE_PERMISSIONS_FILTER_WEBSERVICE_PERMISSION_TITLE"
+                description="COM_REDSHOPB_WEBSERVICE_PERMISSIONS_FILTER_WEBSERVICE_PERMISSION_DESC"
+                onchange="this.form.submit();"
+                >
+            <option value="">JOPTION_SELECT_WEBSERVICE_PERMISSION</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="webservice_permission_users_limit"
+                type="rlimitbox"
+                class="inputbox input-mini chzn"
+                default="25"
+                label="JGLOBAL_ORDERING_LIST_LIMIT"
+                description="JGLOBAL_ORDERING_LIST_LIMIT_DESC"
+                onchange="this.form.submit();"
+                />
+    </fields>
+</form>

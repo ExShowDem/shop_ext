@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<contentelement type="contentelement">
+    <name>Aesir E-Commerce Wash and Care</name>
+    <author>Aesir</author>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <version>2.0.0</version>
+    <description>Wash and Care Table Definition for the Aesir E-Commerce extension</description>
+    <reference>
+        <table name="redshopb_wash_care_spec">
+            <field name="id" type="referenceid" translate="0" alwaysFallback="false" filter="RAW" description="">ID</field>
+            <field name="description" type="textarea" translate="1" alwaysFallback="false" filter="RAW" description="">Description</field>
+            <filter><![CDATA[]]></filter>
+        </table>
+        <component>
+            <editForm admin="false" option="com_redshopb" view="wash_care_spec" layout="edit" identifier="id" showbutton="true" htmlposition=".btn-toolbar:first .btn-group:first" checkoriginalid="false"/>
+        </component>
+    </reference>
+</contentelement>

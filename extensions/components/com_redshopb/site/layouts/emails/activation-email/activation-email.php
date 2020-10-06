@@ -1,0 +1,1 @@
+<h1>Hi there</h1><p>Thanks for your register.</p><p>Please click this link to active your account. <a href="{activationLink}" target="_blank">Active link</a></p>

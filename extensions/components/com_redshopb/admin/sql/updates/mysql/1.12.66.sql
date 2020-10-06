@@ -1,0 +1,5 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE `#__redshopb_product_item` ADD COLUMN `sku` VARCHAR(255) NOT NULL AFTER `product_id`;
+
+SET FOREIGN_KEY_CHECKS = 1;

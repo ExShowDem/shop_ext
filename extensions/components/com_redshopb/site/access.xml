@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<access component="com_redshopb">
+    <section name="component">
+        <action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC"/>
+        <action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC"/>
+        <action name="core.create" title="JACTION_CREATE" description="JACTION_CREATE_COMPONENT_DESC"/>
+        <action name="core.delete" title="JACTION_DELETE" description="JACTION_DELETE_COMPONENT_DESC"/>
+        <action name="core.edit" title="JACTION_EDIT" description="JACTION_EDIT_COMPONENT_DESC"/>
+        <action name="core.edit.state" title="JACTION_EDITSTATE" description="JACTION_EDITSTATE_COMPONENT_DESC"/>
+        <action name="core.edit.own" title="JACTION_EDITOWN" description="JACTION_EDITOWN_COMPONENT_DESC"/>
+        <action name="core.webservice" title="COM_REDSHOPB_ACTION_WEBSERVICES" description="COM_REDSHOPB_ACTION_WEBSERVICES_DESC"/>
+    </section>
+    <specifications>
+        <specification name="default">
+            <rule name="LoginRequired"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="all_discounts" alias="all_discount">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="all_prices" alias="all_price">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="b2buserregister"/>
+        <specification name="campaign_products">
+            <rule name="LoginRequired"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="carts" alias="cart">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="currencies" alias="currency">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="dashboard">
+            <rule name="LoginRequired"/>
+        </specification>
+        <specification name="discount_debtor_groups" alias="discount_debtor_group">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="manufacturerlist">
+            <rule name="CustomerRequired"/>
+        </specification>
+        <specification name="myoffers" alias="myoffer">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="OffersEnabled"/>
+            <rule name="CustomersOnly"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="mywallet">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="CustomersOnly"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="offers" alias="offer">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="OffersEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="orders" alias="order">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="payment_configuration">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="price_debtor_groups" alias="price_debtor_group">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="product_discount_groups" alias="product_discount_group">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="quick_order">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="shipping_configuration">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="shipping_rates" alias="shipping_rate">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="shop">
+            <rule name="LoginRequired"/>
+            <rule name="CustomerRequired" layoutScope="product,category,categories,cart,delivery,confirm,receipt,productlist,productfeatured,productrecent,manufacturer"/>
+            <rule name="CartItemsRequired" layoutScope="cart,delivery,confirm"/>
+            <rule name="AclRequired"/>
+            <rule name="ReceiptTokenRequired" layoutScope="receipt"/>
+        </specification>
+        <specification name="stockrooms" alias="stockroom" classPrefix="test">
+            <rule name="LoginRequired"/>
+        </specification>
+        <specification name="taglist"/>
+        <specification name="taxes" alias="tax">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+        <specification name="taxe_groups" alias="tax_group">
+            <rule name="LoginRequired"/>
+            <rule name="PricesEnabled"/>
+            <rule name="AclRequired"/>
+        </specification>
+    </specifications>
+</access>

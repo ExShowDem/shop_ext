@@ -1,0 +1,5 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE `#__redshopb_role_type` ADD COLUMN `hidden` TINYINT(1) NOT NULL DEFAULT '0' AFTER `limited`;
+
+SET FOREIGN_KEY_CHECKS = 1;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_REDSHOPB_DASHBOARD_VIEW_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_REDSHOPB_DASHBOARD_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the parameters object for the layout. -->
+	<fields name="params" addfieldpath="/libraries/redshopb/form/fields">
+		<fieldset name="basic">
+			<field
+				name="companyid"
+				type="company"
+				default=""
+				required="false"
+				showNone="yes"
+				label="COM_REDSHOPB_COMPANY_LABEL"
+				description="COM_REDSHOPB_COMPANY_DESC">
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

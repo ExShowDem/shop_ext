@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="rb_sync">
+    <name>PLG_RB_SYNC_PIM</name>
+    <creationDate>January 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.3.0</version>
+    <description>PLG_RB_SYNC_PIM_XML_DESCRIPTION</description>
+    <scriptfile>install.php</scriptfile>
+    <install>
+        <sql>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/data.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/uninstall.sql</file>
+        </sql>
+    </uninstall>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+            <schemapath type="mysqli">sql/updates/mysql</schemapath>
+        </schemas>
+        <php>
+            <path>updates</path>
+        </php>
+    </update>
+    <files>
+        <folder>client</folder>
+        <folder>functions</folder>
+        <folder>language</folder>
+        <folder>sql</folder>
+        <folder>updates</folder>
+        <filename plugin="pim">pim.php</filename>
+        <filename plugin="pim">index.html</filename>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/libraries/redshopb/form/fields">
+                <field
+                        name="localFolder"
+                        type="text"
+                        default="pim"
+                        label="PLG_RB_SYNC_PIM_LOCAL_FOLDER_LABEL"
+                        description="PLG_RB_SYNC_PIM_LOCAL_FOLDER_DESC"
+                        />
+                <field
+                        name="maxExecutionTime"
+                        type="text"
+                        default="7200"
+                        label="PLG_RB_SYNC_PIM_MAXIMUM_EXECUTION_TIME_LABEL"
+                        description="PLG_RB_SYNC_PIM_MAXIMUM_EXECUTION_TIME_DESC"
+                />
+                <field name="enableLanguageSync"
+                       type="radio"
+                       class="btn-group"
+                       default="1"
+                       label="PLG_RB_SYNC_PIM_ENABLE_LANGUAGE_SYNC_LABEL"
+                       description="PLG_RB_SYNC_PIM_ENABLE_LANGUAGE_SYNC_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

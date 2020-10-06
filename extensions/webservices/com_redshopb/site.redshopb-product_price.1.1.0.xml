@@ -1,0 +1,464 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Product Price Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>This web service maintains every price given to a product or a product item, on different optional conditions regarding the sale.</description>
+  <config>
+    <name>redshopb-product_price</name>
+    <version>1.1.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="model" optionName="com_redshopb" modelClassName="All_Price" modelClassPath="" isAdminClass="false" functionName="createWS" functionArgs="" validateData="function" validateDataFunction="validateCreateWS" tableName="redshopb_product_price">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce Price]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Price ERP ID.  It will be stored as erp.&lt;id&gt; for future reference]]></description>
+        </field>
+        <field name="product_id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="product_item_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product Item ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="customer_price_group_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Customer price group ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="company_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Company ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="campaign_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Campaign code set when this price is set to a certain campaign (global offer)]]></description>
+        </field>
+        <field name="currency_code" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Currency used for this price]]></description>
+        </field>
+        <field name="price" transform="float" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Actual price]]></description>
+        </field>
+        <field name="retail_price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Retail (guiding) price]]></description>
+        </field>
+        <field name="country_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Currency used for this price]]></description>
+        </field>
+        <field name="starting_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional starting date of this price]]></description>
+        </field>
+        <field name="ending_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional ending date of this price]]></description>
+        </field>
+        <field name="is_multiple" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional. Adjusts price in multiples of the minimum quantity. Requires a minimum quantity]]></description>
+        </field>
+        <field name="quantity_min" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional minimum number of purchased items to apply this price to]]></description>
+        </field>
+        <field name="quantity_max" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional maximum number of purchased items to apply this price to]]></description>
+        </field>
+        <field name="allow_discount" transform="boolean" defaultValue="true" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Determines if the price allows any discount to be applied or not]]></description>
+        </field>
+        <description><![CDATA[Price creation fields.<br />Please note that <strong>company_id</strong>, <strong>customer_price_group_id</strong> and <strong>compaign_code</strong> are exclusive, so only one can be set per price record.]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Price webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Price]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[New Price internal id upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Price creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="All_Prices" modelClassPath="" isAdminClass="false" functionName="getItemsWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_price">
+        <description><![CDATA[This operation lists all Aesir E-Commerce Prices]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal price ID]]></description>
+          </field>
+          <field name="product_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal product ID this price is applied to]]></description>
+          </field>
+          <field name="product_item_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal product item ID this price is applied to]]></description>
+          </field>
+          <field name="customer_price_group_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal customer price group id this price is applied to]]></description>
+          </field>
+          <field name="company_id" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Internal company id this price is applied to]]></description>
+          </field>
+          <field name="campaign_code" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Campaign code set when this price is set to a certain campaign (global offer)]]></description>
+          </field>
+          <field name="currency_code" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Currency used for this price]]></description>
+          </field>
+          <field name="country_code" transform="string" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Country of the purchaser to apply this price to]]></description>
+          </field>
+          <field name="allow_discount" transform="boolean" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Determines if the price allows any discount to be applied or not]]></description>
+          </field>
+          <field name="is_multiple" transform="int" defaultValue="" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Determines if the price is of a multiple quantity or not. Requires a minimum quantity]]></description>
+          </field>
+          <description><![CDATA[Price list fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="string" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal price ID]]></description>
+          </resource>
+          <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the price]]></description>
+          </resource>
+          <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal product ID this price is applied to]]></description>
+          </resource>
+          <resource displayName="product_id_others" transform="array" fieldFormat="{product_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the product]]></description>
+          </resource>
+          <resource displayName="product_item_id" transform="int" fieldFormat="{product_item_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal product item ID this price is applied to]]></description>
+          </resource>
+          <resource displayName="product_item_id_others" transform="array" fieldFormat="{product_item_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the product item]]></description>
+          </resource>
+          <resource displayName="customer_price_group_id" transform="int" fieldFormat="{customer_price_group_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal customer price group ID this price is applied to]]></description>
+          </resource>
+          <resource displayName="customer_price_group_id_others" transform="array" fieldFormat="{customer_price_group_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the customer price group]]></description>
+          </resource>
+          <resource displayName="company_id" transform="int" fieldFormat="{company_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Internal company ID this price is applied to]]></description>
+          </resource>
+          <resource displayName="company_id_others" transform="array" fieldFormat="{company_id_syncref}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Other valid IDs for the company]]></description>
+          </resource>
+          <resource displayName="campaign_code" transform="string" fieldFormat="{campaign_code}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Campaign code set when this price is set to a certain campaign (global offer)]]></description>
+          </resource>
+          <resource displayName="currency_code" transform="string" fieldFormat="{currency_code}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Currency used for this price]]></description>
+          </resource>
+          <resource displayName="price" transform="float" fieldFormat="{price}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Actual price]]></description>
+          </resource>
+          <resource displayName="retail_price" transform="float" fieldFormat="{retail_price}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Retail (guiding) price]]></description>
+          </resource>
+          <resource displayName="country_code" transform="string" fieldFormat="{country_code}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Currency used for this price]]></description>
+          </resource>
+          <resource displayName="starting_date" transform="datetime" fieldFormat="{starting_date}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Optional starting date of this price]]></description>
+          </resource>
+          <resource displayName="ending_date" transform="datetime" fieldFormat="{ending_date}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Optional ending date of this price]]></description>
+          </resource>
+          <resource displayName="is_multiple" transform="int" fieldFormat="{is_multiple}" displayGroup="" resourceSpecific="listItem">
+              <description><![CDATA[Optional. Adjusts price in multiples of the minimum quantity. Requires a minimum quantity]]></description>
+          </resource>
+          <resource displayName="quantity_min" transform="float" fieldFormat="{quantity_min}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Optional minimum number of purchased items to apply this price to]]></description>
+          </resource>
+          <resource displayName="quantity_max" transform="float" fieldFormat="{quantity_max}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Optional maximum number of purchased items to apply this price to]]></description>
+          </resource>
+          <resource displayName="allow_discount" transform="boolean" fieldFormat="{allow_discount}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Determines if the price allows any discount to be applied or not]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Price webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Price]]></description>
+          </resource>
+          <resource displayName="redshopb-product" transform="string" fieldFormat="/index.php?option=redshopb-product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-product_item" transform="string" fieldFormat="/index.php?option=redshopb-product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_item_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Item Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Product Item linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-company" transform="string" fieldFormat="/index.php?option=redshopb-company&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={company_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Company Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Company linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-customer_price_group" transform="string" fieldFormat="/index.php?option=redshopb-customer_price_group&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={customer_price_group_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Customer Price Group Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Customer Price Group linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-country" transform="string" fieldFormat="/index.php?option=redshopb-country&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={country_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Country Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Country linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={currency_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Currency linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Price list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="All_Price" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_price" enforcePKs="false">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Price]]></description>
+        <fields>
+          <field name="id" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="true">
+            <description><![CDATA[Price ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+          </field>
+          <description><![CDATA[Price display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="string" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal price ID]]></description>
+          </resource>
+          <resource displayName="id_others" transform="array" fieldFormat="{id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the price]]></description>
+          </resource>
+          <resource displayName="product_id" transform="int" fieldFormat="{product_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product ID this price is applied to]]></description>
+          </resource>
+          <resource displayName="product_id_others" transform="array" fieldFormat="{product_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the product]]></description>
+          </resource>
+          <resource displayName="product_item_id" transform="int" fieldFormat="{product_item_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal product item ID this price is applied to]]></description>
+          </resource>
+          <resource displayName="product_item_id_others" transform="array" fieldFormat="{product_item_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the product item]]></description>
+          </resource>
+          <resource displayName="customer_price_group_id" transform="int" fieldFormat="{customer_price_group_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal customer price group ID this price is applied to]]></description>
+          </resource>
+          <resource displayName="customer_price_group_id_others" transform="array" fieldFormat="{customer_price_group_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the customer price group]]></description>
+          </resource>
+          <resource displayName="company_id" transform="int" fieldFormat="{company_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Internal company ID this price is applied to]]></description>
+          </resource>
+          <resource displayName="company_id_others" transform="array" fieldFormat="{company_id_syncref}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Other valid IDs for the company]]></description>
+          </resource>
+          <resource displayName="campaign_code" transform="string" fieldFormat="{campaign_code}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Campaign code set when this price is set to a certain campaign (global offer)]]></description>
+          </resource>
+          <resource displayName="currency_code" transform="string" fieldFormat="{currency_code}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Currency used for this price]]></description>
+          </resource>
+          <resource displayName="price" transform="float" fieldFormat="{price}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Actual price]]></description>
+          </resource>
+          <resource displayName="retail_price" transform="float" fieldFormat="{retail_price}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Retail (guiding) price]]></description>
+          </resource>
+          <resource displayName="country_code" transform="string" fieldFormat="{country_code}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Currency used for this price]]></description>
+          </resource>
+          <resource displayName="starting_date" transform="datetime" fieldFormat="{starting_date}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Optional starting date of this price]]></description>
+          </resource>
+          <resource displayName="ending_date" transform="datetime" fieldFormat="{ending_date}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Optional ending date of this price]]></description>
+          </resource>
+          <resource displayName="is_multiple" transform="int" fieldFormat="{is_multiple}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Optional. Adjusts price in multiples of the minimum quantity. Requires a minimum quantity]]></description>
+          </resource>
+          <resource displayName="quantity_min" transform="float" fieldFormat="{quantity_min}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Optional minimum number of purchased items to apply this price to]]></description>
+          </resource>
+          <resource displayName="quantity_max" transform="float" fieldFormat="{quantity_max}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Optional maximum number of purchased items to apply this price to]]></description>
+          </resource>
+          <resource displayName="allow_discount" transform="boolean" fieldFormat="{allow_discount}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Determines if the price allows any discount to be applied or not]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Price webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Price]]></description>
+          </resource>
+          <resource displayName="redshopb-product" transform="string" fieldFormat="/index.php?option=redshopb-product&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-product_item" transform="string" fieldFormat="/index.php?option=redshopb-product_item&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_item_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Item Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Item linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-company" transform="string" fieldFormat="/index.php?option=redshopb-company&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={company_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Company Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Company linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-customer_price_group" transform="string" fieldFormat="/index.php?option=redshopb-customer_price_group&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={customer_price_group_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Customer Price Group Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Customer Price Group linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-country" transform="string" fieldFormat="/index.php?option=redshopb-country&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={country_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Country Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Country linked Web Service]]></description>
+          </resource>
+          <resource displayName="redshopb-currency" transform="string" fieldFormat="/index.php?option=redshopb-currency&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;code={currency_code}" displayGroup="_links" linkTitle="Aesir E-Commerce - Currency Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Currency linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Price display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="All_Price" modelClassPath="" isAdminClass="false" functionName="updateWS" functionArgs="" validateData="function" validateDataFunction="validateUpdateWS" tableName="redshopb_product_price">
+      <description><![CDATA[This operation updates Aesir E-Commerce Price]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Price ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="erp_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Set or update the Price ERP ID.  It will be stored as erp.&lt;id&gt; for future reference]]></description>
+        </field>
+        <field name="product_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="product_item_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Product Item ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="customer_price_group_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Customer price group ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="company_id" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Company ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <field name="campaign_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Campaign code set when this price is set to a certain campaign (global offer)]]></description>
+        </field>
+        <field name="currency_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Currency used for this price]]></description>
+        </field>
+        <field name="price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Actual price]]></description>
+        </field>
+        <field name="retail_price" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Retail (guiding) price]]></description>
+        </field>
+        <field name="country_code" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Currency used for this price]]></description>
+        </field>
+        <field name="starting_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional starting date of this price]]></description>
+        </field>
+        <field name="ending_date" transform="datetime" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional ending date of this price]]></description>
+        </field>
+        <field name="is_multiple" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional.Adjusts price in multiples of the minimum quantity. Requires a minimum quantity]]></description>
+        </field>
+        <field name="quantity_min" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional minimum number of purchased items to apply this price to]]></description>
+        </field>
+        <field name="quantity_max" transform="float" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Optional maximum number of purchased items to apply this price to]]></description>
+        </field>
+        <field name="allow_discount" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Determines if the price allows any discount to be applied or not]]></description>
+        </field>
+        <description><![CDATA[Price update fields.<br />Please note that <strong>company_id</strong>, <strong>customer_price_group_id</strong> and <strong>compaign_code</strong> are exclusive, so only one can be set per price record.]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Price webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={result}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Price]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Price ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Price update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="All_Price" modelClassPath="" isAdminClass="false" functionName="deleteWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product_price">
+      <description><![CDATA[This operation deletes Aesir E-Commerce Price(s).]]></description>
+      <fields>
+        <field name="id" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Price ID.<br />No prefix denotes an internal id.<br />pim.&lt;id&gt; denotes a PIM id.<br />erp.&lt;id&gt; denotes an ID from the ERP (sent via web services)]]></description>
+        </field>
+        <description><![CDATA[Price delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Price webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="boolean" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[True on success. False on fail or error]]></description>
+        </resource>
+        <description><![CDATA[Price delete resources]]></description>
+      </resources>
+    </delete>
+  </operations>
+</apiservice>

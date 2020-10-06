@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="system" method="upgrade">
+    <name>PLG_REDSHOPB_GOOGLE_ANALYTICS</name>
+    <creationDate>January 2019</creationDate>
+    <author>Aesir</author>
+    <authorEmail>contact@aesircontextmarketing.com</authorEmail>
+    <authorUrl>www.aesircontextmarketing.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later, see LICENSE.</license>
+    <version>2.3.0</version>
+    <description>PLG_REDSHOPB_GOOGLE_ANALYTICS_DESC</description>
+
+    <install>
+        <sql>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/install.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysqli" charset="utf8">sql/install/mysql/uninstall.sql</file>
+        </sql>
+    </uninstall>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+            <schemapath type="mysqli">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+
+    <files>
+        <folder>language</folder>
+        <folder>sql</folder>
+        <folder>layouts</folder>
+        <filename plugin="redshopb_google_analytics">redshopb_google_analytics.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="google_analytics"
+                        type="radio"
+                        label="PLG_REDSHOPB_GOOGLE_ANALYTICS_GOOGLE_ANALYTICS_LABEL"
+                        description="PLG_REDSHOPB_GOOGLE_ANALYTICS_GOOGLE_ANALYTICS_DESC"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="ga_tracking_id"
+                        type="text"
+                        label="PLG_REDSHOPB_GOOGLE_ANALYTICS_TRACKING_ID_LABEL"
+                        description="PLG_REDSHOPB_GOOGLE_ANALYTICS_TRACKING_ID_DESC"/>
+                <field
+                        type="spacer"
+                        hr="true"/>
+                <field
+                        name="google_analytics_ecommerce"
+                        type="radio"
+                        label="PLG_REDSHOPB_GOOGLE_ANALYTICS_GOOGLE_ANALYTICS_ECOMMERCE_LABEL"
+                        description="PLG_REDSHOPB_GOOGLE_ANALYTICS_GOOGLE_ANALYTICS_ECOMMERCE_DESC"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        type="spacer"
+                        hr="true"/>
+                <field
+                        name="tracking_adwords"
+                        type="radio"
+                        label="PLG_REDSHOPB_GOOGLE_ANALYTICS_TRACKING_ADWORDS_LABEL"
+                        description="PLG_REDSHOPB_GOOGLE_ANALYTICS_TRACKING_ADWORDS_DESC"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                    name="google_conversion_id"
+                    type="text"
+                    label="PLG_REDSHOPB_GOOGLE_ANALYTICS_TRACKING_ADWORDS_GOOGLE_CONVERSION_ID_LABEL"
+                    description="PLG_REDSHOPB_GOOGLE_ANALYTICS_TRACKING_ADWORDS_GOOGLE_CONVERSION_ID_DESC"/>
+                <field
+                    name="google_conversion_label"
+                    type="text"
+                    label="PLG_REDSHOPB_GOOGLE_ANALYTICS_TRACKING_ADWORDS_GOOGLE_CONVERSION_LABEL_LABEL"
+                    description="PLG_REDSHOPB_GOOGLE_ANALYTICS_TRACKING_ADWORDS_GOOGLE_CONVERSION_LABEL_DESC"/>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,709 @@
+<?xml version="1.0"?>
+<apiservice client="site">
+  <name>Aesir E-Commerce - Product Attribute Value Webservice</name>
+  <author>Aesir</author>
+  <copyright>Copyright (C) 2012 - 2019 Aesir. All rights reserved.</copyright>
+  <description>Maintains the attribute values, given for the attributes of each product, to generate variants from them</description>
+  <config>
+    <name>redshopb-product_attribute_value</name>
+    <version>1.1.0</version>
+    <authorizationAssetName>com_redshopb</authorizationAssetName>
+  </config>
+  <operations>
+    <documentation authorizationNeeded="false" source="auto" url=""/>
+    <create authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.create" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="createWS" functionArgs="" validateData="function" validateDataFunction="validateCreateWS" tableName="redshopb_product_attribute_value">
+      <description><![CDATA[This operation creates a new Aesir E-Commerce Product Attribute Value]]></description>
+      <fields>
+        <field name="product_attribute_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Product Attribute ID of this Value]]></description>
+        </field>
+        <field name="sku" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Stocking Key Unit (it will be appended to the product's SKU)]]></description>
+        </field>
+        <field name="ordering" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Order for displaying the attribute values]]></description>
+        </field>
+        <field name="selected" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[If true, it will be the default selected value for this attribute when showing it in shop]]></description>
+        </field>
+        <field name="value" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+          <description><![CDATA[Actual value]]></description>
+        </field>
+        <field name="image" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL of image to display in shop when presenting the value in the options for the product. The image will be imported.]]></description>
+        </field>
+        <description><![CDATA[Product Attribute Value creation fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Attribute Value webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product Attribute Value]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[New Product Attribute Value ID upon success, zero on error]]></description>
+        </resource>
+        <resource displayName="redshopb-product_attribute" transform="string" fieldFormat="/index.php?option=redshopb-product_attribute&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_attribute_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Attribute Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Attribute linked Web Service]]></description>
+        </resource>
+        <description><![CDATA[Product Attribute Value creation resources]]></description>
+      </resources>
+    </create>
+    <read>
+      <list authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Values" modelClassPath="" isAdminClass="false" functionName="getItemsWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[This operation lists all Aesir E-Commerce Product Attribute Values]]></description>
+        <fields>
+          <field name="id" transform="int" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID]]></description>
+          </field>
+          <field name="product_attribute_id" transform="int" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[Product Attribute ID of this Value]]></description>
+          </field>
+          <field name="sku" transform="string" isRequiredField="false" isFilterField="false" isSearchableField="true" isPrimaryField="false">
+            <description><![CDATA[Stocking Key Unit (appended to the product's SKU)]]></description>
+          </field>
+	        <field name="selected" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+	          <description><![CDATA[If true, it will be the default selected value for this attribute when showing it in shop]]></description>
+	        </field>
+          <field name="imageurl" transform="string" defaultValue="" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+              <description><![CDATA[Product attribute value image URL.  <br /><em>By default this field is empty, but it will populate the URL when sending <strong>filter[include_images]=true</strong></em>]]></description>
+          </field>
+					<field name="state" transform="boolean" isRequiredField="false" isFilterField="false" isSearchableField="false" isPrimaryField="false">
+					  <description><![CDATA[True if published, false if unpublished]]]></description>
+					</field>
+					<field name="include_images" transform="boolean" defaultValue="false" isRequiredField="false" isFilterField="true" isSearchableField="false" isPrimaryField="false">
+            <description><![CDATA[When true, it populates the <strong>image</strong> field with the URLs of images.  Otherwise, the field will remain empty.]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value list fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product Attribute Value ID]]></description>
+          </resource>
+          <resource displayName="product_attribute_id" transform="int" fieldFormat="{product_attribute_id}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Product Attribute ID of this Value]]></description>
+          </resource>
+          <resource displayName="sku" transform="string" fieldFormat="{sku}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Stocking Key Unit (it will be appended to the product's SKU)]]></description>
+          </resource>
+          <resource displayName="ordering" transform="int" fieldFormat="{ordering}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Order for displaying the attribute values]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="selected" transform="boolean" fieldFormat="{selected}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[If true, it will be the default selected value for this attribute when showing it in shop]]></description>
+          </resource>
+          <resource displayName="value" transform="string" fieldFormat="{value}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[Actual value]]></description>
+          </resource>
+          <resource displayName="image" transform="string" fieldFormat="{imageurl}" displayGroup="" resourceSpecific="listItem">
+            <description><![CDATA[URL of image to display in shop when presenting the value in the options for the product.]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="page" transform="int" fieldFormat="{pagination.page}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Page number]]></description>
+          </resource>
+          <resource displayName="pageLimit" transform="int" fieldFormat="{pagination.limit}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Number of items per page]]></description>
+          </resource>
+          <resource displayName="limitstart" transform="int" fieldFormat="{pagination.limitstart}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Start displaying from a certain item in the list]]></description>
+          </resource>
+          <resource displayName="totalItems" transform="int" fieldFormat="{pagination.totalItems}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of items]]></description>
+          </resource>
+          <resource displayName="totalPages" transform="int" fieldFormat="{pagination.totalPages}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Total number of pages of items]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:first" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]=0" displayGroup="_links" linkTitle="Pagination first" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[First page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:previous" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.previous}" displayGroup="_links" linkTitle="Pagination previous" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Previous page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:next" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.next}" displayGroup="_links" linkTitle="Pagination next" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Next page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:last" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limitstart]={pagination.last}" displayGroup="_links" linkTitle="Pagination last" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Last page]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:all" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]=0" displayGroup="_links" linkTitle="Show all items" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[List all items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:limit" transform="string" fieldFormat="{webserviceUrlPath}&amp;list[limit]={limit}&amp;list[limitstart]={limitstart}" displayGroup="_links" linkTitle="List limit" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Limit the number of listed items]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:filter" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[search]={filter_search}" displayGroup="_links" linkTitle="Filter list" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Items search]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:sort" transform="string" fieldFormat="{webserviceUrlPath}&amp;filter[order]={filter_order}&amp;filter[order_Dir]={filter_order_Dir}" displayGroup="_links" linkTitle="List sort" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Sort list by field and direction]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="listItem">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="redshopb-product_attribute" transform="string" fieldFormat="/index.php?option=redshopb-product_attribute&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_attribute_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Attribute Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value list resources]]></description>
+        </resources>
+      </list>
+      <item authorizationNeeded="true" strictFields="false" authorization="core.webservice" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="getItemWS" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value" enforcePKs="false">
+        <description><![CDATA[This operation displays a single Aesir E-Commerce Product Attribute Value]]></description>
+        <fields>
+          <field name="id" transform="int" isRequiredField="true" isFilterField="true" isSearchableField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value display fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="id" transform="int" fieldFormat="{id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID]]></description>
+          </resource>
+          <resource displayName="product_attribute_id" transform="int" fieldFormat="{product_attribute_id}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute ID of this Value]]></description>
+          </resource>
+          <resource displayName="sku" transform="string" fieldFormat="{sku}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Stocking Key Unit (it will be appended to the product's SKU)]]></description>
+          </resource>
+          <resource displayName="ordering" transform="int" fieldFormat="{ordering}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Order for displaying the attribute values]]></description>
+          </resource>
+          <resource displayName="state" transform="boolean" fieldFormat="{state}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[True if published, false if unpublished]]></description>
+          </resource>
+          <resource displayName="selected" transform="boolean" fieldFormat="{selected}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[If true, it will be the default selected value for this attribute when showing it in shop]]></description>
+          </resource>
+          <resource displayName="value" transform="string" fieldFormat="{value}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Actual value]]></description>
+          </resource>
+          <resource displayName="image" transform="string" fieldFormat="{imageurl}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[URL of image to display in shop when presenting the value in the options for the product.]]></description>
+          </resource>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="redshopb-product_attribute" transform="string" fieldFormat="/index.php?option=redshopb-product_attribute&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={product_attribute_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Product Attribute Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value display resources]]></description>
+        </resources>
+      </item>
+    </read>
+    <update authorizationNeeded="true" strictFields="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="updateWS" functionArgs="" validateData="function" validateDataFunction="validateUpdateWS"  tableName="redshopb_product_attribute_value">
+      <description><![CDATA[This operation updates Aesir E-Commerce Product Attribute Value]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Product Attribute Value ID]]></description>
+        </field>
+        <field name="sku" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Stocking Key Unit (it will be appended to the product's SKU)]]></description>
+        </field>
+        <field name="ordering" transform="int" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Order for displaying the attribute values]]></description>
+        </field>
+        <field name="selected" transform="boolean" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[If true, it will be the default selected value for this attribute when showing it in shop]]></description>
+        </field>
+        <field name="value" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[Actual value]]></description>
+        </field>
+        <field name="image" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+          <description><![CDATA[URL of image to display in shop when presenting the value in the options for the product. The image will be imported.]]></description>
+        </field>
+        <description><![CDATA[Product Attribute Value update fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Attribute Value webservice]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Link to Product Attribute Value]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Product Attribute Value update resources]]></description>
+      </resources>
+    </update>
+    <delete authorizationNeeded="true" strictFields="false" authorization="core.webservice,core.delete" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="deleteWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product_attribute_value">
+      <description><![CDATA[This operation deletes Aesir E-Commerce Product Attribute Value(s).]]></description>
+      <fields>
+        <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+          <description><![CDATA[Product Attribute Value ID to delete]]></description>
+        </field>
+        <description><![CDATA[Product Attribute Value delete fields]]></description>
+      </fields>
+      <resources>
+        <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Web services documentation]]></description>
+        </resource>
+        <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Webservices root]]></description>
+        </resource>
+        <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Attribute Value webservice]]></description>
+        </resource>
+        <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+          <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+        </resource>
+        <description><![CDATA[Product Attribute Value delete resources]]></description>
+      </resources>
+    </delete>
+    <task>
+      <publish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="publishWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[This task enables you to set specific Product Attribute Values as published.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID to publish]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value publish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value publish resources]]></description>
+        </resources>
+      </publish>
+      <unpublish useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="unpublishWS" functionArgs="id{string}" validateData="function" validateDataFunction="validatePkWS" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[This task enables you to set specific Product Attribute Values as unpublished.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID to unpublish]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value unpublish fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value unpublish resources]]></description>
+        </resources>
+      </unpublish>
+      <imageUpload useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="ProductAttributeValue" modelClassPath="" isAdminClass="false" functionName="imageUploadLegacy" functionArgs="id{int}, image{string}" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[ Adds or update an image for a product attribute value. .]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product attribute value ID to add an image to ]]></description>
+          </field>
+          <field name="image" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Image (base64 encoded) to be added to this attribute value.]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value image upload fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value image upload resources]]></description>
+        </resources>
+      </imageUpload>
+      <imageRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="ProductAttributeValue" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}" validateData="none" validateDataFunction="validate" tableName="">
+        <description><![CDATA[Removes an image from a product attribute value.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID to remove image from]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value image remove fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value image remove resources]]></description>
+        </resources>
+      </imageRemove>
+      <reorder useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.create,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="webserviceReorder" functionArgs="id{int},ordering{int}" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[Updates the order of a certain product attribute value, reordering the other values in the attribute]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID to reorder]]></description>
+          </field>
+          <field name="ordering" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Order for displaying the attribute value]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value reorder fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value reorder resources]]></description>
+        </resources>
+      </reorder>
+      <conversionAdd useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.create,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[Adds or update a conversion for a product attribute value using a conversion set.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product attribute value ID to add this conversion set to]]></description>
+          </field>
+          <field name="conversion_set_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Conversion Set to use according to the country or region ]]></description>
+          </field>
+          <field name="value" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Conversion for this attribute value]]></description>
+          </field>
+          <field name="image" transform="string" defaultValue="" isRequiredField="false" isPrimaryField="false">
+            <description><![CDATA[URL of the image to show for a value when using a conversion set. The image will be imported.]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value conversion add fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <resource displayName="redshopb-conversion" transform="string" fieldFormat="/index.php?option=redshopb-conversion&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={conversion_set_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Conversion Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Conversion linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value conversion add resources]]></description>
+        </resources>
+      </conversionAdd>
+      <conversionRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.delete,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}, conversion_set_id{int}" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[Removes a conversion from a product attribute value.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product attribute value ID to remove this conversion set from]]></description>
+          </field>
+          <field name="conversion_set_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Conversion set to remove from this product attribute value]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value conversion remove fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <resource displayName="redshopb-conversion" transform="string" fieldFormat="/index.php?option=redshopb-conversion&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={conversion_set_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Conversion Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Conversion linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value conversion remove resources]]></description>
+        </resources>
+      </conversionRemove>
+      <conversionImageUpload useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[Adds or update an image for a conversion set of a product attribute value.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product attribute value ID to add this conversion set image to ]]></description>
+          </field>
+          <field name="conversion_set_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Conversion Set to use according to the country or region ]]></description>
+          </field>
+          <field name="image" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Image (base64 encoded) to be added to the conversion set of the attribute value]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value conversion image upload fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <resource displayName="redshopb-conversion" transform="string" fieldFormat="/index.php?option=redshopb-conversion&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={conversion_set_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Conversion Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Conversion linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value conversion image upload resources]]></description>
+        </resources>
+      </conversionImageUpload>
+      <conversionImageRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}, conversion_set_id{int}" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[ Removes an image from a conversion set of a product attribute value.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product attribute value ID to remove this conversion set image from]]></description>
+          </field>
+          <field name="conversion_set_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Conversion set from the product attribute value to remove the image from]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value conversion image upload fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <resource displayName="redshopb-conversion" transform="string" fieldFormat="/index.php?option=redshopb-conversion&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={conversion_set_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Conversion Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Conversion linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value conversion image upload resources]]></description>
+        </resources>
+      </conversionImageRemove>
+      <translate useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.create,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="function" validateDataFunction="validateTranslateWS" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[Adds or update a translation for a Product Attribute Value using a language code]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID to translate]]></description>
+          </field>
+          <field name="lang_code" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Language code]]></description>
+          </field>
+          <field name="value" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Translated value]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value translate fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value translate resources]]></description>
+        </resources>
+      </translate>
+      <translateRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.delete,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="" functionArgs="" validateData="function" validateDataFunction="validateTranslateWS" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[Removes a translation from a Product Attribute Value]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID to remove translation from]]></description>
+          </field>
+          <field name="lang_code" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Language code]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value translate remove fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value translate remove resources]]></description>
+        </resources>
+      </translateRemove>
+      <translateConversion useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.create,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int},conversion_set_id{int},lang_code{string},value{string}" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[Adds or update a translation for a conversion of a product attribute value using a language code.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID]]></description>
+          </field>
+          <field name="conversion_set_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Conversion set]]></description>
+          </field>
+          <field name="lang_code" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Language code]]></description>
+          </field>
+          <field name="value" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Translated value for the conversion of this attribute value ]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value translate conversion fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <resource displayName="redshopb-conversion" transform="string" fieldFormat="/index.php?option=redshopb-conversion&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={conversion_set_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Conversion Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Conversion linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value translate conversion resources]]></description>
+        </resources>
+      </translateConversion>
+      <translateConversionRemove useOperation="" strictFields="false" authorizationNeeded="true" authorization="core.webservice,core.delete,core.edit,core.edit.own" dataMode="model" optionName="com_redshopb" modelClassName="Product_Attribute_Value" modelClassPath="" isAdminClass="false" functionName="" functionArgs="id{int}, conversion_set_id{int}, lang_code{string}" validateData="none" validateDataFunction="validate" tableName="redshopb_product_attribute_value">
+        <description><![CDATA[Removes a translation from a conversion of a product attribute value.]]></description>
+        <fields>
+          <field name="id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="true">
+            <description><![CDATA[Product Attribute Value ID]]></description>
+          </field>
+          <field name="conversion_set_id" transform="int" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Conversion set]]></description>
+          </field>
+          <field name="lang_code" transform="string" defaultValue="" isRequiredField="true" isPrimaryField="false">
+            <description><![CDATA[Language code]]></description>
+          </field>
+          <description><![CDATA[Product Attribute Value translate conversion remove fields]]></description>
+        </fields>
+        <resources>
+          <resource displayName="documentation" transform="string" fieldFormat="{webserviceUrlPath}&amp;format=doc#{rel}" displayGroup="_links" linkTitle="Documentation" linkName="{webserviceName}" hrefLang="" linkTemplated="true" linkRel="curies" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Web services documentation]]></description>
+          </resource>
+          <resource displayName="base" transform="string" fieldFormat="/" displayGroup="_links" linkTitle="Default page" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Webservices root]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:list" transform="string" fieldFormat="{webserviceUrlPath}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value webservice]]></description>
+          </resource>
+          <resource displayName="{webserviceName}:self" transform="string" fieldFormat="{webserviceUrlPath}&amp;id={id}" displayGroup="_links" linkTitle="" linkName="" hrefLang="" linkTemplated="false" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Link to Product Attribute Value]]></description>
+          </resource>
+          <resource displayName="result" transform="int" fieldFormat="{result}" displayGroup="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Product Attribute Value ID upon success, zero on error]]></description>
+          </resource>
+          <resource displayName="redshopb-conversion" transform="string" fieldFormat="/index.php?option=redshopb-conversion&amp;webserviceVersion=1.0.0&amp;webserviceClient=site&amp;id={conversion_set_id}" displayGroup="_links" linkTitle="Aesir E-Commerce - Conversion Webservice" linkName="" hrefLang="" linkTemplated="true" linkRel="" resourceSpecific="rcwsGlobal">
+            <description><![CDATA[Conversion linked Web Service]]></description>
+          </resource>
+          <description><![CDATA[Product Attribute Value translate conversion remove resources]]></description>
+        </resources>
+      </translateConversionRemove>
+    </task>
+  </operations>
+</apiservice>
